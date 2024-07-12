@@ -871,9 +871,9 @@ input[type="submit"]{
   }
   @keyframes footer {
     0%{
-        background-position-x: -100%;
+        background-position-x: -100vh;
     }
     100%{
-        background-position-x: 380%;
+        background-position-x: 100vh;
     }
 }
