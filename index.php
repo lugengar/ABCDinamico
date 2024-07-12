@@ -59,6 +59,7 @@
             <form class="barradebusqueda activo" id="nombre" method="GET" action="./index.php">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <input type="text" name="busqueda" placeholder="Nombre del establecimiento" required>
+                <input type="text" name="tipo" value="nombre">
                 <input type="submit" value="Buscar">
             </form>
             <form class="barradebusqueda" id="distrito" >
