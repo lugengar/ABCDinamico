@@ -62,18 +62,18 @@
                 <input type="hidden" name="tipo" value="nombre">
                 <input type="submit" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="distrito" >
+            <form class="barradebusqueda" id="distrito" method="GET" action="./index.php">
                 <img src="imagenes/iconos/lupa.svg" alt="">
-                <select name="" id="" required>
+                <select name="busqueda"id="" required>
                     <option value="">Elija un distrito</option >
                     <option value="Tigre">Tigre</option>
                 </select>
                 <input type="hidden" name="tipo" value="distrito">
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="carrera" >
+            <form class="barradebusqueda" id="carrera" method="GET" action="./index.php">
                 <img src="imagenes/iconos/lupa.svg" alt="">
-                <select name="" id="" required>
+                <select name="busqueda" id="" required>
                     <option value="">Elija una carrera</option>
                     <option value="Ingenieria Civil">Ingenieria Civil</option>
                     <option value="Ingenieria de Sistemas">Ingenieria de Sistemas</option>
@@ -84,9 +84,9 @@
                 <input type="hidden" name="tipo" value="carrera">
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="tecnicatura" >
+            <form class="barradebusqueda" id="tecnicatura" method="GET" action="./index.php">
                 <img src="imagenes/iconos/lupa.svg" alt="">
-                <select name="" id="" required>
+                <select name="busqueda" id="" required>
                     <option value="">Elija una tecnicatura</option>
                     <option value="Tecnico en Informatica">Tecnico en Informatica</option>
                     <option value="Tecnico en Gestion Ambiental">Tecnico en Gestion Ambiental</option>
