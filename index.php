@@ -56,22 +56,22 @@
                     <h1>Buscar por nombre del establecimiento</h1>
                 </button>
             </div>
-            <form class="barradebusqueda activo" id="nombre" method="GET" action="./index.php">
+            <form class="barradebusqueda activo" id="nombre" method="GET" action="./index.php#botones">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <input type="text" name="busqueda" placeholder="Nombre del establecimiento" required>
-                <input type="hidden" name="tipo" value="nombre">
+                <input type="hidden" name="tipo" value="nombre" required>
                 <input type="submit" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="distrito" method="GET" action="./index.php">
+            <form class="barradebusqueda" id="distrito" method="GET" action="./index.php#botones">
                 <img src="imagenes/iconos/lupa.svg" alt="">
                 <select name="busqueda"id="" required>
                     <option value="">Elija un distrito</option >
                     <option value="Tigre">Tigre</option>
                 </select>
-                <input type="hidden" name="tipo" value="distrito">
-                <input type="submit" name="" value="Buscar">
+                <input type="hidden" name="tipo" value="distrito" required>
+                <input type="submit" name="" value="Buscar" >
             </form>
-            <form class="barradebusqueda" id="carrera" method="GET" action="./index.php">
+            <form class="barradebusqueda" id="carrera" method="GET" action="./index.php#botones">
                 <img src="imagenes/iconos/lupa.svg" alt="">
                 <select name="busqueda" id="" required>
                     <option value="">Elija una carrera</option>
@@ -81,10 +81,10 @@
                     <option value="Licenciatura en Administracion de Empresas">Licenciatura en Administracion de Empresas</option>
                     <option value="Licenciatura en Psicologia">Licenciatura en Psicologia</option>
                 </select>
-                <input type="hidden" name="tipo" value="carrera">
+                <input type="hidden" name="tipo" value="carrera" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="tecnicatura" method="GET" action="./index.php">
+            <form class="barradebusqueda" id="tecnicatura" method="GET" action="./index.php#botones">
                 <img src="imagenes/iconos/lupa.svg" alt="">
                 <select name="busqueda" id="" required>
                     <option value="">Elija una tecnicatura</option>
@@ -94,10 +94,10 @@
                     <option value="Tecnico en Enfermeria">Tecnico en Enfermeria</option>
                     <option value="Tecnico en Mecanica Automotriz">Tecnico en Mecanica Automotriz</option>
                 </select>
-                <input type="hidden" name="tipo" value="tecnicatura">
+                <input type="hidden" name="tipo" value="tecnicatura" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <div class="universidades">
+            <div class="universidades" id="uni">
                <?php
                     include "./codigophp/buscar_universidades.php";
                ?>

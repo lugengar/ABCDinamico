@@ -115,22 +115,17 @@ function carrusel($nombre,$ubicacion,$imagenes){
     }
     echo'<a href="index.php" class="logo_pba_vertical"></a>';
 }
-function carrera(){
+function carrera($id,$nombre,$descripcion, $id_establecimiento){
     echo ('
-        <div class="universidad"> 
+        <form class="universidad" method="GET" action="./universidad.php#plan">
             <div class="imagenesuni"></div>
             <div class="barrauni"></div>
-            <h1 class="nombreuni">NOMBRE DE LA CARRERA</h1>
-            <p class="descripcionuni">Descripción: Lorem ipsum dolor sit amet consectetur adipisicing elit. Non maxime in ab vero? Inventore molestiae dignissimos consectetur velit quae culpa dolorum, voluptas blanditiis exercitationem, earum possimus, et recusandae fugiat ad.</p>
-            <button class="botonuni">SABER MAS..</button>
-        </div>
-        <div class="universidad"> 
-            <div class="imagenesuni"></div>
-            <div class="barrauni"></div>
-            <h1 class="nombreuni">NOMBRE DE LA TECNICATURA</h1>
-            <p class="descripcionuni">Descripción: Lorem ipsum dolor sit amet consectetur adipisicing elit. Non maxime in ab vero? Inventore molestiae dignissimos consectetur velit quae culpa dolorum, voluptas blanditiis exercitationem, earum possimus, et recusandae fugiat ad.</p>
-            <button class="botonuni">SABER MAS..</button>
-        </div>
+            <h1 class="nombreuni">'.$nombre.'</h1>
+            <p class="descripcionuni">'.$descripcion.'</p>
+            <input type="submit" value="SABER MAS.." class="botonuni"></button>
+            <input type="hidden" name="universidad" value="'.$id_establecimiento.'" required>
+            <input type="hidden" name="carrera" value="'.$id.'" required>
+        </form>
     ');
 }
 function info_carrera(){
@@ -170,5 +165,6 @@ function info_carrera(){
             </div>   
     ');
 }
+
 ?>
 
