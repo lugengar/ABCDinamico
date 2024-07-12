@@ -59,7 +59,7 @@
             <form class="barradebusqueda activo" id="nombre" method="GET" action="./index.php">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <input type="text" name="busqueda" placeholder="Nombre del establecimiento" required>
-                <input type="text" name="tipo" value="nombre">
+                <input type="hidden" name="tipo" value="nombre">
                 <input type="submit" value="Buscar">
             </form>
             <form class="barradebusqueda" id="distrito" >
@@ -68,6 +68,7 @@
                     <option value="">Elija un distrito</option >
                     <option value="Tigre">Tigre</option>
                 </select>
+                <input type="hidden" name="tipo" value="distrito">
                 <input type="submit" name="" value="Buscar">
             </form>
             <form class="barradebusqueda" id="carrera" >
@@ -80,6 +81,7 @@
                     <option value="Licenciatura en Administracion de Empresas">Licenciatura en Administracion de Empresas</option>
                     <option value="Licenciatura en Psicologia">Licenciatura en Psicologia</option>
                 </select>
+                <input type="hidden" name="tipo" value="carrera">
                 <input type="submit" name="" value="Buscar">
             </form>
             <form class="barradebusqueda" id="tecnicatura" >
@@ -91,16 +93,14 @@
                     <option value="Tecnico en Administracion de Empresas">Tecnico en Administracion de Empresas</option>
                     <option value="Tecnico en Enfermeria">Tecnico en Enfermeria</option>
                     <option value="Tecnico en Mecanica Automotriz">Tecnico en Mecanica Automotriz</option>
-
                 </select>
+                <input type="hidden" name="tipo" value="tecnicatura">
                 <input type="submit" name="" value="Buscar">
             </form>
             <div class="universidades">
                <?php
                     include "./codigophp/buscar_universidades.php";
                ?>
-               
-
             </div>
             <div class="barradebusqueda volverarriba">
                 <img src="imagenes/iconos/flecha.svg" alt="">
