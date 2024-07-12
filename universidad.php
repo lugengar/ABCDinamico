@@ -104,7 +104,7 @@
     </div>
     <div id="pdf-container" popover  class="pop2">
         <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
-        <embed class="pdf-viewer" src="pdf/diseño pdf.pdf" type="application/pdf" />
+        <embed class="pdf-viewer" src="https://lugengar.github.io/ABC/pdf/dise%C3%B1o%20pdf.pdf" type="application/pdf" />
     </div>
     <div id="googlemaps" popover class="pop2">
         <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
