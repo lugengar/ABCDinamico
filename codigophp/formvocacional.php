@@ -45,28 +45,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         flex-wrap: wrap; 
     }
     .content h1, p{
-        margin-left:5vw;
-        margin-right:5vw;
-        width: 80vw;
+        margin-left:5dvw;
+        margin-right:5dvw;
+        width: 80dvw;
         height:max-content;
         text-align: center;
     }
     .botonuni{
-        font-size: 2vh;
+        font-size: 2dvh;
         border: none;
-        border-radius: 1.5vh;
-        height: 5vh;
-        width: 18vh;
+        border-radius: 1.5dvh;
+        height: 5dvh;
+        width: 18dvh;
         background-color: #e81f76;
         color: white;
-        transform: translateY(-2.5vh);
+        transform: translateY(-2.5dvh);
         display: flex;
         text-align: center;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        margin-left:30vw;
-        margin-right:30vw;
+        margin-left:30dvw;
+        margin-right:30dvw;
     }
 </style>
 <link rel="stylesheet" href="../estiloscss/universidad.css">
