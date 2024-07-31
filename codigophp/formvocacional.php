@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<p>Según tus respuestas, la carrera más adecuada para ti es: <strong>$career</strong></p>";
 }
 ?>
-<a href="../index.html"  class="botonuni">SALIR</a>
+<a href="../index.php"  class="botonuni">SALIR</a>
 </div>
 <style>
     .content{

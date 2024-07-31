@@ -34,7 +34,7 @@
         </main>
         <header class="header"id="header">
             <a href="index.php" class="logo_pba_horizontal"></a>
-            <a href="formulario.html" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4dvh;"></div></a>
+            <a href="formulario.php" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4dvh;"></div></a>
         </header>
         
         <main class="main">
@@ -111,7 +111,7 @@
                     <div class="barrauni"></div>
                     <h1 class="nombreuni">NOMBRE DEL ESTABLECIMIENTO</h1>
                     <p class="descripcionuni">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non maxime in ab vero? Inventore molestiae dignissimos consectetur velit quae culpa dolorum, voluptas blanditiis exercitationem, earum possimus, et recusandae fugiat ad.</p>
-                    <a href="./index.php?universidad=2"  class="botonuni">SABER MAS..</a>
+                    <a href="./codigophp/universidad.php?universidad=2"  class="botonuni">SABER MAS..</a>
                 </div>
                 <div class="universidad"> 
                     <div class="imagenesuni">

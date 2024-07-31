@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estiloscss/universidad.css">
+    <link rel="stylesheet" href="../estiloscss/universidad.css">
     <title>Document</title>
 </head>
 <body>
     <div class="container" id="container">
         <main class="carrusel">
             <div class="imagenes">
-                <div class="imagen activo" style="background-image: url('imagenes/universidades/117.jpg');"></div>
-                <div class="imagen" style="background-image: url('imagenes/universidades/199.jpg');"></div>
-                <div class="imagen" style="background-image: url('imagenes/universidades/217.jpg');"></div>
-               
+                <div class="imagen activo" style="background-image: url('../imagenes/universidades/117.jpg');"></div>
+                <div class="imagen" style="background-image: url('../imagenes/universidades/199.jpg');"></div>
+                <div class="imagen" style="background-image: url('../imagenes/universidades/217.jpg');"></div>
             </div>
 
             <div class="filtro">
@@ -29,14 +28,13 @@
                     <span class="circulo activo"></span>
                     <span class="circulo"></span>
                     <span class="circulo"></span>
-                   
                 </div>
             </div>
-            <a href="index.html" class="logo_pba_vertical"></a>
+            <a href="index.php" class="logo_pba_vertical"></a>
         </main>
         <header class="header" id="header">
-            <a href="index.html" class="logo_pba_horizontal " ></a>
-    <a href="formulario.html" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4dvh;"></div></a>
+            <a href="index.php" class="logo_pba_horizontal " ></a>
+    <a href="formulario.php" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4dvh;"></div></a>
         </header>
         
         <main class="main">
@@ -53,7 +51,7 @@
                         <p class="redsocial2" style="background-image: url(imagenes/iconos/comedor.svg);">Cuenta con comedor</p>
                     </div>
                 </div>
-               
+
                 <div class="universidad" id="mapa"> 
                     <iframe  class="imageninfo" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13150.23923620172!2d-58.542955899999995!3d-34.51404235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb08d0e03c427%3A0xb9671110c4893ecd!2sEasy!5e0!3m2!1ses-419!2sar!4v1719099532427!5m2!1ses-419!2sar" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <div class="barrauni"></div>
@@ -91,7 +89,7 @@
 
             </div>
             <div class="botones" id="botones" style="padding-top:0dvh;" >
-                <button class="boton" onclick="window.location.href='./index.html'">
+                <button class="boton" onclick="window.location.href='./index.php'">
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/lupa.svg); background-size: 13dvh;"></div>
                     <h1>Buscar otra universidad</h1>
                 </button>
@@ -174,7 +172,6 @@
                 <button onclick="redirigir('botones')" >Volver arriba</button>
             </div>
         </main>
-       
         <footer class="footer">
             <div class="imagenfooter"></div>
             <div class="logo_pba_vertical2"></div>
@@ -202,7 +199,7 @@
     </div>
     <div id="inscribirme" popover class="pop2">
         <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
-        <iframe src="inscripcion.html" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="inscripcion.php" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </body>
 </html>
