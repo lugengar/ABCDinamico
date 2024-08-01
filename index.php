@@ -17,7 +17,6 @@
         $password = "";
         $dbname = "abc_bd";
 
-      
         $conexionDatos = new mysqli($servername, $username, $password, $dbname);
 
         if ($conexionDatos->connect_error) {
@@ -77,6 +76,92 @@
         
     ?>
 
+    <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "abc_bd";
+
+        // Crear conexión
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Verificar conexión
+        if ($conn->connect_error) {
+            die("Conexión fallida: " . $conn->connect_error);
+        }
+
+        // Verificar si 'tipo' está definido y es válido
+        if (isset($_GET['tipo']) && in_array($_GET['tipo'], ['nombre', 'distrito', 'carrera', 'tecnicatura'])) {
+            $tipo = $_GET['tipo'];
+            $busqueda = $_GET[$tipo] ?? '';
+
+            // Construir la consulta SQL según el tipo de búsqueda
+            $sql = "";
+            if ($tipo == 'nombre') {
+                $sql = "SELECT * FROM establecimiento WHERE nombre LIKE ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $busqueda);
+            } elseif ($tipo == 'distrito') {
+                $sql = "SELECT * FROM establecimiento WHERE fk_distrito = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $busqueda);
+            } elseif ($tipo == 'carrera') {
+                $sql = "SELECT * FROM establecimiento WHERE carrera = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $busqueda);
+            } elseif ($tipo == 'tecnicatura') {
+                $sql = "SELECT * FROM establecimiento WHERE tecnicatura = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("s", $busqueda);
+            } else {
+                die("Tipo de búsqueda no válido.");
+            }
+
+            // Ejecutar la consulta y obtener los resultados
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                // Mostrar los resultados
+                while ($row = $result->fetch_assoc()) {
+                    echo "ID: " . $row["id"] . " - Nombre: " . $row["nombre"] . " - Distrito: " . $row["fk_distrito"] . "<br>";
+                }
+            } else {
+                echo "No se encontraron resultados.";
+            }
+
+            $stmt->close();
+        } else {
+            echo "Tipo de búsqueda no válido.";
+        }
+
+        $conn->close();
+        ?>
+            <!-- Mostrar universidades -->
+        <?php
+            // Crear conexión
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Verificar conexión
+            if ($conn->connect_error) {
+                die("Conexión fallida: " . $conn->connect_error);
+            }
+
+            // Consulta SQL para obtener todas las universidades
+            $sql = "SELECT * FROM establecimiento";
+            $result = $conn->query($sql);
+
+            $universidades = array();
+
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $universidades[] = $row;
+                }
+            }
+
+            $conn->close();
+        ?>
+
 
     <main class="carrusel">
             <div class="imagenes">
@@ -84,7 +169,7 @@
                     echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
                     echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
                     echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
-               ?>
+                ?>
             </div>
             <div class="filtro">
                 <div class="contenidotexto">
@@ -98,7 +183,6 @@
                     <span class="circulo activo"></span>
                     <span class="circulo"></span>
                     <span class="circulo"></span>
-                   
                 </div>
             </div>
             <div class="logo_pba_vertical"></div>
@@ -109,7 +193,6 @@
         </header>
         
         <main class="main">
-           
             <div class="botones" id="botones">
                 <button class="boton " onclick="barradebusqueda('distrito')">
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
@@ -132,9 +215,9 @@
                 <input type="text" name="" placeholder="Nombre del establecimiento" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="distrito" method="GET" action="codigophp/distritos.php">
+            <form class="barradebusqueda" id="distrito" method="GET" action="buscar.php">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
-                <select name="distritos" id="distritos" required>
+                <select name="distrito" id="distritos" required>
                     <option value="">Selecciona un distrito</option>
                     <?php
                     foreach ($distritos as $distrito) {
@@ -142,8 +225,10 @@
                     }
                     ?>
                 </select>
+                <input type="hidden" name="tipo" value="distrito">
                 <input type="submit" value="Buscar">
             </form>
+
 
             <form class="barradebusqueda" id="carrera">
                 <img src="imagenes/iconos/lupa.svg" alt="">
@@ -172,97 +257,26 @@
             </form>
 
             <div class="universidades">
-                <div class="universidad"> 
-                    <div class="imagenesuni">
-                    <?php
-                        echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
-                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
-                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
-                    ?>
-                        <div class="circulos">
-                            <span class="circulo2 activo"></span>
-                            <span class="circulo2"></span>
-                            <span class="circulo2"></span>
-                        </div>
-                    </div>
-                    <div class="barrauni"></div>
-                    <h1 class="nombreuni">NOMBRE DEL ESTABLECIMIENTO</h1>
-                    <p class="descripcionuni">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non maxime in ab vero? Inventore molestiae dignissimos consectetur velit quae culpa dolorum, voluptas blanditiis exercitationem, earum possimus, et recusandae fugiat ad.</p>
-                    <a href="./codigophp/universidad.php?universidad=2"  class="botonuni">SABER MAS..</a>
-                </div>
-                <div class="universidad"> 
-                    <div class="imagenesuni">
-                    <?php
-                        echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
-                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
-                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
-                    ?>
-                    <div class="circulos">
-                        <span class="circulo activo"></span>
-                        <span class="circulo"></span>
-                        <span class="circulo"></span>
-                    </div>
-                    </div>
-                    <div class="barrauni"></div>
-                    <h1 class="nombreuni">NOMBRE DEL ESTABLECIMIENTO</h1>
-                    <p class="descripcionuni">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non maxime in ab vero? Inventore molestiae dignissimos consectetur velit quae culpa dolorum, voluptas blanditiis exercitationem, earum possimus, et recusandae fugiat ad.</p>
-                    <a href="./index.php?universidad=2"  class="botonuni">SABER MAS..</a>
-                </div>
-                <div class="universidad"> 
-                    <div class="imagenesuni">
-                    <?php
-                        echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
-                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
-                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
-                    ?>
-                    <div class="circulos">
-                        <span class="circulo activo"></span>
-                        <span class="circulo"></span>
-                        <span class="circulo"></span>
-                    </div>
-                    </div>
-                    <div class="barrauni"></div>
-                    <h1 class="nombreuni">NOMBRE DEL ESTABLECIMIENTO</h1>
-                    <p class="descripcionuni">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non maxime in ab vero? Inventore molestiae dignissimos consectetur velit quae culpa dolorum, voluptas blanditiis exercitationem, earum possimus, et recusandae fugiat ad.</p>
-                    <a href="./index.php?universidad=2"  class="botonuni">SABER MAS..</a>
-                </div>
-                <div class="universidad"> 
-                    <div class="imagenesuni">
-                    <?php
-                        echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
-                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
-                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
-                    ?>
-                    <div class="circulos">
-                        <span class="circulo activo"></span>
-                        <span class="circulo"></span>
-                        <span class="circulo"></span>
-                    </div>
-                    </div>
-                    <div class="barrauni"></div>
-                    <h1 class="nombreuni">NOMBRE DEL ESTABLECIMIENTO</h1>
-                    <p class="descripcionuni">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non maxime in ab vero? Inventore molestiae dignissimos consectetur velit quae culpa dolorum, voluptas blanditiis exercitationem, earum possimus, et recusandae fugiat ad.</p>
-                    <a href="./index.php?universidad=2"  class="botonuni">SABER MAS..</a>
-                </div>
-                <div class="universidad"> 
-                    <div class="imagenesuni">
-                    <?php
-                        echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
-                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
-                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
-                    ?>
-                    <div class="circulos">
-                        <span class="circulo activo"></span>
-                        <span class="circulo"></span>
-                        <span class="circulo"></span>
-                    </div>
-                    </div>
-                    <div class="barrauni"></div>
-                    <h1 class="nombreuni">NOMBRE DEL ESTABLECIMIENTO</h1>
-                    <p class="descripcionuni">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non maxime in ab vero? Inventore molestiae dignissimos consectetur velit quae culpa dolorum, voluptas blanditiis exercitationem, earum possimus, et recusandae fugiat ad.</p>
-                    <a href="./index.php?universidad=2"  class="botonuni">SABER MAS..</a>
-                </div>
-
+                <?php
+                    foreach ($universidades as $universidad) {
+                        echo '<div class="universidad"> 
+                                <div class="imagenesuni">';
+                        foreach ($imagenes as $imagen) {
+                            echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagen['url']) . ')"></div>';
+                        }
+                        echo '    <div class="circulos">
+                                    <span class="circulo2 activo"></span>
+                                    <span class="circulo2"></span>
+                                    <span class="circulo2"></span>
+                                </div>
+                            </div>
+                            <div class="texto">
+                                <h1>' . htmlspecialchars($universidad['nombre']) . '</h1>
+                                <p>' . htmlspecialchars($universidad['descripcion']) . '</p>
+                            </div>
+                        </div>';
+                    }
+                ?>
             </div>
             <div class="barradebusqueda volverarriba">
                 <img src="imagenes/iconos/flecha.svg" alt="">
