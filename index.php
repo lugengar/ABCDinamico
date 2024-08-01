@@ -4,16 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estiloscss/styles.css">
-    <title>Document</title>
+    <title>abc</title>
 </head>
 <body>
     <div class="container">
-        <main class="carrusel">
+        
+    <!--query images-->
+    <?php
+        // Configuración de la conexión a la base de datos
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "abc_bd";
+
+      
+        $conexionDatos = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conexionDatos->connect_error) {
+            die("Conexión fallida: " . $conexionDatos->connect_error);
+        }
+
+        
+        $queryImagenes = "SELECT url FROM imagenes WHERE 1";
+        $resultDatos = $conexionDatos->query($queryImagenes);
+
+        $imagenes = array();
+
+        if ($resultDatos->num_rows > 0) {
+            while ($row = $resultDatos->fetch_assoc()) {
+                $imagenes[] = $row;
+            }
+        } else {
+            echo "0 resultados";
+        }
+        $conexionDatos->close();
+    ?>
+
+    <!--query distritos-->
+    <?php
+        
+        // Configuración de la conexión a la base de datos
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "abc_bd";
+        
+        // Crear conexión
+        $conexionDatos = new mysqli($servername, $username, $password, $dbname);
+        
+        // Verificar conexión
+        if ($conexionDatos->connect_error) {
+            die("Conexión fallida: " . $conexionDatos->connect_error);
+        }
+        
+        // Consulta SQL para obtener los nombres de los distritos
+        $queryDistritos = "SELECT * FROM distrito"; // Suponiendo que tienes una columna 'id' y 'nombre' en la tabla 'distrito'
+        $resultDatos = $conexionDatos->query($queryDistritos);
+        
+        $distritos = array();
+        
+        if ($resultDatos->num_rows > 0) {
+            // Recorrer todos los registros y añadirlos al array
+            while ($row = $resultDatos->fetch_assoc()) {
+                $distritos[] = $row;
+            }
+        } else {
+            echo "0 resultados";
+        }
+        
+        // Cerrar la conexión
+        $conexionDatos->close();
+        
+    ?>
+
+
+    <main class="carrusel">
             <div class="imagenes">
-                <div class="imagen activo" style="background-image: url('imagenes/otros/estudiantes.jpg');"></div>
-                <div class="imagen" style="background-image: url('imagenes/otros/gente.jpg');"></div>
-                <div class="imagen" style="background-image: url('imagenes/otros/graduados.jpg');"></div>
-               
+                <?php
+                    echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
+                    echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
+                    echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
+               ?>
             </div>
             <div class="filtro">
                 <div class="contenidotexto">
@@ -34,7 +105,7 @@
         </main>
         <header class="header"id="header">
             <a href="index.php" class="logo_pba_horizontal"></a>
-            <a href="formulario.php" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4dvh;"></div></a>
+            <a href="./codigophp/formulario.html" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4dvh;"></div></a>
         </header>
         
         <main class="main">
@@ -61,51 +132,57 @@
                 <input type="text" name="" placeholder="Nombre del establecimiento" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="distrito" >
-                <img src="imagenes/iconos/lupa.svg" alt="">
-                <select name="" id="" required>
-                    <option value="">Elija un distrito</option >
-                    <option value="Tigre">Tigre</option>
+            <form class="barradebusqueda" id="distrito" method="GET" action="codigophp/distritos.php">
+                <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
+                <select name="distritos" id="distritos" required>
+                    <option value="">Selecciona un distrito</option>
+                    <?php
+                    foreach ($distritos as $distrito) {
+                        echo '<option value="' . htmlspecialchars($distrito['id']) . '">' . htmlspecialchars($distrito['nombre']) . '</option>';
+                    }
+                    ?>
                 </select>
-                <input type="submit" name="" value="Buscar">
+                <input type="submit" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="carrera" >
-                <img src="imagenes/iconos/lupa.svg" alt="">
-                <select name="" id="" required>
-                    <option value="">Elija una carrera</option>
-                    <option value="Ingenieria Civil">Ingenieria Civil</option>
-                    <option value="Ingenieria de Sistemas">Ingenieria de Sistemas</option>
-                    <option value="Ingenieria Mecanica">Ingenieria Mecanica</option>
-                    <option value="Licenciatura en Administracion de Empresas">Licenciatura en Administracion de Empresas</option>
-                    <option value="Licenciatura en Psicologia">Licenciatura en Psicologia</option>
-                </select>
-                <input type="submit" name="" value="Buscar">
-            </form>
-            <form class="barradebusqueda" id="tecnicatura" >
-                <img src="imagenes/iconos/lupa.svg" alt="">
-                <select name="" id="" required>
-                    <option value="">Elija una tecnicatura</option>
-                    <option value="Tecnico en Informatica">Tecnico en Informatica</option>
-                    <option value="Tecnico en Gestion Ambiental">Tecnico en Gestion Ambiental</option>
-                    <option value="Tecnico en Administracion de Empresas">Tecnico en Administracion de Empresas</option>
-                    <option value="Tecnico en Enfermeria">Tecnico en Enfermeria</option>
-                    <option value="Tecnico en Mecanica Automotriz">Tecnico en Mecanica Automotriz</option>
 
+            <form class="barradebusqueda" id="carrera">
+                <img src="imagenes/iconos/lupa.svg" alt="">
+                <select name="carrera" id="carrera" required>
+                    <option value="">Elija una carrera</option>
+                    <option value="Ingeniería Civil">Ingeniería Civil</option>
+                    <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                    <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
+                    <option value="Licenciatura en Administración de Empresas">Licenciatura en Administración de Empresas</option>
+                    <option value="Licenciatura en Psicología">Licenciatura en Psicología</option>
                 </select>
-                <input type="submit" name="" value="Buscar">
+                <input type="submit" value="Buscar">
             </form>
+
+            <form class="barradebusqueda" id="tecnicatura">
+                <img src="imagenes/iconos/lupa.svg" alt="">
+                <select name="tecnicatura" id="tecnicatura" required>
+                    <option value="">Elija una tecnicatura</option>
+                    <option value="Técnico en Informática">Técnico en Informática</option>
+                    <option value="Técnico en Gestión Ambiental">Técnico en Gestión Ambiental</option>
+                    <option value="Técnico en Administración de Empresas">Técnico en Administración de Empresas</option>
+                    <option value="Técnico en Enfermería">Técnico en Enfermería</option>
+                    <option value="Técnico en Mecánica Automotriz">Técnico en Mecánica Automotriz</option>
+                </select>
+                <input type="submit" value="Buscar">
+            </form>
+
             <div class="universidades">
                 <div class="universidad"> 
                     <div class="imagenesuni">
-                        <div class="imagenuni activo" style="background-image: url('imagenes/universidades/52.jpg')"></div>
-                        <div class="imagenuni" style="background-image: url('imagenes/universidades/140.jpg');"></div>
-                        <div class="imagenuni" style="background-image: url('imagenes/universidades/217.jpg');"></div>
-                       
+                    <?php
+                        echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
+                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
+                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
+                    ?>
                         <div class="circulos">
                             <span class="circulo2 activo"></span>
                             <span class="circulo2"></span>
                             <span class="circulo2"></span>
-                           
                         </div>
                     </div>
                     <div class="barrauni"></div>
@@ -115,16 +192,16 @@
                 </div>
                 <div class="universidad"> 
                     <div class="imagenesuni">
-                        <div class="imagenuni activo" style="background-image: url('imagenes/universidades/117.jpg');"></div>
-                        <div class="imagenuni" style="background-image: url('imagenes/universidades/140.jpg');"></div>
-                        <div class="imagenuni" style="background-image: url('imagenes/universidades/217.jpg');"></div>
-                       
-                        <div class="circulos">
-                            <span class="circulo2 activo"></span>
-                            <span class="circulo2"></span>
-                            <span class="circulo2"></span>
-                           
-                        </div>
+                    <?php
+                        echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
+                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
+                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
+                    ?>
+                    <div class="circulos">
+                        <span class="circulo activo"></span>
+                        <span class="circulo"></span>
+                        <span class="circulo"></span>
+                    </div>
                     </div>
                     <div class="barrauni"></div>
                     <h1 class="nombreuni">NOMBRE DEL ESTABLECIMIENTO</h1>
@@ -133,16 +210,16 @@
                 </div>
                 <div class="universidad"> 
                     <div class="imagenesuni">
-                        <div class="imagenuni activo" style="background-image: url('imagenes/universidades/220-229.jpg');"></div>
-                        <div class="imagenuni" style="background-image: url('imagenes/universidades/140.jpg');"></div>
-                        <div class="imagenuni" style="background-image: url('imagenes/universidades/217.jpg');"></div>
-                       
-                        <div class="circulos">
-                            <span class="circulo2 activo"></span>
-                            <span class="circulo2"></span>
-                            <span class="circulo2"></span>
-                           
-                        </div>
+                    <?php
+                        echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
+                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
+                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
+                    ?>
+                    <div class="circulos">
+                        <span class="circulo activo"></span>
+                        <span class="circulo"></span>
+                        <span class="circulo"></span>
+                    </div>
                     </div>
                     <div class="barrauni"></div>
                     <h1 class="nombreuni">NOMBRE DEL ESTABLECIMIENTO</h1>
@@ -151,16 +228,16 @@
                 </div>
                 <div class="universidad"> 
                     <div class="imagenesuni">
-                        <div class="imagenuni activo" style="background-image: url('imagenes/universidades/77.jpg');"></div>
-                        <div class="imagenuni" style="background-image: url('imagenes/universidades/140.jpg');"></div>
-                        <div class="imagenuni" style="background-image: url('imagenes/universidades/217.jpg');"></div>
-                       
-                        <div class="circulos">
-                            <span class="circulo2 activo"></span>
-                            <span class="circulo2"></span>
-                            <span class="circulo2"></span>
-                           
-                        </div>
+                    <?php
+                        echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
+                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
+                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
+                    ?>
+                    <div class="circulos">
+                        <span class="circulo activo"></span>
+                        <span class="circulo"></span>
+                        <span class="circulo"></span>
+                    </div>
                     </div>
                     <div class="barrauni"></div>
                     <h1 class="nombreuni">NOMBRE DEL ESTABLECIMIENTO</h1>
@@ -169,16 +246,16 @@
                 </div>
                 <div class="universidad"> 
                     <div class="imagenesuni">
-                        <div class="imagenuni activo" style="background-image: url('imagenes/universidades/199.jpg');"></div>
-                        <div class="imagenuni" style="background-image: url('imagenes/universidades/140.jpg');"></div>
-                        <div class="imagenuni" style="background-image: url('imagenes/universidades/217.jpg');"></div>
-                       
-                        <div class="circulos">
-                            <span class="circulo2 activo"></span>
-                            <span class="circulo2"></span>
-                            <span class="circulo2"></span>
-                           
-                        </div>
+                    <?php
+                        echo '<div class="imagen activo" style="background-image: url(' . htmlspecialchars($imagenes[0]['url']) . ')"></div>';
+                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[1]['url']) . ')"></div>';
+                        echo '<div class="imagen" style="background-image: url(' . htmlspecialchars($imagenes[2]['url']) . ')"></div>';
+                    ?>
+                    <div class="circulos">
+                        <span class="circulo activo"></span>
+                        <span class="circulo"></span>
+                        <span class="circulo"></span>
+                    </div>
                     </div>
                     <div class="barrauni"></div>
                     <h1 class="nombreuni">NOMBRE DEL ESTABLECIMIENTO</h1>
@@ -211,8 +288,14 @@
     </div>
 </body>
 </html>
-<script src="codigojs/carrusel.js"></script>
-<script src="codigojs/redirigir.js"></script>
-<script src="codigojs/botonesbarra.js"></script>
-<script src="codigojs/scroll.js"></script>
+<script src="./codigojs/carrusel.js"></script>
+<script src="./codigojs/redirigir.js"></script>
+<script src="./codigojs/botonesbarra.js"></script>
+<script src="./codigojs/scroll.js"></script>
+<script src="./codigojs/scroll.js"></script>
+<?php
+    include 'conexion.php';
 
+    $sql = "SELECT id, nombre, email FROM usuarios";
+    $result = $conn->query($sql);
+?>
