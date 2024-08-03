@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pared de Ladrillos</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px; /* Espacio entre los cuadrados */
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .brick {
+            background-color: #ff6f61; /* Color de los ladrillos */
+            border: 1px solid #e0e0e0; /* Borde de los ladrillos */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra de los ladrillos */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+        }
+
+        .small {
+            grid-column: span 1;
+            grid-row: span 1;
+            aspect-ratio: 1 / 1;
+        }
+
+        .medium {
+            grid-column: span 2;
+            grid-row: span 2;
+            aspect-ratio: 1 / 1;
+        }
+
+        .large {
+            grid-column: span 3;
+            grid-row: span 3;
+            aspect-ratio: 1 / 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="brick small">S</div>
+    <div class="brick medium">M</div>
+    <div class="brick large">L</div>
+    <div class="brick small">S</div>
+    <div class="brick medium">M</div>
+    <div class="brick large">L</div>
+    <div class="brick small">S</div>
+    <div class="brick medium">M</div>
+    <div class="brick large">L</div>
+    <!-- Agrega más cuadrados según sea necesario -->
+</body>
+</html>

@@ -20,7 +20,7 @@
         </main>
         <header class="header" id="header">
             <a href="index.php" class="logo_pba_horizontal " ></a>
-            <a href="formulario.html" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4dvh;"></div></a>
+            <a href="index.php" class="boton_nose_que_estudiar">Inicio<div class="circulopregunta" style="background-image: url(imagenes/iconos/casa.svg); background-size: 4dvh;"></div></a>
         </header>
         
         <main class="main">

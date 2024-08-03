@@ -58,7 +58,7 @@ input[type="submit"]{
     "HEA HEA HEA"
     "MAI MAI MAI"
     "FOO FOO FOO";
-    grid-template-rows: 100dvh 7dvh auto 80dvh;
+    grid-template-rows: 100dvh 7dvh auto 60dvh;
     grid-template-columns: auto auto auto;
 }
 
@@ -515,7 +515,7 @@ input[type="submit"]{
 /*ESTILOS EL FOOTER*/
 .footer{
     grid-area: FOO;
-    background: linear-gradient(to top, #eaeaea 65%, transparent);
+    background: linear-gradient(to top, #eaeaea 75%, transparent);
         display: grid;
         grid-template: 
         ". ."
@@ -523,20 +523,20 @@ input[type="submit"]{
         "LOG ."
         "REDE TEXT"
         ". .";
-        grid-template-rows: 18dvh auto auto max-content 8dvh;
+        grid-template-rows: auto 40dvh auto auto;
         grid-template-columns: 20% auto;
         position: relative;
 }
 .footer .imagenfooter{
     background-image: url(../imagenes/otros/imagen_footer2.png);
     background-repeat: repeat-x;
-    background-size: 200dvh;
+    background-size: 150dvh;
     background-position: top;
     height: 40dvh;
     width: 100%;
     position: absolute;
     top: 0;
-    animation: footer 30s linear infinite;
+    animation: footer 40s linear infinite;
 }
 
 .footer .logo_pba_vertical2{
@@ -619,6 +619,52 @@ input[type="submit"]{
 
 /*ESTILOS PARA LA VERSION DE MOBILES*/
 @media (max-width: 768px) {
+
+    .botones :nth-child(1) :nth-child(2){
+        color: white;
+        background-color: transparent;
+    }
+    .botones :nth-child(2) :nth-child(2){
+        color: white;
+        background-color: transparent;
+
+    }
+    .botones :nth-child(3) :nth-child(2){
+        color: white;
+        background-color: transparent;
+
+    }
+    .botones :nth-child(4) :nth-child(2){
+        color: white;
+        background-color: transparent;
+
+    }
+    
+    
+    .botones :nth-child(1) {
+        background-color: #e81f76;
+    }
+    .botones :nth-child(2) {
+        background-color: #78568e;
+    }
+    .botones :nth-child(3) {
+        background-color: #37799f;
+    }
+    .botones :nth-child(4) {
+        background-color: #00adc1;
+    }
+    .boton .imagenboton{
+        background-color: #00adc1; 
+        width: 100%;
+        height: 100%;
+        grid-area: BIMG;
+        background-size: 16dvh; 
+        border-radius: 50dvh;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: none;
+    
+    }
     .barradebusqueda .imglupa{
         display: none;
     }
@@ -671,24 +717,25 @@ input[type="submit"]{
         height: 2dvh;
     }
     .boton {
-        margin-top: 10dvh;
-        width: 20dvh;
-        height: 30dvh;
+        margin-top: 5dvh;
+        width: 100dvw;
+        height: 25dvh;
         border: none;
         background-color: transparent;
-        border-radius: 50dvh;
+        border-radius: 0dvh;
         display: grid;
         grid-template-areas: 
             ". BIMG ."
             "TEXTB TEXTB TEXTB";
-        grid-template-rows: 20dvh auto;
+        grid-template-rows: 18dvh auto;
         grid-template-columns: auto 20dvh auto;
         justify-items: center; /* Centra los elementos horizontalmente */
         align-items: center;
     }
     .imagenboton{
-        background-size: 14dvh;
+        background-size: 12dvh;
     }
+    
     .footer{
         grid-area: FOO;
         background: linear-gradient(to top, #eaeaea 65%, transparent);
@@ -699,7 +746,7 @@ input[type="submit"]{
         "REDE"
         "TEXT"
         ".";
-        grid-template-rows: 25dvh auto max-content max-content 2dvh;
+        grid-template-rows: auto 40dvh 0vh 4dvh;
         grid-template-columns: auto;
         position: relative;
         gap: 2dvh;

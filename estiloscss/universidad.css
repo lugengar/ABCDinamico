@@ -46,7 +46,7 @@ input[type="submit"]{
     "HEA HEA HEA"
     "MAI MAI MAI"
     "FOO FOO FOO";
-    grid-template-rows: 100dvh 7dvh auto 80dvh;
+    grid-template-rows: 100dvh 7dvh auto  60dvh;
     grid-template-columns: auto auto auto;
 }
 [popover]{
@@ -184,7 +184,7 @@ input[type="submit"]{
     "LOG . BTN"
     ;
     grid-template-rows: auto;
-    grid-template-columns: 40dvh auto 15dvh;
+    grid-template-columns: 40dvh auto 11dvh;
     padding-right: 1dvh;
 }
 .boton_nose_que_estudiar{
@@ -197,8 +197,10 @@ input[type="submit"]{
     text-decoration: none;
     font-size: 2dvh;
     text-align: left;
-    padding-top: 0.4dvh;
     position: relative;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 .logo_pba_horizontal{
     grid-area: LOG;
@@ -207,6 +209,7 @@ input[type="submit"]{
     background-repeat: no-repeat;
     background-position: left;
 }
+
 /*ESTILOS DEL CARRUCEL DE IMAGENES INICIAL*/
 .carrusel{
     background-image: url(../imagenes/otros/199.jpg);
@@ -354,6 +357,7 @@ input[type="submit"]{
     gap: 5dvh;
     flex-wrap: wrap; 
 }
+
 .lista2{
     display: flex;
     justify-content: center;
@@ -383,6 +387,11 @@ input[type="submit"]{
     flex-wrap: wrap; 
     overflow: hidden;
     position: relative;
+}
+.horizontal{
+    justify-content: left;
+    align-items: none;
+    flex-wrap: nowrap; 
 }
 .universidad .botonuni{
     font-size: 2dvh;
@@ -422,8 +431,21 @@ input[type="submit"]{
     background-position: center;
     transition: background-size 0.5s;
 }
-
+.universidad .imageninfo2{
+    width: 18dvw;
+    height: 100%;
+    background-color: #00adc1;
+    background-size:  15dvh;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-size 0.5s;
+}
 .universidad .imageninfo:hover{
+
+    background-size:  20dvh;
+  
+}
+.universidad .imageninfo2:hover{
 
     background-size:  20dvh;
   
@@ -456,8 +478,16 @@ input[type="submit"]{
 
     border-top: #00adc1 solid 0.25dvh;
     height: 0.01dvh;
-    width: 40dvh;
+    width: 90%;
     transform: translateY(2dvh);
+
+}
+.universidad .barrauni3{
+    transform: translateX(1dvw) translateY(2dvh);
+    border-left: #00adc1 solid 0.25dvh;
+    width: 5dvh;
+    height: 90%;
+    padding-right: 1dvh;
 
 }
 .universidad .barrauni2{
@@ -553,7 +583,7 @@ input[type="submit"]{
 /*ESTILOS EL FOOTER*/
 .footer{
     grid-area: FOO;
-    background: linear-gradient(to top, #eaeaea 65%, transparent);
+    background: linear-gradient(to top, #eaeaea 75%, transparent);
         display: grid;
         grid-template: 
         ". ."
@@ -561,20 +591,20 @@ input[type="submit"]{
         "LOG ."
         "REDE TEXT"
         ". .";
-        grid-template-rows: 18dvh auto auto max-content 8dvh;
+        grid-template-rows: auto 40dvh auto auto;
         grid-template-columns: 20% auto;
         position: relative;
 }
 .footer .imagenfooter{
     background-image: url(../imagenes/otros/imagen_footer2.png);
     background-repeat: repeat-x;
-    background-size: 200dvh;
+    background-size: 150dvh;
     background-position: top;
     height: 40dvh;
     width: 100%;
     position: absolute;
     top: 0;
-    animation: footer 30s linear infinite;
+    animation: footer 40s linear infinite;
 }
 
 .footer .logo_pba_vertical2{
@@ -610,8 +640,7 @@ input[type="submit"]{
 }
 
 .universidad .redesociales{
-    background-color: white;
-   width: 100%;
+   width: 50dvh;
    height: max-content;
     display: flex;
     justify-content: center;
@@ -693,10 +722,169 @@ input[type="submit"]{
     top: 0.5dvh;
 }
 #info{
-    width: 60%;
+width: auto;
+height: auto;
+grid-area: INFO;
+
+}
+
+#mapa{
+    width: auto;
+height: auto;
+   grid-area: MAP;
+}
+#mapa .imageninfo{
+    height: 25dvw;
+}
+#redes{
+    width: auto;
+    height: auto;
+   grid-area: REDE;
+
+}
+#formulariodecontacto{
+    width: auto;
+    height: auto;
+   grid-area: INS;
+
+}
+.lista3{
+    display: grid;
+    gap: 3vh;
+    grid-template:
+    ". . . . ."auto
+    ". INFO INFO MAP ."40dvh
+    ". REDE INS MAP ."max-content
+    ". . . . ."auto/
+    auto 22dvw 22dvw 25dvw auto;
+}
+.lista3 #redes .imageninfo2, .lista3 #redes .barrauni3{
+    display: none;
+}
+.lista3 #formulariodecontacto .imageninfo, .lista3 #formulariodecontacto .barrauni{
+    display: none;
+}
+.lista3 #redes .lista5{
+    width: 100%;
+}
+.lista4{
+    display: grid;
+    gap: 3vh;
+    grid-template:
+    ". . . . ."auto
+    ". INFO INFO MAP ."40dvh
+    ". REDE REDE MAP ."max-content
+    ". . . . ."auto/
+    auto 22dvw 22dvw 25dvw auto;
+}
+.lista5{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5dvh;
+    flex-wrap: wrap; 
+    width: 90%;
 }
 /*ESTILOS PARA LA VERSION DE MOBILES*/
 @media (max-width: 768px) {
+    .botones :nth-child(1) :nth-child(2){
+        color: white;
+        background-color: transparent;
+    }
+    .botones :nth-child(2) :nth-child(2){
+        color: white;
+        background-color: transparent;
+
+    }
+    .botones :nth-child(3) :nth-child(2){
+        color: white;
+        background-color: transparent;
+
+    }
+    .botones :nth-child(4) :nth-child(2){
+        color: white;
+        background-color: transparent;
+
+    }
+    
+    
+    .botones :nth-child(1) {
+        background-color: #e81f76;
+    }
+    .botones :nth-child(2) {
+        background-color: #78568e;
+    }
+    .botones :nth-child(3) {
+        background-color: #37799f;
+    }
+    .botones :nth-child(4) {
+        background-color: #00adc1;
+    }
+    .boton .imagenboton{
+        background-color: #00adc1; 
+        width: 100%;
+        height: 100%;
+        grid-area: BIMG;
+        background-size: 16dvh; 
+        border-radius: 50dvh;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: none;
+    
+    }
+    .lista3 #redes .imageninfo2, .lista3 #redes .barrauni3{
+        display: flex;
+    }
+    .lista3 #formulariodecontacto .imageninfo, .lista3 #formulariodecontacto .barrauni{
+        display: flex;
+    }
+    .lista3 #redes .lista5{
+        width: auto;
+    }
+    .universidad .imageninfo2{
+        width: 100%;
+        height: 20dvh;
+        background-color: #00adc1;
+        background-size:  15dvh;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: background-size 0.5s;
+    }
+    .horizontal{
+        justify-content: center;
+    align-items: top;
+    flex-wrap: wrap; 
+    }
+    .universidad .barrauni3{
+
+        border-top: #00adc1 solid 0.25dvh;
+        height: 0.01dvh;
+        width: 90%;
+        transform: translateY(2dvh);
+    
+    }
+    .lista3{
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 5dvh;
+        flex-wrap: wrap; 
+    }
+    .lista4{
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 5dvh;
+        flex-wrap: wrap; 
+    }
+    .lista5{
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 5dvh;
+        flex-wrap: wrap; 
+        width: 100%;
+    }
     .universidad .botonuni{
         font-size: 2dvh;
         border: none;
@@ -786,23 +974,23 @@ input[type="submit"]{
         height: 2dvh;
     }
     .boton {
-        margin-top: 10dvh;
-        width: 20dvh;
-        height: 30dvh;
+        margin-top: 5dvh;
+        width: 100dvw;
+        height: 25dvh;
         border: none;
         background-color: transparent;
-        border-radius: 50dvh;
+        border-radius: 0dvh;
         display: grid;
         grid-template-areas: 
             ". BIMG ."
             "TEXTB TEXTB TEXTB";
-        grid-template-rows: 20dvh auto;
+        grid-template-rows: 18dvh auto;
         grid-template-columns: auto 20dvh auto;
         justify-items: center; /* Centra los elementos horizontalmente */
         align-items: center;
     }
     .imagenboton{
-        background-size: 14dvh;
+        background-size: 12dvh;
     }
     .footer{
         grid-area: FOO;
@@ -814,7 +1002,7 @@ input[type="submit"]{
         "REDE"
         "TEXT"
         ".";
-        grid-template-rows: 25dvh auto max-content max-content 2dvh;
+        grid-template-rows: auto 40dvh 0vh 4dvh;
         grid-template-columns: auto;
         position: relative;
         gap: 2dvh;
