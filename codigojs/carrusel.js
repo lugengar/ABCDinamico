@@ -1,4 +1,4 @@
-
+//SE ENCARGA DE HACER UTILES LOS BOTONES DE LOS CARRUCELES
 const circulos2 = document.querySelectorAll('.circulo2');
 
 circulos2.forEach((circulo) => {

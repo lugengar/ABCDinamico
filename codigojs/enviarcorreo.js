@@ -1,3 +1,4 @@
+//CREA UN MENSAJE DE REFERENCIA PARA ENVIAR UN CORREO
 document.getElementById('formulariodecontacto').addEventListener('submit', function(event) {
     event.preventDefault(); 
 

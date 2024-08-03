@@ -1,3 +1,5 @@
+//CODIGO PARA CREAR CONFETTI EN ALGUN CASO
+
 let click = false;
 document.querySelectorAll(".inscribirse").forEach(element => {
     element.addEventListener('click', function(event) {
