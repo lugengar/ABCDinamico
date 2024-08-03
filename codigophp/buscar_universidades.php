@@ -3,7 +3,7 @@
 $result = null;
 include "./codigophp/conexionbs.php";
 include "./codigophp/construccion.php";
-function buscarcarrera(){
+function buscarcarrera(){ //BUSCA CARRERAS/LICENCIATURAS CON EL TITULO NO TECNICO PARA MOSTRARLOS
     global $conn;
     global $stmt;
     $tec = "Técnico";
@@ -16,7 +16,7 @@ function buscarcarrera(){
 $stmt->close();
 
 }
-function buscartecnicatura(){
+function buscartecnicatura(){ //BUSCA TECNICATURAS CON EL TITULO "TECNICO" PARA MOSTRARLOS
     global $conn;
     global $stmt;
     $tec = "Técnico";
@@ -29,7 +29,7 @@ function buscartecnicatura(){
 $stmt->close();
 
 }
-function buscardistritos(){
+function buscardistritos(){ //BUSCA LOS DISTRITOS PARA MOSTRARLOS
     global $conn;
     global $stmt;
     $tec = "Técnico";
@@ -40,7 +40,7 @@ function buscardistritos(){
     $stmt->close();
 
 }
-function buscar(){
+function buscar(){ //BUSCA EN GENERAL POR LOS 4 MEDIOS DISTRITO, TECNICO,LICENCIATURA O NOMBRE
     global $conn;
     global $stmt;
     global $result;

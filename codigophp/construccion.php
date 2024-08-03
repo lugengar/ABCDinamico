@@ -1,14 +1,18 @@
 <?php
 
-$direccionimagen = "https://lugengar.github.io/ABC/imagenes/universidades/";
-$direccionpdf = "https://lugengar.github.io/ABC/pdf/";
+//ESTE ARCHIVO SE ENCARGA DE CONSTRUIR EL DISEÑO RECIBIENDO LOS DATOS DE LA BDD
 
-function universidad($id,$nombre ,$descripcion, $imagenes){
+//DIRECCIONES DE DONDE TOMAR LAS IMAGENES Y PDF
+$direccionimagen = "https://lugengar.github.io/ABC/imagenes/universidades/"; // ../imagenes/universidades/
+$direccionpdf = "https://lugengar.github.io/ABC/pdf/";// ../pdf
+
+function universidad($id,$nombre ,$descripcion, $imagenes){ //CREA EL CUADRO DE UNIVERSIDAD
+    global $direccionimagen;
     echo '<div class="universidad">';
     if($imagenes->num_rows > 0){
         echo '<div class="imagenesuni">';
         foreach($imagenes as $key => $imagen) {
-            echo '<div class="imagenuni activo" style="background-image: url(https://lugengar.github.io/ABC/imagenes/universidades/'.$imagen["url"].');"></div>';
+            echo '<div class="imagenuni activo" style="background-image: url('.$direccionimagen."".$imagen["url"].');"></div>';
         }
         if($imagenes->num_rows > 1){
             echo '<div class="circulos">';
@@ -33,20 +37,20 @@ function universidad($id,$nombre ,$descripcion, $imagenes){
     </div>
     ');
 }
-function crearmapa($ubicacion){
-    return 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3287.4006114986105!2d-58.53745522416194!3d-34.51807695298058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb0946037da75%3A0x7fae4b92e6699b59!2s'.urlencode($ubicacion).'!5e0!3m2!1ses-419!2sar!4v1684382444792!5m2!1ses-419!2sar';
+function crearmapa($ubicacion){ //CREA EL MAPA CON LA UBICACION A TRAVEZ DE UNA URL MODIFICADA
+    $url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3287.4006114986105!2d-58.53745522416194!3d-34.51807695298058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb0946037da75%3A0x7fae4b92e6699b59!2s"
+    $url2 = "!5e0!3m2!1ses-419!2sar!4v1684382444792!5m2!1ses-419!2sar";
+    return $url."".urlencode($ubicacion)."".$url2;
 }
-function nombre_url($url){
+function nombre_url($url){ //OBTIENE EL NOMBRE DE UNA RED SOCIAL A TRAVEZ DE SU URL
     $parsed_url = parse_url($url);
 
-// Obtener el path y eliminar las barras inicial y final
-$path = trim($parsed_url['path'], '/');
+    $path = trim($parsed_url['path'], '/');
 
-// Dividir el path en partes usando '/' como delimitador y obtener la última parte
-$account_name = basename($path);
+    $account_name = basename($path);
     return $account_name;
 }
-function generarTextoRedesSociales($contactos) {
+function generarTextoRedesSociales($contactos) { //CREA UN TEXTO COOHERENTE DONDE SE MUESTRAN TODAS LAS REDES SOCIALES DE LA UNIVERSIDAD
     global $sinocontacto;
 
     $texto = "Contamos con ";
@@ -89,17 +93,17 @@ function generarTextoRedesSociales($contactos) {
     return $texto;
 }
 
-function carreraslista($carreras){
+function carreraslista($carreras){ // CREA LA LISTA DE CARRERAS Y TECNICATURAS PARA LA BARRA DE BUSQUEDA
     foreach ($carreras as $carrera) {
         echo '<option value="'.$carrera["id_carrera"].'">'.$carrera["nombre"].'</option>';
     }
 }
-function distritolista($distritos){
+function distritolista($distritos){ // CREA LA LISTA DE LOS DISTRITOS PARA LA BARRA DE BUSQUEDA
     foreach ($distritos as $distrito) {
         echo '<option value="'.$distrito["id_distrito"].'">'.$distrito["nombre"].'</option>';
     }
 }
-function arreglar_telefono($tel){
+function arreglar_telefono($tel){ // MODIFICA EL NUMERO DE TELEFONO EN CASO DE FALTAR EL +54 O EL 11
     $contidad = strlen($tel);
     if($contidad != 9 || $contidad != 8){
         $tel = "+54 11 ".$tel;
@@ -111,7 +115,7 @@ function arreglar_telefono($tel){
 
 
 
-function arreglar_url($url){
+function arreglar_url($url){ // MODIFICA LAS URL PARA QUE FUNCIONEN CORRECTAMENTE
     if($url[0] != "h" && $url[1] != "t"){
         $posicionSlash = strpos($url, '/');
         if ($posicionSlash != false) {
@@ -126,9 +130,10 @@ function arreglar_url($url){
     return $url;
 
 }
-function arreglarpdf($url){
+function arreglarpdf($url){ //MODIFICA EL NOMBRE DEL ARCHIVO PDF EN CASO DE QUE ALGO NO ESTE BIEN
+    global $direccionpdf;
     if($url[0] != "h" && $url[1] != "t"){
-       $url = "https://lugengar.github.io/ABC/pdf/" . $url;
+       $url = $direccionpdf . $url;
     }
     if($url[strlen($url)-1] != "f"){
         $url = $url . ".pdf";
@@ -138,8 +143,9 @@ function arreglarpdf($url){
     }
     return $url;
 }
+
 $sinocontacto = false;
-function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contactos){
+function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contactos){ // MUESTRA TODA LA INFORMACION DE LA UNIVERSIDAD
     $todoslosservicios = ['<p class="redsocial2" style="background-image: url(imagenes/iconos/silladeruedas.svg);">Accesibilidad para sillas de ruedas.</p>',
 '<p class="redsocial2" style="background-image: url(imagenes/iconos/calefaccion.svg);">Cuenta con calefacción</p>',
 '<p class="redsocial2" style="background-image: url(imagenes/iconos/wifi.svg);">Cuenta con WIFI</p>',
@@ -213,7 +219,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                 echo '<p class="descripcionuni" >Ningun contacto disponible</p>';
             }
             echo'</div>';
-            if($sinocontacto == true){
+            if($sinocontacto == true){// EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
                 echo ('
                 <form class="universidad " id="formulariodecontacto"> 
                     <div class="imageninfo"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
@@ -230,12 +236,12 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
             echo'</div>';   
 
 }
-function carrusel($nombre,$ubicacion,$imagenes){
-    
+function carrusel($nombre,$ubicacion,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
+    global $direccionimagen;
     if($imagenes->num_rows > 0){
         echo '<div class="imagenes">';
         foreach($imagenes as $key => $imagen) {
-            echo '<div class="imagen activo" style="background-image: url(https://lugengar.github.io/ABC/imagenes/universidades/'.$imagen["url"].');"></div>';
+            echo '<div class="imagen activo" style="background-image: url('.$direccionimagen."".$imagen["url"].');"></div>';
         }
 
         echo '</div>
@@ -270,7 +276,7 @@ function carrusel($nombre,$ubicacion,$imagenes){
     }
     echo'<a href="index.php" class="logo_pba_vertical"></a>';
 }
-function carrera($id,$nombre,$descripcion, $id_establecimiento){
+function carrera($id,$nombre,$descripcion, $id_establecimiento){ //CREA EL CUADRO DE LAS CARRERAS
     echo ('
         <form class="universidad" method="GET" action="./universidad.php#plan">
             <h1 class="nombreuni">'.$nombre.'</h1>
@@ -281,7 +287,7 @@ function carrera($id,$nombre,$descripcion, $id_establecimiento){
         </form>
     ');
 }
-function info_carrera($titulo,$descripcion, $pdf, $carrera){
+function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN DE ESTUDIO Y LA INFO DE LA CARRERA
     echo ('
         <div class="barraseparadora" ></div>
         <div class="universidad"> 
@@ -305,7 +311,7 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){
     ');
     global $sinocontacto;
 
-    if($sinocontacto == true){
+    if($sinocontacto == true){ // EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
        
          echo ('
         <div class="universidad"> 
