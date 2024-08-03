@@ -25,6 +25,7 @@
         
         <main class="main">
             <?php
+            //MUESTRA TODA LA INFO DE LA UNIVERSIDAD
             info_universidad($row["descripcion"],$row["ubicacion"],$row["servicios"],$row["nombre_distrito"],$row["nombre_universidad"],$contactos);
             ?>
             
@@ -71,11 +72,13 @@
 
             <div class="universidades lista2">
             <?php
+            //MUESTRA TODAS LAS CARRERAS DE LA UNIVERSIDAD
                 require "./codigophp/mostrarcarreras.php";
             ?>
             </div>
             <div class="informacioncarrera lista" id="plan">
             <?php
+            //MUESTRA LOS PLANES DE ESTUDIO DE LA CARRERA
                 require "./codigophp/mostrarplandeestudio.php";
             ?>
             </div>

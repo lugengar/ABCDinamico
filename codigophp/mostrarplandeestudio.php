@@ -1,5 +1,5 @@
 <?php
-// Incluir archivo de conexión a la base de datos
+// OBTIENE EL PLAN DE ESTUDIOS DE LA CARRERA
 $result = null;
 include "./codigophp/conexionbs.php";
 
@@ -23,13 +23,12 @@ if (isset($_GET['carrera'])) {
         
         $sql2 = "SELECT * FROM carrera WHERE id_carrera = ".$busqueda;
         $titulo = $conn->query($sql2);
-       $row2 = $titulo->fetch_assoc();
-
-       $row = $result->fetch_assoc();
+        $row2 = $titulo->fetch_assoc();
+        $row = $result->fetch_assoc();
         info_carrera($row2["titulo"],$row2["descripcion"],$row["pdf"],null);
     }
     $stmt->close();
-$conn->close();
+    $conn->close();
 }
 
 

@@ -1,5 +1,5 @@
 <?php
-// Incluir archivo de conexión a la base de datos
+// OBTIENE TODAS LAS CARRERAS DE LA UNI
 $result = null;
 include "./codigophp/conexionbs.php";
 $carreras= null;
@@ -75,7 +75,6 @@ $stmt->close();
 
 }
 
-// Cerrar consulta y conexión
 
 $conn->close();
 ?>

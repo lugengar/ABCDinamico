@@ -1,5 +1,5 @@
 <?php
-// Incluir archivo de conexión a la base de datos
+
 $result = null;
 include "./codigophp/conexionbs.php";
 include "./codigophp/construccion.php";

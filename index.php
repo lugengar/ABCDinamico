@@ -71,6 +71,7 @@
                 <select name="busqueda"id="" required>
                     <option value="">Elija un distrito</option >
                     <?php
+                    //ESCRIBE LAS OPCIONES PARA LA BARRA DE BUSQUEDA
                         buscardistritos();
                     ?>
                 </select>
@@ -82,6 +83,7 @@
                 <select name="busqueda" id="" required>
                     <option value="">Elija una carrera</option>
                     <?php
+                    //ESCRIBE LAS OPCIONES PARA LA BARRA DE BUSQUEDA
                         buscarcarrera();
                     ?>
                 </select>
@@ -93,6 +95,7 @@
                 <select name="busqueda" id="" required>
                     <option value="">Elija una tecnicatura</option>
                     <?php
+                    //ESCRIBE LAS OPCIONES PARA LA BARRA DE BUSQUEDA
                         buscartecnicatura();
                     ?>
                 </select>
@@ -101,6 +104,7 @@
             </form>
             <div class="universidades" id="uni">
                <?php
+                    //MUESTRA TODAS LAS UNIVERSIDADES O LOS RESULTADOS DE LAS BUSQUEDAS
                     buscar();
                ?>
             </div>
