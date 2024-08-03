@@ -29,7 +29,7 @@ function universidad($id,$nombre ,$descripcion, $imagenes){
     echo('
         <h1 class="nombreuni">'.$nombre.'</h1>
         <p class="descripcionuni">'.$descripcion.'</p>
-        <a href="./codigophp/universidad.php?universidad='.$id.'"  class="botonuni">SABER MAS..</a>
+        <a href="./universidad.php?universidad='.$id.'"  class="botonuni">SABER MAS..</a>
     </div>
     ');
 }
@@ -272,7 +272,7 @@ function carrusel($nombre,$ubicacion,$imagenes){
 }
 function carrera($id,$nombre,$descripcion, $id_establecimiento){
     echo ('
-        <form class="universidad" method="GET" action="./codigophp/universidad.php#plan">
+        <form class="universidad" method="GET" action="./universidad.php#plan">
             <h1 class="nombreuni">'.$nombre.'</h1>
             <p class="descripcionuni">'.$descripcion.'</p>
             <input type="submit" value="SABER MAS.." class="botonuni"></button>
