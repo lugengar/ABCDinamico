@@ -43,7 +43,7 @@ function buscardistritos(){ //BUSCA LOS DISTRITOS PARA MOSTRARLOS
 function etiqueta(){
     if (isset($_GET['busqueda']) & isset($_GET['tipo'])) {
         $busqueda = $_GET['busqueda'];
-        echo '<div class="etiquetas"><a href="index.php#botones" class="etiqueta">Eliminar busqueda: '.$busqueda.'</a></div> <div class="barraseparadora" ></div>';
+        echo '<div class="etiquetas"><a href="index.php#botones" id="etiqueta" class="etiqueta">Eliminar busqueda: '.$busqueda.'</a></div> <div class="barraseparadora" ></div>';
     }
 }
 function buscar(){ //BUSCA EN GENERAL POR LOS 4 MEDIOS DISTRITO, TECNICO,LICENCIATURA O NOMBRE

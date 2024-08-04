@@ -96,13 +96,13 @@
                     <h1>Buscar por nombre del establecimiento</h1>
                 </button>
             </div>
-            <form class="barradebusqueda activo" id="nombre" method="GET" action="./index.php#botones">
+            <form class="barradebusqueda activo" id="nombre" method="GET" action="./index.php#etiqueta">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <input type="text" name="busqueda" placeholder="Nombre del establecimiento" required>
                 <input type="hidden" name="tipo" value="nombre" required>
                 <input type="submit" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="distrito" method="GET" action="./index.php#botones">
+            <form class="barradebusqueda" id="distrito" method="GET" action="./index.php#etiqueta">
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda"id="" required>
                     <option value="">Elija un distrito</option >
@@ -114,7 +114,7 @@
                 <input type="hidden" name="tipo" value="distrito" required>
                 <input type="submit" name="" value="Buscar" >
             </form>
-            <form class="barradebusqueda" id="carrera" method="GET" action="./index.php#botones">
+            <form class="barradebusqueda" id="carrera" method="GET" action="./index.php#etiqueta">
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda" id="" required>
                     <option value="">Elija una carrera</option>
@@ -126,7 +126,7 @@
                 <input type="hidden" name="tipo" value="carrera" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="tecnicatura" method="GET" action="./index.php#botones">
+            <form class="barradebusqueda" id="tecnicatura" method="GET" action="./index.php#etiqueta">
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda" id="" required>
                     <option value="">Elija una tecnicatura</option>

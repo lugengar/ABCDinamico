@@ -17,17 +17,19 @@ if(isset($_GET['universidad'])){
 if(isset($_GET['universidad']) && isset($_GET['busqueda']) ){
     $universidad = $_GET['universidad'];
     $busqueda = $_GET['busqueda'];
-    echo '<div class="etiquetas"><a href="universidad.php?universidad='.$universidad.'#botones" class="etiqueta">Eliminar busqueda: '.$busqueda.'</a></div> <div class="barraseparadora" ></div>';
+    echo '<div class="etiquetas"><a id="etiqueta"href="universidad.php?universidad='.$universidad.'#botones" class="etiqueta">Eliminar busqueda: '.$busqueda.'</a></div> <div class="barraseparadora" ></div>';
 }
-if (isset($_GET['busqueda']) && isset($_GET['tipo'])) {
+if (isset($_GET['busqueda']) && isset($_GET['tipo']) && $carreras != null) {
 
     $busqueda = $_GET['busqueda'];
     
     $tipo = $_GET['tipo'];
     $tec = "Técnico";
     // Preparar la consulta usando una consulta preparada
+  
     if($tipo == "nombre"){    
         $stmt =  $conn->prepare("SELECT * FROM carrera WHERE nombre LIKE ? AND id_carrera IN (".implode(", ", $carreras).")");
+
         $param = "%$busqueda%";
         
         // Asignar parámetro y ejecutar consulta
@@ -59,6 +61,7 @@ if (isset($_GET['busqueda']) && isset($_GET['tipo'])) {
         // Obtener resultados
         $result = $stmt->get_result();
     }
+
     
 }else{
     if($carreras != null){

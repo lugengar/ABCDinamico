@@ -51,12 +51,11 @@ input[type="submit"] {
 }
 
 .error {
-    width: max-content;
-    height: 100%;
+    width: 90dvw;
+    height: max-content;
 
-    background-color: white;
     color: #00adc1;
-    font-size: 5dvh;
+    font-size: 3dvh;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -503,6 +502,8 @@ input[type="submit"] {
 }
 
 .botones {
+   
+    padding-bottom: 5dvh;
     grid-area: BOT;
     display: flex;
     justify-content: center;
@@ -700,6 +701,8 @@ body.inactive .overlay {
     border-top: #00adc1 solid 0.25dvh;
     height: 0.01dvh;
     width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 .etiqueta{
     text-decoration: none;
@@ -789,7 +792,16 @@ body.inactive .overlay {
         background-color: transparent;
 
     }
-
+    .botones {
+        padding-top: 5dvh;
+        padding-bottom: 5dvh;
+        grid-area: BOT;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8%;
+        flex-wrap: wrap;
+    }
     input[type="submit"]:hover,
     a:hover,
     button:hover {
@@ -886,10 +898,13 @@ body.inactive .overlay {
         width: 2dvh;
         height: 2dvh;
     }
-
+.botones{
+    gap: 0px;
+   
+}
     .boton {
-        margin-top: 5dvh;
-        width: 100%;
+        margin-top: 0dvh;
+        width: 50%;
         height: 25dvh;
         border: none;
         background-color: transparent;

@@ -54,21 +54,21 @@
                     <h1>Buscar por nombre</h1>
                 </button>
             </div>
-            <form class="barradebusqueda activo" id="nombre" method="GET" action="./universidad.php#botones">
+            <form class="barradebusqueda activo" id="nombre" method="GET" action="./universidad.php#etiqueta">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <input type="text" name="busqueda" placeholder="Nombre de la carrera/tecnicatura" required>
                 <?php echo '<input type="hidden" name="universidad" value="'.$row["id_establecimiento"].'" required>';?>
                 <input type="hidden" name="tipo" value="nombre" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="tecnicatura" method="GET" action="./universidad.php#botones">
+            <form class="barradebusqueda" id="tecnicatura" method="GET" action="./universidad.php#etiqueta">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <?php echo '<input type="hidden" name="universidad" value="'.$row["id_establecimiento"].'" required>';?>
                 <input type="hidden" name="tipo" value="tecnicatura" required>
                 <input type="text"name="busqueda" placeholder="Nombre de la tecnicatura" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="carrera" method="GET" action="./universidad.php#botones">
+            <form class="barradebusqueda" id="carrera" method="GET" action="./universidad.php#etiqueta">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <?php echo '<input type="hidden" name="universidad" value="'.$row["id_establecimiento"].'" required>';?>
                 <input type="hidden" name="tipo" value="carrera" required>
