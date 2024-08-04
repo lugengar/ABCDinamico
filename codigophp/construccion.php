@@ -3,8 +3,10 @@
 //ESTE ARCHIVO SE ENCARGA DE CONSTRUIR EL DISEÑO RECIBIENDO LOS DATOS DE LA BDD
 
 //DIRECCIONES DE DONDE TOMAR LAS IMAGENES Y PDF
-$direccionimagen = "https://lugengar.github.io/ABC/imagenes/universidades/"; // ../imagenes/universidades/
-$direccionpdf = "https://lugengar.github.io/ABC/pdf/";// ../pdf
+//$direccionimagen = "https://lugengar.github.io/ABC/imagenes/universidades/"; // ../imagenes/universidades/
+//$direccionpdf = "https://lugengar.github.io/ABC/pdf/";// ../pdf
+$direccionimagen = "./imagenes/universidades/"; // ../imagenes/universidades/
+$direccionpdf = "./pdf/";// ../pdf
 
 function universidad($id,$nombre ,$descripcion, $imagenes){ //CREA EL CUADRO DE UNIVERSIDAD
     global $direccionimagen;
@@ -71,12 +73,12 @@ function generarTextoRedesSociales($contactos) { //CREA UN TEXTO COOHERENTE DOND
         if (isset($nombresRedes[$contacto["tipo"]])) {
             if($nombresRedes[$contacto["tipo"]] == "correo"){
                 $sinocontacto = true;
-                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="mailto:'.$contacto["contacto"].' target="_blank">' .$contacto["contacto"]. '</a>';
+                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="mailto:'.$contacto["contacto"].'" target="_blank">' .$contacto["contacto"]. '</a>';
 
             }else if($nombresRedes[$contacto["tipo"]] == "telefono"){
-                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="tel:'.arreglar_telefono($contacto["contacto"]).' target="_blank">' .arreglar_telefono($contacto["contacto"]) . '</a>';
+                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="tel:'.arreglar_telefono($contacto["contacto"]).'" target="_blank">' .arreglar_telefono($contacto["contacto"]) . '</a>';
             }else{
-                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="'.$contacto["contacto"].' target="_blank">' .nombre_url($contacto["contacto"]) . '</a>';
+                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="'.$contacto["contacto"].'" target="_blank">' .nombre_url($contacto["contacto"]) . '</a>';
             }
         }
     }
@@ -144,7 +146,7 @@ function arreglarpdf($url){ //MODIFICA EL NOMBRE DEL ARCHIVO PDF EN CASO DE QUE 
     return $url;
 }
 
-$sinocontacto = true;
+$sinocontacto = false;
 function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contactos){ // MUESTRA TODA LA INFORMACION DE LA UNIVERSIDAD
     global $sinocontacto;
     
@@ -183,7 +185,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
             <div class="barrauni"></div>
             <h1 class="nombreuni">UBICACIÓN</h1>
             <p class="descripcionuni">'.$ubicacion.', '.$distrito.'</p>
-            <button class="botonuni pop" popovertarget="googlemaps">ABRIR MAPA</button>
+            <button class="botonuni pop" id="googlemapsb">ABRIR MAPA</button>
         </div>
             
         <div id="googlemaps" popover class="pop2">
@@ -220,7 +222,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                     }else if($contacto["tipo"] == "telefono"){
                         echo '<a class="redsocial2 " style="background-image: url(imagenes/iconos/'.$contacto["tipo"].'.svg);" href="tel:'.arreglar_telefono($contacto["contacto"]).'" >Llamar por telefono</a>';
                     }else{
-                        echo '<a class="redsocial " style="background-image: url(imagenes/iconos/'.$contacto["tipo"].'.svg);" href="'.arreglar_url($contacto["contacto"]).'" ></a>';
+                        echo '<a class="redsocial " style="background-image: url(imagenes/iconos/'.$contacto["tipo"].'.svg);" href="'.arreglar_url($contacto["contacto"]).'" target="_blank" ></a>';
                     }
                 }
                 echo'</div>';
@@ -311,9 +313,9 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
             <div class="barrauni"></div>
             <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>
             <p class="descripcionuni">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución. Este plan abarca una variedad de cursos fundamentales y avanzados diseñados para proporcionar una formación integral y especializada en el campo elegido.</p>
-            <button class="botonuni pop" popovertarget="pdf-container">VER RECURSO</button>
+            <button class="botonuni pop"  id="pdf-containerb"  >VER RECURSO</button>
         </div>
-          <div id="pdf-container" popover  class="pop2">
+          <div id="pdf-container" popover class="pop2">
             <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
             <embed class="pdf-viewer" src="'.arreglarpdf($pdf).'" type="application/pdf" />
         </div>

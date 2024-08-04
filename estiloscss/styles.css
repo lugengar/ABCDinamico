@@ -63,37 +63,6 @@ input[type="submit"]{
 }
 
 
-/*ESTILOS DE LA BARRA DE BUSQUEDA Y PARA VOLVER HACIA ARRIBA*/
-[popover]{
-    transition: visibility 1s;
-    border: none;
-    border-radius: 0.5dvh;
-    background-color: white;/*
-    background: linear-gradient(90deg, rgba(232,31,118,1) 0%, rgba(0,174,192,1) 100%);
- */
-}
-
-[popover]::backdrop{
-    backdrop-filter: blur(1dvh);
-    background-color: rgba(0, 0, 0, 0.8);
-    background-image: url(../imagenes/otros/logo-pba-desktop.png);
-    background-position: left;
-    background-size: 9%;
-    background-repeat: no-repeat;
-   
-}
-
-[popover] h1{
-    width: 80vw;
-    text-align: center;
-    color: #00adc1;
-    font-weight: 700;
-}
-
-[popover] :nth-child(2) {
-    width: 80vw;
-    height: 86dvh;
-  }
 .barradebusqueda{
     position: sticky;
     z-index: 1000;
@@ -617,6 +586,69 @@ input[type="submit"]{
     opacity: 100%;
 }
 
+[popover]{
+    transition: visibility 1s;
+    border: none;
+    border-radius: 0.5dvh;
+    background-color: white;/*
+    background: linear-gradient(90deg, rgba(232,31,118,1) 0%, rgba(0,174,192,1) 100%);
+ */
+}
+
+[popover] h1{
+    width: 80vw;
+    text-align: center;
+    color: #00adc1;
+    font-weight: 700;
+}
+
+[popover] :nth-child(2) {
+    width: 80vw;
+    height: 86dvh;
+  }
+  
+body.inactive * {
+    pointer-events: none;
+}
+body.inactive .pop2,
+body.inactive .overlay {
+    pointer-events: auto;
+}
+@media (max-width: 1000px) {
+    .universidad .imageninfo2{
+        display: none;
+    }
+    .universidad .barrauni3{
+        display: none;
+    }
+    .lista5{
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 5dvh;
+        flex-wrap: wrap; 
+        width: 100%;
+    }
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    display: none;
+    backdrop-filter: blur(1dvh);
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(../imagenes/otros/logo-pba-desktop.png);
+    background-position: left;
+    background-size: 9%;
+    background-repeat: no-repeat;
+}
+.pop2 {
+    display: none;
+    z-index: 3100;
+}
 /*ESTILOS PARA LA VERSION DE MOBILES*/
 @media (max-width: 768px) {
 
@@ -639,8 +671,13 @@ input[type="submit"]{
         background-color: transparent;
 
     }
-    
-    
+    input[type="submit"]:hover, a:hover, button:hover{
+        cursor: pointer;
+        transform: scale(1);
+    }
+    .boton h1{
+        font-size: 100%;
+    }
     .botones :nth-child(1) {
         background-color: #e81f76;
     }
@@ -718,7 +755,7 @@ input[type="submit"]{
     }
     .boton {
         margin-top: 5dvh;
-        width: 100dvw;
+        width: 100%;
         height: 25dvh;
         border: none;
         background-color: transparent;
@@ -733,7 +770,7 @@ input[type="submit"]{
         align-items: center;
     }
     .imagenboton{
-        background-size: 12dvh;
+        background-size: 10dvh;
     }
     
     .footer{
@@ -777,7 +814,14 @@ input[type="submit"]{
       .footer .imagenfooter{
         animation: footer 180s linear infinite;
     }
-    [popover]::backdrop{
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3000;
+        display: none;
         backdrop-filter: blur(1dvh);
         background-color: rgba(0, 0, 0, 0.8);
         background-image: url(../imagenes/otros/logo-pba-mobile.png);

@@ -12,6 +12,8 @@
         include "./codigophp/mostrar_universidad.php";
         include "./codigophp/construccion.php";
     ?>
+        <div class="overlay" id="overlay"></div>
+
     <div class="container" id="container">
         <main class="carrusel">
             <?php
@@ -22,7 +24,6 @@
             <a href="index.php" class="logo_pba_horizontal " ></a>
             <a href="index.php" class="boton_nose_que_estudiar">Inicio<div class="circulopregunta" style="background-image: url(imagenes/iconos/casa.svg); background-size: 4dvh;"></div></a>
         </header>
-        
         <main class="main">
             <?php
             //MUESTRA TODA LA INFO DE LA UNIVERSIDAD
@@ -114,3 +115,5 @@
 <script src="codigojs/redirigir.js"></script>
 <script src="codigojs/scroll.js"></script>
 <script src="codigojs/enviarcorreo.js"></script>
+<script src="codigojs/ventanas.js"></script>
+        

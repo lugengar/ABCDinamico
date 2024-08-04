@@ -11,6 +11,8 @@
     <?php
         include "./codigophp/buscar_universidades.php";
     ?>
+        <div class="overlay" id="overlay"></div>
+    
     <div class="container">
         <main class="carrusel">
             <div class="imagenes">
