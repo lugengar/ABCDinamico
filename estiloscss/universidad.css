@@ -852,11 +852,14 @@ body.inactive .overlay {
 }
 /*ESTILOS PARA LA VERSION DE MOBILES*/
 @media (max-width: 768px) {
+    #mapa, #formulariodecontacto{
+        width: 100%;
+    }
     .universidad .imageninfo2{
-        display: block;
+        display: flex;
     }
     .universidad .barrauni3{
-        display: block;
+        display: flex;
     }
     input[type="submit"]:hover, a:hover, button:hover{
         cursor: pointer;

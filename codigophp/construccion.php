@@ -71,14 +71,14 @@ function generarTextoRedesSociales($contactos) { //CREA UN TEXTO COOHERENTE DOND
     $redesDisponibles = [];
     foreach ($contactos as $contacto) {
         if (isset($nombresRedes[$contacto["tipo"]])) {
-            if($nombresRedes[$contacto["tipo"]] == "correo"){
+            if($contacto["tipo"] == "correo"){
                 $sinocontacto = true;
-                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="mailto:'.$contacto["contacto"].'" target="_blank">' .$contacto["contacto"]. '</a>';
+                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="mailto:'.$contacto["contacto"].'">' .$contacto["contacto"]. '</a>';
 
-            }else if($nombresRedes[$contacto["tipo"]] == "telefono"){
-                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="tel:'.arreglar_telefono($contacto["contacto"]).'" target="_blank">' .arreglar_telefono($contacto["contacto"]) . '</a>';
+            }else if($contacto["tipo"] == "telefono"){
+                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="tel:'.arreglar_telefono($contacto["contacto"]).'">' .arreglar_telefono($contacto["contacto"]) . '</a>';
             }else{
-                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="'.$contacto["contacto"].'" target="_blank">' .nombre_url($contacto["contacto"]) . '</a>';
+                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="'.arreglar_url($contacto["contacto"]).'" target="_blank">' .nombre_url($contacto["contacto"]) . '</a>';
             }
         }
     }
@@ -107,10 +107,10 @@ function distritolista($distritos){ // CREA LA LISTA DE LOS DISTRITOS PARA LA BA
 }
 function arreglar_telefono($tel){ // MODIFICA EL NUMERO DE TELEFONO EN CASO DE FALTAR EL +54 O EL 11
     $contidad = strlen($tel);
-    if($contidad != 9 || $contidad != 8){
-        $tel = "+54 11 ".$tel;
-    }else if($contidad != 12 || $contidad != 11){
+    if($tel[0] == "1" || ($tel[0] == "0" && $tel[1] == "1") ){
         $tel = "+54 ".$tel;
+    }else if($tel[0] == "5" && $tel[1] == "4"){
+        $tel = "+54".$tel;
     }
     return $tel;
 }
