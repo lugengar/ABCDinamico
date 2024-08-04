@@ -75,12 +75,12 @@ function generarTextoRedesSociales($contactos) { //CREA UN TEXTO COOHERENTE DOND
         if (isset($nombresRedes[$contacto["tipo"]])) {
             if($contacto["tipo"] == "correo"){
                 $haycorreo = true;
-                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="mailto:'.$contacto["contacto"].'">' .$contacto["contacto"]. '</a>';
+                $redesDisponibles[] = '<span class="label">'.$nombresRedes[$contacto["tipo"]].'</span><a href="mailto:'.$contacto["contacto"].'">' .$contacto["contacto"]. '</a>';
 
             }else if($contacto["tipo"] == "telefono"){
-                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="tel:'.arreglar_telefono($contacto["contacto"]).'">' .arreglar_telefono($contacto["contacto"]) . '</a>';
+                $redesDisponibles[] = '<span class="label">'.$nombresRedes[$contacto["tipo"]].'</span><a href="tel:'.arreglar_telefono($contacto["contacto"]).'">' .arreglar_telefono($contacto["contacto"]) . '</a>';
             }else{
-                $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="'.arreglar_url($contacto["contacto"]).'" target="_blank">' .nombre_url($contacto["contacto"]) . '</a>';
+                $redesDisponibles[] = '<span class="label">'.$nombresRedes[$contacto["tipo"]].'</span><a href="'.arreglar_url($contacto["contacto"]).'" target="_blank">' .nombre_url($contacto["contacto"]) . '</a>';
             }
         }
     }
@@ -109,10 +109,8 @@ function distritolista($distritos){ // CREA LA LISTA DE LOS DISTRITOS PARA LA BA
 }
 function arreglar_telefono($tel){ // MODIFICA EL NUMERO DE TELEFONO EN CASO DE FALTAR EL +54 O EL 11
     $contidad = strlen($tel);
-    if($tel[0] == "1" || ($tel[0] == "0" && $tel[1] == "1") ){
-        $tel = "+54 ".$tel;
-    }else if($tel[0] == "5" && $tel[1] == "4"){
-        $tel = "+54".$tel;
+    if(($tel[0] != "1" && $tel[1] != "1") || ($tel[0] != "0" && $tel[1] != "1")){
+        $tel = "11 ".$tel;
     }
     return $tel;
 }
@@ -183,11 +181,12 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
     echo'</div> </div> </div> ';
         echo ('
         <div class="universidad" id="mapa"> 
-            <iframe  class="imageninfo"  src="'.crearmapa($ubicacion.', '.$distrito).'" style="border:none;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe  class="imageninfo"  src="'.crearmapa($ubicacion.', '.$distrito).'" style="border:none;height: 70%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <div class="barrauni"></div>
             <h1 class="nombreuni">UBICACIÓN</h1>
             <p class="descripcionuni">'.$ubicacion.', '.$distrito.'</p>
             <button class="botonuni pop" id="googlemapsb">ABRIR MAPA</button>
+
         </div>
             
         <div id="googlemaps" popover class="pop2">
@@ -217,7 +216,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                     }
                 }*/
                 echo ' <p class="descripcionuni">'.$textocontacto.'</p>';
-                echo '<p class="descripcionuni"></p><div class="redesociales">';
+                echo '<div class="redesociales">';
                 foreach($contactos as $key => $contacto) {
                     if($contacto["tipo"] == "correo"){
                         echo '<a class="redsocial2 " style="background-image: url(imagenes/iconos/'.$contacto["tipo"].'.svg);" href="mailto:inscripcion@'.$contacto["contacto"].'" >Enviar correo</a>';
@@ -308,35 +307,38 @@ function carrera($id,$nombre,$descripcion, $id_establecimiento){ //CREA EL CUADR
 function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN DE ESTUDIO Y LA INFO DE LA CARRERA
     echo ('
         <div class="barraseparadora" ></div>
-        <div class="universidad"> 
+        <div class="universidad" style="height: 55dvh;">  
             <div class="imageninfo" style="background-image: url(imagenes/iconos/diploma.svg);"></div>
             <div class="barrauni"></div>
             <h1 class="nombreuni">'.$titulo.'</h1>
-            <p class="descripcionuni">'.$descripcion.'</p>
+            <p class="descripcionuni" style="height: 20dvh;"> '.$descripcion.'</p>
         </div>
-       
-        <div class="universidad"> 
-            <div class="imageninfo"style="background-image: url(imagenes/iconos/recurso.svg);"></div>
-            <div class="barrauni"></div>
-            <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>
-            <p class="descripcionuni">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución. Este plan abarca una variedad de cursos fundamentales y avanzados diseñados para proporcionar una formación integral y especializada en el campo elegido.</p>
-            <button class="botonuni pop"  id="pdf-containerb"  >VER RECURSO</button>
-        </div>
-          <div id="pdf-container" popover class="pop2">
-            <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
-            <embed class="pdf-viewer" src="'.arreglarpdf($pdf).'" type="application/pdf" />
-        </div>
-    ');
+       ');
+       if($pdf != null){ 
+        echo (' 
+            <div class="universidad" style="height: 55dvh;"> 
+                <div class="imageninfo"style="background-image: url(imagenes/iconos/recurso.svg);"></div>
+                <div class="barrauni"></div>
+                <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>
+                <p class="descripcionuni"style="height: 15dvh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>
+                <button class="botonuni pop"  id="pdf-containerb"  >VER RECURSO</button>
+            </div>
+            <div id="pdf-container" popover class="pop2">
+                <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
+                <embed class="pdf-viewer" src="'.arreglarpdf($pdf).'" type="application/pdf" />
+            </div>
+        ');
+       }
     global $haycorreo;
 
     if($haycorreo == true){ // EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
        
          echo ('
-        <div class="universidad"> 
+        <div class="universidad" style="height: 55dvh;"> 
             <div class="imageninfo"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
             <div class="barrauni"></div>
             <h1 class="nombreuni">CONSULTAR INSCRIPCIÓN</h1>
-            <p class="descripcionuni">El siguiente botón nos enviará a un formulario donde podremos consultar la inscripción a travez del correo oficial del establecimiento.</p>
+            <p class="descripcionuni" style="height: 15dvh;">El siguiente botón nos enviará a un formulario donde podremos consultar la inscripción a travez del correo oficial del establecimiento.</p>
             <a class="botonuni" href="#formulariodecontacto">INSCRIBIRME</a>
         </div>   
     ');

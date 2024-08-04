@@ -44,8 +44,29 @@
         </header>
         
         <main class="main">
-           
+
+
+
+            <!-- MAPA -->
+            <div id="mapa" popover class="pop2">
+                <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
+                <iframe src="" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+
+
             <div class="botones" id="botones">
+
+
+                <!-- BOTON PARA EL MAPA -->
+                <button class="boton pop" >
+                    <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
+                    <h1>Buscar por distrito</h1>
+                </button>
+                
+
+
+
                 <button class="boton " onclick="barradebusqueda('distrito')">
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
                     <h1>Buscar por distrito</h1>
@@ -132,6 +153,7 @@
 </html>
 <script src="codigojs/carrusel.js"></script>
 <script src="codigojs/redirigir.js"></script>
+<script src="codigojs/ventanas.js"></script>
 <script src="codigojs/botonesbarra.js"></script>
 <script src="codigojs/scroll.js"></script>
 

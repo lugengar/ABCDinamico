@@ -1,40 +1,56 @@
 /*IMPORTAR FUENTES DE TEXTO*/
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 /*ESTILOS GLOBALES*/
-*{
+* {
     font-size: 2dvh;
 }
-input[type="submit"], a, button {
+
+input[type="submit"],
+a,
+button {
     transition: transform 0.5s;
 }
-input[type="submit"]:hover, a:hover, button:hover{
+
+input[type="submit"]:hover,
+a:hover,
+button:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
-h1, button, .botonuni{
+
+h1,
+button,
+.botonuni {
     font-family: "Encode Sans", sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 2dvh;
 }
-p, a{
+
+p,
+a {
     font-family: "Roboto", sans-serif;
-font-weight: 400;
-font-style: normal;
+    font-weight: 400;
+    font-style: normal;
 }
 
-input,select,option{
+input,
+select,
+option {
     font-family: "Roboto", sans-serif;
-font-weight: 400;
-font-style: normal;
+    font-weight: 400;
+    font-style: normal;
 }
-input[type="submit"]{
+
+input[type="submit"] {
     font-family: "Encode Sans", sans-serif;
     font-weight: 700;
     font-style: normal;
 }
-.error{
+
+.error {
     width: 100%;
     height: 100%;
 
@@ -46,24 +62,25 @@ input[type="submit"]{
     justify-content: center;
     align-items: center;
 }
-.container{
+
+.container {
     left: 0;
     top: 0;
     position: absolute;
-    height: max-content ;
+    height: max-content;
     width: 100%;
     display: grid;
-    grid-template-areas: 
-    "IMG IMG IMG"
-    "HEA HEA HEA"
-    "MAI MAI MAI"
-    "FOO FOO FOO";
+    grid-template-areas:
+        "IMG IMG IMG"
+        "HEA HEA HEA"
+        "MAI MAI MAI"
+        "FOO FOO FOO";
     grid-template-rows: 100dvh 7dvh auto 60dvh;
     grid-template-columns: auto auto auto;
 }
 
 
-.barradebusqueda{
+.barradebusqueda {
     position: sticky;
     z-index: 1000;
     top: 7dvh;
@@ -79,104 +96,119 @@ input[type="submit"]{
     box-shadow: 0 1dvh 2dvh rgba(0, 0, 0, 0.2);
     transition: opacity 0.5s;
 }
-.barradebusqueda.activo{
+
+.barradebusqueda.activo {
     pointer-events: all;
     opacity: 1;
 }
-.volverarriba{
+
+.volverarriba {
     opacity: 1;
     pointer-events: all;
     grid-area: VOL;
     z-index: 2300;
     top: 7dvh;
 }
-.barradebusqueda img{
-   height: 5dvh;
-}
-.barradebusqueda input, .barradebusquedaselect{
-    box-shadow: 0 0.5dvh 1dvh rgba(0, 0, 0, 0.2);
-}
-.barradebusqueda input[type="text"], .barradebusqueda select{
-   border: none;
-   border-radius: 1.5dvh;
-   height: 5dvh;
-   color: gray;
-   width: 30dvh;
-   padding-left: 1dvh;
+
+.barradebusqueda img {
+    height: 5dvh;
 }
 
-.universidad input, .universidad select{
+.barradebusqueda input,
+.barradebusquedaselect {
+    box-shadow: 0 0.5dvh 1dvh rgba(0, 0, 0, 0.2);
+}
+
+.barradebusqueda input[type="text"],
+.barradebusqueda select {
     border: none;
     border-radius: 1.5dvh;
     height: 5dvh;
     color: gray;
     width: 30dvh;
     padding-left: 1dvh;
- }
-.barradebusqueda input[type="submit"], .barradebusqueda button{
-   border: none;
-   border-radius: 1.5dvh;
-   height: 5dvh;
-   background-color: #e81f76;
-   color: white;
-   padding-left: 2dvh;
-   padding-right: 2dvh;
 }
+
+.universidad input,
+.universidad select {
+    border: none;
+    border-radius: 1.5dvh;
+    height: 5dvh;
+    color: gray;
+    width: 30dvh;
+    padding-left: 1dvh;
+}
+
+.barradebusqueda input[type="submit"],
+.barradebusqueda button {
+    border: none;
+    border-radius: 1.5dvh;
+    height: 5dvh;
+    background-color: #e81f76;
+    color: white;
+    padding-left: 2dvh;
+    padding-right: 2dvh;
+}
+
 /*ESTILOS DE LA BARRA DE NAVEGACION*/
-.header{
+.header {
 
     grid-area: HEA;
     position: sticky;
     top: 0;
-    background-color: white; 
+    background-color: white;
     z-index: 1000;
     padding: 0.5dvh;
     box-shadow: 0 1dvh 2dvh rgba(0, 0, 0, 0.2);
     display: grid;
-    grid-template-areas: 
-    "LOG . BTN"
+    grid-template-areas:
+        "LOG . BTN"
     ;
     grid-template-rows: auto;
     grid-template-columns: 40dvh auto 15dvh;
     padding-right: 1dvh;
 }
-.boton_nose_que_estudiar{
+
+.boton_nose_que_estudiar {
     display: block;
     grid-area: BTN;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color:  #00aec3;
+    color: #00aec3;
     text-decoration: none;
     font-size: 2dvh;
     text-align: left;
     padding-top: 0.4dvh;
     position: relative;
 }
-.circulopregunta{
+
+.circulopregunta {
     width: 5dvh;
     height: 5dvh;
     background-color: #00adc1;
     border-radius: 50dvh;
-    background-size:  cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-   pointer-events: none;
+    pointer-events: none;
     position: absolute;
     right: 0%;
     top: 0.5dvh;
 }
-.logo_pba_horizontal{
+
+.logo_pba_horizontal {
     grid-area: LOG;
     background-image: url(https://abc.gob.ar/core/themes/abc/logo-pba.svg);
-    background-size:  contain;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
 }
+
 /*ESTILOS DEL CARRUCEL DE IMAGENES INICIAL*/
 
-.carrusel{
-    background-size:  cover;
+.carrusel {
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     grid-area: IMG;
@@ -197,12 +229,13 @@ input[type="submit"]{
 
 .circulo {
     width: 2dvh;
-    height:  2dvh;
+    height: 2dvh;
     background-color: white;
     border-radius: 50%;
- 
+
     cursor: pointer;
 }
+
 .imagen {
     position: absolute;
     width: 100%;
@@ -215,6 +248,7 @@ input[type="submit"]{
     opacity: 0;
 
 }
+
 .imagen.activo {
     left: 0;
     opacity: 1;
@@ -226,28 +260,32 @@ input[type="submit"]{
 }
 
 .circulo.activo {
-    background-color: #00adc1; /* Color del circulo activo */
+    background-color: #00adc1;
+    /* Color del circulo activo */
 }
-.texto1{
+
+.texto1 {
     box-shadow: 0 1dvh 2dvh 0.5dvh rgba(0, 0, 0, 0.2);
     font-size: 5dvh;
-    background-color: #e81f76; 
-    color: black; 
-    display: inline; 
-    padding: 0.2dvh 1dvh; 
+    background-color: #e81f76;
+    color: black;
+    display: inline;
+    padding: 0.2dvh 1dvh;
     color: white;
 }
-.texto2{
+
+.texto2 {
     box-shadow: 0 1dvh 2dvh 0.5dvh rgba(0, 0, 0, 0.2);
     font-size: 5dvh;
-    background-color: #00aec3; 
-    color: black; 
-    display: inline; 
-    padding: 0.2dvh 1dvh; 
+    background-color: #00aec3;
+    color: black;
+    display: inline;
+    padding: 0.2dvh 1dvh;
     color: white;
     max-width: 4dvh;
 }
-.filtro{
+
+.filtro {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -255,29 +293,31 @@ input[type="submit"]{
     top: 0;
     background: linear-gradient(to top, black, transparent);
     display: grid;
-    grid-template-areas: 
-    ". . ."
-    ". TEXT1 ."
-    ". TEXT2 ."
-    "CIR CIR CIR"
+    grid-template-areas:
+        ". . ."
+        ". TEXT1 ."
+        ". TEXT2 ."
+        "CIR CIR CIR"
     ;
     gap: 1dvh;
     grid-template-rows: 1fr max-content max-content 10dvh;
     grid-template-columns: 5dvh 50% 1fr;
 }
-.filtro :nth-child(1){
+
+.filtro :nth-child(1) {
     grid-area: TEXT1;
 }
-.filtro :nth-child(2){
+
+.filtro :nth-child(2) {
     grid-area: TEXT2;
 }
 
-.logo_pba_vertical{
+.logo_pba_vertical {
     width: 30dvh;
     height: 100%;
     background-color: white;
     background-image: url(../imagenes/otros/logo-pba-desktop.png);
-    background-size:  contain;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: left;
     position: absolute;
@@ -285,33 +325,36 @@ input[type="submit"]{
     bottom: 0;
     box-shadow: -2dvh 2dvh 2dvh rgba(0, 0, 0, 0.2);
 }
+
 /*ESTILOS DEL CONTENIDO DEBAJO DEL CARRUCEL*/
 
 
-.main{
+.main {
     grid-area: MAI;
     background-color: white;
     display: grid;
     gap: 10dvh;
-    grid-template: 
-    "BOT BOT BOT"
-    "BAR BAR BAR"
-    "UNI UNI UNI"
-    "VOL VOL VOL"
-    ". . .";
+    grid-template:
+        "BOT BOT BOT"
+        "BAR BAR BAR"
+        "UNI UNI UNI"
+        "VOL VOL VOL"
+        ". . .";
     grid-template-rows: max-content 10dvh auto 10dvh;
     grid-template-columns: auto auto auto;
 }
+
 /*ESTILOS DE LAS UNIVERSIDADES*/
-.universidades{
+.universidades {
     grid-area: UNI;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5dvh;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
-.universidad{
+
+.universidad {
     width: 45dvh;
     height: max-content;
     background-color: white;
@@ -321,11 +364,12 @@ input[type="submit"]{
     gap: 0;
     justify-content: center;
     align-items: top;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     overflow: hidden;
     position: relative;
 }
-.universidad .botonuni{
+
+.universidad .botonuni {
     font-size: 2dvh;
     border: none;
     border-radius: 1.5dvh;
@@ -341,47 +385,55 @@ input[type="submit"]{
     text-decoration: none;
 
 }
-.universidad .botonuni:hover{
- 
+
+.universidad .botonuni:hover {
+
     transform: translateY(-2.5dvh) scale(1.1);
 
 }
-.universidad .imagenesuni{
+
+.universidad .imagenesuni {
     width: 100%;
     height: 22dvh;
     display: grid;
     position: relative;
-    grid-template: 
-    "."auto
-    "CIR"5dvh/
-    1fr;
+    grid-template:
+        "." auto
+        "CIR" 5dvh/
+        1fr;
 }
+
 .circulo2 {
     width: 10px;
     height: 10px;
     background-color: white;
     border-radius: 50%;
- 
+
     cursor: pointer;
 }
+
 .circulo2.activo {
-    background-color: #00adc1; /* Color del circulo activo */
+    background-color: #00adc1;
+    /* Color del circulo activo */
 }
-.imagenuni{
+
+.imagenuni {
     opacity: 0;
-    background-size:  cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     transition: opacity 0.5s;
     position: absolute;
     width: 100%;
     height: 100%;
-    
+
 }
-.imagenuni.activo{
+
+.imagenuni.activo {
     opacity: 1;
 }
-.universidad .nombreuni{
+
+.universidad .nombreuni {
     padding-top: 1dvh;
     font-size: 3dvh;
     width: 100%;
@@ -391,7 +443,8 @@ input[type="submit"]{
     color: #00adc1;
     text-align: center;
 }
-.universidad .barrauni{
+
+.universidad .barrauni {
 
     border-top: #00adc1 solid 0.25dvh;
     height: 0.01dvh;
@@ -399,7 +452,8 @@ input[type="submit"]{
     transform: translateY(2dvh);
 
 }
-.universidad .descripcionuni{
+
+.universidad .descripcionuni {
     width: 100%;
     height: 20dvh;
     overflow-y: auto;
@@ -419,35 +473,36 @@ input[type="submit"]{
     background-color: transparent;
     border-radius: 50dvh;
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         ". BIMG ."
         "TEXTB TEXTB TEXTB";
     grid-template-rows: 22dvh auto;
     grid-template-columns: auto 22dvh auto;
     transition: transform 0.5s;
-    justify-items: center; 
+    justify-items: center;
     align-items: center;
 }
 
-.boton h1{
+.boton h1 {
     font-size: 2.5dvh;
-    text-align: center;   
+    text-align: center;
     grid-area: TEXTB;
 }
 
-.boton .imagenboton{
-    background-color: #00adc1; 
+.boton .imagenboton {
+    background-color: #00adc1;
     width: 100%;
     height: 100%;
     grid-area: BIMG;
-    background-size: 16dvh; 
+    background-size: 16dvh;
     border-radius: 50dvh;
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: 0 1dvh 2dvh 0.5dvh rgba(0, 0, 0, 0.2);
 
 }
-.botones{
+
+.botones {
     grid-area: BOT;
     display: flex;
     justify-content: center;
@@ -455,50 +510,58 @@ input[type="submit"]{
     gap: 8%;
     flex-wrap: wrap;
 }
-.botones :nth-child(1) :nth-child(2){
+
+.botones :nth-child(1) :nth-child(2) {
     color: #e81f76;
 }
-.botones :nth-child(2) :nth-child(2){
+
+.botones :nth-child(2) :nth-child(2) {
     color: #78568e;
 }
-.botones :nth-child(3) :nth-child(2){
+
+.botones :nth-child(3) :nth-child(2) {
     color: #37799f;
 }
-.botones :nth-child(4) :nth-child(2){
+
+.botones :nth-child(4) :nth-child(2) {
     color: #00adc1;
 }
 
 
-.botones :nth-child(1) :nth-child(1){
+.botones :nth-child(1) :nth-child(1) {
     background-color: #e81f76;
 }
-.botones :nth-child(2) :nth-child(1){
+
+.botones :nth-child(2) :nth-child(1) {
     background-color: #78568e;
 }
-.botones :nth-child(3) :nth-child(1){
+
+.botones :nth-child(3) :nth-child(1) {
     background-color: #37799f;
 }
-.botones :nth-child(4) :nth-child(1){
+
+.botones :nth-child(4) :nth-child(1) {
     background-color: #00adc1;
 }
 
 
 /*ESTILOS EL FOOTER*/
-.footer{
+.footer {
     grid-area: FOO;
     background: linear-gradient(to top, #eaeaea 75%, transparent);
-        display: grid;
-        grid-template: 
+    display: grid;
+    grid-template:
         ". ."
         "LOG ."
         "LOG ."
         "REDE TEXT"
         ". .";
-        grid-template-rows: auto 40dvh auto auto;
-        grid-template-columns: 20% auto;
-        position: relative;
+    grid-template-rows: auto 40dvh auto auto;
+    grid-template-columns: 20% auto;
+    position: relative;
 }
-.footer .imagenfooter{
+
+.footer .imagenfooter {
     background-image: url(../imagenes/otros/imagen_footer2.png);
     background-repeat: repeat-x;
     background-size: 150dvh;
@@ -510,16 +573,17 @@ input[type="submit"]{
     animation: footer 40s linear infinite;
 }
 
-.footer .logo_pba_vertical2{
+.footer .logo_pba_vertical2 {
     grid-area: LOG;
     background-image: url(../imagenes/otros/logo-pba-desktop.png);
-    background-size:  contain;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     z-index: 10;
 
 }
-.footer .textofooter{
+
+.footer .textofooter {
     grid-area: TEXT;
     display: flex;
     gap: 1dvh;
@@ -528,57 +592,64 @@ input[type="submit"]{
     justify-content: center;
     z-index: 10;
 }
-.textofooter h1{
- 
+
+.textofooter h1 {
+
     text-align: center;
     color: #e81f76;
 }
-.footer .redesociales{
+
+.footer .redesociales {
     grid-area: REDE;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     gap: 2%;
     flex-wrap: wrap;
 }
-.universidad .redesociales{
+
+.universidad .redesociales {
     background-color: white;
-   width: 100%;
-   height: max-content;
+    width: 100%;
+    height: max-content;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     gap: 2%;
     flex-wrap: wrap;
     transform: translateY(1dvh);
 }
-.universidad .redesociales .redsocial{
+
+.universidad .redesociales .redsocial {
     width: 5dvh;
     height: 5dvh;
     border-radius: 25dvh;
     overflow: hidden;
-    background-size:  cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: 0 1dvh 1dvh rgba(0, 0, 0, 0.2);
     background-color: white;
 
 }
-.footer .redesociales .redsocial{
+
+.footer .redesociales .redsocial {
     width: 3dvh;
     height: 3dvh;
     border-radius: 25dvh;
     overflow: hidden;
-    background-size:  cover;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: 0 1dvh 1dvh rgba(0, 0, 0, 0.2);
     background-color: white;
 
 }
-#header{
+
+#header {
     transition: opacity 0.2s ease-in-out;
 }
+
 .hidden {
     opacity: 0%;
     pointer-events: none;
@@ -588,16 +659,17 @@ input[type="submit"]{
     opacity: 100%;
 }
 
-[popover]{
+[popover] {
     transition: visibility 1s;
     border: none;
     border-radius: 0.5dvh;
-    background-color: white;/*
+    background-color: white;
+    /*
     background: linear-gradient(90deg, rgba(232,31,118,1) 0%, rgba(0,174,192,1) 100%);
  */
 }
 
-[popover] h1{
+[popover] h1 {
     width: 80vw;
     text-align: center;
     color: #00adc1;
@@ -607,31 +679,36 @@ input[type="submit"]{
 [popover] :nth-child(2) {
     width: 80vw;
     height: 86dvh;
-  }
-  
+}
+
 body.inactive * {
     pointer-events: none;
 }
+
 body.inactive .pop2,
 body.inactive .overlay {
     pointer-events: auto;
 }
+
 @media (max-width: 1000px) {
-    .universidad .imageninfo2{
+    .universidad .imageninfo2 {
         display: none;
     }
-    .universidad .barrauni3{
+
+    .universidad .barrauni3 {
         display: none;
     }
-    .lista5{
+
+    .lista5 {
         display: flex;
         justify-content: center;
         align-items: flex-start;
         gap: 5dvh;
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
         width: 100%;
     }
 }
+
 .overlay {
     position: fixed;
     top: 0;
@@ -647,68 +724,88 @@ body.inactive .overlay {
     background-size: 9%;
     background-repeat: no-repeat;
 }
+
 .pop2 {
     display: none;
     z-index: 3100;
 }
+.pop2  :nth-child(1)  {
+    pointer-events: auto;
+}
+.pop2  :nth-child(2)  {
+    pointer-events: auto;
+}
 /*ESTILOS PARA LA VERSION DE MOBILES*/
 @media (max-width: 768px) {
 
-    .botones :nth-child(1) :nth-child(2){
+    .botones :nth-child(1) :nth-child(2) {
         color: white;
         background-color: transparent;
     }
-    .botones :nth-child(2) :nth-child(2){
+
+    .botones :nth-child(2) :nth-child(2) {
         color: white;
         background-color: transparent;
 
     }
-    .botones :nth-child(3) :nth-child(2){
+
+    .botones :nth-child(3) :nth-child(2) {
         color: white;
         background-color: transparent;
 
     }
-    .botones :nth-child(4) :nth-child(2){
+
+    .botones :nth-child(4) :nth-child(2) {
         color: white;
         background-color: transparent;
 
     }
-    input[type="submit"]:hover, a:hover, button:hover{
+
+    input[type="submit"]:hover,
+    a:hover,
+    button:hover {
         cursor: pointer;
         transform: scale(1);
     }
-    .boton h1{
+
+    .boton h1 {
         font-size: 100%;
     }
+
     .botones :nth-child(1) {
         background-color: #e81f76;
     }
+
     .botones :nth-child(2) {
         background-color: #78568e;
     }
+
     .botones :nth-child(3) {
         background-color: #37799f;
     }
+
     .botones :nth-child(4) {
         background-color: #00adc1;
     }
-    .boton .imagenboton{
-        background-color: #00adc1; 
+
+    .boton .imagenboton {
+        background-color: #00adc1;
         width: 100%;
         height: 100%;
         grid-area: BIMG;
-        background-size: 16dvh; 
+        background-size: 16dvh;
         border-radius: 50dvh;
         background-repeat: no-repeat;
         background-position: center;
         box-shadow: none;
-    
+
     }
-    .barradebusqueda .imglupa{
+
+    .barradebusqueda .imglupa {
         display: none;
     }
-    
-    .filtro{
+
+    .filtro {
         width: 100%;
         height: 100%;
         position: absolute;
@@ -716,26 +813,29 @@ body.inactive .overlay {
         top: 0;
         background: linear-gradient(to top, black, transparent);
         display: grid;
-        grid-template-areas: 
-        ". . ."
-        ". TEXT1 ."
-        ". TEXT2 ."
-        "CIR CIR CIR"
+        grid-template-areas:
+            ". . ."
+            ". TEXT1 ."
+            ". TEXT2 ."
+            "CIR CIR CIR"
         ;
         gap: 1dvh;
         grid-template-rows: 1fr max-content max-content 20dvh;
         grid-template-columns: 2dvh auto 2dvh;
     }
-    .filtro .texto1,.texto2{
+
+    .filtro .texto1,
+    .texto2 {
         font-size: 3dvh;
         text-align: center;
     }
-    .logo_pba_vertical{
+
+    .logo_pba_vertical {
         height: 12dvh;
         width: 100%;
         background-color: white;
         background-image: url(../imagenes/otros/logo-pba-mobile.png);
-        background-size:  contain;
+        background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
         position: absolute;
@@ -744,17 +844,20 @@ body.inactive .overlay {
         left: 0;
         box-shadow: -2dvh 2dvh 2dvh rgba(0, 0, 0, 0.2);
     }
-    .universidad{
+
+    .universidad {
         width: 100%;
         height: max-content;
         background-color: white;
         border-radius: 0;
         box-shadow: 0 0.5dvh 2dvh 0.5dvh rgba(0, 0, 0, 0.2);
     }
-    .circulo{
+
+    .circulo {
         width: 2dvh;
         height: 2dvh;
     }
+
     .boton {
         margin-top: 5dvh;
         width: 100%;
@@ -763,59 +866,67 @@ body.inactive .overlay {
         background-color: transparent;
         border-radius: 0dvh;
         display: grid;
-        grid-template-areas: 
+        grid-template-areas:
             ". BIMG ."
             "TEXTB TEXTB TEXTB";
         grid-template-rows: 18dvh auto;
         grid-template-columns: auto 20dvh auto;
-        justify-items: center; /* Centra los elementos horizontalmente */
+        justify-items: center;
+        /* Centra los elementos horizontalmente */
         align-items: center;
     }
-    .imagenboton{
+
+    .imagenboton {
         background-size: 10dvh;
     }
-    
-    .footer{
+
+    .footer {
         grid-area: FOO;
         background: linear-gradient(to top, #eaeaea 65%, transparent);
         display: grid;
-        grid-template: 
-        "."
-        "LOG"
-        "REDE"
-        "TEXT"
-        ".";
+        grid-template:
+            "."
+            "LOG"
+            "REDE"
+            "TEXT"
+            ".";
         grid-template-rows: auto 40dvh 0vh 4dvh;
         grid-template-columns: auto;
         position: relative;
         gap: 2dvh;
     }
-    .textofooter ul, .textofooter p{
+
+    .textofooter ul,
+    .textofooter p {
         width: 20dvh;
     }
-    .header{
+
+    .header {
         grid-area: HEA;
         position: sticky;
         top: 0;
-        background-color: white; 
+        background-color: white;
         z-index: 1000;
         padding: 0.5dvh;
         box-shadow: 0 1dvh 2dvh rgba(0, 0, 0, 0.2);
         display: grid;
-        grid-template-areas: 
-        "LOG . BTN"
+        grid-template-areas:
+            "LOG . BTN"
         ;
         grid-template-rows: auto;
         grid-template-columns: 30dvh auto 15dvh;
         padding-right: 1dvh;
     }
+
     [popover] :nth-child(2) {
         width: 80vw;
         height: 60dvh;
-      }
-      .footer .imagenfooter{
+    }
+
+    .footer .imagenfooter {
         animation: footer 180s linear infinite;
     }
+
     .overlay {
         position: fixed;
         top: 0;
@@ -843,9 +954,9 @@ body.inactive .overlay {
     overflow: hidden;
     pointer-events: none;
     z-index: 1000;
-  }
-  
-  .confetti {
+}
+
+.confetti {
     width: 10px;
     height: 20px;
     background-color: red;
@@ -853,23 +964,26 @@ body.inactive .overlay {
     opacity: 0;
     animation: confettiFall linear infinite;
 
-  }
-  
-  @keyframes confettiFall {
+}
+
+@keyframes confettiFall {
     0% {
-      opacity: 100%;
-      transform: translateY(0) rotate(0deg);
+        opacity: 100%;
+        transform: translateY(0) rotate(0deg);
     }
+
     100% {
-      opacity: 0%;
-      transform: translateY(100dvh) rotate(360deg);
+        opacity: 0%;
+        transform: translateY(100dvh) rotate(360deg);
     }
-  }
-  @keyframes footer {
-    0%{
+}
+
+@keyframes footer {
+    0% {
         background-position-x: -100dvh;
     }
-    100%{
+
+    100% {
         background-position-x: 100dvh;
     }
 }
