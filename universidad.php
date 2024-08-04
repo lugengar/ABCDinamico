@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-es">
 <head>
+<?php
+        include "./codigophp/mostrar_universidad.php";
+        include "./codigophp/construccion.php";
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estiloscss/universidad.css">
     <link rel="icon" href="https://abc.gob.ar/core/themes/abc/favicon.ico" type="image/vnd.microsoft.icon">
-    <title>Ofertas de Educación Superior Región 6</title>
+    <?php 
+    echo '<title>'.$row["nombre_universidad"].'</title>';
+    echo '<meta name="description" content="Ofertas de Educación Superior Región 6, '.$row["nombre_universidad"].'">';
+    ?>
+   
+
 </head>
 <body>
-    <?php
-        include "./codigophp/mostrar_universidad.php";
-        include "./codigophp/construccion.php";
-    ?>
+    
         <div class="overlay" id="overlay"></div>
 
     <div class="container" id="container">

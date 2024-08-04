@@ -3,10 +3,10 @@
 //ESTE ARCHIVO SE ENCARGA DE CONSTRUIR EL DISEÑO RECIBIENDO LOS DATOS DE LA BDD
 
 //DIRECCIONES DE DONDE TOMAR LAS IMAGENES Y PDF
-//$direccionimagen = "https://lugengar.github.io/ABC/imagenes/universidades/"; // ../imagenes/universidades/
-//$direccionpdf = "https://lugengar.github.io/ABC/pdf/";// ../pdf
-$direccionimagen = "./imagenes/universidades/"; // ../imagenes/universidades/
-$direccionpdf = "./pdf/";// ../pdf
+//$direccionimagen = "https://lugengar.github.io/ABC/imagenes/universidades/";
+//$direccionpdf = "https://lugengar.github.io/ABC/pdf/";
+$direccionimagen = "./imagenes/universidades/";
+$direccionpdf = "./pdf/";
 
 function universidad($id,$nombre ,$descripcion, $imagenes){ //CREA EL CUADRO DE UNIVERSIDAD
     global $direccionimagen;
@@ -55,7 +55,7 @@ function nombre_url($url){ //OBTIENE EL NOMBRE DE UNA RED SOCIAL A TRAVEZ DE SU 
     return $account_name;
 }
 function generarTextoRedesSociales($contactos) { //CREA UN TEXTO COOHERENTE DONDE SE MUESTRAN TODAS LAS REDES SOCIALES DE LA UNIVERSIDAD
-    global $sinocontacto;
+    global $haycorreo;
 
     $texto = "Contamos con ";
 
@@ -74,7 +74,7 @@ function generarTextoRedesSociales($contactos) { //CREA UN TEXTO COOHERENTE DOND
     foreach ($contactos as $contacto) {
         if (isset($nombresRedes[$contacto["tipo"]])) {
             if($contacto["tipo"] == "correo"){
-                $sinocontacto = true;
+                $haycorreo = true;
                 $redesDisponibles[] = $nombresRedes[$contacto["tipo"]].'<a href="mailto:'.$contacto["contacto"].'">' .$contacto["contacto"]. '</a>';
 
             }else if($contacto["tipo"] == "telefono"){
@@ -148,16 +148,16 @@ function arreglarpdf($url){ //MODIFICA EL NOMBRE DEL ARCHIVO PDF EN CASO DE QUE 
     return $url;
 }
 
-$sinocontacto = false;
+$haycorreo = false;
 function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contactos){ // MUESTRA TODA LA INFORMACION DE LA UNIVERSIDAD
-    global $sinocontacto;
+    global $haycorreo;
     
     $textocontacto = generarTextoRedesSociales($contactos);
     $todoslosservicios = ['<p class="redsocial2" style="background-image: url(imagenes/iconos/silladeruedas.svg);">Accesibilidad para sillas de ruedas.</p>',
     '<p class="redsocial2" style="background-image: url(imagenes/iconos/calefaccion.svg);">Cuenta con calefacción</p>',
     '<p class="redsocial2" style="background-image: url(imagenes/iconos/wifi.svg);">Cuenta con WIFI</p>',
     '<p class="redsocial2" style="background-image: url(imagenes/iconos/comedor.svg);">Cuenta con comedor</p>'];
-    if($sinocontacto == true){
+    if($haycorreo == true){
         echo '<div class="informacion lista3" style="padding-top: 5dvh;">';
 
     }else{
@@ -208,7 +208,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                     if($contacto["tipo"] == "correo"){
                         $inscripcion = $contacto["contacto"];
                         echo '<p class="descripcionuni" style="margin-bottom:0vh;">'.$contacto["tipo"].': <a href="mailto:inscripcion@'.$contacto["contacto"].'">'.$contacto["contacto"].'</a></p>';
-                        $sinocontacto = true;
+                        $haycorreo = true;
                     }else if($contacto["tipo"] == "telefono"){
                         
                         echo '<p class="descripcionuni" style="margin-bottom:0vh;">'.$contacto["tipo"].': <a href="tel:'.arreglar_telefono($contacto["contacto"]).'">'.arreglar_telefono($contacto["contacto"]).'</a></p>';
@@ -232,7 +232,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                 echo '<p class="descripcionuni" >Ningun contacto disponible</p>';
             }
             echo'</div> </div>';
-            if($sinocontacto == true){// EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
+            if($haycorreo == true){// EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
                 echo ('
                 <form class="universidad " id="formulariodecontacto"> 
                     <div class="imageninfo"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
@@ -254,7 +254,12 @@ function carrusel($nombre,$ubicacion,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
     if($imagenes->num_rows > 0){
         echo '<div class="imagenes">';
         foreach($imagenes as $key => $imagen) {
-            echo '<div class="imagen activo" style="background-image: url('.$direccionimagen."".$imagen["url"].');"></div>';
+            if($key == 0){
+                echo '<div class="imagen activo" style="background-image: url('.$direccionimagen."".$imagen["url"].');"></div>';
+            }else{
+                echo '<div class="imagen" style="background-image: url('.$direccionimagen."".$imagen["url"].');"></div>';
+            }
+            
         }
 
         echo '</div>
@@ -322,9 +327,9 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
             <embed class="pdf-viewer" src="'.arreglarpdf($pdf).'" type="application/pdf" />
         </div>
     ');
-    global $sinocontacto;
+    global $haycorreo;
 
-    if($sinocontacto == true){ // EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
+    if($haycorreo == true){ // EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
        
          echo ('
         <div class="universidad"> 

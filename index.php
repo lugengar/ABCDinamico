@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="estiloscss/styles.css">
     <link rel="icon" href="https://abc.gob.ar/core/themes/abc/favicon.ico" type="image/vnd.microsoft.icon">
     <title>Ofertas de Educación Superior Región 6</title>
+    <meta name="description" content="Ofertas de Educación Superior Región 6">
 </head>
 <body>
     <?php
