@@ -51,7 +51,14 @@
             <div popover class="pop2">
                 <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
                 <!-- ACA VA EL DIV O LO Q SEA DEL MAPA. EL TAMAÑO SE AJUSTA AUTOMATICAMENTE-->
-                <div id="mapa">Hola</div>
+                <div id="mapa">
+                    <p>Hola</p>
+                    <img id="imagenmapa" src="./imagenes/otros/mapa.svg" alt="">
+                    <img class="puntero" src="./imagenes/otros/puntero.svg" alt="">
+                    <style>
+                        /*POR SI QUERES AGREGAR ESTILOS DESDE ACÁ*/
+                    </style>
+                </div>
             </div>
 
 
