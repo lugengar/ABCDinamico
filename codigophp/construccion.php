@@ -287,7 +287,7 @@ function carrusel($nombre,$ubicacion,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
         </div>';
         
     }
-    echo'<a href="index.php" class="logo_pba_vertical"></a>';
+    echo'<a href="index.php" class="logo_pba_vertical"></a> <a href="index.php" class="casita_superior"></a>';
 }
 function carrera($id,$nombre,$descripcion, $id_establecimiento){ //CREA EL CUADRO DE LAS CARRERAS
     echo ('

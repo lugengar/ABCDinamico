@@ -124,6 +124,7 @@ input[type="submit"]{
 }
 /*ESTILOS DE LA BARRA DE NAVEGACION*/
 .header{
+
     grid-area: HEA;
     position: sticky;
     top: 0;
