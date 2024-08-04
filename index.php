@@ -48,9 +48,10 @@
 
 
             <!-- MAPA -->
-            <div id="mapa" popover class="pop2">
+            <div popover class="pop2">
                 <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
                 <!-- ACA VA EL DIV O LO Q SEA DEL MAPA. EL TAMAÑO SE AJUSTA AUTOMATICAMENTE-->
+                <div id="mapa">Hola</div>
             </div>
 
 
