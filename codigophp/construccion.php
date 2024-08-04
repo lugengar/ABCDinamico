@@ -34,7 +34,9 @@ function universidad($id,$nombre ,$descripcion, $imagenes){ //CREA EL CUADRO DE 
     }
     echo('
         <h1 class="nombreuni">'.$nombre.'</h1>
-        <p class="descripcionuni">'.$descripcion.'</p>
+        ');//<p class="descripcionuni">'.$descripcion.'</p>
+    echo('
+        <p class="descripcionuni" style="height: 0dvh;"></p>
         <a href="./universidad.php?universidad='.$id.'"  class="botonuni">SABER MAS..</a>
     </div>
     ');
@@ -289,7 +291,7 @@ function carrusel($nombre,$ubicacion,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
 }
 function carrera($id,$nombre,$descripcion, $id_establecimiento){ //CREA EL CUADRO DE LAS CARRERAS
     echo ('
-        <form class="universidad" method="GET" action="./universidad.php#plan">
+        <form class="universidad carrera" method="GET" action="./universidad.php#plan">
             <h1 class="nombreuni">'.$nombre.'</h1>
             <p class="descripcionuni">'.$descripcion.'</p>
             <input type="submit" value="SABER MAS.." class="botonuni"></button>

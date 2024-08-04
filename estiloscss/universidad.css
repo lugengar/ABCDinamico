@@ -388,6 +388,9 @@ input[type="submit"]{
     overflow: hidden;
     position: relative;
 }
+.carreras{
+    height: 45dvh;
+}
 .horizontal{
     justify-content: left;
     align-items: none;

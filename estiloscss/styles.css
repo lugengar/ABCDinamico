@@ -394,13 +394,14 @@ input[type="submit"]{
 
     border-top: #00adc1 solid 0.25dvh;
     height: 0.01dvh;
-    width: 40dvh;
+    width: 90%;
     transform: translateY(2dvh);
 
 }
 .universidad .descripcionuni{
     width: 100%;
-    height: max-content;
+    height: 20dvh;
+    overflow-y: auto;
     overflow-y: auto;
     padding-right: 2dvh;
     padding-left: 2dvh;
