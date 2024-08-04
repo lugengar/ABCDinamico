@@ -14,9 +14,15 @@ if(isset($_GET['universidad'])){
     }
 }
 // Validar y limpiar el parámetro de búsqueda
-if (isset($_GET['busqueda']) & isset($_GET['tipo'])) {
+if(isset($_GET['universidad']) && isset($_GET['busqueda']) ){
+    $universidad = $_GET['universidad'];
+    $busqueda = $_GET['busqueda'];
+    echo '<div class="etiquetas"><a href="universidad.php?universidad='.$universidad.'#botones" class="etiqueta">Eliminar busqueda: '.$busqueda.'</a></div> <div class="barraseparadora" ></div>';
+}
+if (isset($_GET['busqueda']) && isset($_GET['tipo'])) {
 
     $busqueda = $_GET['busqueda'];
+    
     $tipo = $_GET['tipo'];
     $tec = "Técnico";
     // Preparar la consulta usando una consulta preparada

@@ -416,12 +416,36 @@ input[type="submit"] {
 }
 
 /*ESTILOS DE LAS UNIVERSIDADES*/
-.barraseparadora {
+.etiquetas{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.barraseparadora{
     border-top: #00adc1 solid 0.25dvh;
     height: 0.01dvh;
     width: 80%;
 }
-
+.etiqueta{
+    text-decoration: none;
+    background-color: #e81f76;
+    color: white;
+    font-size: 2dvh;
+    width: max-content;
+    height: 3dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imagenes/iconos/equis.svg);
+    background-position: 0.8dvh 1dvh;
+    background-repeat: no-repeat;
+    background-size: 1dvh;
+    border-radius: 25dvh;
+    padding-left: 2.5dvh;
+    padding-right: 1dvh;
+}
 .lista {
     display: flex;
     justify-content: center;

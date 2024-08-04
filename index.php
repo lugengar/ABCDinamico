@@ -67,11 +67,16 @@
 
 
                 <!-- BOTON PARA EL MAPA -->
+
+                <!-- ELIMINA ESTA LINEA
+
                 <button class="boton pop" >
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
                     <h1>Buscar por distrito</h1>
                 </button>
-                
+
+
+                Y ESTA LINEA-->
 
 
 
@@ -98,7 +103,7 @@
                 <input type="submit" value="Buscar">
             </form>
             <form class="barradebusqueda" id="distrito" method="GET" action="./index.php#botones">
-                <img src="imagenes/iconos/lupa.svg" alt="">
+            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda"id="" required>
                     <option value="">Elija un distrito</option >
                     <?php
@@ -110,7 +115,7 @@
                 <input type="submit" name="" value="Buscar" >
             </form>
             <form class="barradebusqueda" id="carrera" method="GET" action="./index.php#botones">
-                <img src="imagenes/iconos/lupa.svg" alt="">
+            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda" id="" required>
                     <option value="">Elija una carrera</option>
                     <?php
@@ -122,7 +127,7 @@
                 <input type="submit" name="" value="Buscar">
             </form>
             <form class="barradebusqueda" id="tecnicatura" method="GET" action="./index.php#botones">
-                <img src="imagenes/iconos/lupa.svg" alt="">
+            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda" id="" required>
                     <option value="">Elija una tecnicatura</option>
                     <?php
@@ -133,8 +138,9 @@
                 <input type="hidden" name="tipo" value="tecnicatura" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <div class="universidades" id="uni">
-               <?php
+            <div class="universidades" id="uni" style="padding-top:0vh;">
+                <?php
+                    etiqueta();
                     //MUESTRA TODAS LAS UNIVERSIDADES O LOS RESULTADOS DE LAS BUSQUEDAS
                     buscar();
                ?>
