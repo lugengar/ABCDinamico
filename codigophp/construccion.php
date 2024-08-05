@@ -310,7 +310,8 @@ function carrera($id,$nombre,$descripcion, $id_establecimiento){ //CREA EL CUADR
 }
 function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN DE ESTUDIO Y LA INFO DE LA CARRERA
     echo ('
-        <div class="barraseparadora" ></div>
+        <div class="barraseparadora"></div>
+        <div class="barraseparadora" id="plan" style="transform: translateY(-20dvh);opacity:0%;z-index:1;"></div>
         <div class="universidad" style="height: 55dvh;">  
             <div class="imageninfo" style="background-image: url(imagenes/iconos/diploma.svg);"></div>
             <div class="barrauni"></div>

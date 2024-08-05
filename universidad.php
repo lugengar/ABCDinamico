@@ -85,7 +85,7 @@
                 require "./codigophp/mostrarcarreras.php";
             ?>
             </div>
-            <div class="informacioncarrera lista" id="plan">
+            <div class="informacioncarrera lista">
             <?php
             //MUESTRA LOS PLANES DE ESTUDIO DE LA CARRERA
                 require "./codigophp/mostrarplandeestudio.php";
