@@ -39,15 +39,15 @@
             <div class="botones" id="botones" style="padding-top:0dvh;" >
                 <button class="boton" onclick="window.location.href='./index.php'">
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/lupa.svg); background-size: 13dvh;"></div>
-                    <h1>Buscar otra universidad</h1>
+                    <h1> Volver y buscar otra universidad</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('carrera')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/sombrero.svg);"></div>
-                    <h1>Buscar por carreras e ingenierías</h1>
+                    <h1>Buscar carreras e ingenierías</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('tecnicatura')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/diploma.svg);"></div>
-                    <h1>Buscar por tecnicaturas y terciarios</h1>
+                    <h1>Buscar tecnicaturas y terciarios</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('nombre')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/nombre.svg);"></div>

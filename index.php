@@ -82,18 +82,18 @@
 
                 <button class="boton " onclick="barradebusqueda('distrito')">
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
-                    <h1>Buscar por distrito</h1>
+                    <h1>Buscar universidad por distrito</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('carrera')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/sombrero.svg);"></div>
-                    <h1>Buscar por carrera o ingenieria</h1>
+                    <h1>Buscar universidad por carrera</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('tecnicatura')"><div class="imagenboton" style=" background-image: url(imagenes/iconos/diploma.svg);"></div>
-                    <h1>Buscar por terciario o tecnicatura</h1>
+                    <h1>Buscar universidad por tecnicatura</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('nombre')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/nombre.svg);"></div>
-                    <h1>Buscar por nombre del establecimiento</h1>
+                    <h1>Buscar por nombre de la universidad</h1>
                 </button>
             </div>
             <form class="barradebusqueda activo" id="nombre" method="GET" action="./index.php#etiqueta">

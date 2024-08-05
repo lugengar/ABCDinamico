@@ -5,8 +5,10 @@
 //DIRECCIONES DE DONDE TOMAR LAS IMAGENES Y PDF
 //$direccionimagen = "https://lugengar.github.io/ABC/imagenes/universidades/";
 //$direccionpdf = "https://lugengar.github.io/ABC/pdf/";
-$direccionimagen = "./imagenes/universidades/";
-$direccionpdf = "./pdf/";
+$direccionimagen = "https://lugengar.github.io/ABCDinamico/imagenes/universidades/";
+$direccionpdf = "https://lugengar.github.io/ABCDinamico/pdf/";
+//$direccionimagen = "./imagenes/universidades/";
+//$direccionpdf = "./pdf/";
 
 function universidad($id,$nombre ,$descripcion, $imagenes){ //CREA EL CUADRO DE UNIVERSIDAD
     global $direccionimagen;
