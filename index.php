@@ -38,12 +38,11 @@
                 </div>
             </div>
             <div class="logo_pba_vertical"></div>
-            <a onclick="redirigir('botones')" class="casita_superior"></a>
+            <a onclick="redirigir('identificador2')" class="casita_superior"></a>
         </main>
-        <header class="header"id="header">
-            <a href="index.php" class="logo_pba_horizontal"></a>
+        <header class="header" id="header">
+            <a href="index.php" class="logo_pba_horizontal " ></a>
         </header>
-        
         <main class="main">
 
 
@@ -63,7 +62,7 @@
             </div>
 
 
-
+            <div class="identificador" id="identificador1" style="top: 100dvh;"></div>
             <div class="botones" id="botones">
 
 
@@ -97,13 +96,13 @@
                     <h1>Buscar por nombre de la universidad</h1>
                 </button>
             </div>
-            <form class="barradebusqueda activo" id="nombre" method="GET" action="./index.php#etiqueta">
+            <form class="barradebusqueda activo" id="nombre" method="GET" action="./index.php#identificador2">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <input type="text" name="busqueda" placeholder="Nombre del establecimiento" required>
                 <input type="hidden" name="tipo" value="nombre" required>
                 <input type="submit" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="distrito" method="GET" action="./index.php#etiqueta">
+            <form class="barradebusqueda" id="distrito" method="GET" action="./index.php#identificador2">
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda"id="" required>
                     <option value="">Elija un distrito</option >
@@ -115,7 +114,7 @@
                 <input type="hidden" name="tipo" value="distrito" required>
                 <input type="submit" name="" value="Buscar" >
             </form>
-            <form class="barradebusqueda" id="carrera" method="GET" action="./index.php#etiqueta">
+            <form class="barradebusqueda" id="carrera" method="GET" action="./index.php#identificador2">
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda" id="" required>
                     <option value="">Elija una carrera</option>
@@ -127,7 +126,7 @@
                 <input type="hidden" name="tipo" value="carrera" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="tecnicatura" method="GET" action="./index.php#etiqueta">
+            <form class="barradebusqueda" id="tecnicatura" method="GET" action="./index.php#identificador2">
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda" id="" required>
                     <option value="">Elija una tecnicatura</option>
@@ -139,7 +138,9 @@
                 <input type="hidden" name="tipo" value="tecnicatura" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <div class="universidades" id="uni" style="padding-top:0vh;">
+            <div class="universidades" id="uni" style="padding-top:0vh; position:relative;">
+            <div class="identificador" id="identificador2" style="top: -20dvh;"></div>
+
                 <?php
                     etiqueta();
                     //MUESTRA TODAS LAS UNIVERSIDADES O LOS RESULTADOS DE LAS BUSQUEDAS

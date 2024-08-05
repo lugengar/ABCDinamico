@@ -63,9 +63,10 @@ input[type="submit"] {
     display: grid;
     grid-template-areas:
         "IMG IMG IMG"
+        "HEA HEA HEA"
         "MAI MAI MAI"
         "FOO FOO FOO";
-    grid-template-rows: 100dvh auto 60dvh;
+    grid-template-rows: 100dvh 7dvh auto 60dvh;
     grid-template-columns: auto auto auto;
 }
 
@@ -208,23 +209,23 @@ input[type="submit"] {
 
 /*ESTILOS DE LA BARRA DE NAVEGACION*/
 .header {
-    opacity: 0%;
-    position: fixed;
-    height: 6.5dvh;
-    width: 100%;
-    top: 0%;
-    left: 0%;
+
+    grid-area: HEA;
+    position: sticky;
+    top: 0;
     background-color: white;
     z-index: 1000;
     padding: 0.5dvh;
     box-shadow: 0 1dvh 2dvh rgba(0, 0, 0, 0.2);
     display: grid;
     grid-template-areas:
-        ". LOG . BTN. "
+        "LOG . BTN"
     ;
     grid-template-rows: auto;
-    grid-template-columns: 1dvh 40dvh auto 11dvh 2dvh;
+    grid-template-columns: 40dvh auto 11dvh;
+    padding-right: 1dvh;
 }
+
 
 #header {
     transition: opacity 0.2s ease-in-out;
@@ -379,7 +380,12 @@ input[type="submit"] {
 }
 
 /*ESTILOS DEL CONTENIDO DEBAJO DEL CARRUCEL*/
-
+.identificador{
+    width: 20dvh;
+    height: 20dvh;
+    position: absolute;
+    left: 0;
+}
 .casita_superior {
     width: 6dvh;
     height: 6dvh;
@@ -1331,25 +1337,22 @@ body.inactive .overlay {
     .textofooter p {
         width: 20dvh;
     }
-
     .header {
-        position: fixed;
-        height: 6.5dvh;
-        width: 100%;
-        top: 0%;
-        left: 0%;
+        grid-area: HEA;
+        position: sticky;
+        top: 0;
         background-color: white;
         z-index: 1000;
         padding: 0.5dvh;
         box-shadow: 0 1dvh 2dvh rgba(0, 0, 0, 0.2);
         display: grid;
         grid-template-areas:
-            ". LOG . BTN. "
+            "LOG . BTN"
         ;
         grid-template-rows: auto;
-        grid-template-columns: 0dvh auto 4dvh 11dvh 2dvh;
+        grid-template-columns: 30dvh auto 11dvh;
+        padding-right: 1dvh;
     }
-
     [popover] :nth-child(2) {
         width: 80vw;
         height: 60dvh;

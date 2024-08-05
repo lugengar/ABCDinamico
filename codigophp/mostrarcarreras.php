@@ -17,7 +17,7 @@ if(isset($_GET['universidad'])){
 if(isset($_GET['universidad']) && isset($_GET['busqueda']) ){
     $universidad = $_GET['universidad'];
     $busqueda = $_GET['busqueda'];
-    echo '<div class="etiquetas"><a id="etiqueta"href="universidad.php?universidad='.$universidad.'#botones" class="etiqueta">Eliminar busqueda: '.$busqueda.'</a></div> <div class="barraseparadora" ></div>';
+    echo '<div class="etiquetas"><a id="etiqueta"href="universidad.php?universidad='.$universidad.'#identificador2" class="etiqueta">Eliminar busqueda: '.$busqueda.'</a></div> <div class="barraseparadora" ></div>';
 }
 if (isset($_GET['busqueda']) && isset($_GET['tipo']) && $carreras != null) {
 

@@ -78,7 +78,12 @@ input[type="submit"] {
     grid-template-columns: auto auto auto;
 }
 
-
+.identificador{
+    width: 20dvh;
+    position: absolute;
+    left: 0;
+    height: 20dvh;
+}
 .barradebusqueda {
     position: sticky;
     z-index: 1000;

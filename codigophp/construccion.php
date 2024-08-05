@@ -164,7 +164,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
         echo '<div class="informacion lista4" style="padding-top: 5dvh;">';
     }
         echo ('
-    
+    <div class="identificador" id="identificador1" style="top: 100dvh;"></div>
         <div class="universidad horizontal" id="info">  
             <div class="imageninfo2" style="background-image: url(imagenes/iconos/informacion.svg);"></div>
             <div class="barrauni3"></div>
@@ -293,9 +293,9 @@ function carrusel($nombre,$ubicacion,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
         </div>';
         
     }
-    echo'<a href="index.php" class="logo_pba_vertical"></a> 
+    echo'<div class="logo_pba_vertical"></div> 
     <a href="index.php" class="casita_superior"></a>
-     <a onclick="redirigir('."'".'mapa'."'".')" class="informacion_superior"></a>';
+    <a onclick="redirigir('."'".'identificador1'."'".')" class="informacion_superior"></a>';
 }
 function carrera($id,$nombre,$descripcion, $id_establecimiento){ //CREA EL CUADRO DE LAS CARRERAS
     echo ('
