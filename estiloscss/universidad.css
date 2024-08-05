@@ -395,7 +395,21 @@ input[type="submit"] {
     border-radius: 25dvh;
     box-shadow: 0.5dvh 0.5dvh 1dvh rgba(0, 0, 0, 0.2);
 }
+.informacion_superior {
+    width: 6dvh;
+    height: 6dvh;
+    background-color: #00adc1;
 
+    background-image: url(../imagenes/iconos/letra_i.svg);
+    background-size: 4dvh;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    left: 2dvh;
+    top: 2dvh;
+    border-radius: 25dvh;
+    box-shadow: 0.5dvh 0.5dvh 1dvh rgba(0, 0, 0, 0.2);
+}
 .main {
     grid-area: MAI;
     background-color: white;

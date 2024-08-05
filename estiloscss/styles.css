@@ -704,6 +704,21 @@ body.inactive .overlay {
     padding-left: 10%;
     padding-right: 10%;
 }
+.casita_superior {
+    width: 6dvh;
+    height: 6dvh;
+    background-color: #00adc1;
+
+    background-image: url(../imagenes/iconos/lupa.svg);
+    background-size: 4dvh;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    left: 2dvh;
+    top: 2dvh;
+    border-radius: 25dvh;
+    box-shadow: 0.5dvh 0.5dvh 1dvh rgba(0, 0, 0, 0.2);
+}
 .etiqueta{
     text-decoration: none;
     background-color: #e81f76;

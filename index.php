@@ -38,6 +38,7 @@
                 </div>
             </div>
             <div class="logo_pba_vertical"></div>
+            <a onclick="redirigir('botones')" class="casita_superior"></a>
         </main>
         <header class="header"id="header">
             <a href="index.php" class="logo_pba_horizontal"></a>

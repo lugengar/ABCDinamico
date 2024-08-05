@@ -5,10 +5,10 @@
 //DIRECCIONES DE DONDE TOMAR LAS IMAGENES Y PDF
 //$direccionimagen = "https://lugengar.github.io/ABC/imagenes/universidades/";
 //$direccionpdf = "https://lugengar.github.io/ABC/pdf/";
-$direccionimagen = "https://lugengar.github.io/ABCDinamico/imagenes/universidades/";
-$direccionpdf = "https://lugengar.github.io/ABCDinamico/pdf/";
-//$direccionimagen = "./imagenes/universidades/";
-//$direccionpdf = "./pdf/";
+//$direccionimagen = "https://lugengar.github.io/ABCDinamico/imagenes/universidades/";
+//$direccionpdf = "https://lugengar.github.io/ABCDinamico/pdf/";
+$direccionimagen = "./imagenes/universidades/";
+$direccionpdf = "./pdf/";
 
 function universidad($id,$nombre ,$descripcion, $imagenes){ //CREA EL CUADRO DE UNIVERSIDAD
     global $direccionimagen;
@@ -293,7 +293,9 @@ function carrusel($nombre,$ubicacion,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
         </div>';
         
     }
-    echo'<a href="index.php" class="logo_pba_vertical"></a> <a href="index.php" class="casita_superior"></a>';
+    echo'<a href="index.php" class="logo_pba_vertical"></a> 
+    <a href="index.php" class="casita_superior"></a>
+     <a onclick="redirigir('."'".'mapa'."'".')" class="informacion_superior"></a>';
 }
 function carrera($id,$nombre,$descripcion, $id_establecimiento){ //CREA EL CUADRO DE LAS CARRERAS
     echo ('
