@@ -15,7 +15,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "abc_bd";
+        $dbname = "abc";
 
         $conexionDatos = new mysqli($servername, $username, $password, $dbname);
 
@@ -46,7 +46,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "abc_bd";
+        $dbname = "abc";
         
         // Crear conexión
         $conexionDatos = new mysqli($servername, $username, $password, $dbname);
@@ -80,7 +80,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "abc_bd";
+        $dbname = "abc";
 
         // Crear conexión
         $conn = new mysqli($servername, $username, $password, $dbname);
