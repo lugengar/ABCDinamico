@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="logo_pba_vertical"></div>
-            <a onclick="redirigir('identificador2')" class="casita_superior"></a>
+            <a onclick="redirigir('identificador1')" class="casita_superior"></a>
         </main>
         <header class="header" id="header">
             <a href="index.php" class="logo_pba_horizontal " ></a>

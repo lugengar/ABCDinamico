@@ -312,20 +312,20 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
     echo ('
         <div class="barraseparadora"></div>
         <div class="barraseparadora" id="plan" style="transform: translateY(-20dvh);opacity:0%;z-index:1;"></div>
-        <div class="universidad" style="height: 55dvh;">  
+        <div class="universidad" style="height: 50dvh;">  
             <div class="imageninfo" style="background-image: url(imagenes/iconos/diploma.svg);"></div>
             <div class="barrauni"></div>
             <h1 class="nombreuni">'.$titulo.'</h1>
-            <p class="descripcionuni" style="height: 20dvh;"> '.$descripcion.'</p>
+            <p class="descripcionuni" style="height: 15dvh;"> '.$descripcion.'</p>
         </div>
        ');
        if($pdf != null){ 
         echo (' 
-            <div class="universidad" style="height: 55dvh;"> 
+            <div class="universidad" style="height: 50dvh;"> 
                 <div class="imageninfo"style="background-image: url(imagenes/iconos/recurso.svg);"></div>
                 <div class="barrauni"></div>
                 <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>
-                <p class="descripcionuni"style="height: 15dvh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>
+                <p class="descripcionuni"style="height: 10Dvh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>
                 <button class="botonuni pop"  id="pdf-containerb"  >VER RECURSO</button>
             </div>
             <div id="pdf-container" popover class="pop2">
@@ -339,11 +339,11 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
     if($haycorreo == true){ // EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
        
          echo ('
-        <div class="universidad" style="height: 55dvh;"> 
+        <div class="universidad" style="height: 50dvh;"> 
             <div class="imageninfo"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
             <div class="barrauni"></div>
             <h1 class="nombreuni">CONSULTAR INSCRIPCIÓN</h1>
-            <p class="descripcionuni" style="height: 15dvh;">El siguiente botón nos enviará a un formulario donde podremos consultar la inscripción a travez del correo oficial del establecimiento.</p>
+            <p class="descripcionuni" style="height: 10dvh;">El siguiente botón nos enviará a un formulario donde podremos consultar la inscripción a travez del correo oficial del establecimiento.</p>
             <a class="botonuni" href="#formulariodecontacto">INSCRIBIRME</a>
         </div>   
     ');
