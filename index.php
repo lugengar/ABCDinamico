@@ -72,7 +72,7 @@
 
                 <button class="boton pop" >
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
-                    <h1>Buscar por distrito</h1>
+                    <h1>Buscar universidad por distrito</h1>
                 </button>
 
 
