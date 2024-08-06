@@ -53,7 +53,7 @@
                 <!-- ACA VA EL DIV O LO Q SEA DEL MAPA. EL TAMAÑO SE AJUSTA AUTOMATICAMENTE-->
                 <div id="mapa">
                     <p>Hola</p>
-                    <img id="imagenmapa" src="./imagenes/otros/mapa.svg" alt="">
+                    <img id="imagenmapa" src="./imagenes/otros/mapa2.svg" alt="">
                     <img class="puntero" src="./imagenes/otros/puntero.svg" alt="">
                     <style>
                         /*POR SI QUERES AGREGAR ESTILOS DESDE ACÁ*/
