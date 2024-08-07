@@ -320,19 +320,36 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
         </div>
        ');
        if($pdf != null){ 
-        echo (' 
-            <div class="universidad" style="height: 50dvh;"> 
+           
+            echo '<div class="universidad" style="height: 50dvh;"> 
                 <div class="imageninfo"style="background-image: url(imagenes/iconos/recurso.svg);"></div>
                 <div class="barrauni"></div>
                 <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>
                 <p class="descripcionuni"style="height: 10Dvh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>
-                <button class="botonuni pop"  id="pdf-containerb"  >VER RECURSO</button>
-            </div>
-            <div id="pdf-container" popover class="pop2">
-                <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
-                <embed class="pdf-viewer" src="'.arreglarpdf($pdf).'" type="application/pdf" />
-            </div>
-        ');
+                
+            
+            ';
+            if($pdf->num_rows > 1){
+                foreach($pdf as $key => $pdff) {
+                    echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO '.$key."".$pdff["pdf"].'</button>';
+                }
+                echo '</div>';
+                foreach($pdf as $key => $pdff) {
+                    echo '<div id="pdf-container" popover class="pop2">
+                        <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
+                        <embed class="pdf-viewer" src="'.arreglarpdf($pdff["pdf"]).'" type="application/pdf" />
+                    </div>';
+                }
+            }else{
+                $row = $pdf->fetch_assoc();
+                echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO</button></div>';
+                echo '<div id="pdf-container" popover class="pop2">
+                        <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
+                        <embed class="pdf-viewer" src="'.arreglarpdf($row["pdf"]).'" type="application/pdf" />
+                </div>';
+            }
+                
+            
        }
     global $haycorreo;
 

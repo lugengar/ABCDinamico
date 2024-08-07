@@ -24,8 +24,8 @@ if (isset($_GET['carrera'])) {
         $sql2 = "SELECT * FROM carrera WHERE id_carrera = ".$busqueda;
         $titulo = $conn->query($sql2);
         $row2 = $titulo->fetch_assoc();
-        $row = $result->fetch_assoc();
-        info_carrera($row2["titulo"],$row2["descripcion"],$row["pdf"],null);
+       
+        info_carrera($row2["titulo"],$row2["descripcion"],$result,null);
     }
     $stmt->close();
     $conn->close();
