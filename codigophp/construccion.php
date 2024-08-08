@@ -359,7 +359,7 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
             <div class="barrauni"></div>
             <h1 class="nombreuni">CONSULTAR INSCRIPCIÓN</h1>
             <p class="descripcionuni" style="height: 10dvh;">El siguiente botón nos enviará a un formulario donde podremos consultar la inscripción a travez del correo oficial del establecimiento.</p>
-            <a class="botonuni" href="#formulariodecontacto">INSCRIBIRME</a>
+            <a class="botonuni" onclick="redirigir('."'".'identificador1'."'".')">INSCRIBIRME</a>
         </div>   
     ');
     }

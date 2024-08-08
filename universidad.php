@@ -43,15 +43,15 @@
                 </button>
                 <button class="boton" onclick="barradebusqueda('carrera')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/sombrero.svg);"></div>
-                    <h1>Buscar carreras e ingenierías</h1>
+                    <h1>Buscar por nombre de Carrera</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('tecnicatura')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/diploma.svg);"></div>
-                    <h1>Buscar tecnicaturas y terciarios</h1>
+                    <h1>Buscar por nombre de Tecnicatura</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('nombre')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/nombre.svg);"></div>
-                    <h1>Buscar por nombre</h1>
+                    <h1>Buscar por nombre de manera general</h1>
                 </button>
             </div>
             <form class="barradebusqueda activo" id="nombre" method="GET" action="./universidad.php#identificador2">
