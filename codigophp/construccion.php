@@ -243,7 +243,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                     <input type="hidden" id="receptor" name="receptor" value="'.$inscripcion.'" required>
                     <input type="hidden" id="email" name="email" required placeholder="Correo">
                     <textarea id="message" name="message" required placeholder="Mensaje">Hola. Me gustaría obtener información sobre el proceso de inscripción. Muchas gracias.</textarea>
-                    <button class="botonuni" type="submit">Enviar</button>
+                    <button  class="botonuni inscribirse" type="submit">Enviar</button>
                 </form> 
                 ');
             }
@@ -361,6 +361,7 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
             <p class="descripcionuni" style="height: 10dvh;">El siguiente botón nos enviará a un formulario donde podremos consultar la inscripción a travez del correo oficial del establecimiento.</p>
             <a class="botonuni" onclick="redirigir('."'".'identificador1'."'".')">INSCRIBIRME</a>
         </div>   
+
     ');
     }
 }

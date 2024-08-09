@@ -1,6 +1,7 @@
 //SE ENCARGA DE HACER UTILES LOS BOTONES DE LOS CARRUCELES
-const circulos2 = document.querySelectorAll('.circulo2');
+const imagenes = document.querySelectorAll('.imagen');
 
+if(imagenes.length > 1){
 circulos2.forEach((circulo) => {
     circulo.addEventListener('click', () => {
         let imagenes = circulo.parentNode.parentNode.querySelectorAll(".imagenuni")
@@ -13,10 +14,10 @@ circulos2.forEach((circulo) => {
         imagenes[index].classList.add('activo');
     });
 });
+const circulos2 = document.querySelectorAll('.circulo2');
     
 
 const circulos = document.querySelectorAll('.circulo');
-const imagenes = document.querySelectorAll('.imagen');
 let currentIndex = 0;
 let intervalId;
 let click = false;
@@ -61,3 +62,4 @@ circulos.forEach((circulo, index) => {
 });
 
 resetInterval();
+}

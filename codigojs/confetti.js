@@ -3,7 +3,6 @@
 let click = false;
 document.querySelectorAll(".inscribirse").forEach(element => {
     element.addEventListener('click', function(event) {
-        event.preventDefault();
         if(click == false){
             click = true;
             createConfetti();

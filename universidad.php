@@ -124,4 +124,5 @@
 <script src="codigojs/enviarcorreo.js"></script>
 <script src="codigojs/scroll.js"></script>
 <script src="codigojs/ventanas.js"></script>
+<script src="codigojs/confetti.js"></script>
         
