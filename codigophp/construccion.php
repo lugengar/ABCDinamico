@@ -157,13 +157,14 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
     '<p class="redsocial2" style="background-image: url(imagenes/iconos/calefaccion.svg);">Cuenta con calefacción</p>',
     '<p class="redsocial2" style="background-image: url(imagenes/iconos/wifi.svg);">Cuenta con WIFI</p>',
     '<p class="redsocial2" style="background-image: url(imagenes/iconos/comedor.svg);">Cuenta con comedor</p>'];
-    if($haycorreo == true){
+   /* if($haycorreo == true){
         echo '<div class="informacion lista3" style="padding-top: 5dvh;">';
 
     }else{
         echo '<div class="informacion lista4" style="padding-top: 5dvh;">';
-    }
-        echo ('
+    }*/
+        echo (' 
+       
     <div class="identificador" id="identificador1" style="top: 100dvh;"></div>
         <div class="universidad horizontal" id="info">  
             <div class="imageninfo2" style="background-image: url(imagenes/iconos/informacion.svg);"></div>
@@ -201,6 +202,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
             <div class="lista5" style="gap: 0vh;">
             <h1 class="nombreuni">CONTACTO Y REDES SOCIALES</h1>');
             $inscripcion = null;
+            $correo = null;
             
        
             if($contactos->num_rows > 0){
@@ -222,6 +224,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                 foreach($contactos as $key => $contacto) {
                     if($contacto["tipo"] == "correo"){
                         echo '<a class="redsocial2 " style="background-image: url(imagenes/iconos/'.$contacto["tipo"].'.svg);" href="mailto:inscripcion@'.$contacto["contacto"].'" >Enviar correo</a>';
+                        $correo = $contacto["contacto"];
                     }else if($contacto["tipo"] == "telefono"){
                         echo '<a class="redsocial2 " style="background-image: url(imagenes/iconos/'.$contacto["tipo"].'.svg);" href="tel:'.arreglar_telefono($contacto["contacto"]).'" >Llamar por telefono</a>';
                     }else{
@@ -238,16 +241,18 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                 <form class="universidad " id="formulariodecontacto"> 
                     <div class="imageninfo"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
                     <div class="barrauni"></div>
-                    <h1 class="nombreuni">CONSULTAR INSCRIPCIÓN</h1>
-                    <input type="hidden" id="name" name="name" required placeholder="Nombre">
-                    <input type="hidden" id="receptor" name="receptor" value="'.$inscripcion.'" required>
-                    <input type="hidden" id="email" name="email" required placeholder="Correo">
-                    <textarea id="message" name="message" required placeholder="Mensaje">Hola. Me gustaría obtener información sobre el proceso de inscripción. Muchas gracias.</textarea>
+                    <h1 class="nombreuni">SOLICITAR MAS INFORMACIÓN</h1>
+                    <input type="text" id="name" name="name" required placeholder="Nombre">
+                    <input type="hidden" id="receptor" name="receptor" value="'.$correo.'" required>
+                    <input type="mail" id="email" name="email" required placeholder="Correo">
+                    <textarea id="message" name="message" required placeholder="Hola. Me gustaría obtener información sobre.."></textarea>
                     <button  class="botonuni inscribirse" type="submit">Enviar</button>
                 </form> 
                 ');
             }
-            echo'</div>';   
+            //echo'</div>';   
+
+    
 
 }
 function carrusel($nombre,$ubicacion,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
@@ -309,19 +314,23 @@ function carrera($id,$nombre,$descripcion, $id_establecimiento){ //CREA EL CUADR
     ');
 }
 function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN DE ESTUDIO Y LA INFO DE LA CARRERA
-    echo ('
+    /* echo ('
         <div class="barraseparadora"></div>
-        <div class="barraseparadora" id="plan" style="transform: translateY(-20dvh);opacity:0%;z-index:1;"></div>
-        <div class="universidad" style="height: 50dvh;">  
+        <div class="barraseparadora" id="plan" style="transform: translateY(-20dvh);opacity:0%;z-index:1;"></div>');
+*/
+    echo('
+        <div class="universidad " id="carreraelegida">  
             <div class="imageninfo" style="background-image: url(imagenes/iconos/diploma.svg);"></div>
             <div class="barrauni"></div>
+          
             <h1 class="nombreuni">'.$titulo.'</h1>
             <p class="descripcionuni" style="height: 15dvh;"> '.$descripcion.'</p>
+          
         </div>
        ');
        if($pdf != null){ 
             if($pdf->num_rows > 0){
-                echo '<div class="universidad" style="height: 50dvh;"> 
+               echo '<div class="universidad" id="plan"> 
                     <div class="imageninfo"style="background-image: url(imagenes/iconos/recurso.svg);"></div>
                     <div class="barrauni"></div>
                     <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>
@@ -350,11 +359,11 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
             }  
        }
     global $haycorreo;
-
+/*
     if($haycorreo == true){ // EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
        
          echo ('
-        <div class="universidad" style="height: 50dvh;"> 
+        <div class="universidad" id="establecimiento"> 
             <div class="imageninfo"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
             <div class="barrauni"></div>
             <h1 class="nombreuni">CONSULTAR INSCRIPCIÓN</h1>
@@ -363,7 +372,7 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
         </div>   
 
     ');
-    }
+    }*/
 }
 ?>
 

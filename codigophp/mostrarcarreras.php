@@ -76,9 +76,12 @@ if($result != null){
     if ($result->num_rows == 0) {
         echo "<p class= 'error' >No se encontraron resultados para la búsqueda: " . htmlspecialchars($busqueda)."</p>";
     }else{
+        echo '<div class="universidades lista2" style="position:relative;">';
         while ($row2 = $result->fetch_assoc()) {
             carrera($row2["id_carrera"], $row2["nombre"], $row2["descripcion"],$row["id_establecimiento"]); #$row["imagenes"]);
         }
+        echo '</div>';
+
     }
 $stmt->close();
 

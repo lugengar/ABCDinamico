@@ -156,6 +156,7 @@
         <footer class="footer">
             <div class="imagenfooter"></div>
             <div class="logo_pba_vertical2"></div>
+            <div class="logodte"></div>
 
             <div class="textofooter">
                 <h1>&copy; 2024 Escuela Secundaria Técnica N1 Vicente Lopez. Todos los derechos reservados.</h1>
