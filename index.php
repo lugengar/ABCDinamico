@@ -62,7 +62,7 @@
             </div>
 
 
-            <div class="identificador" id="identificador1" style="top: 100dvh;"></div>
+            <div class="identificador" id="identificador1" style="top: 100vh;"></div>
             <div class="botones" id="botones">
 
 
@@ -139,7 +139,7 @@
                 <input type="submit" name="" value="Buscar">
             </form>
             <div class="universidades" id="uni" style="padding-top:0vh; position:relative;">
-            <div class="identificador" id="identificador2" style="top: -20dvh;"></div>
+            <div class="identificador" id="identificador2" style="top: -20vh;"></div>
 
                 <?php
                     etiqueta();

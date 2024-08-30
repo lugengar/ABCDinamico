@@ -34,11 +34,11 @@
         </main>
         <header class="header" id="header">
             <a href="index.php" class="logo_pba_horizontal " ></a>
-    <a href="formulario.php" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4dvh;"></div></a>
+    <a href="formulario.php" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4vh;"></div></a>
         </header>
         
         <main class="main">
-            <div class="informacion lista" style="padding-top: 5dvh;">
+            <div class="informacion lista" style="padding-top: 5vh;">
                 <div class="universidad " id="info">  
                     <div class="imageninfo" style="background-image: url(imagenes/iconos/informacion.svg);"></div>
                     <div class="barrauni"></div>
@@ -88,9 +88,9 @@
                 </form> 
 
             </div>
-            <div class="botones" id="botones" style="padding-top:0dvh;" >
+            <div class="botones" id="botones" style="padding-top:0vh;" >
                 <button class="boton" onclick="window.location.href='./index.php'">
-                    <div class="imagenboton" style="background-image: url(imagenes/iconos/lupa.svg); background-size: 13dvh;"></div>
+                    <div class="imagenboton" style="background-image: url(imagenes/iconos/lupa.svg); background-size: 13vh;"></div>
                     <h1>Buscar otra universidad</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('carrera')">
@@ -162,7 +162,7 @@
                 <div class="universidad"> 
                     <div class="imageninfo"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
                     <div class="barrauni"></div>
-                    <h1 class="nombreuni" style="padding-bottom: 5dvh;">CONSULTAR INSCRIPCIÓN</h1>
+                    <h1 class="nombreuni" style="padding-bottom: 5vh;">CONSULTAR INSCRIPCIÓN</h1>
                     <a class="botonuni" href='#formulariodecontacto'>INSCRIBIRME</a>
                 </div>   
                 

@@ -7,7 +7,7 @@ if (isset($_GET['universidad'])) {
     $universidad = $_GET['universidad'];
 
     $stmt = $conn->prepare("
-        SELECT e.id_establecimiento, e.ubicacion, e.servicios, e.nombre AS nombre_universidad, e.descripcion, d.nombre AS nombre_distrito
+        SELECT e.id_establecimiento, e.ubicacion,e.tipo_establecimiento, e.servicios, e.nombre AS nombre_universidad, e.descripcion, d.nombre AS nombre_distrito
         FROM establecimiento e
         INNER JOIN distrito d ON e.fk_distrito = d.id_distrito
         WHERE e.id_establecimiento = ?

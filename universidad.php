@@ -23,15 +23,15 @@
     <div class="container" id="container">
         <main class="carrusel">
             <?php
-                carrusel($row["nombre_universidad"], $row["ubicacion"], $imagenes);
+                carrusel($row["nombre_universidad"], $row["tipo_establecimiento"], $imagenes);
             ?>
         </main>
         <header class="header" id="header">
             <a href="index.php" class="logo_pba_horizontal " ></a>
-            <a href="index.php" class="boton_nose_que_estudiar">Inicio<div class="circulopregunta" style="background-image: url(imagenes/iconos/casa.svg); background-size: 4dvh;"></div></a>
+            <a href="index.php" class="boton_nose_que_estudiar">Inicio<div class="circulopregunta" style="background-image: url(imagenes/iconos/casa.svg); background-size: 4vh;"></div></a>
         </header>
         <main class="main">
-        <div class="informacion lista3" style="padding-top: 5dvh;">
+        <div class="informacion lista3" style="padding-top: 5vh;">
             <?php
             //MUESTRA TODA LA INFO DE LA UNIVERSIDAD
             info_universidad($row["descripcion"],$row["ubicacion"],$row["servicios"],$row["nombre_distrito"],$row["nombre_universidad"],$contactos);
@@ -42,7 +42,7 @@
                 require "./codigophp/mostrarplandeestudio.php";
             ?>
             </div>
-            <div class="botones" id="botones" style="padding-top:0dvh;" >
+            <div class="botones" id="botones" style="padding-top:0vh;" >
   
                 <button class="boton" onclick="barradebusqueda('carrera')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/sombrero.svg);"></div>
@@ -80,7 +80,7 @@
             </form>
 
             <div class="universidades lista" style="position:relative;">
-            <div class="identificador" id="identificador2" style="top: -20dvh;"></div>
+            <div class="identificador" id="identificador2" style="top: -20vh;"></div>
 
             <?php
             //MUESTRA TODAS LAS CARRERAS DE LA UNIVERSIDAD

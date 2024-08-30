@@ -10,7 +10,7 @@
 $direccionimagen = "./imagenes/universidades/";
 $direccionpdf = "./pdf/";
 
-function universidad($id,$nombre ,$descripcion, $imagenes){ //CREA EL CUADRO DE UNIVERSIDAD
+function universidad($id,$nombre ,$descripcion, $imagenes,$carreras){ //CREA EL CUADRO DE UNIVERSIDAD
     global $direccionimagen;
     echo '<div class="universidad">';
     if($imagenes->num_rows > 0){
@@ -38,8 +38,12 @@ function universidad($id,$nombre ,$descripcion, $imagenes){ //CREA EL CUADRO DE 
         <h1 class="nombreuni">'.$nombre.'</h1>
         ');//<p class="descripcionuni">'.$descripcion.'</p>
     echo('
-        <p class="descripcionuni" style="height: 0dvh;"></p>
-        <a href="./universidad.php?universidad='.$id.'"  class="botonuni">SABER MAS..</a>
+        <p class="descripcionuni" style="height: 0vh;"></p>
+        <a href="./universidad.php?universidad='.$id);
+        if($carreras != null){
+            echo '&carrera='.$carreras.'#redes';
+        }
+        echo('"  class="botonuni">SABER MAS..</a>
     </div>
     ');
 }
@@ -158,14 +162,14 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
     '<p class="redsocial2" style="background-image: url(imagenes/iconos/wifi.svg);">Cuenta con WIFI</p>',
     '<p class="redsocial2" style="background-image: url(imagenes/iconos/comedor.svg);">Cuenta con comedor</p>'];
    /* if($haycorreo == true){
-        echo '<div class="informacion lista3" style="padding-top: 5dvh;">';
+        echo '<div class="informacion lista3" style="padding-top: 5vh;">';
 
     }else{
-        echo '<div class="informacion lista4" style="padding-top: 5dvh;">';
+        echo '<div class="informacion lista4" style="padding-top: 5vh;">';
     }*/
         echo (' 
        
-    <div class="identificador" id="identificador1" style="top: 100dvh;"></div>
+    <div class="identificador" id="identificador1" style="top: 100vh;"></div>
         <div class="universidad horizontal" id="info">  
             <div class="imageninfo2" style="background-image: url(imagenes/iconos/informacion.svg);"></div>
             <div class="barrauni3"></div>
@@ -238,15 +242,16 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
             echo'</div> </div>';
             if($haycorreo == true){// EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
                 echo ('
-                <form class="universidad " id="formulariodecontacto"> 
-                    <div class="imageninfo"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
-                    <div class="barrauni"></div>
+                <form class="universidad horizontal" id="formulariodecontacto"> 
+                    <div class="imageninfo2"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
+                    <div class="barrauni3"></div>
+                        <div class="lista5" style="gap: 0vh;">
                     <h1 class="nombreuni">SOLICITAR MAS INFORMACIÓN</h1>
-                    <input type="text" id="name" name="name" required placeholder="Nombre">
                     <input type="hidden" id="receptor" name="receptor" value="'.$correo.'" required>
                     <input type="mail" id="email" name="email" required placeholder="Correo">
                     <textarea id="message" name="message" required placeholder="Hola. Me gustaría obtener información sobre.."></textarea>
                     <button  class="botonuni inscribirse" type="submit">Enviar</button>
+                    </div>
                 </form> 
                 ');
             }
@@ -255,7 +260,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
     
 
 }
-function carrusel($nombre,$ubicacion,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
+function carrusel($nombre,$tipo,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
     global $direccionimagen;
     if($imagenes->num_rows > 0){
         echo '<div class="imagenes">';
@@ -271,10 +276,10 @@ function carrusel($nombre,$ubicacion,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
         echo '</div>
         <div class="filtro">
         <div class="contenidotexto">
-                <h1 class="texto1">'.$nombre.'</h1>
+                <h1 class="texto1">'.$tipo.'</h1>
         </div>
         <div class="contenidotexto">
-            <h1 class="texto2">'.$ubicacion.'</h1>
+            <h1 class="texto2">'.$nombre.'</h1>
         </div>';
         if($imagenes->num_rows > 1){
             echo '<div class="circulos">';
@@ -304,38 +309,60 @@ function carrusel($nombre,$ubicacion,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
 }
 function carrera($id,$nombre,$descripcion, $id_establecimiento){ //CREA EL CUADRO DE LAS CARRERAS
     echo ('
-        <form class="universidad carrera" method="GET" action="./universidad.php#plan" style="height: 45dvh; overflow-y: hidden;">
+        <form class="universidad carrera" method="GET" action="./universidad.php#redes" style="height: 45vh; overflow-y: hidden;">
             <h1 class="nombreuni" >'.$nombre.'</h1>
-            <p class="descripcionuni"style="height: 20dvh;">'.$descripcion.'</p>
+            <p class="descripcionuni"style="height: 20vh;">'.$descripcion.'</p>
             <input type="submit" value="SABER MAS.." class="botonuni"></button>
             <input type="hidden" name="universidad" value="'.$id_establecimiento.'" required>
             <input type="hidden" name="carrera" value="'.$id.'" required>
         </form>
     ');
 }
-function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN DE ESTUDIO Y LA INFO DE LA CARRERA
+function info_carrera($titulo,$descripcion, $pdf, $carrera,$establecimientos){ //MUESTRA EL PLAN DE ESTUDIO Y LA INFO DE LA CARRERA
     /* echo ('
         <div class="barraseparadora"></div>
-        <div class="barraseparadora" id="plan" style="transform: translateY(-20dvh);opacity:0%;z-index:1;"></div>');
+        <div class="barraseparadora" id="plan" style="transform: translateY(-20vh);opacity:0%;z-index:1;"></div>');
 */
     echo('
-        <div class="universidad " id="carreraelegida">  
-            <div class="imageninfo" style="background-image: url(imagenes/iconos/diploma.svg);"></div>
-            <div class="barrauni"></div>
+        <div class="universidad horizontal" id="carreraelegida">  
+            <div class="imageninfo2" style="background-image: url(imagenes/iconos/diploma.svg);"></div>
+            <div class="barrauni3"></div>
+            <div class="lista5" style="gap: 0vh;">
           
             <h1 class="nombreuni">'.$titulo.'</h1>
-            <p class="descripcionuni" style="height: 15dvh;"> '.$descripcion.'</p>
-          
+            <p class="descripcionuni" style="height: 15vh;"> '.$descripcion.'</p>
+          </div>
         </div>
        ');
+       if($establecimientos != null){
+            echo '<div class="universidad horizontal" id="establecimiento"> 
+            <div class="imageninfo2"style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
+            <div class="barrauni3"></div>
+            <div class="lista5" style="gap: 0vh;">
+
+            <h1 class="nombreuni">TAMBIEN SE CURSA EN</h1><p class="descripcionuni">
+            Podemos cursar "'.$titulo.'" en los siguientes institutos:<br>';
+            foreach($establecimientos as $key => $establecimiento) {
+                echo '<a href="./universidad.php?universidad='.$establecimiento["id_establecimiento"].'&carrera='.$carrera.'#redes">- '.$establecimiento["nombre"].'</a> <br>';
+            }
+            echo'</p>
+                        
+                    </div>
+                </div>
+            ';
+       }
+
+
        if($pdf != null){ 
             if($pdf->num_rows > 0){
+            
                echo '<div class="universidad" id="plan"> 
                     <div class="imageninfo"style="background-image: url(imagenes/iconos/recurso.svg);"></div>
                     <div class="barrauni"></div>
                     <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>
+                    <p class="descripcionuni"style="height: 10vh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>
                 ';
-            
+              
                 if($pdf->num_rows > 1){
                     foreach($pdf as $key => $pdff) {
                         echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO '.($key +1).'</button>';
@@ -349,8 +376,7 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
                     }
                 }else{
                     $row = $pdf->fetch_assoc();
-                    echo '<p class="descripcionuni"style="height: 10Dvh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>
-                    <button class="botonuni pop" id="pdf-containerb">VER RECURSO</button></div>';
+                    echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO</button></div>';
                     echo '<div id="pdf-container" popover class="pop2">
                             <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
                             <embed class="pdf-viewer" src="'.arreglarpdf($row["pdf"]).'" type="application/pdf" />
@@ -367,7 +393,7 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera){ //MUESTRA EL PLAN D
             <div class="imageninfo"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
             <div class="barrauni"></div>
             <h1 class="nombreuni">CONSULTAR INSCRIPCIÓN</h1>
-            <p class="descripcionuni" style="height: 10dvh;">El siguiente botón nos enviará a un formulario donde podremos consultar la inscripción a travez del correo oficial del establecimiento.</p>
+            <p class="descripcionuni" style="height: 10vh;">El siguiente botón nos enviará a un formulario donde podremos consultar la inscripción a travez del correo oficial del establecimiento.</p>
             <a class="botonuni" onclick="redirigir('."'".'identificador1'."'".')">INSCRIBIRME</a>
         </div>   
 
