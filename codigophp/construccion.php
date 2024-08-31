@@ -307,22 +307,34 @@ function carrusel($nombre,$tipo,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
     <a href="index.php" class="casita_superior"></a>
     <a onclick="redirigir('."'".'identificador1'."'".')" class="informacion_superior"></a>';
 }
-function carrera($id,$nombre,$descripcion, $id_establecimiento){ //CREA EL CUADRO DE LAS CARRERAS
+function carrera($id,$nombre,$descripcion, $id_establecimiento,$titulo){ //CREA EL CUADRO DE LAS CARRERAS
+    $tipo = "";
+    if($titulo[0] == "T"){
+        $tipo = "tecnicatura";
+    }else{
+        $tipo = "carrera";
+    }
     echo ('
         <form class="universidad carrera" method="GET" action="./universidad.php#redes" style="height: 45vh; overflow-y: hidden;">
             <h1 class="nombreuni" >'.$nombre.'</h1>
+          
             <p class="descripcionuni"style="height: 20vh;">'.$descripcion.'</p>
             <input type="submit" value="SABER MAS.." class="botonuni"></button>
             <input type="hidden" name="universidad" value="'.$id_establecimiento.'" required>
             <input type="hidden" name="carrera" value="'.$id.'" required>
+            <input type="hidden" class="'.$tipo.'indice" name="titulo" value="'.$titulo.'" required>
         </form>
     ');
 }
+$establecimientoactual = $row;
+
 function info_carrera($titulo,$descripcion, $pdf, $carrera,$establecimientos){ //MUESTRA EL PLAN DE ESTUDIO Y LA INFO DE LA CARRERA
     /* echo ('
         <div class="barraseparadora"></div>
         <div class="barraseparadora" id="plan" style="transform: translateY(-20vh);opacity:0%;z-index:1;"></div>');
 */
+global $establecimientoactual;
+
     echo('
         <div class="universidad horizontal" id="carreraelegida">  
             <div class="imageninfo2" style="background-image: url(imagenes/iconos/diploma.svg);"></div>
@@ -340,10 +352,12 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera,$establecimientos){ /
             <div class="barrauni3"></div>
             <div class="lista5" style="gap: 0vh;">
 
-            <h1 class="nombreuni">TAMBIEN SE CURSA EN</h1><p class="descripcionuni">
+            <h1 class="nombreuni">TAMBIEN SE CURSA EN</h1><p class="descripcionuni" style="height: 25dvh;">
             Podemos cursar "'.$titulo.'" en los siguientes institutos:<br>';
             foreach($establecimientos as $key => $establecimiento) {
-                echo '<a href="./universidad.php?universidad='.$establecimiento["id_establecimiento"].'&carrera='.$carrera.'#redes">- '.$establecimiento["nombre"].'</a> <br>';
+                if($establecimientoactual["id_establecimiento"] != $establecimiento["id_establecimiento"]){
+                    echo '- <a href="./universidad.php?universidad='.$establecimiento["id_establecimiento"].'&carrera='.$carrera.'#redes">'.$establecimiento["nombre"].'</a> <br>';
+                }
             }
             echo'</p>
                         

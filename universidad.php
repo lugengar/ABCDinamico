@@ -86,8 +86,7 @@
             //MUESTRA TODAS LAS CARRERAS DE LA UNIVERSIDAD
                 require "./codigophp/mostrarcarreras.php";
             ?>
-           
-    
+            <p class='error' style="display:none;" >No se encontraron resultados</p>
             </div>
              <div class="barradebusqueda volverarriba">
                 <img src="imagenes/iconos/flecha.svg" alt="">

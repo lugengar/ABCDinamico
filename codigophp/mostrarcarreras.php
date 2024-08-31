@@ -78,7 +78,7 @@ if($result != null){
     }else{
         echo '<div class="universidades lista2" style="position:relative;">';
         while ($row2 = $result->fetch_assoc()) {
-            carrera($row2["id_carrera"], $row2["nombre"], $row2["descripcion"],$row["id_establecimiento"]); #$row["imagenes"]);
+            carrera($row2["id_carrera"], $row2["nombre"], $row2["descripcion"],$row["id_establecimiento"],$row2["titulo"]); #$row["imagenes"]);
         }
         echo '</div>';
 
