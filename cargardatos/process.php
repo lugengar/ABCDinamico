@@ -42,7 +42,7 @@ if ($tabla === "carrera") {
     // Manejar la subida del archivo PDF
     if (isset($_FILES['pdf']) && $_FILES['pdf']['error'] === UPLOAD_ERR_OK) {
         $pdf_file = $_FILES['pdf'];
-        $upload_dir = 'pdf/';
+        $upload_dir = '../pdf/';
         $pdf_name = basename($pdf_file['name']);
         $upload_file = $upload_dir . $pdf_name;
 
