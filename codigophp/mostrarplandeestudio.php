@@ -6,8 +6,8 @@ include "./codigophp/conexionbs.php";
 // Validar y limpiar el parámetro de búsqueda
 if (isset($_GET['carrera']) && isset($_GET['universidad'])) {
 
-    $busqueda = $_GET['carrera'];
-    $universidad = $_GET['universidad'];
+    $busqueda = filter_var($_GET['carrera'], FILTER_SANITIZE_SPECIAL_CHARS);
+    $universidad = filter_var($_GET['universidad'], FILTER_SANITIZE_SPECIAL_CHARS);
 
     // Preparar la consulta usando una consulta preparada
     $stmt = $conn->prepare("SELECT * FROM planestudio WHERE fk_carrera = ? AND fk_establecimiento = ?");

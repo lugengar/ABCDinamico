@@ -42,7 +42,7 @@ function buscardistritos(){ //BUSCA LOS DISTRITOS PARA MOSTRARLOS
 }
 function etiqueta(){
     if (isset($_GET['busqueda']) & isset($_GET['tipo'])) {
-        $busqueda = $_GET['busqueda'];
+        $busqueda = filter_var($_GET['busqueda'], FILTER_SANITIZE_SPECIAL_CHARS);
         echo '<div class="etiquetas"><a href="index.php#identificador2" id="etiqueta" class="etiqueta">Eliminar busqueda: '.$busqueda.'</a></div> <div class="barraseparadora" ></div>';
     }
 }
@@ -56,8 +56,8 @@ function buscar(){ //BUSCA EN GENERAL POR LOS 4 MEDIOS DISTRITO, TECNICO,LICENCI
 // Validar y limpiar el parámetro de búsqueda
 if (isset($_GET['busqueda']) & isset($_GET['tipo'])) {
 
-    $busqueda = $_GET['busqueda'];
-    $tipo = $_GET['tipo'];
+    $busqueda = filter_var($_GET['busqueda'], FILTER_SANITIZE_SPECIAL_CHARS);
+    $tipo = filter_var($_GET['tipo'], FILTER_SANITIZE_SPECIAL_CHARS);
     $param = "%$busqueda%";
     // Preparar la consulta usando una consulta preparada
     if($tipo == "nombre"){    

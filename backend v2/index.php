@@ -92,7 +92,7 @@
 
         // Verificar si 'tipo' está definido y es válido
         if (isset($_GET['tipo']) && in_array($_GET['tipo'], ['nombre', 'distrito', 'carrera', 'tecnicatura'])) {
-            $tipo = $_GET['tipo'];
+            $tipo = filter_var($_GET['tipo'], FILTER_SANITIZE_SPECIAL_CHARS);
             $busqueda = $_GET[$tipo] ?? '';
 
             // Construir la consulta SQL según el tipo de búsqueda

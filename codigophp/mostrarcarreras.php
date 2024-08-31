@@ -4,7 +4,7 @@ $result = null;
 include "./codigophp/conexionbs.php";
 $carreras= null;
 if(isset($_GET['universidad'])){
-    $universidad = $_GET['universidad'];
+    $universidad = filter_var($_GET['universidad'], FILTER_SANITIZE_SPECIAL_CHARS);
     $sql3 = "SELECT * FROM planestudio WHERE fk_establecimiento = ".$universidad;
     $idcarreras = $conn->query($sql3);
     $carreras= [];
@@ -15,15 +15,15 @@ if(isset($_GET['universidad'])){
 }
 // Validar y limpiar el parámetro de búsqueda
 if(isset($_GET['universidad']) && isset($_GET['busqueda']) ){
-    $universidad = $_GET['universidad'];
-    $busqueda = $_GET['busqueda'];
+    $universidad = filter_var($_GET['universidad'], FILTER_SANITIZE_SPECIAL_CHARS);
+    $busqueda = filter_var($_GET['busqueda'], FILTER_SANITIZE_SPECIAL_CHARS);
     echo '<div class="etiquetas"><a id="etiqueta"href="universidad.php?universidad='.$universidad.'#identificador2" class="etiqueta">Eliminar busqueda: '.$busqueda.'</a></div> <div class="barraseparadora" ></div>';
 }
 if (isset($_GET['busqueda']) && isset($_GET['tipo']) && $carreras != null) {
 
-    $busqueda = $_GET['busqueda'];
+    $busqueda = filter_var($_GET['busqueda'], FILTER_SANITIZE_SPECIAL_CHARS);
     
-    $tipo = $_GET['tipo'];
+    $tipo = filter_var($_GET['tipo'], FILTER_SANITIZE_SPECIAL_CHARS);
     $tec = "Técnico";
     // Preparar la consulta usando una consulta preparada
   

@@ -153,8 +153,9 @@ function arreglarpdf($url){ //MODIFICA EL NOMBRE DEL ARCHIVO PDF EN CASO DE QUE 
 }
 
 $haycorreo = false;
-function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contactos){ // MUESTRA TODA LA INFORMACION DE LA UNIVERSIDAD
+function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contactos,$id){ // MUESTRA TODA LA INFORMACION DE LA UNIVERSIDAD
     global $haycorreo;
+    global $secretkey1;
     
     $textocontacto = generarTextoRedesSociales($contactos);
     $todoslosservicios = ['<p class="redsocial2" style="background-image: url(imagenes/iconos/silladeruedas.svg);">Accesibilidad para sillas de ruedas.</p>',
@@ -192,9 +193,8 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
             <div class="barrauni"></div>
             <h1 class="nombreuni">UBICACIÓN</h1>
             <p class="descripcionuni">'.$ubicacion.', '.$distrito.'</p>
-            <button class="botonuni pop" id="googlemapsb">ABRIR MAPA</button>
-
-        </div>
+            './/<button class="botonuni pop" id="googlemapsb">ABRIR MAPA</button>
+        '</div>
             
         <div id="googlemaps" popover class="pop2">
             <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
@@ -242,14 +242,17 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
             echo'</div> </div>';
             if($haycorreo == true){// EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
                 echo ('
-                <form class="universidad horizontal" id="formulariodecontacto"> 
+                <form class="universidad horizontal" method="post" action="./codigophp/enviarcorreo.php" id="formulariodecontacto"> 
                     <div class="imageninfo2"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
                     <div class="barrauni3"></div>
                         <div class="lista5" style="gap: 0vh;">
                     <h1 class="nombreuni">SOLICITAR MAS INFORMACIÓN</h1>
                     <input type="hidden" id="receptor" name="receptor" value="'.$correo.'" required>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Nombre">
+                    <input type="hidden" id="universidad" name="universidad" value="'.$id.'">
                     <input type="mail" id="email" name="email" required placeholder="Correo">
-                    <textarea id="message" name="message" required placeholder="Hola. Me gustaría obtener información sobre.."></textarea>
+                    <textarea id="message" name="mensaje" required placeholder="Hola. Me gustaría obtener información sobre.."></textarea>
+                    <div class="g-recaptcha masarriba" data-sitekey="'.$secretkey1.'"></div>
                     <button  class="botonuni inscribirse" type="submit">Enviar</button>
                     </div>
                 </form> 
@@ -342,18 +345,18 @@ global $establecimientoactual;
             <div class="lista5" style="gap: 0vh;">
           
             <h1 class="nombreuni">'.$titulo.'</h1>
-            <p class="descripcionuni" style="height: 15vh;"> '.$descripcion.'</p>
+            <p class="descripcionuni" style="height: max-content;"> '.$descripcion.'</p>
           </div>
         </div>
        ');
        if($establecimientos != null){
-            echo '<div class="universidad horizontal" id="establecimiento"> 
-            <div class="imageninfo2"style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
-            <div class="barrauni3"></div>
-            <div class="lista5" style="gap: 0vh;">
+            echo '<div class="universidad" id="establecimiento"> 
+            <div class="imageninfo"style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
+            <div class="barrauni"></div>
+       
 
             <h1 class="nombreuni">TAMBIEN SE CURSA EN</h1><p class="descripcionuni" style="height: 25dvh;">
-            Podemos cursar "'.$titulo.'" en los siguientes institutos:<br>';
+            Podes cursar "'.$titulo.'" en los siguientes establecimientos:<br>';
             foreach($establecimientos as $key => $establecimiento) {
                 if($establecimientoactual["id_establecimiento"] != $establecimiento["id_establecimiento"]){
                     echo '- <a href="./universidad.php?universidad='.$establecimiento["id_establecimiento"].'&carrera='.$carrera.'#redes">'.$establecimiento["nombre"].'</a> <br>';
@@ -361,7 +364,7 @@ global $establecimientoactual;
             }
             echo'</p>
                         
-                    </div>
+                   
                 </div>
             ';
        }

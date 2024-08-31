@@ -1,4 +1,5 @@
 //CREA UN MENSAJE DE REFERENCIA PARA ENVIAR UN CORREO
+/*
 document.getElementById('formulariodecontacto').addEventListener('submit', function(event) {
     event.preventDefault(); 
     createConfetti();
@@ -17,6 +18,18 @@ document.getElementById('formulariodecontacto').addEventListener('submit', funct
 });
 
 let click = false;
+*/
+
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('enviado') && urlParams.get('enviado') === 'true') {
+    createConfetti();
+    setTimeout(cleanUpConfetti, 4000);
+}else if (urlParams.has('enviado') && urlParams.get('enviado') === 'false'){
+    document.  querySelector(".g-recaptcha").style.animation = "error 2s infinite";
+}
+
+
+// Llama a la función verificarYEjecutar cuando se cargue la página
 
 
 function createConfetti() {

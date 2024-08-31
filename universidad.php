@@ -3,7 +3,14 @@
 <head>
 <?php
         include "./codigophp/mostrar_universidad.php";
+        include "claves.php";
         include "./codigophp/construccion.php";
+        $tipo = "nombre";
+        if(isset($_GET["tipo"])){
+            if(isset($_GET["tipo"])){
+                $tipo = $_GET["tipo"];
+            }
+        }
     ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +41,7 @@
         <div class="informacion lista3" style="padding-top: 5vh;">
             <?php
             //MUESTRA TODA LA INFO DE LA UNIVERSIDAD
-            info_universidad($row["descripcion"],$row["ubicacion"],$row["servicios"],$row["nombre_distrito"],$row["nombre_universidad"],$contactos);
+            info_universidad($row["descripcion"],$row["ubicacion"],$row["servicios"],$row["nombre_distrito"],$row["nombre_universidad"],$contactos,$row["id_establecimiento"]);
             
             ?>
             <?php
@@ -57,21 +64,21 @@
                     <h1>Buscar por nombre de manera general</h1>
                 </button>
             </div>
-            <form class="barradebusqueda activo" id="nombre" method="GET" action="./universidad.php#identificador2">
+            <form class="barradebusqueda <?php if($tipo == "nombre"){echo 'activo';} ?>" id="nombre" method="GET" action="./universidad.php#identificador2">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <input type="text" name="busqueda" placeholder="Nombre de la carrera/tecnicatura" required>
                 <?php echo '<input type="hidden" name="universidad" value="'.$row["id_establecimiento"].'" required>';?>
                 <input type="hidden" name="tipo" value="nombre" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="tecnicatura" method="GET" action="./universidad.php#identificador2">
+            <form class="barradebusqueda <?php if($tipo == "tecnicatura"){echo 'activo';} ?>" id="tecnicatura" method="GET" action="./universidad.php#identificador2">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <?php echo '<input type="hidden" name="universidad" value="'.$row["id_establecimiento"].'" required>';?>
                 <input type="hidden" name="tipo" value="tecnicatura" required>
                 <input type="text"name="busqueda" placeholder="Nombre de la tecnicatura" required>
                 <input type="submit" name="" value="Buscar">
             </form>
-            <form class="barradebusqueda" id="carrera" method="GET" action="./universidad.php#identificador2">
+            <form class="barradebusqueda <?php if($tipo == "carrera"){echo 'activo';} ?>" id="carrera" method="GET" action="./universidad.php#identificador2">
                 <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <?php echo '<input type="hidden" name="universidad" value="'.$row["id_establecimiento"].'" required>';?>
                 <input type="hidden" name="tipo" value="carrera" required>
@@ -114,11 +121,11 @@
     </div>
 </body>
 </html>
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="codigojs/carrusel.js"></script>
 <script src="codigojs/botonesbarra.js"></script>
 <script src="codigojs/redirigir.js"></script>
-<script src="codigojs/enviarcorreo.js"></script>
+<script src="codigojs/confetti.js"></script>
 <script src="codigojs/scroll.js"></script>
 <script src="codigojs/ventanas.js"></script>
         

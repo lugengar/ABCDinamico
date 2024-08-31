@@ -757,9 +757,9 @@ input[type="submit"] {
 }
 .footer .logodte {
     grid-area: LOG2;
-    background-image: url(../imagenes/iconos/dteregion6.PNG);
+    background-image: url(../imagenes/iconos/dteregion6.svg);
     background-repeat: no-repeat;
-    background-size: 10vh;
+    background-size: 8vh;
     background-position: right center;
 }
 
@@ -934,6 +934,9 @@ height: max-content;
     height: auto;
     width: auto;
 }
+.masarriba{
+    transform: translateY(-3dvh);
+}
 .lista3 {
     display: grid;
     gap: 3vh;
@@ -1063,8 +1066,25 @@ body.inactive .overlay {
 .pop2  :nth-child(2)  {
     pointer-events: auto;
 }
+@keyframes error {
+    0%{
+        box-shadow: 0 0 10px red;
+
+    }
+    50%{
+        box-shadow: 0 0 10px transparent;
+
+    }
+    100%{
+        box-shadow: 0 0 10px red;
+
+    }
+}
 /*ESTILOS PARA LA VERSION DE MOBILES*/
 @media (max-width: 768px) {
+    .masarriba{
+        transform: translateY(-0.5dvh);
+    }
    
     #mapa,
     #formulariodecontacto {
@@ -1366,9 +1386,9 @@ body.inactive .overlay {
     }
     .footer .logodte {
         grid-area: LOG2;
-        background-image: url(../imagenes/iconos/dteregion6.PNG);
+        background-image: url(../imagenes/iconos/dteregion6.svg);
         background-repeat: no-repeat;
-        background-size: 10vh;
+        background-size: 8vh;
         background-position: center;
     }
     .footer .textofooter {
