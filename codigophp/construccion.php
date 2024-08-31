@@ -195,12 +195,12 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
             <p class="descripcionuni">'.$ubicacion.', '.$distrito.'</p>
             './/<button class="botonuni pop" id="googlemapsb">ABRIR MAPA</button>
         '</div>
-            
+            './*
         <div id="googlemaps" popover class="pop2">
             <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
             <iframe src="'.crearmapa($ubicacion.', '.$distrito).'" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="universidad horizontal" id="redes"> 
+        </div>*/
+        '<div class="universidad horizontal" id="redes"> 
            <div class="imageninfo2" style="background-image: url(imagenes/iconos/correo.svg);"></div>
             <div class="barrauni3"></div>
             <div class="lista5" style="gap: 0vh;">
@@ -242,7 +242,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
             echo'</div> </div>';
             if($haycorreo == true){// EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
                 echo ('
-                 <form class="universidad horizontal" method="post" action="./codigophp/enviarcorreo.php" id="formulariodecontacto" onsubmit="return verificarRecaptcha()">
+                <form class="universidad horizontal" method="post" action="./codigophp/enviarcorreo.php" id="formulariodecontacto" onsubmit="return verificarRecaptcha()">
                     <div class="imageninfo2"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
                     <div class="barrauni3"></div>
                         <div class="lista5" style="gap: 0vh;">
@@ -267,6 +267,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                     }
                 </script>
                 ');
+                
             }
             //echo'</div>';   
 
