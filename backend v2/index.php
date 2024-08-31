@@ -92,7 +92,7 @@
 
         // Verificar si 'tipo' está definido y es válido
         if (isset($_GET['tipo']) && in_array($_GET['tipo'], ['nombre', 'distrito', 'carrera', 'tecnicatura'])) {
-            $tipo = $_GET['tipo'];
+            $tipo = filter_var($_GET['tipo'], FILTER_SANITIZE_SPECIAL_CHARS);
             $busqueda = $_GET[$tipo] ?? '';
 
             // Construir la consulta SQL según el tipo de búsqueda
@@ -189,7 +189,7 @@
         </main>
         <header class="header"id="header">
             <a href="index.php" class="logo_pba_horizontal"></a>
-            <a href="./codigophp/formulario.html" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4dvh;"></div></a>
+            <a href="./codigophp/formulario.html" class="boton_nose_que_estudiar">No sé que estudiar <div class="circulopregunta" style="background-image: url(imagenes/iconos/pregunta.svg); background-size: 4vh;"></div></a>
         </header>
         
         <main class="main">
