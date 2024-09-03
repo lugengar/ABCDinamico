@@ -195,12 +195,12 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
             <p class="descripcionuni">'.$ubicacion.', '.$distrito.'</p>
             './/<button class="botonuni pop" id="googlemapsb">ABRIR MAPA</button>
         '</div>
-            
+            './*
         <div id="googlemaps" popover class="pop2">
             <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
             <iframe src="'.crearmapa($ubicacion.', '.$distrito).'" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div class="universidad horizontal" id="redes"> 
+        </div>*/
+        '<div class="universidad horizontal" id="redes"> 
            <div class="imageninfo2" style="background-image: url(imagenes/iconos/correo.svg);"></div>
             <div class="barrauni3"></div>
             <div class="lista5" style="gap: 0vh;">
@@ -242,13 +242,13 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
             echo'</div> </div>';
             if($haycorreo == true){// EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
                 echo ('
-                <form class="universidad horizontal" method="post" action="./codigophp/enviarcorreo.php" id="formulariodecontacto"> 
+                <form class="universidad horizontal" method="post" action="./codigophp/enviarcorreo.php" id="formulariodecontacto" onsubmit="return verificarRecaptcha()">
                     <div class="imageninfo2"style="background-image: url(imagenes/iconos/inscripcion.svg);"></div>
                     <div class="barrauni3"></div>
                         <div class="lista5" style="gap: 0vh;">
                     <h1 class="nombreuni">SOLICITAR MAS INFORMACIÓN</h1>
                     <input type="hidden" id="receptor" name="receptor" value="'.$correo.'" required>
-                    <input type="text" id="nombre" name="nombre" required placeholder="Nombre">
+                    <input type="text" id="nombre2" name="nombre" required placeholder="Nombre">
                     <input type="hidden" id="universidad" name="universidad" value="'.$id.'">
                     <input type="mail" id="email" name="email" required placeholder="Correo">
                     <textarea id="message" name="mensaje" required placeholder="Hola. Me gustaría obtener información sobre.."></textarea>
@@ -256,7 +256,18 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                     <button  class="botonuni inscribirse" type="submit">Enviar</button>
                     </div>
                 </form> 
+                <script>
+                    function verificarRecaptcha() {
+                        var response = grecaptcha.getResponse();
+                        if (response.length === 0) {
+                            alert("Por favor, completa el reCAPTCHA.");
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
                 ');
+                
             }
             //echo'</div>';   
 
@@ -348,24 +359,31 @@ global $establecimientoactual;
           </div>
         </div>
        ');
-       if($establecimientos != null){
-            echo '<div class="universidad" id="establecimiento"> 
-            <div class="imageninfo"style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
-            <div class="barrauni"></div>
-       
 
-            <h1 class="nombreuni">TAMBIEN SE CURSA EN</h1><p class="descripcionuni" style="height: 25dvh;">
-            Podes cursar "'.$titulo.'" en los siguientes establecimientos:<br>';
-            foreach($establecimientos as $key => $establecimiento) {
-                if($establecimientoactual["id_establecimiento"] != $establecimiento["id_establecimiento"]){
-                    echo '- <a href="./universidad.php?universidad='.$establecimiento["id_establecimiento"].'&carrera='.$carrera.'#redes">'.$establecimiento["nombre"].'</a> <br>';
+       if($establecimientos != null){
+            if($establecimientos->num_rows > 0){
+
+                echo '<div class="universidad" id="establecimiento"> 
+                <div class="imageninfo"style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
+                <div class="barrauni"></div>
+        
+                
+                <h1 class="nombreuni">TAMBIEN SE CURSA EN</h1><p class="descripcionuni" style="height: 25dvh;">
+                Podes cursar "'.$titulo.'" en los siguientes establecimientos:<br>';
+            
+                foreach($establecimientos as $key => $establecimiento) {
+                    if($establecimientoactual["id_establecimiento"] != $establecimiento["id_establecimiento"]){
+                        echo '- <a href="./universidad.php?universidad='.$establecimiento["id_establecimiento"].'&carrera='.$carrera.'#redes">'.$establecimiento["nombre"].'</a> <br>';
+                    }
+
                 }
+
+                echo'</p>
+                            
+                    
+                    </div>
+                ';
             }
-            echo'</p>
-                        
-                   
-                </div>
-            ';
        }
 
 
