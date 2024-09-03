@@ -136,6 +136,7 @@ function arreglar_url($url){ // MODIFICA LAS URL PARA QUE FUNCIONEN CORRECTAMENT
         $url = "https://www.".$url;
     }
     return $url;
+    
 
 }
 function arreglarpdf($url){ //MODIFICA EL NOMBRE DEL ARCHIVO PDF EN CASO DE QUE ALGO NO ESTE BIEN
