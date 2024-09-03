@@ -1085,7 +1085,6 @@ body.inactive .overlay {
     0% {
         background-position-x: -100vh;
     }
-
     100% {
         background-position-x: 100vh;
     }
