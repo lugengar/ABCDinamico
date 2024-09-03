@@ -160,13 +160,13 @@
 
             <div class="identificador" id="identificador1" style="top: 100vh;"></div>
             <div class="botones" id="botones">
-            <!-- BOTON PARA EL MAPA -->
+            <!-- BOTON PARA EL MAPA 
             
                 <button class="boton pop" >
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
                     <h1>Buscar universidad por distrito</h1>
                 </button>
-
+ -->
                 <button class="boton" onclick="barradebusqueda('distrito')">
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
                     <h1>Buscar universidad por distrito</h1>
