@@ -83,73 +83,73 @@
                             overflow-x: auto;
                         }
                         /* escobar */
-                        .puntero{
+                        .puntero img{
                             position: absolute;
                             top: 150px; left: 450px;
                             width: ;
                         }
                         /* tigre */
-                        .puntero2{
+                        .puntero2 img{
                             position: absolute;
                             top: 400px; left: 600px;
                         }
-                        .puntero3{
+                        .puntero3 img{
                             position: absolute;
                             top: 290px; left: 840px;
                         }
-                        .puntero4{
+                        .puntero4 img{
                             position: absolute;
                             top:230px; left: 660px;
                         }
                         /* vicente lopez */
-                        .puntero5{
+                        .puntero5 img{
                             position: absolute;
                             top: 690px; left: 900px;
                             width: 35px;
                         }
-                        .puntero6{
+                        .puntero6 img{
                             position: absolute;
                             top: 650px; left: 860px;
                             width: 35px;
                         }
-                        .puntero7{
+                        .puntero7 img{
                             position: absolute;
                             top: 590px; left: 950px;
                             width: 35px;
                         }
-                        .puntero8{
+                        .puntero8 img{
                             position: absolute;
                             top: 637px; left: 920px;
                             width: 35px;
                         }
-                        .puntero9{
+                        .puntero9 img{
                             position: absolute;
                             top: 646px; left: 973px;
                             width: 35px;
                         }
                         /* sanisidro */
-                        .puntero10{
+                        .puntero10 img{
                             position: absolute;
                             top: 530px; left: 920px;
                             width: 35px;
                         }
-                        .puntero11{
+                        .puntero11 img{
                             position: absolute;
                             top: 615px; left: 835px;
                             width: 35px;
                         }
-                        .puntero12{
+                        .puntero12 img{
                             position: absolute;
                             top: 525px; left: 850px;
                             width: 35px;
                         }
                         /* san fernando */
-                        .puntero13{
+                        .puntero13 img{
                             position: absolute;
                             top: 525px; left: 760px;
                             width: 35px;
                         }
-                        .puntero14{
+                        .puntero14 img{
                             position: absolute;
                             top: 410px; left: 870px;
                             width: 35px;
@@ -160,13 +160,12 @@
 
             <div class="identificador" id="identificador1" style="top: 100vh;"></div>
             <div class="botones" id="botones">
-            <!-- BOTON PARA EL MAPA 
-            
+
                 <button class="boton pop" >
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
                     <h1>Buscar universidad por distrito</h1>
                 </button>
- -->
+
                 <button class="boton" onclick="barradebusqueda('distrito')">
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
                     <h1>Buscar universidad por distrito</h1>
