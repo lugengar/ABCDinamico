@@ -951,7 +951,7 @@ height: max-content;
     gap: 3vh;
     grid-template:
         ". . . . . ." auto
-        ". INFO INFO INFO MAP ." 40vh
+        ". INFO INFO INFO MAP ." minmax(40vh,max-content)
         ". REDE REDE REDE MAP ." max-content
         ". CAR CAR CAR PDF ." max-content
         ". MAS MAS INS INS ." max-content
