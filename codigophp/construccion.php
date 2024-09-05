@@ -32,7 +32,11 @@ function universidad($id,$nombre ,$descripcion, $imagenes,$carreras){ //CREA EL 
             echo '</div> <div class="barrauni"></div>';
         }
     }else{
-        echo'<h1 class="nombreuni">NO HAY IMAGENES</h1>';
+        echo '<div class="imagenesuni">';
+
+        echo'<h1 class=" imagenuni activo errorimg"></h1>';
+        echo '</div> <div class="barrauni"></div>';
+
     }
     echo('
         <h1 class="nombreuni">'.$nombre.'</h1>
@@ -308,13 +312,14 @@ function carrusel($nombre,$tipo,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
             echo'</div>';
         }
     }else{
-        echo'<h1 class="error imagenuni">NO HAY IMAGENES</h1>
-        <div class="filtro">
+        echo '<div class="imagenes">';
+        echo'<h1 class=" imagen activo errorimg"></h1>';
+        echo '</div><div class="filtro">
         <div class="contenidotexto">
-                <h1 class="texto1">'.$nombre.'</h1>
+                <h1 class="texto1">'.$tipo.'</h1>
         </div>
         <div class="contenidotexto">
-            <h1 class="texto2">'.$ubicacion.'</h1>
+            <h1 class="texto2">'.$nombre.'</h1>
         </div>';
         
     }
