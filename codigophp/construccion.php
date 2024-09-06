@@ -292,15 +292,16 @@ function carrusel($nombre,$tipo,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
             
         }
 
-        echo '</div>
-        <div class="filtro">
-        <div class="contenidotexto">
-                <h1 class="texto1">'.$tipo.'</h1>
-        </div>
-        <div class="contenidotexto">
-            <h1 class="texto2">'.$nombre.'</h1>
-        </div>';
+       
         if($imagenes->num_rows > 1){
+            echo '</div>
+            <div class="filtro" id="carrusel">
+            <div class="contenidotexto">
+                    <h1 class="texto1">'.$tipo.'</h1>
+            </div>
+            <div class="contenidotexto">
+                <h1 class="texto2">'.$nombre.'</h1>
+            </div>';
             echo '<div class="circulos">';
             foreach($imagenes as $key => $imagen) {
                 if($key == 0){
@@ -312,6 +313,14 @@ function carrusel($nombre,$tipo,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
             echo'</div>';
         }
     }else{
+        echo '</div>
+        <div class="filtro">
+        <div class="contenidotexto">
+                <h1 class="texto1">'.$tipo.'</h1>
+        </div>
+        <div class="contenidotexto">
+            <h1 class="texto2">'.$nombre.'</h1>
+        </div>';
         echo '<div class="imagenes">';
         echo'<h1 class=" imagen activo errorimg"></h1>';
         echo '</div><div class="filtro">

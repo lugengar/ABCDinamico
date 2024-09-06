@@ -23,14 +23,14 @@
         <div class="overlay" id="overlay"></div>
     
     <div class="container">
-        <main class="carrusel">
+        <main class="carrusel" >
             <div class="imagenes">
-                <div class="imagen activo" style="background-image: url('imagenes/otros/estudiantes.jpg');"></div>
+                <div class="imagen activo"  style="background-image: url('imagenes/otros/estudiantes.jpg');"></div>
                 <div class="imagen" style="background-image: url('imagenes/otros/gente.jpg');"></div>
                 <div class="imagen" style="background-image: url('imagenes/otros/graduados.jpg');"></div>
                
             </div>
-            <div class="filtro">
+            <div class="filtro" id="carrusel">
                 <div class="contenidotexto">
                     <h1 class="texto1">Ofertas de Educación Superior Región 6</h1>
                     
