@@ -169,7 +169,7 @@
             <div class="botones" id="botones">
                 <button class="boton pop" >
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
-                    <h1>Buscar universidad por distrito</h1>
+                    <h1>Buscar universidad en el mapa</h1>
                 </button>
 
                 <!-- MAPA 
