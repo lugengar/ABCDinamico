@@ -60,7 +60,7 @@
 
 
             <!-- MAPA -->
-            <div popover class="pop2">
+            <div popover class="pop2" style="">
                 <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
                 <!-- ACA VA EL DIV O LO Q SEA DEL MAPA. EL TAMAÑO SE AJUSTA AUTOMATICAMENTE
                 <div id="mapa">
@@ -161,8 +161,8 @@
                         }
                     </style>
                 </div>-->
-              <iframe src="mapa.php" loading="lazy" frameborder="0"></iframe>
-               <?php //include "mapa2.php";?>
+              <iframe src="codigophp/mapa2.php" loading="lazy" frameborder="0"></iframe>
+
             </div>
 
             <div class="identificador" id="identificador1" style="top: 100vh;"></div>
@@ -194,7 +194,6 @@
             </div>
             <form class="barradebusqueda <?php if($tipo == "nombre" || $haytipo == false){echo 'activo';} ?>" id="nombre" method="GET" action="./index.php#identificador2">
                <p class="barratexto">Nombre del establecimiento</p>
-            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
             <div style="gap:2vh;">
                 <input type="text" name="busqueda" placeholder="Nombre" required>
                 <input type="hidden" name="tipo" value="nombre" required>
@@ -204,8 +203,7 @@
             <form class="barradebusqueda <?php if($tipo == "distrito"){echo 'activo';} ?>" id="distrito" method="GET" action="./index.php#identificador2">
             
             <p class="barratexto">Elija un distrito</p>
-            
-            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
+            <div style="gap:2vh;">
                 <select name="busqueda"id="" required>
                     <option value="">Ninguno</option >
                     <?php
@@ -213,30 +211,28 @@
                         buscardistritos();
                     ?>
                 </select>
-                <div style="gap:2vh;">
                 <input type="hidden" name="tipo" value="distrito" required>
                 <input type="submit" name="" value="Buscar" >
                 </div>
             </form>
             <form class="barradebusqueda <?php if($tipo == "establecimiento"){echo 'activo';} ?>" id="establecimiento" method="GET" action="./index.php#identificador2">
             <p class="barratexto">Elija un tipo de establecimiento</p>
-            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
-                <select name="busqueda" id="" required>
+            <div style="gap:2vh;">
+            <select name="busqueda" id="" required>
                     <option value="">Ninguno</option>
                     <?php
                         //ESCRIBE LAS OPCIONES PARA LA BARRA DE BUSQUEDA
                         buscarestablecimientos();
                     ?>
                 </select>
-                <div style="gap:2vh;">
+            
                 <input type="hidden" name="tipo" value="establecimiento" required>
                 <input type="submit" name="" value="Buscar">
                 </div>
             </form>
             <form class="barradebusqueda <?php if($tipo == "carrera"){echo 'activo';} ?>" id="carrera" method="GET" action="./index.php#identificador2">
             <p class="barratexto">Elija una carrera</p>
-
-            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
+            <div style="gap:2vh;">
                 <select name="busqueda" id="" required>
                     <option value="">Ninguno</option>
                     <?php
@@ -244,7 +240,6 @@
                         buscarcarreras();
                     ?>
                 </select>
-                <div style="gap:2vh;">
                 <input type="hidden" name="tipo" value="carrera" required>
                 <input type="submit" name="" value="Buscar">
                 </div>

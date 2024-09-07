@@ -51,11 +51,17 @@ function universidad($id,$nombre ,$descripcion, $imagenes,$carreras){ //CREA EL 
     </div>
     ');
 }
+function crearmapa($coordenadas, $zoom = 15) {
+    $url = "https://www.google.com/maps?q=".$coordenadas["x"].",".$coordenadas["y"]."&z=$zoom&output=embed";
+
+    return $url;
+}
+/*
 function crearmapa($ubicacion){ //CREA EL MAPA CON LA UBICACION A TRAVEZ DE UNA URL MODIFICADA
     $url = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3287.4006114986105!2d-58.53745522416194!3d-34.51807695298058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb0946037da75%3A0x7fae4b92e6699b59!2s";
     $url2 = "!5e0!3m2!1ses-419!2sar!4v1684382444792!5m2!1ses-419!2sar";
     return $url."".urlencode($ubicacion)."".$url2;
-}
+}*/
 function nombre_url($url){ //OBTIENE EL NOMBRE DE UNA RED SOCIAL A TRAVEZ DE SU URL
     $parsed_url = parse_url($url);
 
@@ -169,7 +175,7 @@ function arreglarpdf($url){ //MODIFICA EL NOMBRE DEL ARCHIVO PDF EN CASO DE QUE 
 }
 
 $haycorreo = false;
-function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contactos,$id){ // MUESTRA TODA LA INFORMACION DE LA UNIVERSIDAD
+function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contactos,$id,$coordenadas){ // MUESTRA TODA LA INFORMACION DE LA UNIVERSIDAD
     global $haycorreo;
     global $secretkey1;
     
@@ -205,7 +211,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
     echo'</div> </div> </div> ';
         echo ('
         <div class="universidad" id="mapa"> 
-            <iframe  class="imageninfo"  src="'.crearmapa($ubicacion.', '.$distrito).'" style="border:none;height: 70%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe  class="imageninfo"  src="'.crearmapa($coordenadas).'" style="border:none;height: 70%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <div class="barrauni"></div>
             <h1 class="nombreuni">UBICACIÓN</h1>
             <p class="descripcionuni">'.$ubicacion.', '.$distrito.'</p>

@@ -45,7 +45,8 @@
         <div class="informacion lista3" style="padding-top: 5vh;">
             <?php
             //MUESTRA TODA LA INFO DE LA UNIVERSIDAD
-            info_universidad($row["descripcion"],$row["ubicacion"],$row["servicios"],$row["nombre_distrito"],$row["nombre_universidad"],$contactos,$row["id_establecimiento"]);
+            $coordenadas = json_decode($row["coordenadas"],true);
+            info_universidad($row["descripcion"],$row["ubicacion"],$row["servicios"],$row["nombre_distrito"],$row["nombre_universidad"],$contactos,$row["id_establecimiento"],$coordenadas);
             
             ?>
             <?php
@@ -72,7 +73,6 @@
             <form class="barradebusqueda <?php if($tipo == "nombre"){echo 'activo';} ?>" id="nombre" method="GET" action="./universidad.php#identificador2">
             <p class="barratexto">Nombre de la carrera</p>
                 
-            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
             <div style="gap: 2vh;">
 
                 <input type="text" name="busqueda" placeholder="Ninguno" required>
@@ -84,7 +84,6 @@
             <form class="barradebusqueda <?php if($tipo == "tecnicatura"){echo 'activo';} ?>" id="tecnicatura" method="GET" action="./universidad.php#identificador2">
             <p class="barratexto">Nombre de la tecnicatura</p>
                 
-            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <?php echo '<input type="hidden" name="universidad" value="'.$row["id_establecimiento"].'" required>';?>
                 <input type="hidden" name="tipo" value="tecnicatura" required>
             <div style="gap: 2vh;">
@@ -95,7 +94,7 @@
             <form class="barradebusqueda <?php if($tipo == "carrera"){echo 'activo';} ?>" id="carrera" method="GET" action="./universidad.php#identificador2">
             <p class="barratexto">Elija un tipo de carrera</p>
                
-            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
+           <!-- <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">-->
                 <?php echo '<input type="hidden" name="universidad" value="'.$row["id_establecimiento"].'" required>';?>
                 <input type="hidden" name="tipo" value="carrera" required>
             <div style="gap: 2vh;">
