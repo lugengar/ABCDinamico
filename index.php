@@ -14,9 +14,14 @@
     $row = null;
         include "./codigophp/buscar_universidades.php";
         $tipo = "nombre";
+        $haytipo = false;
+       
         if(isset($_GET["tipo"])){
             if(isset($_GET["tipo"])){
                 $tipo = $_GET["tipo"];
+                if($tipo == "nombre" || $tipo == "carrera" || $tipo == "establecimiento" || $tipo == "distrito"){
+                    $haytipo = true;
+                }
             }
         }
     ?>
@@ -175,23 +180,23 @@
                 </button>
  -->
 
-                <button class="boton" onclick="barradebusqueda('carrera')">
-                    <div class="imagenboton" style=" background-image: url(imagenes/iconos/sombrero.svg);"></div>
-                    <h1>Buscar universidad por carrera</h1>
+                <button class="boton" onclick="barradebusqueda('establecimiento')">
+                    <div class="imagenboton" id="tipoestablecimiento" style=" background-image: url(imagenes/iconos/tipoestable.svg);"></div>
+                    <h1>Filtrar por tipo de establecimiento</h1>
                 </button>
-                <button class="boton" onclick="barradebusqueda('tecnicatura')"><div class="imagenboton" style=" background-image: url(imagenes/iconos/diploma.svg);"></div>
-                    <h1>Buscar universidad por tecnicatura</h1>
+                <button class="boton" onclick="barradebusqueda('carrera')"><div class="imagenboton" style=" background-image: url(imagenes/iconos/sombrero.svg);"></div>
+                    <h1>Buscar universidad por carreras</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('nombre')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/nombre.svg);"></div>
                     <h1>Buscar por nombre de la universidad</h1>
                 </button>
             </div>
-            <form class="barradebusqueda <?php if($tipo == "nombre"){echo 'activo';} ?>" id="nombre" method="GET" action="./index.php#identificador2">
+            <form class="barradebusqueda <?php if($tipo == "nombre" || $haytipo == false){echo 'activo';} ?>" id="nombre" method="GET" action="./index.php#identificador2">
                <p class="barratexto">Nombre del establecimiento</p>
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
             <div style="gap:2vh;">
-                <input type="text" name="busqueda" placeholder="" required>
+                <input type="text" name="busqueda" placeholder="Nombre" required>
                 <input type="hidden" name="tipo" value="nombre" required>
                 <input type="submit" value="Buscar">
                 </div>
@@ -202,7 +207,7 @@
             
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda"id="" required>
-                    <option value="">Elija un distrito</option >
+                    <option value="">Ninguno</option >
                     <?php
                     //ESCRIBE LAS OPCIONES PARA LA BARRA DE BUSQUEDA
                         buscardistritos();
@@ -213,34 +218,34 @@
                 <input type="submit" name="" value="Buscar" >
                 </div>
             </form>
-            <form class="barradebusqueda <?php if($tipo == "carrera"){echo 'activo';} ?>" id="carrera" method="GET" action="./index.php#identificador2">
-            <p class="barratexto">Elija una carrera</p>
+            <form class="barradebusqueda <?php if($tipo == "establecimiento"){echo 'activo';} ?>" id="establecimiento" method="GET" action="./index.php#identificador2">
+            <p class="barratexto">Elija un tipo de establecimiento</p>
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <select name="busqueda" id="" required>
-                    <option value="">Elija una carrera</option>
+                    <option value="">Ninguno</option>
                     <?php
-                    //ESCRIBE LAS OPCIONES PARA LA BARRA DE BUSQUEDA
-                        buscarcarrera();
+                        //ESCRIBE LAS OPCIONES PARA LA BARRA DE BUSQUEDA
+                        buscarestablecimientos();
+                    ?>
+                </select>
+                <div style="gap:2vh;">
+                <input type="hidden" name="tipo" value="establecimiento" required>
+                <input type="submit" name="" value="Buscar">
+                </div>
+            </form>
+            <form class="barradebusqueda <?php if($tipo == "carrera"){echo 'activo';} ?>" id="carrera" method="GET" action="./index.php#identificador2">
+            <p class="barratexto">Elija una carrera</p>
+
+            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
+                <select name="busqueda" id="" required>
+                    <option value="">Ninguno</option>
+                    <?php
+                        //ESCRIBE LAS OPCIONES PARA LA BARRA DE BUSQUEDA
+                        buscarcarreras();
                     ?>
                 </select>
                 <div style="gap:2vh;">
                 <input type="hidden" name="tipo" value="carrera" required>
-                <input type="submit" name="" value="Buscar">
-                </div>
-            </form>
-            <form class="barradebusqueda <?php if($tipo == "tecnicatura"){echo 'activo';} ?>" id="tecnicatura" method="GET" action="./index.php#identificador2">
-            <p class="barratexto">Elija una tecnicatura</p>
-
-            <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
-                <select name="busqueda" id="" required>
-                    <option value="">Elija una tecnicatura</option>
-                    <?php
-                    //ESCRIBE LAS OPCIONES PARA LA BARRA DE BUSQUEDA
-                        buscartecnicatura();
-                    ?>
-                </select>
-                <div style="gap:2vh;">
-                <input type="hidden" name="tipo" value="tecnicatura" required>
                 <input type="submit" name="" value="Buscar">
                 </div>
             </form>

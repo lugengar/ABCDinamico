@@ -55,13 +55,14 @@
             </div>
             <div class="botones" id="botones" style="padding-top:0vh;" >
   
+               
+                <button class="boton" onclick="window.location.href = 'index.php'">
+                    <div class="imagenboton" id="volver" style=" background-image: url(imagenes/iconos/lupa.svg);"></div>
+                    <h1>Elegir otra universidad</h1>
+                </button>
                 <button class="boton" onclick="barradebusqueda('carrera')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/sombrero.svg);"></div>
-                    <h1>Buscar por nombre de Carrera</h1>
-                </button>
-                <button class="boton" onclick="barradebusqueda('tecnicatura')">
-                    <div class="imagenboton" style=" background-image: url(imagenes/iconos/diploma.svg);"></div>
-                    <h1>Buscar por nombre de Tecnicatura</h1>
+                    <h1>Filtrar por tipo de carrera</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('nombre')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/nombre.svg);"></div>
@@ -69,12 +70,12 @@
                 </button>
             </div>
             <form class="barradebusqueda <?php if($tipo == "nombre"){echo 'activo';} ?>" id="nombre" method="GET" action="./universidad.php#identificador2">
-            <p class="barratexto">Nombre de la carrera/tecnicatura</p>
+            <p class="barratexto">Nombre de la carrera</p>
                 
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
             <div style="gap: 2vh;">
 
-                <input type="text" name="busqueda" placeholder="" required>
+                <input type="text" name="busqueda" placeholder="Ninguno" required>
                 <?php echo '<input type="hidden" name="universidad" value="'.$row["id_establecimiento"].'" required>';?>
                 <input type="hidden" name="tipo" value="nombre" required>
                 <input type="submit" name="" value="Buscar">
@@ -92,13 +93,19 @@
                 </div>
             </form>
             <form class="barradebusqueda <?php if($tipo == "carrera"){echo 'activo';} ?>" id="carrera" method="GET" action="./universidad.php#identificador2">
-            <p class="barratexto">Nombre de la carrera</p>
+            <p class="barratexto">Elija un tipo de carrera</p>
                
             <img src="imagenes/iconos/lupa.svg" class="imglupa" alt="">
                 <?php echo '<input type="hidden" name="universidad" value="'.$row["id_establecimiento"].'" required>';?>
                 <input type="hidden" name="tipo" value="carrera" required>
             <div style="gap: 2vh;">
-                <input type="text" name="busqueda" placeholder="" required>
+                <select name="busqueda"  required>
+                        <option value="">Ninguno</option>
+                        <?php
+                            //ESCRIBE LAS OPCIONES PARA LA BARRA DE BUSQUEDA
+                            buscartipocarrera();
+                        ?>
+                    </select>
                 <input type="submit" name="" value="Buscar">
                 </div>
             </form>

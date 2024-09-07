@@ -112,6 +112,17 @@ function carreraslista($carreras){ // CREA LA LISTA DE CARRERAS Y TECNICATURAS P
         echo '<option value="'.$carrera["id_carrera"].'">'.$carrera["nombre"].'</option>';
     }
 }
+function establecimientolista($establecimientos){ // CREA LA LISTA DE CARRERAS Y TECNICATURAS PARA LA BARRA DE BUSQUEDA
+    foreach ($establecimientos as $establecimiento) {
+        echo '<option value="'.$establecimiento["tipo_establecimiento"].'">'.$establecimiento["tipo_establecimiento"].'</option>';
+    }
+}
+function carreratipolista($carreras){ // CREA LA LISTA DE CARRERAS Y TECNICATURAS PARA LA BARRA DE BUSQUEDA
+    foreach ($carreras as $carrera) {
+        echo '<option value="'.$carrera["tipo_carrera"].'">'.$carrera["tipo_carrera"].'</option>';
+    }
+}
+
 function distritolista($distritos){ // CREA LA LISTA DE LOS DISTRITOS PARA LA BARRA DE BUSQUEDA
     foreach ($distritos as $distrito) {
         echo '<option value="'.$distrito["id_distrito"].'">'.$distrito["nombre"].'</option>';
@@ -292,16 +303,15 @@ function carrusel($nombre,$tipo,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
             
         }
 
-       
+        echo '</div>
+        <div class="filtro" id="carrusel">
+        <div class="contenidotexto">
+                <h1 class="texto1">'.$tipo.'</h1>
+        </div>
+        <div class="contenidotexto">
+            <h1 class="texto2">'.$nombre.'</h1>
+        </div>';
         if($imagenes->num_rows > 1){
-            echo '</div>
-            <div class="filtro" id="carrusel">
-            <div class="contenidotexto">
-                    <h1 class="texto1">'.$tipo.'</h1>
-            </div>
-            <div class="contenidotexto">
-                <h1 class="texto2">'.$nombre.'</h1>
-            </div>';
             echo '<div class="circulos">';
             foreach($imagenes as $key => $imagen) {
                 if($key == 0){
@@ -313,14 +323,6 @@ function carrusel($nombre,$tipo,$imagenes){ // CREA EL CARRUSEL DE IMAGENES
             echo'</div>';
         }
     }else{
-        echo '</div>
-        <div class="filtro">
-        <div class="contenidotexto">
-                <h1 class="texto1">'.$tipo.'</h1>
-        </div>
-        <div class="contenidotexto">
-            <h1 class="texto2">'.$nombre.'</h1>
-        </div>';
         echo '<div class="imagenes">';
         echo'<h1 class=" imagen activo errorimg"></h1>';
         echo '</div><div class="filtro">

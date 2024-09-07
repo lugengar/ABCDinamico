@@ -536,6 +536,9 @@ input[type="submit"] {
     background-repeat: no-repeat;
     background-position: center;
 }
+#tipoestablecimiento{
+    background-size:5.5vh;
+}
 .botones {
    
     padding-bottom: 5vh;
@@ -1101,6 +1104,9 @@ body.inactive .overlay {
         background-position: top;
         background-size: 50vh;
         background-repeat: no-repeat;
+    }
+    #tipoestablecimiento{
+        background-size:7vh;
     }
 }
 

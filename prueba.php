@@ -33,23 +33,24 @@
 
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script>
+        
+        
+
         // Inicializar el mapa centrado en Buenos Aires
         var map = L.map('map').setView([-34.6037, -58.3816], 13);
+        var customIcon = L.icon({
+            iconUrl: 'https://lugengar.github.io/ABC/imagenes/otros/puntero.svg',  // URL del icono personalizado
+            iconSize: [25, 25],  // Tamaño del ícono más pequeño para prueba
+            iconAnchor: [12, 25],  // Punto de anclaje ajustado
+            popupAnchor: [0, -25]  // Popup ajustado
+        });
 
         // Cargar un mapa base desde OpenStreetMap
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://carto.com/attributions">CartoDB</a>'
         }).addTo(map);
-        var customIcon = L.icon({
-            iconUrl: 'https://lugengar.github.io/ABC/imagenes/otros/puntero.svg',  // URL del icono personalizado
-            iconSize: [30, 30],  // Tamaño del ícono
-            iconAnchor: [10, 30],  // Punto de anclaje ajustado (centrado en la base del ícono)
-            popupAnchor: [0, -30]  // Popup sale desde justo arriba del ícono
-        });
-
-        // Usar el icono personalizado al crear un marcador
-        L.marker([lat, lon], {icon: customIcon}).addTo(map);
-
+       
+        
 
         // Funciones para los botones de zoom
         function zoomIn() {
@@ -88,7 +89,7 @@
         // Geocodificar cada lugar y agregar el puntero
         lugares.forEach(function(lugar) {
             geocodeAddress(lugar.address, function(coords) {
-                var marker = L.marker(coords).addTo(map)
+                var marker = L.marker(coords,{icon: customIcon}).addTo(map)
                     .bindPopup('<b>' + lugar.name + '</b><br>Haz click para más info.');
 
                 // Redirigir a una página al hacer clic en el puntero
