@@ -45,7 +45,7 @@ function universidad($id,$nombre ,$descripcion, $imagenes,$carreras){ //CREA EL 
         <p class="descripcionuni" style="height: 0vh;"></p>
         <a href="./universidad.php?universidad='.$id);
         if($carreras != null){
-            echo '&carrera='.$carreras.'#redes';
+            echo '&carrera='.$carreras.'#carreraelegida';
         }
         echo('"  class="botonuni">SABER MAS..</a>
     </div>
@@ -352,7 +352,7 @@ function carrera($id,$nombre,$descripcion, $id_establecimiento,$titulo){ //CREA 
         $tipo = "carrera";
     }
     echo ('
-        <form class="universidad carrera" method="GET" action="./universidad.php#redes" style="height: 45vh; overflow-y: hidden;">
+        <form class="universidad carrera" method="GET" action="./universidad.php#carreraelegida" style="height: 45vh; overflow-y: hidden;">
             <h1 class="nombreuni" >'.$nombre.'</h1>
             <p class="descripcionuni"style="height: 20vh;">'.$descripcion.'</p>
             <input type="submit" value="SABER MAS.." class="botonuni"></button>
@@ -396,7 +396,7 @@ global $establecimientoactual;
             
                 foreach($establecimientos as $key => $establecimiento) {
                     if($establecimientoactual["id_establecimiento"] != $establecimiento["id_establecimiento"]){
-                        echo '- <a href="./universidad.php?universidad='.$establecimiento["id_establecimiento"].'&carrera='.$carrera.'#redes">'.$establecimiento["nombre"].'</a> <br>';
+                        echo '- <a href="./universidad.php?universidad='.$establecimiento["id_establecimiento"].'&carrera='.$carrera.'#carreraelegida">'.$establecimiento["nombre"].'</a> <br>';
                     }
 
                 }
@@ -409,17 +409,13 @@ global $establecimientoactual;
             }
        }
 
-
+       echo '<div class="universidad" id="plan"> 
+       <div class="imageninfo"style="background-image: url(imagenes/iconos/recurso.svg);"></div>
+       <div class="barrauni"></div>
+       <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>';
        if($pdf != null){ 
+        echo '<p class="descripcionuni"style="height: 10vh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>';
             if($pdf->num_rows > 0){
-            
-               echo '<div class="universidad" id="plan"> 
-                    <div class="imageninfo"style="background-image: url(imagenes/iconos/recurso.svg);"></div>
-                    <div class="barrauni"></div>
-                    <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>
-                    <p class="descripcionuni"style="height: 10vh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>
-                ';
-              
                 if($pdf->num_rows > 1){
                     foreach($pdf as $key => $pdff) {
                         echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO '.($key +1).'</button>';
@@ -436,11 +432,14 @@ global $establecimientoactual;
                     echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO</button></div>';
                     echo '<div id="pdf-container" popover class="pop2">
                             <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
-                            <embed class="pdf-viewer" src="'.arreglarpdf($row["pdf"]).'" type="application/pdf" />
-                    </div>';
+                            <embed class="pdf-viewer" src="'.arreglarpdf($row["pdf"]).'" type="application/pdf" />';
                 }
             }  
+            
+       }else{
+        echo '<p>Por el momento puede solicitar el plan de estudios contactandose con el establecimiento</p>';
        }
+       echo'</div>';
     global $haycorreo;
 /*
     if($haycorreo == true){ // EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION

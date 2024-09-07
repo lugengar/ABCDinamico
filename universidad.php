@@ -66,7 +66,7 @@
                     <h1>Filtrar por tipo de carrera</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('nombre')">
-                    <div class="imagenboton" style=" background-image: url(imagenes/iconos/nombre.svg);"></div>
+                    <div class="imagenboton" style=" background-image: url(imagenes/iconos/letrasabc.svg);"></div>
                     <h1>Buscar por nombre de manera general</h1>
                 </button>
             </div>
