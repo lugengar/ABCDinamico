@@ -1,14 +1,15 @@
 <?php
+
 function mapa(){
     include "./codigophp/conexionbs.php";
 
     // Ajustamos la consulta para obtener el distrito con INNER JOIN
-    $stmt = $conn->prepare("SELECT e.nombre AS establecimiento_nombre, e.ubicacion, e.id_establecimiento, d.nombre AS distrito_nombre 
-                        FROM establecimiento e
-                        INNER JOIN distrito d ON e.fk_distrito = d.id_distrito");
+    $stmt = $conn->prepare("SELECT e.nombre AS establecimiento_nombre, e.ubicacion, e.id_establecimiento, d.nombre AS distrito_nombre, e.coordenadas
+                            FROM establecimiento e
+                            INNER JOIN distrito d ON e.fk_distrito = d.id_distrito");
 
     if ($stmt->execute()) {
-        $result2 = $stmt->get_result(); // Usar fetchAll() si estás usando PDO
+        $result2 = $stmt->get_result(); // Obtenemos el resultado
     } else {
         echo "Error en la consulta: " . $stmt->error;
         return;
@@ -16,12 +17,16 @@ function mapa(){
 
     $lugares = array();  // Inicializamos un array para almacenar los lugares
     foreach($result2 as $row4) {
-        // Creamos un array para cada establecimiento
-        $lugares[] = array(
-            'name' => $row4["establecimiento_nombre"],
-            'address' => $row4["ubicacion"] . ', ' . $row4["distrito_nombre"] . ', Buenos aires', // Incluimos el distrito
-            'url' => '/abcdinamico/universidad.php?universidad=' . $row4["id_establecimiento"]
-        );
+        $coordenadas = json_decode($row4["coordenadas"], true); // Aseguramos que se decodifique correctamente
+
+        if ($coordenadas) {
+            // Creamos un array para cada establecimiento con las coordenadas en formato array [lat, lon]
+            $lugares[] = array(
+                'name' => $row4["establecimiento_nombre"],
+                'address' => [$coordenadas['x'], $coordenadas['y']],  // Cambiamos el objeto a un array [lat, lon]
+                'url' => '/abcdinamico/universidad.php?universidad=' . $row4["id_establecimiento"]
+            );
+        }
     }
 
     // Imprimimos el array en formato JSON
@@ -31,7 +36,6 @@ function mapa(){
     $conn->close();
 }
 ?>
-
 
 
 
@@ -70,6 +74,11 @@ function mapa(){
 
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script>
+
+
+
+
+
         <?php mapa(); ?>
         
 // Inicializar el mapa sin los controles de zoom predeterminados
@@ -93,52 +102,23 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 var bounds = L.latLngBounds();
 
 // Función para obtener las coordenadas mediante Nominatim
-function geocodeAddress(address, callback) {
-    var encodedAddress = encodeURIComponent(address);
-    var url = `https://nominatim.openstreetmap.org/search?q=${encodedAddress}&format=json&limit=1`;
 
-    console.log("URL de geocodificación:", url); // Imprimir la URL para depuración
-
-    fetch(url)
-        .then(response => {
-            console.log("Respuesta del servidor:", response); // Verificar la respuesta del servidor
-            if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("Datos recibidos:", data); // Imprimir los datos recibidos
-            if (data && data.length > 0) {
-                var lat = data[0].lat;
-                var lon = data[0].lon;
-                callback([lat, lon]);
-            } else {
-                console.error(`No se encontró la dirección: ${address}`);
-            }
-        })
-        .catch(error => {
-            console.error("Error en la geocodificación para la dirección", address, ":", error.message);
-        });
-}
 
 
 // Geocodificar cada lugar y agregar el puntero
 lugares.forEach(function(lugar) {
-    geocodeAddress(lugar.address, function(coords) {
-        if (coords) {
-            var marker = L.marker(coords, {icon: customIcon}).addTo(map)
-                .bindPopup('<b>' + lugar.name + '</b><br>Haz click para más info.');
+    if (lugar.address) {
+        var marker = L.marker(lugar.address, {icon: customIcon}).addTo(map)
+            .bindPopup('<b>' + lugar.name + '</b><br>Haz click para más info.');
 
-            // Extender los límites para incluir este puntero
-            bounds.extend(coords);
+        // Extender los límites para incluir este puntero
+        bounds.extend(lugar.address);
 
-            // Redirigir a una página al hacer clic en el puntero
-            marker.on('click', function() {
-                window.location.href = lugar.url;
-            });
-        }
-    });
+        // Redirigir a una página al hacer clic en el puntero
+        marker.on('click', function() {
+            window.location.href = lugar.url;
+        });
+    }
 });
 
 // Ajustar la vista del mapa a los límites calculados después de agregar todos los punteros

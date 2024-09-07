@@ -1,4 +1,5 @@
 <?php
+// Función para obtener las coordenadas de una dirección usando Nominatim
 function getCoordinates($address) {
     // URL para hacer la petición a Nominatim
     $url = "https://nominatim.openstreetmap.org/search?q=" . urlencode($address) . "&format=json&limit=1";
@@ -32,42 +33,60 @@ function getCoordinates($address) {
         $lat = $data[0]['lat'];
         $lon = $data[0]['lon'];
         return [
-            'lat' => $lat,
-            'lon' => $lon
+            'x' => $lat,
+            'y' => $lon
         ];
     } else {
         return null;
     }
 }
-function mapa(){
-    include "./codigophp/conexionbs.php";
 
-    // Ajustamos la consulta para obtener el distrito con INNER JOIN
+// Función para obtener los establecimientos y actualizar sus coordenadas en la base de datos
+function mapa(){
+    include "./codigophp/conexionbs.php"; // Incluye tu archivo de conexión a la base de datos
+
+    // Ajustamos la consulta para obtener el establecimiento y el distrito
     $stmt = $conn->prepare("SELECT e.nombre AS establecimiento_nombre, e.ubicacion, e.id_establecimiento, d.nombre AS distrito_nombre 
-                        FROM establecimiento e
-                        INNER JOIN distrito d ON e.fk_distrito = d.id_distrito");
+                            FROM establecimiento e
+                            INNER JOIN distrito d ON e.fk_distrito = d.id_distrito");
 
     if ($stmt->execute()) {
-        $result2 = $stmt->get_result(); // Usar fetchAll() si estás usando PDO
+        $result2 = $stmt->get_result(); // Obtenemos el resultado
     } else {
         echo "Error en la consulta: " . $stmt->error;
         return;
     }
+
+    // Procesamos cada fila de la consulta
     foreach($result2 as $row4) {
-        $coordinates = getCoordinates( $row4["ubicacion"] . ', ' . $row4["distrito_nombre"] . ', Buenos aires');
+        // Formateamos la dirección para la búsqueda de coordenadas
+        $address = $row4["ubicacion"] . ', ' . $row4["distrito_nombre"] . ', Buenos Aires';
+
+        // Obtenemos las coordenadas a partir de la dirección
+        $coordinates = getCoordinates($address);
 
         if ($coordinates) {
-            echo "Latitud: " . $coordinates['lat'] . "<br>";
-            echo "Longitud: " . $coordinates['lon'];
+            // Convertimos las coordenadas a formato JSON
+            $json_coordinates = json_encode($coordinates);
+
+            // Actualizamos la base de datos con las coordenadas en formato JSON
+            $updateStmt = $conn->prepare("UPDATE establecimiento SET coordenadas = ? WHERE id_establecimiento = ?");
+            $updateStmt->bind_param("si", $json_coordinates, $row4["id_establecimiento"]);
+            $updateStmt->execute();
+            $updateStmt->close();
+
+            echo "Establecimiento: " . $row4["establecimiento_nombre"] . "<br>";
+            echo "Coordenadas guardadas: " . $json_coordinates . "<br><br>";
         } else {
-            echo "No se encontraron coordenadas para la dirección.";
+            echo "No se encontraron coordenadas para el establecimiento: " . $row4["establecimiento_nombre"] . "<br>";
         }
-       
     }
 
+    // Cerramos la conexión y el statement
     $stmt->close();
     $conn->close();
 }
-// Ejemplo de uso
+
+// Llamada a la función mapa
 mapa();
 ?>
