@@ -60,7 +60,7 @@
 
 
             <!-- MAPA -->
-            <div popover class="pop2" style="">
+            <div popover class="pop2">
                 <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
                 <!-- ACA VA EL DIV O LO Q SEA DEL MAPA. EL TAMAÑO SE AJUSTA AUTOMATICAMENTE
                 <div id="mapa">

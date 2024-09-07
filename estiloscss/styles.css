@@ -843,6 +843,7 @@ body.inactive .overlay {
     display: none;
     backdrop-filter: blur(1vh);
     background-color: rgba(0, 0, 0, 0.8);
+    background-color: white;
     background-image: url(../imagenes/otros/logo-pba-desktop.png);
     background-position: left;
     background-size: 9%;
