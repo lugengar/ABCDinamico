@@ -51,11 +51,11 @@ function universidad($id,$nombre ,$descripcion, $imagenes,$carreras){ //CREA EL 
     </div>
     ');
 }
-function crearmapa($coordenadas, $zoom = 15) {
+function crearmapa($coordenadas,$ubicacion, $zoom = 15) {
     if($coordenadas != null){
         $url = "https://www.google.com/maps?q=".$coordenadas["x"].",".$coordenadas["y"]."&z=$zoom&output=embed";
     }else{
-        $url = "https://www.google.com/maps?q=nada&z=$zoom&output=embed";
+        $url = "https://www.google.com/maps?q=$ubicacion&z=$zoom&output=embed";
 
     }
     return $url;
@@ -216,7 +216,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
     echo'</div> </div> </div> ';
         echo ('
         <div class="universidad" id="mapa"> 
-            <iframe  class="imageninfo"  src="'.crearmapa($coordenadas).'" style="border:none;height: 70%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe  class="imageninfo"  src="'.crearmapa($coordenadas,($ubicacion.', '.$distrito)).'" style="border:none;height: 70%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             <div class="barrauni"></div>
             <h1 class="nombreuni">UBICACIÓN</h1>
             <p class="descripcionuni">'.$ubicacion.', '.$distrito.'</p>
