@@ -490,6 +490,24 @@ input[type="submit"] {
 }
 
 
+@keyframes show {
+    from {
+        opacity: 0;
+        scale: 25%;
+    }
+    to {
+        opacity: 1; 
+        scale: 100%;
+    }
+}
+.universidad {
+    view-timeline-name: --image;
+    view-timeline-axis: block;
+    animation-timeline: --image;
+    animation-name: show;
+    animation-range: entry 25% cover 30%;
+    animation-fill-mode: both;
+}
 .universidad .barrauni {
 
     border-top: #00adc1 solid 0.25vh;
