@@ -52,9 +52,14 @@ function universidad($id,$nombre ,$descripcion, $imagenes,$carreras){ //CREA EL 
     ');
 }
 function crearmapa($coordenadas, $zoom = 15) {
-    $url = "https://www.google.com/maps?q=".$coordenadas["x"].",".$coordenadas["y"]."&z=$zoom&output=embed";
+    if($coordenadas != null){
+        $url = "https://www.google.com/maps?q=".$coordenadas["x"].",".$coordenadas["y"]."&z=$zoom&output=embed";
+    }else{
+        $url = "https://www.google.com/maps?q=nada&z=$zoom&output=embed";
 
+    }
     return $url;
+ 
 }
 /*
 function crearmapa($ubicacion){ //CREA EL MAPA CON LA UBICACION A TRAVEZ DE UNA URL MODIFICADA
