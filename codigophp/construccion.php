@@ -375,6 +375,7 @@ function info_carrera($titulo,$descripcion, $pdf, $carrera,$establecimientos){ /
         <div class="barraseparadora" id="plan" style="transform: translateY(-20vh);opacity:0%;z-index:1;"></div>');
 */
 global $establecimientoactual;
+global $haycorreo;
 
     echo('
         <div class="universidad horizontal" id="carreraelegida">  
@@ -419,9 +420,9 @@ global $establecimientoactual;
        <div class="barrauni"></div>
        <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>';
        if($pdf != null){ 
-        echo '<p class="descripcionuni"style="height: 10vh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>';
             if($pdf->num_rows > 0){
                 if($pdf->num_rows > 1){
+                    echo '<p class="descripcionuni"style="height: 10vh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>';
                     foreach($pdf as $key => $pdff) {
                         echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO '.($key +1).'</button>';
                     }
@@ -434,18 +435,29 @@ global $establecimientoactual;
                     }
                 }else{
                     $row = $pdf->fetch_assoc();
-                    echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO</button></div>';
-                    echo '<div id="pdf-container" popover class="pop2">
-                            <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
+
+                    if($row["pdf"] != null){
+                        echo '<p class="descripcionuni"style="height: 10vh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>';
+                        echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO</button></div>';
+                        echo '<div id="pdf-container" popover class="pop2">
+                                <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
                             <embed class="pdf-viewer" src="'.arreglarpdf($row["pdf"]).'" type="application/pdf" />';
+                    }else{
+                        echo '<p class="descripcionuni">Por el momento puede solicitar el plan de estudios contactandose con el establecimiento</p>';
+                        if($haycorreo == true){
+                            echo '<a class="botonuni" onclick="redirigircentro('."'".'formulariodecontacto'."'".')">CONTACTARME</a>';
+                        }
+                    }
                 }
             }  
             
        }else{
-        echo '<p>Por el momento puede solicitar el plan de estudios contactandose con el establecimiento</p>';
+        echo '<p class="descripcionuni">Por el momento puede solicitar el plan de estudios contactandose con el establecimiento</p>';
+        if($haycorreo == true){
+            echo '<a class="botonuni" onclick="redirigircentro('."'".'formulariodecontacto'."'".')">CONTACTARME</a>';
+        }
        }
        echo'</div>';
-    global $haycorreo;
 /*
     if($haycorreo == true){ // EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
        
