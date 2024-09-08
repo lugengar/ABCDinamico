@@ -59,7 +59,7 @@
                
                 <button class="boton" onclick="window.location.href = 'index.php'">
                     <div class="imagenboton" id="volver" style=" background-image: url(imagenes/iconos/lupa.svg);"></div>
-                    <h1>Elegir otra universidad</h1>
+                    <h1>Buscar otro establecimiento</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('carrera')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/sombrero.svg);"></div>
