@@ -182,7 +182,7 @@ if ($tabla === "carrera") {
         $fk_establecimiento = $_POST['fk_establecimiento'] ?? '';
 
         $pdf_nombre = uniqid() . ".pdf";
-        $upload_dir = "pdf/";
+        $upload_dir = "../pdf/";
 
         if (!is_dir($upload_dir)) {
             mkdir($upload_dir, 0777, true);
@@ -206,13 +206,14 @@ if ($tabla === "carrera") {
             echo "Error al cargar el archivo PDF.";
         }
     } else if ($accion === "eliminar") {
+        $upload_dir = "../pdf/";
         $id_planestudio = $_POST['id_planestudio'] ?? '';
 
         if (empty($id_planestudio)) {
             die("No se seleccionó un plan de estudio para eliminar.");
         }
 
-        $sql = "SELECT pdf FROM planestudio WHERE id_planestudio = ?";
+        $sql = "SELECT pdf FROM planestudio WHERE fk_carrera = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "i", $id_planestudio);
         mysqli_stmt_execute($stmt);
@@ -227,7 +228,7 @@ if ($tabla === "carrera") {
             }
         }
 
-        $sql = "DELETE FROM planestudio WHERE id_planestudio = ?";
+        $sql = "DELETE FROM planestudio WHERE fk_carrera = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "i", $id_planestudio);
         mysqli_stmt_execute($stmt);
