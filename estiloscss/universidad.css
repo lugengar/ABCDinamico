@@ -790,9 +790,9 @@ input[type="submit"] {
 }
 .footer .logodte {
     grid-area: LOG2;
-    background-image: url(../imagenes/iconos/dteregion6.svg);
+    background-image: url(../imagenes/iconos/dte_r6_logo.png);
     background-repeat: no-repeat;
-    background-size: 8vh;
+    background-size: 13vh;
     background-position: right center;
 }
 
