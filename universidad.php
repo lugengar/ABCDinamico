@@ -34,7 +34,7 @@
     <div class="container" id="container">
         <main class="carrusel">
             <?php
-                carrusel($row["nombre_universidad"], $row["tipo_establecimiento"], $imagenes);
+                carrusel($row["nombre_universidad"], $row["tipo_establecimiento"], $imagenes,false);
             ?>
         </main>
         <header class="header" id="header">

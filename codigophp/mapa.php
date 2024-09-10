@@ -2,7 +2,7 @@
 function mapa(){
     include "./codigophp/conexionbs.php";
 
-    $stmt = $conn->prepare("SELECT * FROM establecimiento");
+    $stmt = $conn->prepare("SELECT * FROM establecimiento WHERE id_establecimiento != 0");
     
     $stmt->execute();
 

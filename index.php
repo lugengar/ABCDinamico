@@ -11,7 +11,6 @@
 </head>
 <body>
     <?php
-    $row = null;
         include "./codigophp/buscar_universidades.php";
         $tipo = "nombre";
         $haytipo = false;
@@ -29,6 +28,10 @@
     
     <div class="container">
         <main class="carrusel" >
+            <?php
+                carruselinicio();
+            ?>
+            <!--
             <div class="imagenes">
                 <div class="imagen activo"  style="background-image: url('imagenes/otros/estudiantes.jpg');"></div>
                 <div class="imagen" style="background-image: url('imagenes/otros/gente.jpg');"></div>
@@ -51,6 +54,7 @@
             </div>
             <div class="logo_pba_vertical"></div>
             <a onclick="redirigir('identificador1')" class="casita_superior"></a>
+    -->
         </main>
         <header class="header" id="header">
             <a href="index.php" class="logo_pba_horizontal " ></a>
