@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-09-2024 a las 07:53:22
+-- Tiempo de generación: 10-09-2024 a las 22:01:59
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -83,18 +83,22 @@ INSERT INTO `carrera` (`id_carrera`, `nombre`, `descripcion`, `titulo`, `tipo_ca
 (41, 'Profesorado de Inglés', 'Forma profesionales en el uso de la comunicación para promover el desarrollo social, cultural y económico en comunidades y organizaciones. Los estudiantes adquieren habilidades en periodismo, diseño gráfico, producción audiovisual y gestión de proyectos sociales.', 'Profesor de inglés', 'Profesorado'),
 (42, 'Tecnicatura en Trabajo Social', 'Página en proceso', 'Técnico en trabajo social', 'Tecnicatura'),
 (43, 'Tecnicatura en Comunicación Social para el Desarrollo', 'Prepara a los estudiantes para comprender los procesos de comunicación e influencia social, así como para aplicar estrategias comunicativas efectivas. Cubre áreas como periodismo, relaciones públicas, publicidad y producción multimedia.', 'Técnico en comunicación social para el desarrollo', 'Tecnicatura'),
-(44, 'Profesorado de Educación Primaria', 'Formación de docentes para nivel primario', 'Profesor de Educación Primaria', 'Profesorado'),
-(45, 'Profesorado para la Educación Secundaria en Biología', 'Formación de docentes en Biología para secundaria', 'Profesor en Biología', 'Profesorado'),
-(47, 'Trayecto de Formación Pedagógica Complementaria para graduados técnicos de nivel superior-secundario', 'Formación pedagógica para técnicos y profesionales', 'Certificación Pedagógica', 'otros'),
-(48, 'Profesorado para la Educación Secundaria en Física', 'Formación de docentes en Física para secundaria', 'Profesor en Física', 'Profesorado'),
-(49, 'Profesor/a de Educación Secundaria en Matemática', 'Formación de docentes en Matemática para secundaria', 'Profesor en Matemática', 'Profesorado'),
-(51, 'Profesorado de Educación Secundaria en Geografía', 'Formación de docentes en Geografía para secundaria', 'Profesor en Geografía', 'Profesorado'),
-(52, 'Profesorado de Educación Secundaria en Química', 'Formación de docentes en Química para secundaria', 'Profesor en Química', 'Profesorado'),
-(54, 'Profesorado en Educación Física', 'Formación de docentes en Educación Física', 'Profesor en Educación Física', 'Profesorado'),
-(55, 'Profesorado en Biología', 'Formación de docentes en Biología', 'Profesor en Biología', 'Profesorado'),
-(56, 'Profesorado en Historia', 'Formación de docentes en Historia', 'Profesor en Historia', 'Profesorado'),
-(57, 'Profesorado en Matemática', 'Formación de docentes en Matemática', 'Profesor en Matemática', 'Profesorado'),
-(58, 'Profesorado en Lengua y Literatura', 'Formación de docentes en Lengua y Literatura', 'Profesor en Lengua y Literatura', 'Profesorado'),
+(44, 'Profesorado en Educación Especial(Modalidad Sordos e Hipoacúsicos)', 'Página en proceso', 'Profesor en Educación Especial con Orientación en Sordos e Hipoacúsicos', 'Profesorado'),
+(45, 'Profesorado en Educación Especial(Modalidad Neuromotora)', 'Página en proceso', 'Profesor en Educación Especial con Orientación en Discapacidad Neuromotora', 'Profesorado'),
+(46, 'Profesorado en Educación Especial(Modalidad Intelectual)', 'Página en proceso', 'Profesor en Educación Especial con Orientación en Discapacidad Intelectual', 'Profesorado'),
+(47, 'Profesorado en Educación Especial(Modalidad Ciegos y Disminuidos Visuales)', 'Página en proceso', 'Profesor en Educación Especial Modalidad con Orientación en Ciegos y Disminuidos Visuales', 'Profesorado'),
+(48, 'Profesorado de Educación Primaria', 'Formación de docentes para nivel primario', 'Profesor de Educación Primaria', 'Profesorado'),
+(49, 'Profesorado para la Educación Secundaria en Biología', 'Formación de docentes en Biología para secundaria', 'Profesor en Biología', 'Profesorado'),
+(50, 'Trayecto de Formación Pedagógica Complementaria para graduados técnicos de nivel superior-secundario', 'Formación pedagógica para técnicos y profesionales', 'Certificación Pedagógica', 'otros'),
+(51, 'Profesorado para la Educación Secundaria en Física', 'Formación de docentes en Física para secundaria', 'Profesor en Física', 'Profesorado'),
+(52, 'Profesor/a de Educación Secundaria en Matemática', 'Formación de docentes en Matemática para secundaria', 'Profesor en Matemática', 'Profesorado'),
+(53, 'Profesorado de Educación Secundaria en Geografía', 'Formación de docentes en Geografía para secundaria', 'Profesor en Geografía', 'Profesorado'),
+(54, 'Profesorado de Educación Secundaria en Química', 'Formación de docentes en Química para secundaria', 'Profesor en Química', 'Profesorado'),
+(55, 'Profesorado en Educación Física', 'Formación de docentes en Educación Física', 'Profesor en Educación Física', 'Profesorado'),
+(56, 'Profesorado en Biología', 'Formación de docentes en Biología', 'Profesor en Biología', 'Profesorado'),
+(57, 'Profesorado en Historia', 'Formación de docentes en Historia', 'Profesor en Historia', 'Profesorado'),
+(58, 'Profesorado en Matemática', 'Formación de docentes en Matemática', 'Profesor en Matemática', 'Profesorado'),
+(59, 'Profesorado en Lengua y Literatura', 'Formación de docentes en Lengua y Literatura', 'Profesor en Lengua y Literatura', 'Profesorado'),
 (61, 'Licenciatura en Enfermería', 'Aplica cuidados de promoción, prevención, recuperación y rehabilitación en los tres niveles de atención en individuos sanos y enfermos, promoviendo el autocuidado e independencia precoz; en una relación interpersonal de participación mutua que asegure el respeto por la individualidad y dignidad personal de aquellos bajo su cuidado. Administra servicios de enfermería hospitalarios de menor complejidad y de comunidad; colabora en investigaciones en enfermería y otras relacionadas con el área de salud y participa en la educación para la salud.', 'Licenciado en Enfermería', 'Licenciatura'),
 (62, 'Licenciatura en Logística', 'La Licenciatura en Logística abarca todo lo relacionado con la gestión de la cadena de suministros (supply chain), en cuanto al abastecimiento, producción y distribución. Se desarrolla sobre el concepto de logística integral relacionando transporte, movimiento y almacenamiento de bienes, desarrollo y sistematización de procesos y procedimientos, flujo y administración de información y controles.', 'Licenciado en Logística', 'Licenciatura'),
 (63, 'Licenciatura en Seguridad', 'El licenciado en seguridad es un graduado universitario con sólida formación teórica, práctica y técnica en Seguridad como objeto de estudio, lo que le posibilita investigar, organizar, planificar, diseñar y conducir intervenciones adecuadas en proyectos, estrategias y acciones de seguridad en el marco de un Estado de Derecho.', 'Licenciado en Seguridad', 'Licenciatura'),
@@ -105,7 +109,7 @@ INSERT INTO `carrera` (`id_carrera`, `nombre`, `descripcion`, `titulo`, `tipo_ca
 (68, 'Tecnicatura en Producción Vegetal Orgánica', 'La carrera de Producción Vegetal Orgánica tiene como objetivo formar profesionales con sólidos conocimientos científicos y tecnológicos, capaces de intervenir en las cadenas productivas de manejo orgánico, en la actividad de investigación y extensión, y en la preservación de los recursos naturales desde una visión integral y sustentable, dentro de un contexto socioeconómico con diversos niveles de innovación e incertidumbre.', 'Técnico en Producción Vegetal Orgánica', 'Tecnicatura'),
 (69, 'Tecnicatura Universitaria en Mantenimiento Industrial', 'Esta Tecnicatura Superior surge de la necesidad que tiene la industria en general de reforzar la formación de sus técnicos en algunos temas y en disminuir la brecha de formación entre el ingeniero y el técnico de nivel medio en el momento del ejercicio profesional. La Tecnicatura Superior en Mantenimiento Industrial abarca, entre otros, los conceptos de mantenimiento eléctrico, hidráulico, neumático, electrónico y de instalaciones frigoríficas desde una óptica integrada y actual.', 'Técnico Universitario en Mantenimiento Industrial', 'Tecnicatura'),
 (70, 'Tecnicatura Universitaria en Procesos Industriales', 'Esta Tecnicatura Universitaria surge de la necesidad que tiene la industria en general de reforzar la formación de sus técnicos en algunos temas y en disminuir la brecha de formación entre el ingeniero y el técnico de nivel medio en el momento del ejercicio profesional.', 'Técnico Universitario en Procesos Industriales.', 'Tecnicatura'),
-(72, 'Tecnicatura en Gestión Ambiental y Salud', 'Página en proceso', 'Técnico Universitario en Gestión Ambiental y Salud', 'Tecnicatura');
+(71, 'Tecnicatura en Gestión Ambiental y Salud', 'Página en proceso', 'Técnico Universitario en Gestión Ambiental y Salud', 'Tecnicatura');
 
 -- --------------------------------------------------------
 
@@ -212,6 +216,7 @@ CREATE TABLE `establecimiento` (
 --
 
 INSERT INTO `establecimiento` (`id_establecimiento`, `nombre`, `ubicacion`, `descripcion`, `tipo_establecimiento`, `servicios`, `coordenadas`, `fk_distrito`) VALUES
+(0, 'Ofertas de Educación Superior Región 6', '', 'Ahora es más fácil encontrar la universidad adecuada.', '', '', '', 1),
 (1, 'Universidad Nacional Raúl Scalabrini Ortiz', 'Juan Bautista de LaSalle 600', 'La Universidad Nacional Raúl Scalabrini Ortiz (UNSO) en San Isidro se destaca por su oferta académica innovadora en herramientas tecnológicas para comunicación, diseño y seguridad informática. Estas propuestas se suman a una oferta de carreras tradicionales en las áreas de Salud, Económicas y Humanidades. Como universidad pública, gratuita y de calidad en la región norte, ofrece carreras terciarias de tres años y de grado de cuatro a cinco años, nuestros estudiantes se forman en grupos reducidos y  de cercanía con los docentes. Todas las carreras están aprobadas por el Ministerio de Educación, garantizando un título oficial al graduarse.', 'Universidad', '1110', '{\"x\":\"-34.4659501\",\"y\":\"-58.5089068\"}', 3),
 (2, 'Instituto Superior de Formación Técnica 220', 'Virrey Loreto 2564', 'Actualmente, el ISFT Nº 220 brinda tres carreras técnicas del Nivel Superior gratuitas: Software, Alimentos, Higiene y Seguridad. Procuramos generar vínculos con establecimientos educativos de nivel secundario para que todos/as los jóvenes conozcan nuestra oferta formativa así como también vincularnos con el entorno socioproductivo. Poseemos un fuerte compromiso con la Educación Técnico Profesional.', 'Instituto', '0000', '{\"x\":\"-34.5281097\",\"y\":\"-58.5473953\"}', 4),
 (3, 'Instituto Superior de Formación Docente 229', 'Virrey Loreto 2564', 'El Instituto Superior de Formación Docente n°229 es una institución educativa que se centra en la formación de docentes, siendo de gestión estatal, el mismo tiene como objetivo principal brindar una educación de calidad a sus estudiantes para que puedan desempeñarse de manera efectiva en su rol como docentes. Además de la formación académica, también tienen la responsabilidad de fomentar la investigación y la innovación en el campo de la educación, y de ofrecer programas de capacitación continua para los docentes que ya se encuentran en ejercicio.', 'Instituto', '0000', '{\"x\":\"-34.5281097\",\"y\":\"-58.5473953\"}', 4),
@@ -260,7 +265,10 @@ INSERT INTO `imagenes` (`id_imagen`, `url`, `fk_establecimiento`) VALUES
 (11, 'ISFDT.jpg', 11),
 (12, 'PESE.jpg', 12),
 (13, 'cut1.jpg', 13),
-(14, 'UND.jpg', 14);
+(14, 'UND.jpg', 14),
+(20, 'estudiantes.jpg', 0),
+(21, 'gente.jpg', 0),
+(22, 'graduados.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -323,23 +331,23 @@ INSERT INTO `planestudio` (`id_planestudio`, `pdf`, `fk_carrera`, `fk_establecim
 (56, 'tecnicaturatrabajosocial77', 42, 11),
 (57, 'tecnicaturacomunicacionsocialdesarrollo77', 43, 11),
 (59, '', 15, 4),
-(60, '', 44, 4),
-(61, '', 54, 4),
-(62, '', 55, 4),
-(63, '', 56, 4),
-(64, '', 57, 4),
-(65, 'proflengualiteratura', 58, 4),
+(60, '', 48, 4),
+(61, '', 55, 4),
+(62, '', 56, 4),
+(63, '', 57, 4),
+(64, '', 58, 4),
+(65, 'proflengualiteratura', 59, 4),
 (66, '', 15, 17),
-(67, '', 44, 17),
-(68, '', 51, 17),
-(69, '', 52, 17),
+(67, '', 48, 17),
+(68, '', 53, 17),
+(69, '', 54, 17),
 (70, '', 21, 17),
-(71, '', 45, 16),
+(71, '', 49, 16),
 (72, '', 20, 16),
-(73, '', 47, 16),
-(74, '', 48, 16),
-(75, '', 49, 16),
-(76, '', 44, 16),
+(73, '', 50, 16),
+(74, '', 51, 16),
+(75, '', 52, 16),
+(76, '', 48, 16),
 (82, 'licenfermeriauba', 61, 12),
 (83, 'liclogisticauntref', 62, 12),
 (84, '', 63, 12),
@@ -351,7 +359,11 @@ INSERT INTO `planestudio` (`id_planestudio`, `pdf`, `fk_carrera`, `fk_establecim
 (90, 'tecunimantenimientoindustrialutnfrd', 69, 12),
 (91, 'tecuniprocesosindustrialesutnfrd', 70, 12),
 (92, 'tecuniprogramacionutnfrd', 38, 12),
-(93, '', 72, 12);
+(93, '', 71, 12),
+(94, 'profeducacionespecialsordoshipoacusicos77', 44, 11),
+(95, 'profeducacionespecialneuromotora77', 45, 11),
+(96, 'profeducacionespecialintelectual77', 46, 11),
+(97, 'profeducacionespecialciegosdisminucionvisual77', 47, 11);
 
 -- --------------------------------------------------------
 
@@ -455,19 +467,19 @@ ALTER TABLE `distrito`
 -- AUTO_INCREMENT de la tabla `establecimiento`
 --
 ALTER TABLE `establecimiento`
-  MODIFY `id_establecimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_establecimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `planestudio`
 --
 ALTER TABLE `planestudio`
-  MODIFY `id_planestudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id_planestudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -501,7 +513,7 @@ ALTER TABLE `imagenes`
 -- Filtros para la tabla `planestudio`
 --
 ALTER TABLE `planestudio`
-  ADD CONSTRAINT `fk_carrera` FOREIGN KEY (`fk_carrera`) REFERENCES `carrera` (`id_carrera`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_carrera` FOREIGN KEY (`fk_carrera`) REFERENCES `carrera` (`id_carrera`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_establecimiento2` FOREIGN KEY (`fk_establecimiento`) REFERENCES `establecimiento` (`id_establecimiento`);
 COMMIT;
 
