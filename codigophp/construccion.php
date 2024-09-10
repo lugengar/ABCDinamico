@@ -353,9 +353,14 @@ function carrusel($nombre,$tipo,$imagenes,$esinicio){ // CREA EL CARRUSEL DE IMA
         </div>';
         
     }
+    if($esinicio){
+        echo'<div class="logo_pba_vertical"></div> 
+        <a onclick="redirigir('."'".'identificador1'."'".')" class="casita_superior botonsuperior"></a>';
+    }else{
     echo'<div class="logo_pba_vertical"></div> 
-    <a href="index.php" class="casita_superior"></a>
-    <a onclick="redirigir('."'".'identificador1'."'".')" class="informacion_superior"></a>';
+    <a href="index.php" class="casita_superior botonsuperior"></a>
+    <a onclick="redirigir('."'".'identificador1'."'".')" class="informacion_superior botonsuperior"></a>';
+    }
 }
 function carrera($id,$nombre,$descripcion, $id_establecimiento,$titulo){ //CREA EL CUADRO DE LAS CARRERAS
     
