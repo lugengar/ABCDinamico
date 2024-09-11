@@ -153,7 +153,7 @@ if ($tabla === "carrera") {
         $tipo_establecimiento = $_POST['tipo_establecimiento'] ?? '';
         $servicios = $_POST['servicios'] ?? '';
         $fk_distrito = $_POST['fk_distrito'] ?? '';
-
+        $habilitado =  $_POST['habilitado'] ?? '';
 
         $coordenadas = obtenercoordenadas($ubicacion);
         $json_coordenadas = $coordenadas ? json_encode($coordenadas) : '{}'; 
@@ -171,9 +171,9 @@ if ($tabla === "carrera") {
         $upload_file = $upload_dir . $imagen_nombre;
 
         if (move_uploaded_file($imagen_tmp, $upload_file)) {
-            $sql = "INSERT INTO establecimiento (nombre, ubicacion, descripcion, tipo_establecimiento, servicios, fk_distrito, coordenadas) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO establecimiento (nombre, ubicacion, descripcion, tipo_establecimiento, servicios, fk_distrito, coordenadas, habilitado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($conn, $sql);
-            mysqli_stmt_bind_param($stmt, "sssssis", $nombre, $ubicacion, $descripcion, $tipo_establecimiento, $servicios, $fk_distrito, $json_coordenadas);
+            mysqli_stmt_bind_param($stmt, "sssssisi", $nombre, $ubicacion, $descripcion, $tipo_establecimiento, $servicios, $fk_distrito, $json_coordenadas, $habilitado);
             mysqli_stmt_execute($stmt);
 
             if (mysqli_stmt_affected_rows($stmt) > 0) {
@@ -233,6 +233,12 @@ if ($tabla === "carrera") {
             echo "Error al eliminar el establecimiento.";
         }
         mysqli_stmt_close($stmt);
+    }else if ($accion === "visualizar") {
+        $id_establecimiento = $_POST['id_establecimiento'] ?? '';
+       header("Location: ../universidad.php?universidad=" . $id_establecimiento);
+      /* echo "<script type='text/javascript'>
+        window.open('../universidad.php?universidad=".$_POST['id_establecimiento']."', '_blank');
+      </script>";*/
     }
 } else if ($tabla === "planestudio") {
     if ($accion === "agregar") {

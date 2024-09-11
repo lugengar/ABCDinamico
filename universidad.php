@@ -4,9 +4,10 @@
 <?php
     try {
         //OBTIENE TODOS LOS CODIGOS NECESARIOS PARA MOSTRAR LA INFORMACION DEL ESTABLECIMIENTO
+        include "./codigophp/construccion.php";
+
         include "./codigophp/mostrar_universidad.php";
         include "claves.php";
-        include "./codigophp/construccion.php";
         //LA BARRA DE BUSQUEDA PREDETERMINADA ES LA DE NOMBRE
         $tipo = "nombre";
         //EVITA QUE PUEDAN INSERTAR OTRO TIPO DE BARRA QUE NO EXISTE

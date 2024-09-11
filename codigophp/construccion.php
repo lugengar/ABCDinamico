@@ -1,5 +1,11 @@
 <?php
-
+session_start();
+$admin = "AND habilitado = 1";
+$admin2 = "AND e.habilitado = 1";
+if(isset($_SESSION["id_usuario"])){
+    $admin = "";
+    $admin2 = "";
+}
 //ESTE ARCHIVO SE ENCARGA DE CONSTRUIR EL DISEÑO RECIBIENDO LOS DATOS DE LA BDD
 
 //DIRECCIONES DE DONDE TOMAR LAS IMAGENES Y PDF

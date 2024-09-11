@@ -11,6 +11,9 @@
 </head>
 <body>
     <?php
+   // session_start();
+
+    //session_destroy();
         //INSERTA EN EL CODIGO EL CODIGO PARA MOSTRAR LOS RESULTADOS DE LA BARRA DE BUSQUEDA
         include "./codigophp/buscar_universidades.php";
 

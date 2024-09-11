@@ -9,10 +9,12 @@
 <body>
     <?php
          include "../codigophp/conexionbs.php";
+         session_start();
+         $_SESSION["id_usuario"] = "a";
 
-        $distritos_result = mysqli_query($conn, "SELECT id_distrito, nombre FROM distrito");
-        $establecimientos_result = mysqli_query($conn, "SELECT id_establecimiento, nombre FROM establecimiento WHERE id_establecimiento != 0");
-        $carrera_result = mysqli_query($conn, "SELECT id_carrera, nombre FROM carrera");
+        $distritos_result = mysqli_query($conn, "SELECT * FROM distrito");
+        $establecimientos_result = mysqli_query($conn, "SELECT * FROM establecimiento WHERE id_establecimiento != 0");
+        $carrera_result = mysqli_query($conn, "SELECT * FROM carrera");
         $tipo_contacto_result = mysqli_query($conn, "SELECT DISTINCT tipo FROM contacto");
 
         $distritos = mysqli_fetch_all($distritos_result, MYSQLI_ASSOC);
@@ -30,6 +32,7 @@
                 <option value="agregar">Agregar</option>
                 <option value="eliminar">Eliminar</option>
                 <option value="modificar">Modificar</option>
+                <option value="visualizar">Visualizar</option>
             </select>
 
             <label for="tabla">Seleccionar tabla:</label>
@@ -135,6 +138,8 @@
                         </select>
                         <label for="imagen">Imagen (solo JPG):</label>
                         <input type="file" id="imagen" name="imagen" accept=".jpg" >
+                        <label for="habilitado">¿Quiere que el establecimiento sea publico? (todos podran verlo):</label>
+                        <input type="checkbox" id="habilitado" name="habilitado">
                     `;
                 } else if (tabla === "planestudio") {
                     formFields.innerHTML = `
@@ -238,6 +243,25 @@
                 }
             }else if (accion === "modificar") {
 
+            }else if (accion === "visualizar") {
+                if (tabla === "establecimiento") {
+                    formFields.innerHTML = `
+                        <label for="id_establecimiento">Establecimiento a visualizar:</label>
+                        <select id="id_establecimiento" name="id_establecimiento" required>
+                            <option value="">--Selecciona un establecimiento--</option>
+                            <?php foreach ($establecimientos as $row) { ?>
+                                <option value="<?php echo $row['id_establecimiento']; ?>">
+                                    <?php 
+                                    $mensaje = "Privado";
+                                    if($row['habilitado'] == "1"){
+                                        $mensaje = "Publico";
+                                    }
+                                    echo $mensaje." - ".$row['nombre']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    `;
+                }
             }
         }
     </script>
