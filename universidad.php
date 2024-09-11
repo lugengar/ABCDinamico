@@ -144,7 +144,7 @@ if(isset($_SESSION["id_usuario"])){
             </div>
              <div class="barradebusqueda volverarriba">
                 <img src="imagenes/iconos/flecha.svg" alt="" class="flecha">
-                <button onclick="redirigircentro('botones')" >Volver arriba</button>
+                <button onclick="redirigircentro('info')" >Volver arriba</button>
             </div>
         </main>
        
