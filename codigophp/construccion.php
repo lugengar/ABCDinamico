@@ -114,26 +114,32 @@ function generarTextoRedesSociales($contactos) { //CREA UN TEXTO COOHERENTE DOND
 
     return $texto;
 }
-
+function cortarTexto($texto, $longitud = 70) {
+    if (strlen($texto) > $longitud) {
+        return substr($texto, 0, $longitud) . '...';
+    } else {
+        return $texto;
+    }
+}
 function carreraslista($carreras){ // CREA LA LISTA DE CARRERAS Y TECNICATURAS PARA LA BARRA DE BUSQUEDA
     foreach ($carreras as $carrera) {
-        echo '<option value="'.$carrera["id_carrera"].'">'.$carrera["nombre"].'</option>';
+        echo '<option value="'.$carrera["id_carrera"].'">'.cortarTexto($carrera["nombre"]).'</option>';
     }
 }
 function establecimientolista($establecimientos){ // CREA LA LISTA DE CARRERAS Y TECNICATURAS PARA LA BARRA DE BUSQUEDA
     foreach ($establecimientos as $establecimiento) {
-        echo '<option value="'.$establecimiento["tipo_establecimiento"].'">'.$establecimiento["tipo_establecimiento"].'</option>';
+        echo '<option value="'.$establecimiento["tipo_establecimiento"].'">'.cortarTexto($establecimiento["tipo_establecimiento"]).'</option>';
     }
 }
 function carreratipolista($carreras){ // CREA LA LISTA DE CARRERAS Y TECNICATURAS PARA LA BARRA DE BUSQUEDA
     foreach ($carreras as $carrera) {
-        echo '<option value="'.$carrera["tipo_carrera"].'">'.$carrera["tipo_carrera"].'</option>';
+        echo '<option value="'.$carrera["tipo_carrera"].'">'.cortarTexto($carrera["tipo_carrera"]).'</option>';
     }
 }
 
 function distritolista($distritos){ // CREA LA LISTA DE LOS DISTRITOS PARA LA BARRA DE BUSQUEDA
     foreach ($distritos as $distrito) {
-        echo '<option value="'.$distrito["id_distrito"].'">'.$distrito["nombre"].'</option>';
+        echo '<option value="'.$distrito["id_distrito"].'">'.cortarTexto($distrito["nombre"]).'</option>';
     }
 }
 function arreglar_telefono($tel){ // MODIFICA EL NUMERO DE TELEFONO EN CASO DE FALTAR EL +54 O EL 11
