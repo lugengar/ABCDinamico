@@ -9,6 +9,7 @@ if(isset($_SESSION["id_usuario"])){
     $admin = "";
     $admin2 = "";
 }
+
    // try {
         //OBTIENE TODOS LOS CODIGOS NECESARIOS PARA MOSTRAR LA INFORMACION DEL ESTABLECIMIENTO
         include "./codigophp/mostrar_universidad.php";
@@ -29,6 +30,9 @@ if(isset($_SESSION["id_usuario"])){
                     $haytipo = true;
                 }
             }
+        }
+        if($row["habilitado"] == 1 && !isset($_SESSION["id_usuario"])){
+            header("Location: index.php");
         }
     //} catch (Exception $e) {
         //EN CASO DE ENCONTRAR UN ERROR AL CARGAR TE ENVIA AL INDEX.PHP

@@ -6,30 +6,32 @@
      $admin = "";
      $admin2 = "";
  }
-
 function mapa(){
     global $admin2;
     include "./conexionbs.php";
     include "../claves.php";
 
-    $stmt = $conn->prepare("SELECT 
+    $stmt = $conn->prepare("SELECT  
     e.nombre AS establecimiento_nombre, 
     e.ubicacion, 
     e.id_establecimiento, 
     d.nombre AS distrito_nombre, 
-    e.coordenadas,
+    e.coordenadas, 
+    e.habilitado,
     i.url AS primera_imagen
 FROM 
     establecimiento e
 INNER JOIN 
     distrito d ON e.fk_distrito = d.id_distrito
 LEFT JOIN 
-    imagenes i ON i.fk_establecimiento = e.id_establecimiento
+    imagenes i ON i.fk_establecimiento = e.id_establecimiento 
     AND i.id_imagen = (
         SELECT MIN(id_imagen)
         FROM imagenes
-        WHERE fk_establecimiento = e.id_establecimiento AND e.id_establecimiento = 0 ".$admin2."
-    );
+        WHERE fk_establecimiento = e.id_establecimiento 
+    )
+WHERE 
+   e.id_establecimiento != 0 ".$admin2."
 ");
 
     if ($stmt->execute()) {
@@ -41,13 +43,16 @@ LEFT JOIN
     $lugares = array(); 
     foreach($result2 as $row4) {
         $coordenadas = json_decode($row4["coordenadas"], true); 
-
+        $rutaimagen = "otros/logo-pba-mobile.png"; 
+        if($row4["primera_imagen"] != null){
+            $rutaimagen = "universidades/". $row4["primera_imagen"];
+        }
         if ($coordenadas) {
             $lugares[] = array(
                 'name' => $row4["establecimiento_nombre"],
                 'address' => [$coordenadas['x'], $coordenadas['y']], 
                 'url' => '../universidad.php?universidad=' . $row4["id_establecimiento"],
-                'imageUrl'=> '../imagenes/universidades/'.$row4["primera_imagen"],
+                'imageUrl'=> '../imagenes/'.$rutaimagen,
             );
         }
     }

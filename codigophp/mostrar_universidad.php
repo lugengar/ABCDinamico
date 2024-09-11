@@ -20,22 +20,11 @@ if (isset($_GET['universidad'])) {
         header("Location: index.php");
     }else{
         $row = $result->fetch_assoc();
-        if($row["habilitado"] == 0){
-            $sql2 = "SELECT * FROM imagenes WHERE fk_establecimiento = ".$row["id_establecimiento"];
-            $imagenes = $conn->query($sql2);
-            $sql3 = "SELECT * FROM contacto WHERE fk_establecimiento = ".$row["id_establecimiento"];
-            $contactos = $conn->query($sql3);
-        }else{
-            echo $_SESSION["id_usuario"];
-            if(!isset($_SESSION["id_usuario"])){
-                header("Location: index.php");
-            }else{
-                $sql2 = "SELECT * FROM imagenes WHERE fk_establecimiento = ".$row["id_establecimiento"];
-                $imagenes = $conn->query($sql2);
-                $sql3 = "SELECT * FROM contacto WHERE fk_establecimiento = ".$row["id_establecimiento"];
-                $contactos = $conn->query($sql3);
-            }
-        }
+        $sql2 = "SELECT * FROM imagenes WHERE fk_establecimiento = ".$row["id_establecimiento"];
+        $imagenes = $conn->query($sql2);
+        $sql3 = "SELECT * FROM contacto WHERE fk_establecimiento = ".$row["id_establecimiento"];
+        $contactos = $conn->query($sql3);
+        
     }
     
     $stmt->close();
