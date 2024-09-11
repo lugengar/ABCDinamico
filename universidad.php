@@ -3,16 +3,26 @@
 <head>
 <?php
     try {
+        //OBTIENE TODOS LOS CODIGOS NECESARIOS PARA MOSTRAR LA INFORMACION DEL ESTABLECIMIENTO
         include "./codigophp/mostrar_universidad.php";
         include "claves.php";
         include "./codigophp/construccion.php";
+        //LA BARRA DE BUSQUEDA PREDETERMINADA ES LA DE NOMBRE
         $tipo = "nombre";
+        //EVITA QUE PUEDAN INSERTAR OTRO TIPO DE BARRA QUE NO EXISTE
+        $haytipo = false;
+
+        //VARIABLES PARA SABER QUE TIPO DE BARRA DEBE MOSTRARSE SEGUN LA BARRA UTILIZADA ANTERIORMENTE
         if(isset($_GET["tipo"])){
             if(isset($_GET["tipo"])){
                 $tipo = $_GET["tipo"];
+                if($tipo == "nombre" || $tipo == "carrera"){
+                    $haytipo = true;
+                }
             }
         }
     } catch (Exception $e) {
+        //EN CASO DE ENCONTRAR UN ERROR AL CARGAR TE ENVIA AL INDEX.PHP
         header("Location: index.php");
     }
     ?>
@@ -71,7 +81,7 @@
                     <h1>Buscar por nombre de la carrera</h1>
                 </button>
             </div>
-            <form class="barradebusqueda <?php if($tipo == "nombre"){echo 'activo';} ?>" id="nombre" method="GET" action="./universidad.php#identificador2">
+            <form class="barradebusqueda <?php if($tipo == "nombre" || $haytipo == false){echo 'activo';} ?>" id="nombre" method="GET" action="./universidad.php#identificador2">
             <p class="barratexto">Nombre de la carrera <img src="imagenes/iconos/lupa.svg" class="imglupa" alt=""></p>
                 
             <div style="gap: 2vh;">
