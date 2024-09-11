@@ -4,7 +4,15 @@ include "../codigophp/coordenadas.php";
 
 $accion = $_POST['accion'] ?? '';
 $tabla = $_POST['tabla'] ?? '';
-
+function checkDuplicate($conn, $table, $column, $value) {
+    $query = "SELECT COUNT(*) as count FROM $table WHERE $column = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $value);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row['count'] > 0;
+}
 if ($tabla === "carrera") {
     if ($accion === "agregar") {
         $nombre = $_POST['nombre'] ?? '';
@@ -48,7 +56,22 @@ if ($tabla === "carrera") {
         }
         mysqli_stmt_close($stmt);
     }
-} else if ($tabla === "contacto") {
+} elseif ($tabla === "distrito") {
+    $nombre = $_POST['nombre'];
+
+    if (!checkDuplicate($conn, 'distrito', 'nombre', $nombre)) {
+        $stmt = $conn->prepare("INSERT INTO distrito (nombre) VALUES (?)");
+        $stmt->bind_param("s", $nombre);
+        if ($stmt->execute()) {
+            echo "Distrito cargado correctamente.";
+        } else {
+            echo "Error al cargar el distrito: " . $stmt->error;
+        }
+    } else {
+        echo "Entrada duplicada para distrito con nombre: " . htmlspecialchars($nombre);
+        $executeStmt = false;
+    }
+}else if ($tabla === "contacto") {
     if ($accion === "agregar") {
         $descripcion = $_POST['descripcion'] ?? '';
         $tipo = $_POST['tipo'] ?? '';
@@ -84,6 +107,43 @@ if ($tabla === "carrera") {
             echo "Error al eliminar el contacto.";
         }
         mysqli_stmt_close($stmt);
+    }
+}elseif ($tabla === "imagenes") {
+    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+        $imagen_file = $_FILES['imagen'];
+        $upload_dir = "";
+        $upload_file = "";
+        $imagen_name = basename($imagen_file['name']);
+      
+
+        if (move_uploaded_file($imagen_file['tmp_name'], $upload_file)) {
+            $fk_establecimiento = $_POST['fk_establecimiento'];
+            if($fk_establecimiento == 0){
+                $upload_dir = '../imagenes/otros/'; // Directorio donde se guardarán las imágenes
+                $upload_file = $upload_dir . $imagen_name;
+            }else{
+                $upload_dir = '../imagenes/universidades/'; // Directorio donde se guardarán las imágenes
+                $upload_file = $upload_dir . $imagen_name;
+            }
+            $url = $imagen_name; // Asignar el nombre de la imagen a la variable $url
+
+            if (!checkDuplicate($conn, 'imagenes', 'url', $url)) {
+                $stmt = $conn->prepare("INSERT INTO imagenes (url, fk_establecimiento) VALUES (?, ?)");
+                $stmt->bind_param("si", $url, $fk_establecimiento);
+                if ($stmt->execute()) {
+                    echo "Imagen cargada correctamente.";
+                } else {
+                    echo "Error al cargar la imagen: " . $stmt->error;
+                }
+            } else {
+                echo "Entrada duplicada para imagen con nombre: " . htmlspecialchars($url);
+                $executeStmt = false;
+            }
+        } else {
+            echo "Error al subir la imagen.";
+        }
+    } else {
+        echo "Error en el archivo de imagen: " . $_FILES['imagen']['error'];
     }
 } else if ($tabla === "establecimiento") {
     if ($accion === "agregar") {

@@ -35,10 +35,13 @@
             <label for="tabla">Seleccionar tabla:</label>
             <select id="tabla" name="tabla" onchange="mostrarCampos()" required>
                 <option value="">--Selecciona una tabla--</option>
+                <option value="inicio">Inicio</option>
                 <option value="carrera">Carrera</option>
                 <option value="contacto">Contacto</option>
                 <option value="establecimiento">Establecimiento</option>
                 <option value="planestudio">Plan de Estudio</option>
+                <option value="imagenes">Imagenes</option>
+                <option value="distrito">Distritos</option>
             </select>
 
             <div id="formFields"></div>
@@ -156,7 +159,30 @@
                             <?php } ?>
                         </select>
                     `;
-                }
+                }else if (tabla === "distrito") {
+                formFields.innerHTML = `
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                `;
+            }else if (tabla === "imagenes") {
+                formFields.innerHTML = `
+                    <label for="imagen">Cargar imagen:</label>
+                    <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                    <br>
+                    <label for="fk_establecimiento">FK Establecimiento:</label>
+                    <select id="fk_establecimiento" name="fk_establecimiento" required>
+                        <option value="">--Selecciona un establecimiento--</option>
+                        <option value="0">
+                                0 - Carrusel del inicio
+                        </option>
+                        <?php foreach ($establecimientos as $row) { ?>
+                            <option value="<?php echo htmlspecialchars($row['id_establecimiento']); ?>">
+                                <?php echo htmlspecialchars($row['id_establecimiento']) . " - " . htmlspecialchars($row['nombre']); ?>
+                            </option>
+                        <?php } ?>
+                    </select>
+                `;
+            }
             }
 
 
@@ -210,6 +236,8 @@
                         </select>
                     `;
                 }
+            }else if (accion === "modificar") {
+
             }
         }
     </script>
