@@ -2,11 +2,19 @@
 <html lang="en-es">
 <head>
 <?php
-    try {
+session_start();
+$admin = "AND habilitado = 0";
+$admin2 = "AND e.habilitado = 0";
+if(isset($_SESSION["id_usuario"])){
+    $admin = "";
+    $admin2 = "";
+}
+   // try {
         //OBTIENE TODOS LOS CODIGOS NECESARIOS PARA MOSTRAR LA INFORMACION DEL ESTABLECIMIENTO
+        include "./codigophp/mostrar_universidad.php";
+
         include "./codigophp/construccion.php";
 
-        include "./codigophp/mostrar_universidad.php";
         include "claves.php";
         //LA BARRA DE BUSQUEDA PREDETERMINADA ES LA DE NOMBRE
         $tipo = "nombre";
@@ -22,10 +30,10 @@
                 }
             }
         }
-    } catch (Exception $e) {
+    //} catch (Exception $e) {
         //EN CASO DE ENCONTRAR UN ERROR AL CARGAR TE ENVIA AL INDEX.PHP
-        header("Location: index.php");
-    }
+     //   header("Location: index.php");
+    //}
     ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

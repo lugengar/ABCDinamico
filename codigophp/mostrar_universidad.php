@@ -5,7 +5,7 @@ if (isset($_GET['universidad'])) {
     include "./codigophp/conexionbs.php";
     $universidad = filter_var($_GET['universidad'], FILTER_SANITIZE_SPECIAL_CHARS);
 
-    $stmt = $conn->prepare("SELECT e.id_establecimiento, e.coordenadas, e.ubicacion,e.tipo_establecimiento, e.servicios, e.nombre AS nombre_universidad, e.descripcion, d.nombre AS nombre_distrito
+    $stmt = $conn->prepare("SELECT e.id_establecimiento, e.coordenadas, e.ubicacion,e.tipo_establecimiento, e.servicios, e.habilitado, e.nombre AS nombre_universidad, e.descripcion, d.nombre AS nombre_distrito
         FROM establecimiento e 
         INNER JOIN distrito d ON e.fk_distrito = d.id_distrito
         WHERE e.id_establecimiento = ? AND e.id_establecimiento != 0
@@ -20,12 +20,13 @@ if (isset($_GET['universidad'])) {
         header("Location: index.php");
     }else{
         $row = $result->fetch_assoc();
-        if($row["habilitado"] == 1 ){
+        if($row["habilitado"] == 0){
             $sql2 = "SELECT * FROM imagenes WHERE fk_establecimiento = ".$row["id_establecimiento"];
             $imagenes = $conn->query($sql2);
             $sql3 = "SELECT * FROM contacto WHERE fk_establecimiento = ".$row["id_establecimiento"];
             $contactos = $conn->query($sql3);
         }else{
+            echo $_SESSION["id_usuario"];
             if(!isset($_SESSION["id_usuario"])){
                 header("Location: index.php");
             }else{

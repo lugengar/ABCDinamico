@@ -32,7 +32,7 @@
                 <option value="agregar">Agregar</option>
                 <option value="eliminar">Eliminar</option>
                 <option value="modificar">Modificar</option>
-                <option value="visualizar">Visualizar</option>
+                <option value="visualizar">Visualizar</option>                  
             </select>
 
             <label for="tabla">Seleccionar tabla:</label>

@@ -11,9 +11,14 @@
 </head>
 <body>
     <?php
-   // session_start();
-
-    //session_destroy();
+   session_start();
+   //session_destroy();
+   $admin = "AND habilitado = 0";
+   $admin2 = "AND e.habilitado = 0";
+   if(isset($_SESSION["id_usuario"])){
+       $admin = "";
+       $admin2 = "";
+   }
         //INSERTA EN EL CODIGO EL CODIGO PARA MOSTRAR LOS RESULTADOS DE LA BARRA DE BUSQUEDA
         include "./codigophp/buscar_universidades.php";
 
