@@ -1,7 +1,14 @@
 <?php
-
+ session_start();
+ $admin = "AND habilitado = 0";
+ $admin2 = "AND e.habilitado = 0";
+ if(isset($_SESSION["id_usuario"])){
+     $admin = "";
+     $admin2 = "";
+ }
 
 function mapa(){
+    global $admin2;
     include "./conexionbs.php";
     include "../claves.php";
 
@@ -21,7 +28,7 @@ LEFT JOIN
     AND i.id_imagen = (
         SELECT MIN(id_imagen)
         FROM imagenes
-        WHERE fk_establecimiento = e.id_establecimiento
+        WHERE fk_establecimiento = e.id_establecimiento AND e.id_establecimiento = 0 ".$admin2."
     );
 ");
 

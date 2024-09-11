@@ -12,7 +12,7 @@
 <body>
     <?php
    session_start();
-   //session_destroy();
+   session_destroy();
    $admin = "AND habilitado = 0";
    $admin2 = "AND e.habilitado = 0";
    if(isset($_SESSION["id_usuario"])){

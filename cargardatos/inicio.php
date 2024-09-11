@@ -253,7 +253,7 @@
                                 <option value="<?php echo $row['id_establecimiento']; ?>">
                                     <?php 
                                     $mensaje = "Privado";
-                                    if($row['habilitado'] == "1"){
+                                    if($row['habilitado'] == "0"){
                                         $mensaje = "Publico";
                                     }
                                     echo $mensaje." - ".$row['nombre']; ?>

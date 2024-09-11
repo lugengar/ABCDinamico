@@ -153,7 +153,7 @@ if ($tabla === "carrera") {
         $tipo_establecimiento = $_POST['tipo_establecimiento'] ?? '';
         $servicios = $_POST['servicios'] ?? '';
         $fk_distrito = $_POST['fk_distrito'] ?? '';
-        $habilitado =  $_POST['habilitado'] ?? '';
+        $habilitado =  $_POST['habilitado'] ?? '1';
 
         $coordenadas = obtenercoordenadas($ubicacion);
         $json_coordenadas = $coordenadas ? json_encode($coordenadas) : '{}'; 
