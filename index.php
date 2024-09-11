@@ -4,21 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estiloscss/styles.css">
-    <link rel="stylesheet" href="estiloscss/animaciones.css">
+        <?php include "./codigophp/verificacion.php"; animaciones();?>
+   
     <link rel="icon" href="https://abc.gob.ar/core/themes/abc/favicon.ico" type="image/vnd.microsoft.icon">
     <title>Ofertas de Educación Superior Región 6</title>
     <meta name="description" content="Ofertas de Educación Superior Región 6">
 </head>
 <body>
     <?php
-   session_start();
-   session_destroy();
-   $admin = "AND habilitado = 0";
-   $admin2 = "AND e.habilitado = 0";
-   if(isset($_SESSION["id_usuario"])){
-       $admin = "";
-       $admin2 = "";
-   }
+
+        
+        mostrarocultos();
         //INSERTA EN EL CODIGO EL CODIGO PARA MOSTRAR LOS RESULTADOS DE LA BARRA DE BUSQUEDA
         include "./codigophp/buscar_universidades.php";
 
@@ -92,7 +88,7 @@
             <form class="barradebusqueda <?php if($tipo == "nombre" || $haytipo == false){echo 'activo';} ?>" id="nombre" method="GET" action="./index.php#identificador2">
                <p class="barratexto">Nombre del establecimiento <img src="imagenes/iconos/lupa.svg" class="imglupa" alt=""></p>
             <div style="gap:2vh;">
-                <input type="text" name="busqueda" maxlength ="20" placeholder="Nombre" required>
+                <input type="text" name="busqueda" maxlength ="35" placeholder="Nombre" required>
                 <input type="hidden" name="tipo"  value="nombre" required>
                 <input type="submit" value="Buscar">
                 </div>
@@ -170,7 +166,7 @@
     </div>
 </body>
 </html>
-<script src="codigojs/carrusel.js"></script>
+<script src="codigojs/carrusel2.js"></script>
 <script src="codigojs/redirigir.js"></script>
 <script src="codigojs/ventanas.js"></script>
 <script src="codigojs/botonesbarra.js"></script>
