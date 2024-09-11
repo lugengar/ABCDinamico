@@ -166,7 +166,7 @@
     </div>
 </body>
 </html>
-<script src="codigojs/carrusel2.js"></script>
+<script src="codigojs/carrusel.js"></script>
 <script src="codigojs/redirigir.js"></script>
 <script src="codigojs/ventanas.js"></script>
 <script src="codigojs/botonesbarra.js"></script>
