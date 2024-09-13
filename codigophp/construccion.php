@@ -440,7 +440,14 @@ global $haycorreo;
                 
                     
               
-            }  
+            }else{
+                echo '<p class="descripcionuni">Por el momento puede solicitar el material contactandose con el establecimiento</p>';
+                if($haycorreo == true){
+                    echo '<a class="botonuni" onclick="redirigircentro('."'".'formulariodecontacto'."'".')">CONTACTARME</a>';
+                }
+               echo'</div>';
+        
+               }  
             
        }else{
         echo '<p class="descripcionuni">Por el momento puede solicitar el material contactandose con el establecimiento</p>';
