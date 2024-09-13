@@ -407,46 +407,49 @@ global $haycorreo;
        echo '<div class="universidad" id="plan"> 
        <div class="imageninfo"style="background-image: url(imagenes/iconos/recurso.svg);"></div>
        <div class="barrauni"></div>
-       <h1 class="nombreuni">MODALIDAD DE CURSADA</h1>';
+       <h1 class="nombreuni">RECURSOS</h1>';
        if($pdf != null){ 
             if($pdf->num_rows > 0){
-                if($pdf->num_rows > 1){
-                    echo '<p class="descripcionuni"style="height: 10vh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>';
+              
+                    echo '<p class="descripcionuni"style="height: 10vh;">A continuación, se presenta el material detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>';
                     foreach($pdf as $key => $pdff) {
-                        echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO '.($key +1).'</button>';
+                        if($pdff["pdf"] != null){
+                            echo '<button class="botonuni pop" id="pdf-containerb">PLAN DE ESTUDIO '.($key +1).'</button>';   
+                        }
+                        if($pdff["diseño"] != null){
+                            echo '<button class="botonuni pop" id="pdf-containerb">DISEÑO CURRICULAR '.($key +1).'</button>';   
+                        }
                     }
                     echo '</div>';
                     foreach($pdf as $key => $pdff) {
-                        echo '<div id="pdf-container" popover class="pop2">
+                        if($pdff["pdf"] != null){
+                            echo '<div id="pdf-container" popover class="pop2">
                             <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
                             <embed class="pdf-viewer" src="'.arreglarpdf($pdff["pdf"]).'" type="application/pdf" />
-                        </div>';
-                    }
-                }else{
-                    $row = $pdf->fetch_assoc();
-
-                    if($row["pdf"] != null){
-                        echo '<p class="descripcionuni"style="height: 10vh;">A continuación, se presenta el plan de estudios detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>';
-                        echo '<button class="botonuni pop" id="pdf-containerb">VER RECURSO</button></div>';
-                        echo '<div id="pdf-container" popover class="pop2">
-                                <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
-                            <embed class="pdf-viewer" src="'.arreglarpdf($row["pdf"]).'" type="application/pdf" />';
-                    }else{
-                        echo '<p class="descripcionuni">Por el momento puede solicitar el plan de estudios contactandose con el establecimiento</p>';
-                        if($haycorreo == true){
-                            echo '<a class="botonuni" onclick="redirigircentro('."'".'formulariodecontacto'."'".')">CONTACTARME</a>';
+                        </div>';  
                         }
+                        if($pdff["diseño"] != null){
+                            echo '<div id="pdf-container" popover class="pop2">
+                            <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
+                            <embed class="pdf-viewer" src="'.arreglarpdf($pdff["diseño"]).'" type="application/pdf" />
+                        </div>';  
+                        }
+                        
+                        
                     }
-                }
+                
+                    
+              
             }  
             
        }else{
-        echo '<p class="descripcionuni">Por el momento puede solicitar el plan de estudios contactandose con el establecimiento</p>';
+        echo '<p class="descripcionuni">Por el momento puede solicitar el material contactandose con el establecimiento</p>';
         if($haycorreo == true){
             echo '<a class="botonuni" onclick="redirigircentro('."'".'formulariodecontacto'."'".')">CONTACTARME</a>';
         }
-       }
        echo'</div>';
+
+       }
 
 }
 ?>
