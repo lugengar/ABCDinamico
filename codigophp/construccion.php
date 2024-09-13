@@ -244,7 +244,7 @@ function info_universidad($info,$ubicacion,$servicios,$distrito,$nombre,$contact
                 }
                 echo'</div>';
             }else{
-                echo '<p class="descripcionuni" >Ningun contacto disponible</p>';
+                echo '<p class="descripcionuni" >Por el momento no se encuentran contactos disponibles.</p>';
             }
             echo'</div> </div>';
             if($haycorreo == true){// EN CASO DE NO CONTAR CON UN CONTACTO NO MOSTRARA LA INSCRIPCION
@@ -387,7 +387,7 @@ global $haycorreo;
         
                 
                 <h1 class="nombreuni">TAMBIEN SE CURSA EN</h1><p class="descripcionuni" style="height: 25dvh;">
-                Podes cursar "'.$titulo.'" en los siguientes establecimientos:<br>';
+                Podes estudiar "'.$titulo.'" en los siguientes establecimientos:<br>';
             
                 foreach($establecimientos as $key => $establecimiento) {
                     if($establecimientoactual["id_establecimiento"] != $establecimiento["id_establecimiento"]){
