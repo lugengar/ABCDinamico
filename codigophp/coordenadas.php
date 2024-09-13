@@ -72,6 +72,6 @@ function actualizarcoordenadas(){
     $stmt->close();
     $conn->close();
 }
-actualizarcoordenadas();
+//actualizarcoordenadas();
 
 ?>

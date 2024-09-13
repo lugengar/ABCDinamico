@@ -162,9 +162,9 @@ if ($tabla === "carrera") {
         $imagen_tmp = $_FILES['imagen']['tmp_name'];
         $imagen_ext = pathinfo($imagen, PATHINFO_EXTENSION);
 
-        if ($imagen_ext !== 'jpg') {
+       /* if ($imagen_ext !== 'jpg') {
             die("El archivo de imagen debe ser de tipo JPG.");
-        }
+        }*/
 
         $imagen_nombre = uniqid() . ".jpg";
         $upload_dir = '../imagenes/universidades/';

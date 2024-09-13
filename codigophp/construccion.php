@@ -412,15 +412,16 @@ global $haycorreo;
             if($pdf->num_rows > 0){
               
                     echo '<p class="descripcionuni"style="height: 10vh;">A continuación, se presenta el material detallado que guía el desarrollo académico y profesional de los estudiantes en nuestra institución.</p>';
+                    echo '<div class="redesociales">';
                     foreach($pdf as $key => $pdff) {
                         if($pdff["pdf"] != null){
-                            echo '<button class="botonuni pop" id="pdf-containerb">PLAN DE ESTUDIO '.($key +1).'</button>';   
+                            echo '<button class="botonuni2 pop" id="pdf-containerb">PLAN DE ESTUDIO '.($key +1).'</button>';   
                         }
                         if($pdff["diseño"] != null){
-                            echo '<button class="botonuni pop" id="pdf-containerb">DISEÑO CURRICULAR '.($key +1).'</button>';   
+                            echo '<button class="botonuni2 pop" id="pdf-containerb">DISEÑO CURRICULAR '.($key +1).'</button>';   
                         }
                     }
-                    echo '</div>';
+                    echo '</div></div>';
                     foreach($pdf as $key => $pdff) {
                         if($pdff["pdf"] != null){
                             echo '<div id="pdf-container" popover class="pop2">
