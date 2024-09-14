@@ -241,8 +241,34 @@
                         </select>
                     `;
                 }
-            }else if (accion === "modificar") {
-
+            } else if (accion === "modificar") {
+                if (tabla === "establecimiento") {
+                    formFields.innerHTML = `
+                        <label for="id_establecimiento">Establecimiento a modificar:</label>
+                        <select id="id_establecimiento" name="id_establecimiento" onchange="cargarDatos('establecimiento')" required>
+                            <option value="">--Selecciona un establecimiento--</option>
+                            <?php foreach ($establecimientos as $row) { ?>
+                                <option value="<?php echo $row['id_establecimiento']; ?>">
+                                    <?php echo $row['nombre']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <div id="establecimientoFields"></div>
+                    `;
+                } else if (tabla === "carrera") {
+                    formFields.innerHTML = `
+                        <label for="id_carrera">Carrera a modificar:</label>
+                        <select id="id_carrera" name="id_carrera" onchange="cargarDatos('carrera')" required>
+                            <option value="">--Selecciona una carrera--</option>
+                            <?php foreach ($carreras as $row) { ?>
+                                <option value="<?php echo $row['id_carrera']; ?>">
+                                    <?php echo $row['nombre']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <div id="carreraFields"></div>
+                    `;
+                } 
             }else if (accion === "visualizar") {
                 if (tabla === "establecimiento") {
                     formFields.innerHTML = `
@@ -262,6 +288,25 @@
                         </select>
                     `;
                 }
+            }
+        }
+        function cargarDatos(tabla) {
+            var idElemento = document.getElementById("id_" + tabla).value;
+            var fieldsContainer = document.getElementById(tabla + "Fields");
+
+            if (idElemento) {
+                // Realizar una solicitud AJAX para obtener los datos del elemento seleccionado
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "obtenerdatos.php?tipo="+tabla+"&id=" + idElemento, true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        // Insertar los campos con los datos actuales para ser modificados
+                        fieldsContainer.innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send();
+            } else {
+                fieldsContainer.innerHTML = '';
             }
         }
     </script>

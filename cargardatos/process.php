@@ -55,7 +55,25 @@ if ($tabla === "carrera") {
             echo "Error al eliminar la carrera.";
         }
         mysqli_stmt_close($stmt);
-    }
+    }else if ($accion === "modificar") {
+        $id_carrera = $_POST['id_carrera'] ?? '';
+        $nombre = $_POST['nombre'] ?? '';
+        $descripcion = $_POST['descripcion'] ?? '';
+        $titulo = $_POST['titulo'] ?? '';
+        $tipo_carrera = $_POST['tipo_carrera'] ?? '';
+
+        $sql = "UPDATE carrera SET nombre = ?, descripcion = ?, titulo = ?, tipo_carrera = ? WHERE id_carrera = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "ssssi", $nombre, $descripcion, $titulo, $tipo_carrera, $id_carrera);
+        mysqli_stmt_execute($stmt);
+
+        if (mysqli_stmt_affected_rows($stmt) > 0) {
+            echo "Carrera modificada exitosamente.";
+        } else {
+            echo "Error al modificar la carrera.";
+        }
+        mysqli_stmt_close($stmt);
+    } 
 } elseif ($tabla === "distrito") {
     $nombre = $_POST['nombre'];
 
@@ -239,6 +257,30 @@ if ($tabla === "carrera") {
       /* echo "<script type='text/javascript'>
         window.open('../universidad.php?universidad=".$_POST['id_establecimiento']."', '_blank');
       </script>";*/
+    }else  if ($accion === "modificar") {
+        $id_establecimiento = $_POST['id_establecimiento'] ?? '';
+        $nombre = $_POST['nombre'] ?? '';
+        $ubicacion = $_POST['ubicacion'] ?? '';
+        $descripcion = $_POST['descripcion'] ?? '';
+        $tipo_establecimiento = $_POST['tipo_establecimiento'] ?? '';
+        $servicios = $_POST['servicios'] ?? '';
+        $fk_distrito = $_POST['fk_distrito'] ?? '';
+        $habilitado =  $_POST['habilitado'] ?? '1';
+        $coordenadas = obtenercoordenadas($ubicacion);
+        $json_coordenadas = $coordenadas ? json_encode($coordenadas) : '{}';
+        print_r([$nombre, $ubicacion, $descripcion, $tipo_establecimiento, $servicios, $fk_distrito, $json_coordenadas, $habilitado, $id_establecimiento]);
+
+        $sql = "UPDATE establecimiento SET nombre = ?, ubicacion = ?, descripcion = ?, tipo_establecimiento = ?, servicios = ?, fk_distrito = ?, coordenadas = ?, habilitado = ? WHERE id_establecimiento = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "sssssisii", $nombre, $ubicacion, $descripcion, $tipo_establecimiento, $servicios, $fk_distrito, $json_coordenadas, $habilitado, $id_establecimiento);
+        mysqli_stmt_execute($stmt);
+
+        if (mysqli_stmt_affected_rows($stmt) > 0) {
+            echo "Establecimiento modificado exitosamente.";
+        } else {
+            echo "Error al modificar el establecimiento.";
+        }
+        mysqli_stmt_close($stmt);
     }
 } else if ($tabla === "planestudio") {
     if ($accion === "agregar") {
