@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2024 a las 17:20:56
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 15-09-2024 a las 06:48:14
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `carrera` (
   `descripcion` varchar(1000) NOT NULL,
   `titulo` varchar(100) NOT NULL,
   `tipo_carrera` enum('Licenciatura','Tecnicatura','Profesorado','Ingeniería','otros') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `carrera`
@@ -81,7 +81,7 @@ INSERT INTO `carrera` (`id_carrera`, `nombre`, `descripcion`, `titulo`, `tipo_ca
 (39, 'Tecnicatura en Mecatrónica', 'Página en proceso', 'Técnico en mecatrónica', 'Tecnicatura'),
 (40, 'Tecnicatura en Ciencia de Datos e Inteligencia Artificial', 'Página en proceso', 'Técnico en ciencia de datos e inteligencia artificial', 'Tecnicatura'),
 (41, 'Profesorado de Inglés', 'Forma profesionales en el uso de la comunicación para promover el desarrollo social, cultural y económico en comunidades y organizaciones. Los estudiantes adquieren habilidades en periodismo, diseño gráfico, producción audiovisual y gestión de proyectos sociales.', 'Profesor de inglés', 'Profesorado'),
-(42, 'Tecnicatura en Trabajo Social', 'Página en proceso', 'Técnico en trabajo social', 'Tecnicatura'),
+(42, 'Tecnicatura en Trabajo Social', 'Página en proceso', 'Trabajador social', 'Tecnicatura'),
 (43, 'Tecnicatura en Comunicación Social para el Desarrollo', 'Prepara a los estudiantes para comprender los procesos de comunicación e influencia social, así como para aplicar estrategias comunicativas efectivas. Cubre áreas como periodismo, relaciones públicas, publicidad y producción multimedia.', 'Técnico en comunicación social para el desarrollo', 'Tecnicatura'),
 (44, 'Profesorado en Educación Especial(Modalidad Sordos e Hipoacúsicos)', 'Página en proceso', 'Profesor en Educación Especial con Orientación en Sordos e Hipoacúsicos', 'Profesorado'),
 (45, 'Profesorado en Educación Especial(Modalidad Neuromotora)', 'Página en proceso', 'Profesor en Educación Especial con Orientación en Discapacidad Neuromotora', 'Profesorado'),
@@ -109,7 +109,25 @@ INSERT INTO `carrera` (`id_carrera`, `nombre`, `descripcion`, `titulo`, `tipo_ca
 (68, 'Tecnicatura en Producción Vegetal Orgánica', 'La carrera de Producción Vegetal Orgánica tiene como objetivo formar profesionales con sólidos conocimientos científicos y tecnológicos, capaces de intervenir en las cadenas productivas de manejo orgánico, en la actividad de investigación y extensión, y en la preservación de los recursos naturales desde una visión integral y sustentable, dentro de un contexto socioeconómico con diversos niveles de innovación e incertidumbre.', 'Técnico en Producción Vegetal Orgánica', 'Tecnicatura'),
 (69, 'Tecnicatura Universitaria en Mantenimiento Industrial', 'Esta Tecnicatura Superior surge de la necesidad que tiene la industria en general de reforzar la formación de sus técnicos en algunos temas y en disminuir la brecha de formación entre el ingeniero y el técnico de nivel medio en el momento del ejercicio profesional. La Tecnicatura Superior en Mantenimiento Industrial abarca, entre otros, los conceptos de mantenimiento eléctrico, hidráulico, neumático, electrónico y de instalaciones frigoríficas desde una óptica integrada y actual.', 'Técnico Universitario en Mantenimiento Industrial', 'Tecnicatura'),
 (70, 'Tecnicatura Universitaria en Procesos Industriales', 'Esta Tecnicatura Universitaria surge de la necesidad que tiene la industria en general de reforzar la formación de sus técnicos en algunos temas y en disminuir la brecha de formación entre el ingeniero y el técnico de nivel medio en el momento del ejercicio profesional.', 'Técnico Universitario en Procesos Industriales.', 'Tecnicatura'),
-(71, 'Tecnicatura en Gestión Ambiental y Salud', 'Página en proceso', 'Técnico Universitario en Gestión Ambiental y Salud', 'Tecnicatura');
+(71, 'Tecnicatura en Gestión Ambiental y Salud', 'Página en proceso', 'Técnico Universitario en Gestión Ambiental y Salud', 'Tecnicatura'),
+(73, 'Actuario (Administración)', 'Esta carrera forma profesionales capaces de analizar y gestionar riesgos financieros, seguros y pensiones, aplicando matemáticas, estadística y modelos financieros para tomar decisiones estratégicas en empresas y organizaciones.', 'Actuario en Administración.', 'Licenciatura'),
+(74, 'Contador Público', 'El contador público se especializa en la contabilidad, auditoría y control financiero de empresas. Su labor incluye llevar registros contables, preparar estados financieros y asesorar en temas fiscales y de control de gestión.', 'Contador Público.', 'otros'),
+(75, 'Licenciado en Administración', 'Esta carrera se enfoca en la gestión de recursos empresariales, abarcando áreas como marketing, finanzas, recursos humanos y operaciones. Los licenciados en administración tienen la capacidad de liderar proyectos y tomar decisiones estratégicas para mejorar el desempeño organizacional.', 'Licenciado en Administración.', 'Licenciatura'),
+(76, 'Lic. en Economía', 'Los economistas estudian cómo se producen, distribuyen y consumen los bienes y servicios. Esta carrera enseña a analizar mercados, evaluar políticas públicas y predecir tendencias económicas a nivel global y nacional.', 'Licenciado en Economía.', 'Licenciatura'),
+(77, 'Lic. en Sistemas de Información de las Organizaciones', 'Esta licenciatura combina conocimientos en tecnología y gestión empresarial, formando profesionales capaces de diseñar, implementar y gestionar sistemas de información que mejoren la eficiencia y la toma de decisiones en las organizaciones.', 'Licenciado en Sistemas de Información de las Organizaciones.', 'Licenciatura'),
+(78, 'Actuario (Economía)', 'El actuario en economía se especializa en el análisis de riesgos económicos y financieros mediante la aplicación de modelos matemáticos y estadísticos. Se enfoca en la evaluación de mercados, previsión de tendencias económicas y gestión de riesgos en sectores como seguros, inversiones y finanzas. Su trabajo es clave para la toma de decisiones estratégicas en escenarios de incertidumbre.', 'Licenciado en Actuaría con orientación en Economía o Actuario en Economía.', 'Licenciatura'),
+(79, 'Licenciatura en Psicología', 'Proporcionar una aproximación científica a los problemas de la psicología a través de una formación y capacitación en las distintas áreas y campos que favorezcan las opciones del alumno en su práctica futura como graduado.', 'Licenciado en Psicología', 'Licenciatura'),
+(80, 'Licenciatura en Musicoterapia', 'El licenciado en Musicoterapia es un profesional de la salud con sólida formación científica, basada en el corpus de conocimientos propios y específicos disciplinares, en la formación musical y en los conocimientos relativos al dominio de la Psicología y de la Fisiología (con énfasis en los aspectos neurológicos) necesarios para el abordaje de su objeto y campo de estudio.', 'Licenciado en Musicoterapia', 'Licenciatura'),
+(81, 'Licenciatura en Terapia Ocupacional', 'Tiene como objetivo analizar e instrumentar las ocupaciones del hombre relacionadas con el desempeño en las áreas de Automantenimiento, Productividad y Tiempo Libre, para promover, mantener y recuperar la salud. Desarrolla acciones de prevención, rehabilitación y equiparación en las áreas de Salud, Trabajo, Seguridad Social, Educación Especial y en el ámbito de la comunidad. Acción Social.', 'Licenciado en Terapia Ocupacional', 'Licenciatura'),
+(82, 'Profesorado de Enseñanza Media y Superior en Psicología', 'Posibilitar el conocimiento y análisis de los supuestos teóricos y metodológicos que sustentan las prácticas educativas. Apropiarse de las herramientas conceptuales, metodológicas y técnicas necesarias para el ejercicio de la docencia en los niveles medio y superior. Reflexionar sobre el sentido, función y alcance de la enseñanza de la Psicología en los niveles medio y superior y en las diversas modalidades constitutivas de esos niveles. Analizar el marco social e institucional en el que se desarrolla la práctica docente y asumir una actitud reflexiva ante su propia práctica.', 'Profesor de Enseñanza Media y Superior en Psicología', 'Profesorado'),
+(83, 'Licenciatura en Relaciones del Trabajo', 'La Licenciatura en Relaciones del Trabajo brinda una formación interdisciplinaria, que respetando la complejidad de su objeto de estudio aborda la diversidad de perspectivas que lo constituyen: social, económica, jurídica y administrativa. Promueve de manera conjunta e integrada el desarrollo de profesionales e investigadores de las diferentes configuraciones del mundo del trabajo. Así, se ha generado un diseño curricular que contempla un conjunto de asignaturas para construir este perfil académico – profesional.', 'Licenciado en Relaciones del Trabajo', 'Licenciatura'),
+(84, 'Tecnicatura Superior en Turismo', 'Página en proceso', 'Técnico Superior en Tursimo', 'Tecnicatura'),
+(85, 'Tecnicatura Superior en Logística', 'Página en proceso', 'Técnico Superior en Logística', 'Tecnicatura'),
+(86, 'Tecnicatura Superior en Hotelería', 'Página en proceso', 'Técnico Superior en Hotelería', 'Tecnicatura'),
+(87, 'Tecnicatura Superior en Administración de Recursos Humanos', 'Página en proceso', 'Técnico Superior en Administración de Recursos Humanos', 'Tecnicatura'),
+(88, 'Profesorado de Educación Secundaria Técnico Profesional en Industrias de procesos y de Alimentos', 'Página en proceso', 'Profesor de Educación Secundaria Técnico Profesional en Industrias de procesos y de Alimentos', 'Tecnicatura'),
+(89, 'Profesorado de Educación Secundaria en Tecnologías (de Equipos e Instalaciones Electromecánicas)', 'Página en proceso', 'Profesor de Educación Secundaria en Tecnologías', 'Profesorado'),
+(90, 'Profesorado en Economía', 'Página en proceso', 'Profesor en Economía', 'Profesorado');
 
 -- --------------------------------------------------------
 
@@ -123,7 +141,7 @@ CREATE TABLE `contacto` (
   `tipo` enum('telefono','correo','tiktok','instagram','facebook','youtube','whatsapp','twitter') NOT NULL,
   `contacto` varchar(100) NOT NULL,
   `fk_establecimiento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `contacto`
@@ -170,7 +188,8 @@ INSERT INTO `contacto` (`id_contacto`, `descripcion`, `tipo`, `contacto`, `fk_es
 (38, 'Correo para contactarse con la Universidad Nacional del Delta', 'correo', 'info@undelta.edu.ar', 14),
 (39, 'Teléfono para contactarse con la Universidad Nacional del Delta', 'telefono', '11 4575 3261', 14),
 (40, 'Youtube de la Universidad Nacional del Delta', 'youtube', 'https://m.youtube.com/@universidaddelta', 14),
-(41, 'Instagram de la Universidad Nacional del Delta', 'instagram', 'https://www.instagram.com/universidaddelta?igsh=anBvMzBtMDZiMGt0', 14);
+(41, 'Instagram de la Universidad Nacional del Delta', 'instagram', 'https://www.instagram.com/universidaddelta?igsh=anBvMzBtMDZiMGt0', 14),
+(43, 'Correo de contacto con el CBC Sede San Isidro - UBA', 'correo', 'sedesanisidroalumnos@cbc.uba.ar', 15);
 
 -- --------------------------------------------------------
 
@@ -181,7 +200,7 @@ INSERT INTO `contacto` (`id_contacto`, `descripcion`, `tipo`, `contacto`, `fk_es
 CREATE TABLE `distrito` (
   `id_distrito` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `distrito`
@@ -210,7 +229,7 @@ CREATE TABLE `establecimiento` (
   `coordenadas` longtext NOT NULL,
   `fk_distrito` int(11) NOT NULL,
   `habilitado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `establecimiento`
@@ -234,7 +253,9 @@ INSERT INTO `establecimiento` (`id_establecimiento`, `nombre`, `ubicacion`, `des
 (14, 'Universidad Nacional del Delta', 'Av. Avellaneda 2270', 'La Universidad Nacional del Delta, creada en 2023, es una universidad nacional, pública y gratuita. Sirve como un punto de encuentro entre lo local y lo nacional, estudiantes y docentes, academia e industria, y entre pymes y grandes empresas, fomentando la colaboración y la innovación. Se destaca por su accesibilidad y compromiso con la inclusión, el diálogo abierto y la participación activa de la comunidad, fortaleciendo el tejido social y cultural de Tigre, San Fernando y Escobar. La Universidad Nacional del Delta es el lugar donde se construye un futuro de innovación y excelencia.', 'Universidad', '1110', '{\"x\":\"-34.4539417\",\"y\":\"-58.5582294\"}', 2, 0),
 (15, 'Ciclo Básico Común Sede Martínez', 'Córdoba 2001 Martínez', 'En este centro universitario se pueden cursar todas las materias del ciclo básico común (CBC) y de las carreras de las facultades de Ciencias Económicas y Psicología. Cuenta con oficinas de departamento de alumnos, sala de profesores, biblioteca y el CURAI (Centro Universitario de Rehabilitaciones y Atención Integral), dicho centro de rehabilitación esta a cargo de la carrera terapia ocupacional. Tiene 40 aulas, dos aulas taller, dos laboratorios, tres estacionamientos y seguridad 24 horas. Cada carrera de la UBA y cada facultad tiene su propio régimen académico.', 'Centro universitario', '1011', '{\"x\":\"-34.498395\",\"y\":\"-58.524974\"}', 3, 0),
 (16, 'Instituto Superior de Formación Docente y Técnica N° 140 \"Marie Curie\"', 'Av. Hipólito Yrigoyen 20, B1617 Gral. Pacheco', 'Redefinir el concepto de Instituto Superior de Formación Docente y Técnica solidario, promoviendo la participación democrática y el valor de la justicia, fomentando un fuerte compromiso de directivos, docentes, estudiantes y dirigentes, para que disfruten de su labor y sientan orgullo de pertenecer a la institución.\r\nReforzar el sentido de pertenencia a las carreras científicas y fortalecer los lazos con otras instituciones terciarias y universitarias que compartan nuestros valores, abogando por el apoyo de la comunidad.', 'Instituto', '0000', '{\"x\":\"-34.454911606325474\",\"y\":\"-58.62304406457402\"}', 1, 0),
-(17, 'Instituto Superior de Formación Técnica Nº217', 'Av. del Libertador 1262', 'La búsqueda de construir el SER y el saber hacer se basa en el conocimiento y la experiencia adquiridos a través de la práctica real de competencias y capacidades profesionales, todo enmarcado en el Desarrollo Local. Esta visión integra la innovación productiva en bienes de servicio y capital, el desarrollo industrial de nuevas tecnologías, y la promoción de una Usina de Ideas, generadas a partir de las prácticas de los estudiantes, para sustentar el pilar fundamental de la investigación.', 'Instituto', '0000', '{\"x\":\"-34.44078146938776\",\"y\":\"-58.55377939795918\"}', 2, 0);
+(17, 'Instituto Superior de Formación Técnica Nº217', 'Av. del Libertador 1262', 'La búsqueda de construir el SER y el saber hacer se basa en el conocimiento y la experiencia adquiridos a través de la práctica real de competencias y capacidades profesionales, todo enmarcado en el Desarrollo Local. Esta visión integra la innovación productiva en bienes de servicio y capital, el desarrollo industrial de nuevas tecnologías, y la promoción de una Usina de Ideas, generadas a partir de las prácticas de los estudiantes, para sustentar el pilar fundamental de la investigación.', 'Instituto', '0000', '{\"x\":\"-34.44078146938776\",\"y\":\"-58.55377939795918\"}', 2, 0),
+(19, 'Instituto Superior de Formación Docente y Técnica Nº 52 Sede en los Ceibos', 'Los Ceibos 52', 'El Instituto Superior de Formación Docente Instituto Superior De Formación Docente y Técnica N° 52 : \"Maestro Francisco Isauro Arancibia\" tiene la responsabilidad de fomentar la investigación y la innovación en el campo de la educación, y de ofrecer programas de capacitación continua para los docentes que ya se encuentran en ejercicio. Este cumple con estas funciones de manera efectiva, ofreciendo una amplia variedad de programas de formación docente en áreas como educación inicial, educación primaria, educación secundaria y educación técnica. Además, este instituto cuenta con un cuerpo docente altamente capacitado y comprometido con la excelencia académica y la formación integral de sus estudiantes.', 'Instituto', '0000', '{\"x\":\"-34.51218044761526\",\"y\":\"-58.566873062618725\"}', 3, 0),
+(20, 'Instituto Superior de Formación Docente y Técnica Nº 52 Sede Martin y Omar', 'Martin y Omar 255', 'El Instituto Superior de Formación Docente Instituto Superior De Formación Docente y Técnica N° 52 : \"Maestro Francisco Isauro Arancibia\" tiene la responsabilidad de fomentar la investigación y la innovación en el campo de la educación, y de ofrecer programas de capacitación continua para los docentes que ya se encuentran en ejercicio. Este cumple con estas funciones de manera efectiva, ofreciendo una amplia variedad de programas de formación docente en áreas como educación inicial, educación primaria, educación secundaria y educación técnica. Además, este instituto cuenta con un cuerpo docente altamente capacitado y comprometido con la excelencia académica y la formación integral de sus estudiantes.', 'Instituto', '0000', '{\"x\":\"-34.471184242472326\",\"y\":\"-58.51115989008575\"}', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -246,7 +267,7 @@ CREATE TABLE `imagenes` (
   `id_imagen` int(11) NOT NULL,
   `url` varchar(20) NOT NULL,
   `fk_establecimiento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `imagenes`
@@ -259,7 +280,7 @@ INSERT INTO `imagenes` (`id_imagen`, `url`, `fk_establecimiento`) VALUES
 (4, 'I39.jpg', 4),
 (5, 'I117.jpg', 5),
 (6, 'UTNP.jpg', 6),
-(7, 'I52.jpg', 7),
+(7, '52sederivadavia.jpg', 7),
 (8, 'CUV.webp', 8),
 (9, 'CJJC.jpg', 9),
 (10, 'I199.jpg', 10),
@@ -269,102 +290,161 @@ INSERT INTO `imagenes` (`id_imagen`, `url`, `fk_establecimiento`) VALUES
 (14, 'UND.jpg', 14),
 (20, 'estudiantes.jpg', 0),
 (21, 'gente.jpg', 0),
-(22, 'graduados.jpg', 0);
+(22, 'graduados.jpg', 0),
+(23, '140.jpg', 16),
+(24, '52losceibos.jpg', 19),
+(25, '52martinyomar.jpg', 20),
+(26, 'cbcubasi.jpg', 15),
+(27, 'ISFT_217.jpg', 17);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `planestudio`
+-- Estructura de tabla para la tabla `recursos`
 --
 
-CREATE TABLE `planestudio` (
-  `id_planestudio` int(11) NOT NULL,
-  `pdf` varchar(50) NOT NULL,
+CREATE TABLE `recursos` (
+  `id_recurso` int(11) NOT NULL,
+  `pdf` varchar(50) DEFAULT NULL,
   `fk_carrera` int(11) DEFAULT NULL,
-  `fk_establecimiento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `fk_establecimiento` int(11) NOT NULL,
+  `tipo_recurso` enum('plan de estudio','diseño curricular','','') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `planestudio`
+-- Volcado de datos para la tabla `recursos`
 --
 
-INSERT INTO `planestudio` (`id_planestudio`, `pdf`, `fk_carrera`, `fk_establecimiento`) VALUES
-(1, 'educacionmusicalcjjc', 28, 9),
-(2, 'cantocjjc', 25, 9),
-(3, 'composicioncjjc', 27, 9),
-(4, 'direccioncoralcjjc', 26, 9),
-(5, 'instrumentocjjc', 24, 9),
-(6, 'musicologiacjjc', 29, 9),
-(19, 'ingcivilutn', 30, 6),
-(20, 'ingenergiaelectricautn', 31, 6),
-(21, 'ingautomotrizutn', 32, 6),
-(22, 'ingmecanicautn', 33, 6),
-(23, 'licorganizacionindustrialutn', 34, 6),
-(24, 'tecsuperioradministracionutn', 35, 6),
-(25, 'tecgestionindustriaautomotriz', 36, 6),
-(26, 'tecmoldesmatricesdispositivosutn', 37, 6),
-(27, 'tecprogramacionutn', 38, 6),
-(28, 'licgestionambientalunso', 1, 1),
-(29, 'tecciberseguridadunso', 2, 1),
-(30, 'tecgestionambientalunso', 3, 1),
-(31, 'tecdesarrollovideojuegosunso', 4, 1),
-(33, 'tecsonidoaudiovisualunso', 6, 1),
-(34, 'liccienciasforensesycriminologiaunso', 7, 1),
-(35, 'liceconomiaunso', 8, 1),
-(36, 'tecanalisiscontableunso', 9, 1),
-(37, 'teccriminalisticaunso', 10, 1),
-(38, 'licgestioneducativaunso', 11, 1),
-(39, 'licgestionpublicaunso', 12, 1),
-(40, 'licpsicopedagogiaunso', 13, 1),
-(41, 'licpsicopedagogiacccunso', 14, 1),
-(42, 'profeducacioninicialunso', 15, 1),
-(43, 'tecgestionpublicaunso', 16, 1),
-(44, 'enfermeriauniversitariaunso', 17, 1),
-(45, 'licquirurgicaunso', 18, 1),
-(46, 'tecemergenciasmedicasunso', 19, 1),
-(47, 'tecsuperioralimentos220', 20, 2),
-(48, 'tecseguridadhigiene220', 21, 2),
-(49, 'tecdesarrollosoftware220', 22, 2),
-(50, 'profsecundariatecprofesional229', 23, 3),
-(51, 'mecatronica199', 39, 10),
-(52, 'csdatosinteligenciaartificial199', 40, 10),
-(55, 'prof_ingles77', 41, 11),
-(56, 'tecnicaturatrabajosocial77', 42, 11),
-(57, 'tecnicaturacomunicacionsocialdesarrollo77', 43, 11),
-(59, '', 15, 4),
-(60, '', 48, 4),
-(61, '', 55, 4),
-(62, '', 56, 4),
-(63, '', 57, 4),
-(64, '', 58, 4),
-(65, 'proflengualiteratura', 59, 4),
-(66, '', 15, 17),
-(67, '', 48, 17),
-(68, '', 53, 17),
-(69, '', 54, 17),
-(70, '', 21, 17),
-(71, '', 49, 16),
-(72, '', 20, 16),
-(73, '', 50, 16),
-(74, '', 51, 16),
-(75, '', 52, 16),
-(76, '', 48, 16),
-(82, 'licenfermeriauba', 61, 12),
-(83, 'liclogisticauntref', 62, 12),
-(84, '', 63, 12),
-(85, 'licseguridadhigieneunlz', 64, 12),
-(86, 'licgestiongubernamentalunpaz', 65, 12),
-(87, 'tecjardineriauba', 66, 12),
-(88, '', 67, 12),
-(89, 'tecuniprodvegetalorganicauba', 68, 12),
-(90, 'tecunimantenimientoindustrialutnfrd', 69, 12),
-(91, 'tecuniprocesosindustrialesutnfrd', 70, 12),
-(92, 'tecuniprogramacionutnfrd', 38, 12),
-(93, '', 71, 12),
-(94, 'profeducacionespecialsordoshipoacusicos77', 44, 11),
-(95, 'profeducacionespecialneuromotora77', 45, 11),
-(96, 'profeducacionespecialintelectual77', 46, 11),
-(97, 'profeducacionespecialciegosdisminucionvisual77', 47, 11);
+INSERT INTO `recursos` (`id_recurso`, `pdf`, `fk_carrera`, `fk_establecimiento`, `tipo_recurso`) VALUES
+(1, 'educacionmusicalcjjc', 28, 9, 'plan de estudio'),
+(2, 'cantocjjc', 25, 9, 'plan de estudio'),
+(3, 'composicioncjjc', 27, 9, 'plan de estudio'),
+(4, 'direccioncoralcjjc', 26, 9, 'plan de estudio'),
+(5, 'instrumentocjjc', 24, 9, 'plan de estudio'),
+(6, 'musicologiacjjc', 29, 9, 'plan de estudio'),
+(19, 'ingcivilutn', 30, 6, 'plan de estudio'),
+(20, 'ingenergiaelectricautn', 31, 6, 'plan de estudio'),
+(21, 'ingautomotrizutn', 32, 6, 'plan de estudio'),
+(22, 'ingmecanicautn', 33, 6, 'plan de estudio'),
+(23, 'licorganizacionindustrialutn', 34, 6, 'plan de estudio'),
+(24, 'tecsuperioradministracionutn', 35, 6, 'plan de estudio'),
+(25, 'tecgestionindustriaautomotriz', 36, 6, 'plan de estudio'),
+(26, 'tecmoldesmatricesdispositivosutn', 37, 6, 'plan de estudio'),
+(27, 'tecprogramacionutn', 38, 6, 'plan de estudio'),
+(28, 'licgestionambientalunso', 1, 1, 'plan de estudio'),
+(29, 'tecciberseguridadunso', 2, 1, 'plan de estudio'),
+(30, 'tecgestionambientalunso', 3, 1, 'plan de estudio'),
+(31, 'tecdesarrollovideojuegosunso', 4, 1, 'plan de estudio'),
+(33, 'tecsonidoaudiovisualunso', 6, 1, 'plan de estudio'),
+(34, 'liccienciasforensesycriminologiaunso', 7, 1, 'plan de estudio'),
+(35, 'liceconomiaunso', 8, 1, 'plan de estudio'),
+(36, 'tecanalisiscontableunso', 9, 1, 'plan de estudio'),
+(37, 'teccriminalisticaunso', 10, 1, 'plan de estudio'),
+(38, 'licgestioneducativaunso', 11, 1, 'plan de estudio'),
+(39, 'licgestionpublicaunso', 12, 1, 'plan de estudio'),
+(40, 'licpsicopedagogiaunso', 13, 1, 'plan de estudio'),
+(41, 'licpsicopedagogiacccunso', 14, 1, 'plan de estudio'),
+(42, 'profeducacioninicialunso', 15, 1, 'plan de estudio'),
+(43, 'tecgestionpublicaunso', 16, 1, 'plan de estudio'),
+(44, 'enfermeriauniversitariaunso', 17, 1, 'plan de estudio'),
+(45, 'licquirurgicaunso', 18, 1, 'plan de estudio'),
+(46, 'tecemergenciasmedicasunso', 19, 1, 'plan de estudio'),
+(47, 'tecsuperioralimentos220', 20, 2, 'plan de estudio'),
+(48, 'tecseguridadhigiene220', 21, 2, 'plan de estudio'),
+(49, 'tecdesarrollosoftware220', 22, 2, 'plan de estudio'),
+(50, 'profsecundariatecprofesional229', 23, 3, 'plan de estudio'),
+(51, 'mecatronica199', 39, 10, 'plan de estudio'),
+(52, 'csdatosinteligenciaartificial199', 40, 10, 'plan de estudio'),
+(55, 'prof_ingles77', 41, 11, 'plan de estudio'),
+(56, 'tecnicaturatrabajosocial77', 42, 11, 'plan de estudio'),
+(57, 'tecnicaturacomunicacionsocialdesarrollo77', 43, 11, 'plan de estudio'),
+(59, '', 15, 4, 'plan de estudio'),
+(60, '', 48, 4, 'plan de estudio'),
+(61, '', 55, 4, 'plan de estudio'),
+(62, '', 56, 4, 'plan de estudio'),
+(63, '', 57, 4, 'plan de estudio'),
+(64, '', 58, 4, 'plan de estudio'),
+(65, 'proflengualiteratura', 59, 4, 'plan de estudio'),
+(66, '', 15, 17, 'plan de estudio'),
+(67, '', 48, 17, 'plan de estudio'),
+(68, '', 53, 17, 'plan de estudio'),
+(69, '', 54, 17, 'plan de estudio'),
+(70, '', 21, 17, 'plan de estudio'),
+(71, '', 49, 16, 'plan de estudio'),
+(72, '', 20, 16, 'plan de estudio'),
+(73, '', 50, 16, 'plan de estudio'),
+(74, '', 51, 16, 'plan de estudio'),
+(75, '', 52, 16, 'plan de estudio'),
+(76, '', 48, 16, 'plan de estudio'),
+(82, 'licenfermeriauba', 61, 12, 'plan de estudio'),
+(83, 'liclogisticauntref', 62, 12, 'plan de estudio'),
+(84, '', 63, 12, 'plan de estudio'),
+(85, 'licseguridadhigieneunlz', 64, 12, 'plan de estudio'),
+(86, 'licgestiongubernamentalunpaz', 65, 12, 'plan de estudio'),
+(87, 'tecjardineriauba', 66, 12, 'plan de estudio'),
+(88, '', 67, 12, 'plan de estudio'),
+(89, 'tecuniprodvegetalorganicauba', 68, 12, 'plan de estudio'),
+(90, 'tecunimantenimientoindustrialutnfrd', 69, 12, 'plan de estudio'),
+(91, 'tecuniprocesosindustrialesutnfrd', 70, 12, 'plan de estudio'),
+(92, 'tecuniprogramacionutnfrd', 38, 12, 'plan de estudio'),
+(93, '', 71, 12, 'plan de estudio'),
+(94, 'profeducacionespecialsordoshipoacusicos77', 44, 11, 'plan de estudio'),
+(95, 'profeducacionespecialneuromotora77', 45, 11, 'plan de estudio'),
+(96, 'profeducacionespecialintelectual77', 46, 11, 'plan de estudio'),
+(97, 'profeducacionespecialciegosdisminucionvisual77', 47, 11, 'plan de estudio'),
+(98, 'actuarioadmeconómicasuba', 73, 15, 'plan de estudio'),
+(99, 'contadoreconómicasuba', 74, 15, 'plan de estudio'),
+(100, 'administracióneconómicasuba', 75, 15, 'plan de estudio'),
+(101, 'economíaeconómicasuba', 76, 15, 'plan de estudio'),
+(102, 'sistemaseconómicasuba', 77, 15, 'plan de estudio'),
+(103, 'actuarioecoeconómicasuba', 78, 15, 'plan de estudio'),
+(104, 'licpsicologiauba', 79, 15, 'plan de estudio'),
+(105, 'licmusicoterapiauba', 80, 15, 'plan de estudio'),
+(106, 'licterapiaocupacionaluba', 81, 15, 'plan de estudio'),
+(107, 'profenseñanzamediasuperiorpsicologiauba', 82, 15, 'plan de estudio'),
+(108, 'licrelacionestrabajouba', 83, 15, 'plan de estudio'),
+(119, 'Turismo199', 84, 10, 'diseño curricular'),
+(120, 'HigieneSeguridad199', 21, 10, 'diseño curricular'),
+(121, 'TecnicaturaSuperiorLogística199', 85, 10, 'diseño curricular'),
+(122, 'tecsupenhoteleria199', 86, 10, 'diseño curricular'),
+(123, 'trabajosocial199', 42, 10, 'diseño curricular'),
+(124, 'tecsupenadminderecursoshumanos199', 87, 10, 'diseño curricular'),
+(128, 'profedusecuntecprofindustrialprocesosalimentos117', 88, 5, 'diseño curricular'),
+(129, 'ProfesoradoQuímica117', 54, 5, 'diseño curricular'),
+(130, 'ProfesoradoHistoriaGeografía117', 53, 5, 'diseño curricular'),
+(131, 'ProfesoradoEducaciónInicialprimaria117', 48, 5, 'diseño curricular'),
+(133, 'proftecnico52', 89, 7, 'diseño curricular'),
+(134, 'ProfesoradoEconomía52', 90, 7, 'diseño curricular'),
+(135, 'ProfesoradoEducaciónInicialprimaria52', 48, 7, 'diseño curricular'),
+(136, 'inglés52', 41, 7, 'diseño curricular'),
+(144, 'Alimentos220', 20, 2, 'diseño curricular'),
+(145, 'HigieneSeguridad220', 21, 2, 'diseño curricular'),
+(146, 'DesarrolloSoftware220', 22, 2, 'diseño curricular'),
+(147, 'ProfesoradoTécnicoSuperior229', 23, 3, 'diseño curricular'),
+(148, 'proffinglés77', 41, 11, 'diseño curricular'),
+(149, 'trabajosocial77', 42, 11, 'diseño curricular'),
+(150, 'Comunicación_Social_para_el_Desarrollo77', 43, 11, 'diseño curricular'),
+(151, 'NIVELESINICIALPRIMARIO39', 15, 4, 'diseño curricular'),
+(152, 'NIVELESINICIALPRIMARIO39', 48, 4, 'diseño curricular'),
+(153, 'ProfesoradoEducaciónFísica39', 55, 4, 'diseño curricular'),
+(154, 'ProfesoradoBiología39', 56, 4, 'diseño curricular'),
+(155, 'ProfesoradoHistoriaGeografía39', 57, 4, 'diseño curricular'),
+(156, 'ProfesoradoMatemática39', 58, 4, 'diseño curricular'),
+(157, 'ProfesoradoLenguaLiteratura39', 59, 4, 'diseño curricular'),
+(158, 'HigieneSeguridad217', 21, 17, 'diseño curricular'),
+(159, 'ProfesoradoBiología140', 49, 16, 'diseño curricular'),
+(160, 'TSAlimentos140', 20, 16, 'diseño curricular'),
+(161, 'ProfesoradoFísica140', 51, 16, 'diseño curricular'),
+(162, 'ProfesoradoMatemática140', 52, 16, 'diseño curricular'),
+(163, 'ProfesoradoEducaciónInicialprimaria140', 48, 16, 'diseño curricular'),
+(164, 'PROFESORADOEDUCACIÓNESPECIAL77', 44, 11, 'diseño curricular'),
+(165, 'PROFESORADOEDUCACIÓNESPECIAL77', 45, 11, 'diseño curricular'),
+(166, 'PROFESORADOEDUCACIÓNESPECIAL77', 46, 11, 'diseño curricular'),
+(167, 'PROFESORADOEDUCACIÓNESPECIAL77', 47, 11, 'diseño curricular'),
+(168, 'ProfesoradoHistoriaGeografía117', 57, 5, 'diseño curricular'),
+(169, 'ProfesoradoHistoriaGeografía39', 53, 4, 'diseño curricular'),
+(170, 'ProfesoradoEducaciónInicialprimaria117', 15, 5, 'diseño curricular'),
+(171, 'ProfesoradoEducaciónInicialprimaria52', 15, 7, 'diseño curricular');
 
 -- --------------------------------------------------------
 
@@ -378,7 +458,7 @@ CREATE TABLE `usuarios` (
   `apellido` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `contrasena` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -429,10 +509,10 @@ ALTER TABLE `imagenes`
   ADD KEY `fk_establecimiento` (`fk_establecimiento`) USING BTREE;
 
 --
--- Indices de la tabla `planestudio`
+-- Indices de la tabla `recursos`
 --
-ALTER TABLE `planestudio`
-  ADD PRIMARY KEY (`id_planestudio`),
+ALTER TABLE `recursos`
+  ADD PRIMARY KEY (`id_recurso`),
   ADD KEY `fk_establecimiento` (`fk_establecimiento`),
   ADD KEY `fk_carrera` (`fk_carrera`);
 
@@ -450,13 +530,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `carrera`
 --
 ALTER TABLE `carrera`
-  MODIFY `id_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `distrito`
@@ -468,19 +548,19 @@ ALTER TABLE `distrito`
 -- AUTO_INCREMENT de la tabla `establecimiento`
 --
 ALTER TABLE `establecimiento`
-  MODIFY `id_establecimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_establecimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT de la tabla `planestudio`
+-- AUTO_INCREMENT de la tabla `recursos`
 --
-ALTER TABLE `planestudio`
-  MODIFY `id_planestudio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+ALTER TABLE `recursos`
+  MODIFY `id_recurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -511,9 +591,9 @@ ALTER TABLE `imagenes`
   ADD CONSTRAINT `fk_establecimiento3` FOREIGN KEY (`fk_establecimiento`) REFERENCES `establecimiento` (`id_establecimiento`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `planestudio`
+-- Filtros para la tabla `recursos`
 --
-ALTER TABLE `planestudio`
+ALTER TABLE `recursos`
   ADD CONSTRAINT `fk_carrera` FOREIGN KEY (`fk_carrera`) REFERENCES `carrera` (`id_carrera`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_establecimiento2` FOREIGN KEY (`fk_establecimiento`) REFERENCES `establecimiento` (`id_establecimiento`);
 COMMIT;

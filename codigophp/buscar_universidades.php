@@ -114,7 +114,7 @@ ORDER BY
     $result = $stmt->get_result();
 }else if($tipo == "carrera"){ 
   
-    $sql2 = "SELECT * FROM planestudio WHERE fk_carrera = ".$busqueda;
+    $sql2 = "SELECT * FROM recursos WHERE fk_carrera = ".$busqueda;
     $carrera = $busqueda;
     $planestudio = $conn->query($sql2);
     $establecimientos = [];

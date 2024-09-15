@@ -415,10 +415,11 @@ global $haycorreo;
                     echo '<div class="redesociales">';
                     foreach($pdf as $key => $pdff) {
                         if($pdff["pdf"] != null){
-                            echo '<button class="botonuni2 pop" id="pdf-containerb">PLAN DE ESTUDIO '.($key +1).'</button>';   
-                        }
-                        if($pdff["diseño"] != null){
-                            echo '<button class="botonuni2 pop" id="pdf-containerb">DISEÑO CURRICULAR '.($key +1).'</button>';   
+                            if($pdff["tipo_recurso"] == "plan de estudio"){
+                                echo '<button class="botonuni2 pop" id="pdf-containerb">PLAN DE ESTUDIO '.($key +1).'</button>';   
+                            }else{
+                                echo '<button class="botonuni2 pop" id="pdf-containerb">DISEÑO CURRICULAR '.($key +1).'</button>';   
+                            }
                         }
                     }
                     echo '</div></div>';
@@ -428,15 +429,7 @@ global $haycorreo;
                             <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
                             <embed class="pdf-viewer" src="'.arreglarpdf($pdff["pdf"]).'" type="application/pdf" />
                         </div>';  
-                        }
-                        if($pdff["diseño"] != null){
-                            echo '<div id="pdf-container" popover class="pop2">
-                            <h1>HAGA CLIC FUERA DEL CUADRO PARA SALIR</h1>
-                            <embed class="pdf-viewer" src="'.arreglarpdf($pdff["diseño"]).'" type="application/pdf" />
-                        </div>';  
-                        }
-                        
-                        
+                        }    
                     }
                 
                     
