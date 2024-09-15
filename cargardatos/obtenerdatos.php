@@ -43,7 +43,7 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
                     FROM establecimiento
                     ORDER BY
                         CASE
-                            WHEN id_establecimiento = ? id_establecimiento != 0 THEN 0
+                            WHEN id_establecimiento = ? AND id_establecimiento != 0 THEN 0
                             ELSE 1
                         END, tipo_establecimiento
                 ";
