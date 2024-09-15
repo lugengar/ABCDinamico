@@ -148,7 +148,7 @@
 
             <div class="logodte"></div>
             <div class="textofooter">
-                <h1>&copy; 2024 Escuela Secundaria Técnica N1 Vicente Lopez. Todos los derechos reservados.</h1>
+                <h1>&copy; 2024 Escuela Secundaria Técnica N°1 Vicente López. Todos los derechos reservados.</h1>
             </div>
             <div class="redesociales">
                 <a href="" class="redsocial" style="background-image: url(https://abc.gob.ar/sites/default/files/2021-03/icon-youtube_0.svg);"></a>

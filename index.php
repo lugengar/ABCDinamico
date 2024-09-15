@@ -62,7 +62,7 @@
             <div class="botones" id="botones">
                 <button class="boton pop" >
                     <div class="imagenboton" style="background-image: url(imagenes/iconos/ubicacion.svg);"></div>
-                    <h1>Buscar universidad en el mapa</h1>
+                    <h1>Buscar establecimiento en el mapa</h1>
                 </button>
 
                 <!-- BOTON BUSCAR POR DISTRITO 
@@ -78,7 +78,7 @@
                     <h1>Filtrar por tipo de establecimiento</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('carrera')"><div class="imagenboton" style=" background-image: url(imagenes/iconos/sombrero.svg);"></div>
-                    <h1>Filtrar establecimiento por carrera</h1>
+                    <h1>Filtrado por tipo de carrera</h1>
                 </button>
                 <button class="boton" onclick="barradebusqueda('nombre')">
                     <div class="imagenboton" style=" background-image: url(imagenes/iconos/letrasabc.svg);"></div>
@@ -130,7 +130,7 @@
                     <option value="">Ninguno</option>
                     <?php
                         //ESCRIBE LAS CARRERAS PARA LA BARRA DE BUSQUEDA
-                        buscarcarreras();
+                        buscartipocarrera();
                     ?>
                 </select>
                 <input type="hidden" name="tipo" value="carrera" required>
@@ -157,7 +157,7 @@
             <div class="logodte"></div>
 
             <div class="textofooter">
-                <h1>&copy; 2024 Escuela Secundaria Técnica N1 Vicente Lopez. Todos los derechos reservados.</h1>
+                <h1>&copy; 2024 Escuela Secundaria Técnica N°1 Vicente López. Todos los derechos reservados.</h1>
             </div>
             <div class="redesociales">
       

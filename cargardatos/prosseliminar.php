@@ -1,8 +1,8 @@
 <?php
 include "../codigophp/conexionbs.php";
 
-$tabla = $_GET['tabla'] ?? '';
-$id = $_GET['id'] ?? '';
+$tabla = $_POST['tabla'] ?? '';
+$id = $_POST['id'] ?? '';
 
 if ($tabla === "carrera") {
     $sql = "DELETE FROM carrera WHERE id_carrera = ?";

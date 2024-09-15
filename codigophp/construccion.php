@@ -42,15 +42,17 @@ function universidad($id,$nombre ,$descripcion, $imagenes,$carreras){ //CREA EL 
     echo('
         <h1 class="nombreuni">'.$nombre.'</h1>
         ');//<p class="descripcionuni">'.$descripcion.'</p>
-    echo('
-        <p class="descripcionuni" style="height: 0vh;"></p>
-        <a href="./universidad.php?universidad='.$id);
-        if($carreras != null){
-            echo '&carrera='.$carreras.'#carreraelegida';
+    if($carreras != null){
+        echo('<p class="descripcionuni" >');
+
+        foreach($carreras as $key => $carrera) {
+            echo '- <a href="./universidad.php?universidad='.$id.'&carrera='.$carrera["id_carrera"].'#carreraelegida2">'.$carrera["nombre"].'</a><br>';
         }
-        echo('"  class="botonuni">SABER MAS..</a>
-    </div>
-    ');
+        echo '</p>';
+    }else{
+        echo('<p class="descripcionuni" style="height:0vh;padding-top:0;"></p><a href="./universidad.php?universidad='.$id.'" class="botonuni">SABER MAS..</a>');
+    }
+        echo'</div>';
 }
 function crearmapa($coordenadas,$ubicacion, $zoom = 15) {
     if($coordenadas != null){

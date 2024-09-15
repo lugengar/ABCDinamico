@@ -10,7 +10,7 @@
     <?php
         include "../codigophp/conexionbs.php";
         session_start();
-        $_SESSION["id_usuario"] = "a";
+        $_SESSION["id_usuario"] = "a"; 
 
         $distritos_result = mysqli_query($conn, "SELECT * FROM distrito");
         $establecimientos_result = mysqli_query($conn, "SELECT * FROM establecimiento WHERE id_establecimiento != 0");
@@ -27,7 +27,14 @@
         <h2>Formulario de Agregar Datos</h2>
         <form action="prossagregar.php" method="post" id="dataForm" enctype="multipart/form-data">
             <label for="tabla">Seleccionar tabla:</label>
-            
+            <select id="tabla" name="tabla" onchange="mostrarCampos()" required>
+                <option value="carrera">Carrera</option>
+                <option value="contacto">Contacto</option>
+                <option value="establecimiento">Establecimiento</option>
+                <option value="recursos">Recursos</option>
+                <option value="imagenes">Imágenes</option>
+                <option value="distrito">Distritos</option>
+            </select>
 
             <div id="formFields"></div>
 
@@ -36,12 +43,12 @@
     </div>
 
     <script>
-        function mostrarCampos(tabla) {
-       
+        function mostrarCampos() {
+            var tabla = document.getElementById("tabla").value;
             var formFields = document.getElementById("formFields");
 
             formFields.innerHTML = ''; 
-            
+
             if (tabla === "carrera") {
                 formFields.innerHTML = `
                     <label for="nombre">Nombre:</label>
@@ -67,8 +74,8 @@
                     <select id="tipo" name="tipo" required>
                         <option value="">--Selecciona un tipo--</option>
                         <?php foreach ($tipos_contacto as $row) { ?>
-                            <option value="<?php echo $row['tipo']; ?>">
-                                <?php echo $row['tipo']; ?>
+                            <option value="<?php echo htmlspecialchars($row['tipo']); ?>">
+                                <?php echo htmlspecialchars($row['tipo']); ?>
                             </option>
                         <?php } ?>
                     </select>
@@ -78,8 +85,8 @@
                     <select id="fk_establecimiento" name="fk_establecimiento" required>
                         <option value="">--Selecciona un establecimiento--</option>
                         <?php foreach ($establecimientos as $row) { ?>
-                            <option value="<?php echo $row['id_establecimiento']; ?>">
-                                <?php echo $row['id_establecimiento'] . " - " . $row['nombre']; ?>
+                            <option value="<?php echo htmlspecialchars($row['id_establecimiento']); ?>">
+                                <?php echo htmlspecialchars($row['id_establecimiento'] . " - " . $row['nombre']); ?>
                             </option>
                         <?php } ?>
                     </select>
@@ -105,69 +112,94 @@
                     <select id="fk_distrito" name="fk_distrito" required>
                         <option value="">--Selecciona un distrito--</option>
                         <?php foreach ($distritos as $row) { ?>
-                            <option value="<?php echo $row['id_distrito']; ?>">
-                                <?php echo $row['nombre']; ?>
+                            <option value="<?php echo htmlspecialchars($row['id_distrito']); ?>">
+                                <?php echo htmlspecialchars($row['nombre']); ?>
                             </option>
                         <?php } ?>
                     </select>
                     <label for="habilitado">Habilitado:</label>
                     <input type="checkbox" id="habilitado" name="habilitado" value="1">
                 `;
-            } else if (tabla === "planestudio") {
+            } else if (tabla === "recursos") {
                 formFields.innerHTML = `
-                    <label for="id_carrera">ID Carrera:</label>
-                    <select id="id_carrera" name="id_carrera" required>
+                    <label for="pdf">PDF Plan de Estudio o Diseño Curricular:</label>
+                    <input type="file" id="pdf" name="pdf" accept="application/pdf">
+                    <label for="fk_carrera">Carrera:</label>
+                    <select id="fk_carrera" name="fk_carrera" required>
                         <option value="">--Selecciona una carrera--</option>
                         <?php foreach ($carreras as $row) { ?>
-                            <option value="<?php echo $row['id_carrera']; ?>">
-                                <?php echo $row['nombre']; ?>
+                            <option value="<?php echo htmlspecialchars($row['id_carrera']); ?>">
+                                <?php echo htmlspecialchars($row['nombre']); ?>
                             </option>
                         <?php } ?>
                     </select>
-                    <label for="pdf_plan">Plan de Estudio (PDF):</label>
-                    <input type="file" id="pdf_plan" name="pdf_plan" accept=".pdf" required>
-                    <label for="diseño">Diseño del Plan de Estudio:</label>
-                    <input type="text" id="diseño" name="diseño" required>
-                    <label for="pdf_diseño">Diseño Curricular (PDF):</label>
-                    <input type="file" id="pdf_diseño" name="pdf_diseño" accept=".pdf">
-                    <label for="diseño_curricular">Diseño Curricular:</label>
-                    <input type="text" id="diseño_curricular" name="diseño_curricular" required>
-                    <label for="fk_establecimiento">FK Establecimiento:</label>
+                    <label for="fk_establecimiento">Establecimiento:</label>
                     <select id="fk_establecimiento" name="fk_establecimiento" required>
                         <option value="">--Selecciona un establecimiento--</option>
                         <?php foreach ($establecimientos as $row) { ?>
-                            <option value="<?php echo $row['id_establecimiento']; ?>">
-                                <?php echo $row['id_establecimiento'] . " - " . $row['nombre']; ?>
+                            <option value="<?php echo htmlspecialchars($row['id_establecimiento']); ?>">
+                                <?php echo htmlspecialchars($row['nombre']); ?>
                             </option>
                         <?php } ?>
+                    </select>
+                    <label for="tipo_recurso">Tipo de Recurso:</label>
+                    <select id="tipo_recurso" name="tipo_recurso" required>
+                        <option value="">--Selecciona un tipo de recurso--</option>
+                        <option value="plan de estudio">Plan de Estudio</option>
+                        <option value="diseño curricular">Diseño Curricular</option>
                     </select>
                 `;
             } else if (tabla === "imagenes") {
                 formFields.innerHTML = `
-
-                    <label for="imagen">Subir Imagen (JPG):</label>
+                    <label for="imagen">Imagen (JPG):</label>
                     <input type="file" id="imagen" name="imagen" accept=".jpg, .jpeg" required>
-                    <label for="fk_establecimiento">FK Establecimiento:</label>
+                    <label for="fk_establecimiento">Establecimiento:</label>
                     <select id="fk_establecimiento" name="fk_establecimiento" required>
                         <option value="">--Selecciona un establecimiento--</option>
+                        <option value="0"> 
+                            Carrusel del inicio
+                        </option>
                         <?php foreach ($establecimientos as $row) { ?>
-                            <option value="<?php echo $row['id_establecimiento']; ?>">
-                                <?php echo $row['id_establecimiento'] . " - " . $row['nombre']; ?>
+                            <option value="<?php echo htmlspecialchars($row['id_establecimiento']); ?>">
+                                <?php echo htmlspecialchars($row['nombre']); ?>
                             </option>
                         <?php } ?>
                     </select>
                 `;
             } else if (tabla === "distrito") {
                 formFields.innerHTML = `
-                    <label for="nombre">Nombre del distrito:</label>
+                    <label for="nombre">Nombre del Distrito:</label>
                     <input type="text" id="nombre" name="nombre" required>
                 `;
             }
+        
+            tablasino = "<?php if(isset($_GET["tabla"])){echo "true";}else{echo "false";} ?>"
+            if (tablasino != "false") {
+                tabla =  <?php if(isset($_GET["tabla"])){echo '"'.$_GET["tabla"].'"';}else{echo "null";} ?>;
+                id1 = "<?php if(isset($_GET["id"])){echo $_GET["id"];}else{echo"null";} ?>" 
+                id2 ="<?php if(isset($_GET["id2"])){echo $_GET["id2"];}else{echo"null";} ?>" 
+                id3 ="<?php if(isset($_GET["id3"])){echo $_GET["id3"];}else{echo"null";} ?>" 
+                if (tabla == "contacto") {
+                    document.getElementById("fk_establecimiento").value = id1;
+                }else if (tabla == "recursos") {
+                    document.getElementById("fk_establecimiento").value = id1;
+                    document.getElementById("fk_carrera").value = id2;
+                }else if (tabla == "imagenes") {
+                    document.getElementById("fk_establecimiento").value = id1;
+                }
+            }
            
         }
+
+        window.onload = function() {
+            var tablaSeleccionada = document.getElementById("tabla").value;
+            if (tablaSeleccionada) {
+                mostrarCampos();
+            }
+        };
         <?php
          if(isset($_GET["tabla"])){
-            echo 'mostrarCampos("'.$_GET["tabla"].'")';
+            echo 'document.getElementById("tabla").value = "'.$_GET["tabla"].'"';
         }
         ?>
     </script>

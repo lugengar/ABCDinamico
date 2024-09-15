@@ -34,7 +34,7 @@
                 <option value="carrera">Carrera</option>
                 <option value="contacto">Contacto</option>
                 <option value="establecimiento">Establecimiento</option>
-                <option value="planestudio">Plan de Estudio</option>
+                <option value="recursos">Plan de Estudio</option>
                 <option value="imagenes">Imágenes</option>
                 <option value="distrito">Distritos</option>
             </select>
@@ -137,7 +137,7 @@
                     `;
                     break;
 
-                case "planestudio":
+                case "recursos":
                     html = `
                         <label for="id_planestudio">ID Plan de Estudio:</label>
                         <input type="text" id="id_planestudio" name="id_planestudio" required>
@@ -216,10 +216,31 @@
             }
 
             formFields.innerHTML = html;
+            if (<?php echo isset($_GET["tabla"]) ? 'true' : 'false'; ?>) {
+                tabla =  "<?php echo $_GET["tabla"]; ?>";
+                id1 = "<?php if(isset($_GET["id"])){echo $_GET["id"];}else{echo"null";} ?>" 
+                id2 ="<?php if(isset($_GET["id2"])){echo $_GET["id2"];}else{echo"null";} ?>" 
+                id3 ="<?php if(isset($_GET["id3"])){echo $_GET["id3"];}else{echo"null";} ?>" 
+                if (tabla == "establecimiento") {
+                    document.getElementById("id_establecimiento").value = id1;
+                }else if (tabla == "recursos") {
+                    document.getElementById("id_planestudio").value = id1;
+                    document.getElementById("id_carrera").value =id2;
+                    document.getElementById("fk_establecimiento").value = id3;
+                }
+            }
+           
+           
         }
+        window.onload = function() {
+            var tablaSeleccionada = document.getElementById("tabla").value;
+            if (tablaSeleccionada) {
+                mostrarCampos();
+            }
+        };
         <?php
          if(isset($_GET["tabla"])){
-            echo 'mostrarCampos("'.$_GET["tabla"].'")';
+            echo 'document.getElementById("tabla").value = "'.$_GET["tabla"].'"';
         }
         ?>
     </script>
