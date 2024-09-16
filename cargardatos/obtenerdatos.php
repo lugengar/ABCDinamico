@@ -80,7 +80,7 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
             include "../codigophp/construccion.php";
 
         echo '
-            <label for="nombre">Tituloa:</label>
+            <label for="nombre">Titulo:</label>
             <input type="text" id="nombre" name="nombre" value="' . htmlspecialchars($data['nombre']) . '" required>
             <input type="hidden" id="ubicacion" name="ubicacion" value="' . htmlspecialchars($data['ubicacion']) . '" required>
             <label for="descripcion">Descripción:</label>
