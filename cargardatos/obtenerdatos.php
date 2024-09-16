@@ -27,7 +27,7 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
     $data = $result->fetch_assoc();
 
     if ($data) {
-        if ($tipo == "establecimiento") {
+        if ($tipo == "establecimiento" && $id != 0) {
                 include "../codigophp/construccion.php";
 
             echo '
@@ -76,7 +76,21 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
                 <label for="habilitado">¿Quiere que el establecimiento sea publico? (todos podran verlo):</label>
                 <input type="checkbox" id="habilitado" name="habilitado" value='.htmlspecialchars($data['habilitado']) .'>
             ';
-        } elseif ($tipo == "planestudio") {
+        } else if ($tipo == "establecimiento" && $id == 0) {
+            include "../codigophp/construccion.php";
+
+        echo '
+            <label for="nombre">Titulo:</label>
+            <input type="text" id="nombre" name="nombre" value="' . htmlspecialchars($data['nombre']) . '" required>
+            <input type="hidden" id="ubicacion" name="ubicacion" value="' . htmlspecialchars($data['ubicacion']) . '" required>
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" value="' . htmlspecialchars($data['descripcion']) . '" required>
+            <input type="hidden" id="tipo_establecimiento" name="tipo_establecimiento" value="' . htmlspecialchars($data['ubicacion']) . '" required>
+            <input type="hidden" id="servicios" name="servicios" value="' . htmlspecialchars($data['servicios']) . '" required>
+            <input type="hidden" id="fk_distrito" name="fk_distrito" value="' . htmlspecialchars($data['servicios']) . '" required>
+            <input type="hidden" id="habilitado" name="habilitado" value='.htmlspecialchars($data['habilitado']) .'>
+        ';
+    } else if ($tipo == "planestudio") {
             echo '
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" value="' . htmlspecialchars($data['nombre']) . '" required>

@@ -283,7 +283,7 @@ $imagenes_result = mysqli_fetch_all($imagenes_result, MYSQLI_ASSOC);
                                 echo '<a href="' . $contacto['contacto'] . '"target="_blank" class="btn ver">Visualizar Contacto</a>';
 
                                 }
-                                echo '<a href="editar_plan.php?id=' . $contacto['id_contacto'] . '" class="btn editar">Editar Contacto</a>';
+                                echo '<a href="modificar.php?tabla=contacto&id=id=' . $contacto['id_contacto'] . '" class="btn editar">Editar Contacto</a>';
 
                                 echo '<a href="eliminar.php?tabla=contacto&id=' . $contacto['id_contacto'] . '" class="btn eliminar">Eliminar Contacto del establecimiento</a>';
 

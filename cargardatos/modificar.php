@@ -13,7 +13,7 @@
         $_SESSION["id_usuario"] = "a";
 
         $distritos_result = mysqli_query($conn, "SELECT * FROM distrito");
-        $establecimientos_result = mysqli_query($conn, "SELECT * FROM establecimiento");
+        $establecimientos_result = mysqli_query($conn, "SELECT * FROM establecimiento WHERE id_establecimiento != 0");
         $carrera_result = mysqli_query($conn, "SELECT * FROM carrera");
         $tipo_contacto_result = mysqli_query($conn, "SELECT DISTINCT tipo FROM contacto");
         $imagenes_result = mysqli_query($conn, "SELECT * FROM imagenes");
@@ -34,6 +34,7 @@
                 <option value="carrera">Carrera</option>
                 <option value="contacto">Contacto</option>
                 <option value="establecimiento">Establecimiento</option>
+                <option value="carrusel">Carrusel</option>
                 <option value="recursos">Plan de Estudio</option>
                 <option value="imagenes">Imágenes</option>
                 <option value="distrito">Distritos</option>
@@ -54,26 +55,45 @@
 
             var html = '';
             switch (tabla) {
-                case "carrera":
+                case "establecimiento":
                     html = `
-                        <label for="id_carrera">ID Carrera:</label>
-                        <input type="text" id="id_carrera" name="id_carrera" required>
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required>
-                        <label for="descripcion">Descripción:</label>
-                        <input type="text" id="descripcion" name="descripcion" required>
-                        <label for="titulo">Título:</label>
-                        <input type="text" id="titulo" name="titulo" required>
-                        <label for="tipo_carrera">Tipo de Carrera:</label>
-                        <select id="tipo_carrera" name="tipo_carrera" required>
-                            <option value="Tecnicatura">Técnica</option>
-                            <option value="Profesorado">Profesorado</option>
-                            <option value="Licenciatura">Licenciatura</option>
-                            <option value="Ingeniería">Ingeniería</option>
-                            <option value="Otro">Otro</option>
+                        <label for="id_establecimiento">Establecimiento a modificar:</label>
+                        <select id="id_establecimiento" name="id_establecimiento" onchange="cargarDatos('establecimiento')" required>
+                            <option value="">--Selecciona un establecimiento--</option>
+                            <?php foreach ($establecimientos as $row) { ?>
+                                <option value="<?php echo $row['id_establecimiento']; ?>">
+                                    <?php echo $row['nombre']; ?>
+                                </option>
+                            <?php } ?>
                         </select>
+                        <div id="establecimientoFields"></div>
                     `;
                     break;
+                case "carrusel":
+                    html = `
+                        <label for="id_establecimiento">Establecimiento a modificar:</label>
+                        <select id="id_establecimiento" name="id_establecimiento" onchange="cargarDatos('establecimiento')" required>
+                            <option value="">--Selecciona un establecimiento--</option>
+                            <option value="0">Carrusel del inicio</option>
+                        </select>
+                        <div id="establecimientoFields"></div>
+                    `;
+                    break;
+                case "carrera":
+                    html = `
+                        <label for="id_carrera">Carrera a modificar:</label>
+                        <select id="id_carrera" name="id_carrera" onchange="cargarDatos('carrera')" required>
+                            <option value="">--Selecciona una carrera--</option>
+                            <?php foreach ($carreras as $row) { ?>
+                                <option value="<?php echo $row['id_carrera']; ?>">
+                                    <?php echo $row['nombre']; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <div id="carreraFields"></div>
+                    `;
+                    break;
+               
 
                 case "contacto":
                     html = `
@@ -104,46 +124,14 @@
                     `;
                     break;
 
-                case "establecimiento":
-                    html = `
-                        <label for="id_establecimiento">ID Establecimiento:</label>
-                        <input type="text" id="id_establecimiento" name="id_establecimiento" required>
-                        <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required>
-                        <label for="ubicacion">Ubicación:</label>
-                        <input type="text" id="ubicacion" name="ubicacion" required>
-                        <label for="descripcion">Descripción:</label>
-                        <input type="text" id="descripcion" name="descripcion" required>
-                        <label for="tipo_establecimiento">Tipo de Establecimiento:</label>
-                        <select id="tipo_establecimiento" name="tipo_establecimiento" required>
-                            <option value="Universidad">Universidad</option>
-                            <option value="Instituto">Instituto</option>
-                            <option value="Centro Universitario">Centro Universitario</option>
-                            <option value="Polo Educativo">Polo Educativo</option>
-                        </select>
-                        <label for="servicios">Servicios:</label>
-                        <input type="text" id="servicios" name="servicios" required>
-                        <label for="fk_distrito">Distrito:</label>
-                        <select id="fk_distrito" name="fk_distrito" required>
-                            <option value="">--Selecciona un distrito--</option>
-                            <?php foreach ($distritos as $row) { ?>
-                                <option value="<?php echo $row['id_distrito']; ?>">
-                                    <?php echo htmlspecialchars($row['nombre']); ?>
-                                </option>
-                            <?php } ?>
-                        </select>
-                        <label for="habilitado">Habilitado:</label>
-                        <input type="checkbox" id="habilitado" name="habilitado" value="1">
-                    `;
-                    break;
 
                 case "recursos":
                     html = `
                         <label for="id_planestudio">ID Plan de Estudio:</label>
                         <input type="text" id="id_planestudio" name="id_planestudio" required>
                         <label for="id_carrera">ID Carrera:</label>
-                        <select id="id_carrera" name="id_carrera" required>
-                            <option value="">--Selecciona una carrera--</option>
+                        <select id="id_carrera" name="id_carrera")"  required>
+                            <option value="" >--Selecciona una carrera--</option>
                             <?php foreach ($carreras as $row) { ?>
                                 <option value="<?php echo $row['id_carrera']; ?>">
                                     <?php echo htmlspecialchars($row['nombre']); ?>
@@ -216,22 +204,51 @@
             }
 
             formFields.innerHTML = html;
-            if (<?php echo isset($_GET["tabla"]) ? 'true' : 'false'; ?>) {
-                tabla =  "<?php echo $_GET["tabla"]; ?>";
+           
+            tablasino = "<?php if(isset($_GET["tabla"])){echo "true";}else{echo "false";} ?>"
+            if (tablasino != "false") {
+                tabla =  <?php if(isset($_GET["tabla"])){echo '"'.$_GET["tabla"].'"';}else{echo "null";} ?>;
                 id1 = "<?php if(isset($_GET["id"])){echo $_GET["id"];}else{echo"null";} ?>" 
                 id2 ="<?php if(isset($_GET["id2"])){echo $_GET["id2"];}else{echo"null";} ?>" 
                 id3 ="<?php if(isset($_GET["id3"])){echo $_GET["id3"];}else{echo"null";} ?>" 
-                if (tabla == "establecimiento") {
-                    document.getElementById("id_establecimiento").value = id1;
+                if (tabla == "contacto") {
+                    document.getElementById("id_contacto").value = id1;
+                    document.getElementById("fk_establecimiento").value = id2;
                 }else if (tabla == "recursos") {
-                    document.getElementById("id_planestudio").value = id1;
-                    document.getElementById("id_carrera").value =id2;
-                    document.getElementById("fk_establecimiento").value = id3;
+                    document.getElementById("fk_establecimiento").value = id2;
+                    document.getElementById("id_recurso").value = id1;
+                }else if (tabla == "establecimiento") {
+                    document.getElementById("id_establecimiento").value = id1;
+                }else if (tabla == "imagenes") {
+                    document.getElementById("fk_establecimiento").value = id2;
+                    document.getElementById("id_imagen").value = id1;
                 }
+                cargarDatos(tabla)
             }
            
-           
         }
+
+      
+        function cargarDatos(tabla) {
+            var idElemento = document.getElementById("id_" + tabla).value;
+            var fieldsContainer = document.getElementById(tabla + "Fields");
+
+            if (idElemento) {
+                // Realizar una solicitud AJAX para obtener los datos del elemento seleccionado
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "obtenerdatos.php?tipo="+tabla+"&id=" + idElemento, true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        // Insertar los campos con los datos actuales para ser modificados
+                        fieldsContainer.innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send();
+            } else {
+                fieldsContainer.innerHTML = '';
+            }
+        }
+
         window.onload = function() {
             var tablaSeleccionada = document.getElementById("tabla").value;
             if (tablaSeleccionada) {
