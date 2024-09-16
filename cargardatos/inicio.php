@@ -232,7 +232,7 @@ $imagenes_result = mysqli_fetch_all($imagenes_result, MYSQLI_ASSOC);
                                     echo '<div class="actions">';
                                     echo '<a href="../codigophp/verpdf.php?pdf=' . $plan['pdf'] . '" class="btn ver" target="_blank">Visualizar Plan</a>';
 
-                                    echo '<a href="modificar.php?tabla=recursos&id=' . $plan['id_recurso'] . '&id2=' . $data["id_carrera"] . '&id3=' . $establecimiento["id_establecimiento"] . '" class="btn editar">Editar Plan</a>';
+                                    echo '<a href="modificar.php?tabla=recursos&id=' . $plan['id_recurso'] . '" class="btn editar">Editar Plan</a>';
                                     echo '<a href="eliminar.php?tabla=recursos&id=' . $plan['id_recurso'] . '" class="btn eliminar">Eliminar Plan</a>';
                                     echo '</div>';
                                     echo '</li>';
@@ -249,7 +249,7 @@ $imagenes_result = mysqli_fetch_all($imagenes_result, MYSQLI_ASSOC);
                                     echo '<div class="actions">';
                                     echo '<a href="../codigophp/verpdf.php?pdf=' . $diseño['pdf'] . '" class="btn ver" target="_blank">Visualizar Diseño</a>';
 
-                                    echo '<a href="modificar.php?tabla=recursos&id=' . $diseño['id_recurso'] . '&id2=' . $data["id_carrera"] . '&id3=' . $establecimiento["id_establecimiento"] . '" class="btn editar">Editar Diseño</a>';
+                                    echo '<a href="modificar.php?tabla=recursos&id=' . $diseño['id_recurso'] . '" class="btn editar">Editar Diseño</a>';
                                     echo '<a href="eliminar.php?tabla=recursos&id=' . $diseño['id_recurso'] . '" class="btn eliminar">Eliminar Diseño</a>';
                                     echo '</div>';
                                     echo '</li>';
