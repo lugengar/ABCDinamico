@@ -29,7 +29,7 @@
 
     <div class="form-container">
         <h2>Formulario de Modificación de Datos</h2>
-        <form action="process_modify.php" method="post" id="dataForm" enctype="multipart/form-data">
+        <form action="prossmodificar.php" method="post" id="dataForm" enctype="multipart/form-data">
             <label for="tabla">Seleccionar tabla:</label>
             <select id="tabla" name="tabla" onchange="mostrarCampos()" required>
                 <option value="">--Selecciona una tabla--</option>

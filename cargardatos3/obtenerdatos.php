@@ -210,37 +210,44 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
                 </select>
             ';
         }
+    } elseif ($tipo == "imagenes") {
+        include "../codigophp/construccion.php";
+    
+        echo '
+              <label for="imagen">Imagen (JPG):</label>
+                <input type="file" id="imagen" name="imagen" accept=".jpg, .jpeg" required>
+                <label for="fk_establecimiento">Establecimiento:</label>
+                <select id="fk_establecimiento" name="fk_establecimiento" required>
+                    <option value="0"> 
+                        Carrusel del inicio
+                    </option>';
+    
+        $query2 = "SELECT * FROM establecimiento
+                   ORDER BY
+                       CASE
+                           WHEN id_establecimiento = ? THEN 0
+                           ELSE 1
+                       END";
+        $stmt2 = $conn->prepare($query2);
+        $stmt2->bind_param("i", $data["fk_establecimiento"]);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        foreach ($result2 as $row) {
+            echo '<option value="' . $row["id_establecimiento"] . '">' . $row["nombre"] . '</option>';
+        }
+        echo '
+            </select>
+        ';
+    }elseif ($tipo == "distrito") {
+        include "../codigophp/construccion.php";
+    
+        echo '
+              <label for="nombre">Nombre del Distrito:</label>
+             <input type="text" id="nombre" name="nombre" required value="'.htmlspecialchars($data["nombre"]).'">
+        ';
     } else {
         echo 'No se encontraron datos.';
     }
-} elseif ($tipo == "imagenes") {
-    include "../codigophp/construccion.php";
-
-    echo '
-          <label for="imagen">Imagen (JPG):</label>
-            <input type="file" id="imagen" name="imagen" accept=".jpg, .jpeg" required>
-            <label for="fk_establecimiento">Establecimiento:</label>
-            <select id="fk_establecimiento" name="fk_establecimiento" required>
-                <option value="0"> 
-                    Carrusel del inicio
-                </option>';
-
-    $query2 = "SELECT * FROM establecimiento
-               ORDER BY
-                   CASE
-                       WHEN id_establecimiento = ? THEN 0
-                       ELSE 1
-                   END";
-    $stmt2 = $conn->prepare($query2);
-    $stmt2->bind_param("i", $data["fk_establecimiento"]);
-    $stmt2->execute();
-    $result2 = $stmt2->get_result();
-    foreach ($result2 as $row) {
-        echo '<option value="' . $row["id_establecimiento"] . '">' . $row["nombre"] . '</option>';
-    }
-    echo '
-        </select>
-    ';
 } else {
     echo 'ID o tipo no proporcionado.';
 }
