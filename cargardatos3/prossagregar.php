@@ -93,7 +93,12 @@ switch ($tabla) {
             die("Error en la carga de la imagen.");
         }
         break;
-
+    case "distrito":
+            $nombre = $_POST['nombre'] ?? '';
+    
+            $sql = "INSERT INTO distrito (nombre) VALUES ('$nombre')";
+            break;
+    
     default:
         die("Tabla no válida.");
 }

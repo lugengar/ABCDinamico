@@ -35,7 +35,6 @@
                 <option value="contacto">Contacto</option>
                 <option value="establecimiento">Establecimiento</option>
                 <option value="imagenes">Imágenes</option>
-                <option value="distrito">Distrito</option>
                 <option value="recursos">Recurso</option>
             </select>
 

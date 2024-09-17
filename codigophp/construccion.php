@@ -125,23 +125,34 @@ function cortarTexto($texto, $longitud = 70) {
 }
 function carreraslista($carreras){ // CREA LA LISTA DE CARRERAS Y TECNICATURAS PARA LA BARRA DE BUSQUEDA
     foreach ($carreras as $carrera) {
+        if($carrera["nombre"] != ""){
         echo '<option value="'.$carrera["id_carrera"].'">'.cortarTexto($carrera["nombre"]).'</option>';
+        }
     }
 }
 function establecimientolista($establecimientos){ // CREA LA LISTA DE CARRERAS Y TECNICATURAS PARA LA BARRA DE BUSQUEDA
     foreach ($establecimientos as $establecimiento) {
+        if($establecimiento["tipo_establecimiento"] != ""){
+
         echo '<option value="'.$establecimiento["tipo_establecimiento"].'">'.cortarTexto($establecimiento["tipo_establecimiento"]).'</option>';
+        }
     }
 }
 function carreratipolista($carreras){ // CREA LA LISTA DE CARRERAS Y TECNICATURAS PARA LA BARRA DE BUSQUEDA
     foreach ($carreras as $carrera) {
+        if($carrera["tipo_carrera"] != ""){
+
         echo '<option value="'.$carrera["tipo_carrera"].'">'.cortarTexto($carrera["tipo_carrera"]).'</option>';
+        }
     }
 }
 
 function distritolista($distritos){ // CREA LA LISTA DE LOS DISTRITOS PARA LA BARRA DE BUSQUEDA
     foreach ($distritos as $distrito) {
+        if($distrito["nombre"] != ""){
+
         echo '<option value="'.$distrito["id_distrito"].'">'.cortarTexto($distrito["nombre"]).'</option>';
+        }
     }
 }
 function arreglar_telefono($tel){ // MODIFICA EL NUMERO DE TELEFONO EN CASO DE FALTAR EL +54 O EL 11

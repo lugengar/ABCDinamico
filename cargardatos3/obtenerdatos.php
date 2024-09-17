@@ -5,7 +5,7 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
     $tipo = $_GET['tipo'];
     $id = $_GET['id'];
 
-    if ($tipo == "establecimiento") {
+    if ($tipo == "establecimiento" || $tipo == "carrusel") {
         // Obtener los datos del establecimiento
         $query = "SELECT * FROM establecimiento WHERE id_establecimiento = ?";
     } elseif ($tipo == "recursos") {
@@ -36,7 +36,15 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
     $data = $result->fetch_assoc();
 
     if ($data) {
-        if ($tipo == "establecimiento") {
+        if ($tipo == "carrusel") {
+
+            echo '
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="' . htmlspecialchars($data['nombre']) . '" required>
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" name="descripcion" value="' . htmlspecialchars($data['descripcion']) . '" required>
+            ';
+        } else if ($tipo == "establecimiento") {
             include "../codigophp/construccion.php";
 
             echo '
@@ -208,9 +216,27 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
 
             echo '
                 </select>
-            ';
-        }
-    } elseif ($tipo == "imagenes") {
+            
+              <label for="tipo_recurso">Tipo de recurso:</label>
+                <select id="tipo_recurso" name="tipo_recurso" required value="'.$data["tipo_recurso"].'">';
+
+            $query2 = "SELECT DISTINCT tipo_recurso FROM recursos
+                       ORDER BY
+                           CASE
+                               WHEN id_recurso = ? THEN 0
+                               ELSE 1
+                           END";
+            $stmt2 = $conn->prepare($query2);
+            $stmt2->bind_param("i", $id);
+            $stmt2->execute();
+            $result2 = $stmt2->get_result();
+            foreach ($result2 as $row) {
+                echo '<option value="' . $row["tipo_recurso"] . '">' . $row["tipo_recurso"] . '</option>';
+            }
+
+            echo '
+                </select>';
+        } elseif ($tipo == "imagenes") {
         include "../codigophp/construccion.php";
     
         echo '
@@ -239,7 +265,7 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
             </select>
         ';
     }elseif ($tipo == "distrito") {
-        include "../codigophp/construccion.php";
+
     
         echo '
               <label for="nombre">Nombre del Distrito:</label>
@@ -248,6 +274,7 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
     } else {
         echo 'No se encontraron datos.';
     }
+}
 } else {
     echo 'ID o tipo no proporcionado.';
 }

@@ -37,7 +37,7 @@
                 <option value="contacto">Contacto</option>
                 <option value="establecimiento">Establecimiento</option>
                 <option value="carrusel">Carrusel</option>
-                <option value="recursos">Plan de Estudio</option>
+                <option value="recursos">Recursos</option>
                 <option value="imagenes">Imágenes</option>
                 <option value="distrito">Distritos</option>
             </select>
@@ -62,8 +62,10 @@
                         <label for="id_establecimiento">Establecimiento a modificar:</label>
                         <select id="id_establecimiento" name="id_establecimiento" onchange="cargarDatos('establecimiento')" required>
                             <option value="">--Selecciona un establecimiento--</option>
+
                             <?php foreach ($establecimientos as $row) { ?>
                                 <option value="<?php echo htmlspecialchars($row['id_establecimiento']); ?>">
+                                
                                     <?php echo htmlspecialchars($row['nombre']); ?>
                                 </option>
                             <?php } ?>
@@ -73,12 +75,12 @@
                     break;
                 case "carrusel":
                     html = `
-                        <label for="id_carrusel">Establecimiento a modificar:</label>
-                        <select id="id_carrusel" name="id_establecimiento" onchange="cargarDatos('establecimiento')" required>
-                            <option value="">--Selecciona un establecimiento--</option>
+                        <label for="id_carrusel">Carrusel a modificar:</label>
+                        <select id="id_carrusel" name="id_establecimiento" onchange="cargarDatos('carrusel')" required>
+                            <option value="">--Selecciona un carrusel--</option>
                             <option value="0">Carrusel del inicio</option>
                         </select>
-                        <div id="carruseloFields"></div>
+                        <div id="carruselFields"></div>
                     `;
                     break;
                 case "carrera":
