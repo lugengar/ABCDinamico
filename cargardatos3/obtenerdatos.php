@@ -1,4 +1,6 @@
 <?php
+
+if(isset($_SESSION['id_usuario'])){
 include "../codigophp/conexionbs.php";
 
 if (isset($_GET['id']) && isset($_GET['tipo'])) {
@@ -277,5 +279,6 @@ if (isset($_GET['id']) && isset($_GET['tipo'])) {
 }
 } else {
     echo 'ID o tipo no proporcionado.';
+}
 }
 ?>

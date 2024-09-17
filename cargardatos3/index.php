@@ -8,7 +8,11 @@
     <link rel="stylesheet" href="../estiloscss/animaciones.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
 </head>
-    
+    <?php
+    include "../claves.php";
+    include "../codigophp/verificacion.php";
+    entraradmin();
+    ?>
     <body style="position:relative;">
    
 <header class="header" id="header" style="">

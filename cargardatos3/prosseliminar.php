@@ -1,4 +1,6 @@
 <?php
+if(isset($_POST['tabla']) && isset($_SESSION['id_usuario'])){
+
 include "../codigophp/conexionbs.php";
 
 $tabla = $_POST['tabla'] ?? '';
@@ -66,4 +68,5 @@ $id = $_POST['id_contacto'] ?? '';
 }
 
 mysqli_close($conn);
+}
 ?>

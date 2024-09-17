@@ -1,5 +1,4 @@
 <?php
- include "./claves.php";
 session_start();
 function cerrarsesion(){
     session_destroy();
@@ -23,6 +22,13 @@ function esadmin(){
         }
    }else{
         header("Location: ../index.php");
+   }
+}
+function entraradmin(){
+    if(isset($_SESSION["id_usuario"])){
+        if($_SESSION["id_usuario"] != null){
+            header("Location: ./inicio.php");
+        }
    }
 }
 function estaoculta($habilitado){

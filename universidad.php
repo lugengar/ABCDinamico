@@ -2,6 +2,7 @@
 <html lang="en-es">
 <head>
 <?php
+ include "./claves.php";
  include "./codigophp/verificacion.php";
  mostrarocultos();
 

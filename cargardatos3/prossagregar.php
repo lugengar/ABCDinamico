@@ -1,4 +1,6 @@
 <?php
+if(isset($_POST['tabla']) && isset($_SESSION['id_usuario'])){
+
 include "../codigophp/conexionbs.php";
 include "../codigophp/coordenadas.php";
 
@@ -110,4 +112,5 @@ if (mysqli_query($conn, $sql)) {
 }
 
 mysqli_close($conn);
+}
 ?>

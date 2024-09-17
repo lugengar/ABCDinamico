@@ -102,9 +102,9 @@
 </style>
 <body><?php
 include "../codigophp/conexionbs.php";
-session_start();
-$_SESSION["id_usuario"] = "a";
-
+include "../claves.php";
+include "../codigophp/verificacion.php";
+esadmin();
 // Obtener el término de búsqueda si existe
 $search = isset($_GET['busqueda']) ? $_GET['busqueda'] : '';
 
@@ -176,9 +176,23 @@ $imagenes_result = mysqli_fetch_all($imagenes_result, MYSQLI_ASSOC);
         <div class="establecimiento-content">
 
             <div class="detalle-establecimiento">
-                <p><strong><?php echo $establecimiento['nombre']; ?></strong></p>
+            <?php $texto = "Publicado";
+                if($establecimiento['habilitado'] == "1"){
+                    $texto = "No publicado";
+                }?>
+                <p><strong><?php echo $texto.' - '.$establecimiento['nombre']; ?>  </strong>
+            
+                
+          </p>
 
                 <div class="actions">
+                <?php
+                if($establecimiento['habilitado'] == "1"){
+                    echo '<a class="redsocial2" href="./prossmodificar.php?tabla=habilitado&id_establecimiento='.$establecimiento['id_establecimiento'].'&habilitado='.$establecimiento['habilitado'].'" style="background-image: url(../imagenes/iconos/candado2.svg); background-color: #e81f76;"> </a>';
+                }else{
+                    echo '<a class="redsocial2" href="./prossmodificar.php?tabla=habilitado&id_establecimiento='.$establecimiento['id_establecimiento'].'&habilitado='.$establecimiento['habilitado'].'" style="background-image: url(../imagenes/iconos/candado_desbloqueado.svg); background-color: #00adc1;"></a>';
+
+                }?>
                 <a href="../universidad.php?universidad=<?php echo $establecimiento['id_establecimiento']; ?>" class="btn ver" target="_blank">Visualizar establecimiento</a>
 
                     <a href="modificar.php?tabla=establecimiento&id=<?php echo $establecimiento['id_establecimiento']; ?>" class="btn editar">Editar Establecimiento</a>

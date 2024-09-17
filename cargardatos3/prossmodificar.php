@@ -1,10 +1,28 @@
 <?php
+if((isset($_POST['tabla']) || isset($_GET['tabla'])) && isset($_SESSION['id_usuario'])){
+
 include "../codigophp/conexionbs.php";
 include "../codigophp/coordenadas.php";
 
-$tabla = $_POST['tabla'] ?? '';
+$tabla = '';
 
+if(isset($_POST['tabla'])){
+    $tabla = $_POST['tabla'] ?? '';
+}else{
+    $tabla = $_GET['tabla'] ?? '';
+}
 switch ($tabla) {
+    case "habilitado":
+        $id_establecimiento = $_GET['id_establecimiento'] ?? '';
+        $habilitado = $_GET['habilitado'] ?? '1';
+        $booleano = "0";
+        if($habilitado == "0"){
+            $booleano = "1";
+        }
+        $sql = "UPDATE establecimiento SET habilitado = ? WHERE id_establecimiento = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "ii", $booleano, $id_establecimiento);
+        break;
     case "carrera":
         $id_carrera = $_POST['id_carrera'] ?? '';
         $nombre = $_POST['nombre'] ?? '';
@@ -181,4 +199,5 @@ if (mysqli_stmt_execute($stmt)) {
 
 mysqli_stmt_close($stmt);
 mysqli_close($conn);
+}
 ?>

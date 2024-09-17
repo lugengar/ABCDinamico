@@ -9,8 +9,9 @@
 <body>
     <?php
         include "../codigophp/conexionbs.php";
-        session_start();
-        $_SESSION["id_usuario"] = "a";
+        include "../claves.php";
+        include "../codigophp/verificacion.php";
+        esadmin();
 
         $distritos_result = mysqli_query($conn, "SELECT * FROM distrito");
         $establecimientos_result = mysqli_query($conn, "SELECT * FROM establecimiento WHERE id_establecimiento != 0");

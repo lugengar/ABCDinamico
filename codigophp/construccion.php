@@ -11,11 +11,16 @@ $direccionimagen = "./imagenes/universidades/";
 $direccionimagen2 = "./imagenes/otros/";
 $direccionpdf = "./pdf/";
 
-function universidad($id,$nombre ,$descripcion, $imagenes,$carreras){ //CREA EL CUADRO DE UNIVERSIDAD
+function universidad($id,$nombre ,$descripcion, $imagenes,$carreras,$habilitado){ //CREA EL CUADRO DE UNIVERSIDAD
     global $direccionimagen;
     echo '<div class="universidad">';
+        if($habilitado == "1"){
+            echo '<div class="imagenesuni" style="position:relative;">';
+            echo '<div class="privado"></div> ';
+        }else{
+            echo '<div class="imagenesuni">';
+        }
     if($imagenes->num_rows > 0){
-        echo '<div class="imagenesuni">';
         foreach($imagenes as $key => $imagen) {
             echo '<div class="imagenuni activo" style="background-image: url('.$direccionimagen."".$imagen["url"].');"></div>';
         }
@@ -33,7 +38,6 @@ function universidad($id,$nombre ,$descripcion, $imagenes,$carreras){ //CREA EL 
             echo '</div> <div class="barrauni"></div>';
         }
     }else{
-        echo '<div class="imagenesuni">';
 
         echo'<h1 class=" imagenuni activo errorimg"></h1>';
         echo '</div> <div class="barrauni"></div>';

@@ -159,7 +159,7 @@ ORDER BY
 
     // Preparar la consulta
     $stmt = $conn->prepare("
-        SELECT DISTINCT e.id_establecimiento, e.nombre, e.descripcion
+        SELECT DISTINCT e.id_establecimiento, e.nombre, e.descripcion, e.habilitado
         FROM establecimiento e
         INNER JOIN recursos r ON e.id_establecimiento = r.fk_establecimiento
         INNER JOIN carrera c ON r.fk_carrera = c.id_carrera
@@ -272,7 +272,7 @@ if ($result != null){
         if($tipo == "carrera"){
             $carrera = carrerasestablecimiento($row["id_establecimiento"],$busqueda);
         }
-        universidad($row["id_establecimiento"], $row["nombre"], $row["descripcion"], $imagenes, $carrera); #$row["imagenes"]);
+        universidad($row["id_establecimiento"], $row["nombre"], $row["descripcion"], $imagenes, $carrera, $row["habilitado"]); #$row["imagenes"]);
     }
 }
 }else{

@@ -836,29 +836,29 @@ input[type="submit"] {
     align-items: center;
     gap: 2%;
 }
-
-.universidad .redesociales .redsocial {
+ .redsocial {
     width: 6vh;
     height: 6vh;
     border-radius: 50vh;
     overflow: hidden;
-    background-size: cover;
+    background-size: 3vh;
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: 0 1vh 1vh rgba(0, 0, 0, 0.2);
     background-color: white;
+    background-color: #e81f76;
+
 }
 
-.universidad .redesociales .redsocial2 {
+.redsocial2 {
     width: 6vh;
     height: 6vh;
     border-radius: 50vh;
     overflow: hidden;
-    background-size: 5vh;
+    background-size: 3vh;
     background-repeat: no-repeat;
     background-position: center;
     box-shadow: 0 1vh 1vh rgba(0, 0, 0, 0.2);
-    background-color: #e81f76;
     font-size: 2vh;
     transition: width 0.5s;
     color: transparent;
