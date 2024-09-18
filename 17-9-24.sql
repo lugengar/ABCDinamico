@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-09-2024 a las 06:48:14
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 18-09-2024 a las 02:22:06
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,8 +32,8 @@ CREATE TABLE `carrera` (
   `nombre` varchar(100) NOT NULL,
   `descripcion` varchar(1000) NOT NULL,
   `titulo` varchar(100) NOT NULL,
-  `tipo_carrera` enum('Licenciatura','Tecnicatura','Profesorado','Ingeniería','otros') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `tipo_carrera` enum('Licenciatura','Tecnicatura','Profesorado','Ingeniería','Diplomatura','Otros') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `carrera`
@@ -47,7 +47,7 @@ INSERT INTO `carrera` (`id_carrera`, `nombre`, `descripcion`, `titulo`, `tipo_ca
 (5, 'Tecnicatura en Edición Audiovisual', 'Las tecnicaturas en Edición Audiovisual y en Sonido Audiovisual son dos carreras distintas y complementarias que aportan conocimientos y herramientas para desarrollarse profesionalmente en el campo de la producción y posproducción audiovisual en el marco del auge de las Tecnologías de Información y Comunicación (TIC). En este sentido, se concibe al audiovisual como un objeto comunicacional complejo y dinámico que requiere un abordaje multidisciplinario y una alta dosis de creatividad.', 'Técnico en Edición Audiovisual', 'Tecnicatura'),
 (6, 'Tecnicatura en Sonido Audiovisual', 'Las tecnicaturas en Edición Audiovisual y en Sonido Audiovisual son dos carreras distintas y complementarias que aportan conocimientos y herramientas para desarrollarse profesionalmente en el campo de la producción y posproducción audiovisual en el marco del auge de las Tecnologías de Información y Comunicación (TIC). En este sentido, se concibe al audiovisual como un objeto comunicacional complejo y dinámico que requiere un abordaje multidisciplinario y una alta dosis de creatividad.', 'Técnico en Sonido Audiovisual', 'Tecnicatura'),
 (7, 'Licenciatura en Ciencias Forenses y Criminología', 'La Licenciatura en Ciencias Forenses y Criminología se propone la formación de profesionales con una visión sistémica, ética y científica que aporten técnicamente a la investigación de delitos y al estudio de políticas públicas de seguridad desde saberes y capacidades propias de su campo profesional.', 'Licenciado en Ciencias Forenses y Criminología', 'Licenciatura'),
-(8, 'Licenciatura en Economía', 'Formar profesionales con los conocimientos y capacidades que aporten técnicamente a los debates sobre cuestiones económicas desde un marco multidisciplinario, haciendo frente a los desafíos que plantean la globalización y los constantes adelantos tecnológicos.', 'Licenciado en Economía', 'Licenciatura'),
+(8, 'Licenciatura en Economía', 'Los economistas estudian cómo se producen, distribuyen y consumen los bienes y servicios. Esta carrera enseña a analizar mercados, evaluar políticas públicas y predecir tendencias económicas a nivel global y nacional.', 'Licenciado en Economía', 'Licenciatura'),
 (9, 'Tecnicatura Universitaria en Análisis Contable', 'Formar profesionales con los conocimientos y capacidades que aporten técnicamente a la gestión contable de empresas, organizaciones sin fin de lucro y emprendimientos.', 'Técnico Universitario en Análisis Contable', 'Tecnicatura'),
 (10, 'Tecnicatura Universitaria en Criminalística', 'La Tecnicatura Universitaria en Criminalística se propone la formación de profesionales con una visión sistémica, ética y científica que aporten técnicamente a la investigación de delitos desde saberes y capacidades propias de su campo profesional.', 'Técnico Universitario en Criminalística', 'Tecnicatura'),
 (11, 'Licenciatura en Gestión Educativa CCC', '(Carrera de Ciclo de Complementación Curricular)Brindar una formación universitaria a los/as actuales y futuros responsables de dirigir, asesorar, gestionar y supervisar una educación de calidad en las instituciones educativas, en el actual contexto de transformaciones de la educación en nuestro país establecido por la Ley de Educación Nacional Nº 26206.', 'Licenciado en Gestión Educativa', 'Licenciatura'),
@@ -56,11 +56,11 @@ INSERT INTO `carrera` (`id_carrera`, `nombre`, `descripcion`, `titulo`, `tipo_ca
 (14, 'Licenciatura en Psicopedagogía CCC', '(Carrera de Ciclo de Complementación Curricular)Licenciado/a en Psicopedagogía estará capacitado para prevenir, diagnosticar y realizar intervenciones de asesoramiento, orientación y tratamiento en toda situación donde el aprendizaje y sus vicisitudes se pongan en juego, tanto en ámbitos de salud, educativos, laborales y socio comunitarios, facilitando en los sujetos de diversas edades la construcción de sus proyectos de vida en la comunidad.', 'Licenciado en Psicopedagogía', 'Licenciatura'),
 (15, 'Profesorado en Educación Inicial', 'Formar Profesores/as en el Nivel Inicial que permita el ejercicio de la docencia y la formulación, el diseño y la ejecución de propuestas pedagógicas, didácticas y proyectos socioeducativos destinados a la Primera Infancia, en distintas instituciones de su campo de aplicación.', 'Profesor en Educación Inicial', 'Profesorado'),
 (16, 'Tecnicatura Universitaria en Gestión Pública', 'La Tecnicatura Universitaria en Gestión Pública se propone la formación de profesionales con conocimientos en temas referidos al funcionamiento del Estado en sus diversos niveles (nacional, provincial, municipal) y que muestre capacidad para comprender la importancia del desarrollo de un Estado acorde a las necesidades sociales. Se pretende, a su vez, brindar conocimientos en aspectos que refieren al diseño, análisis y gestión de políticas públicas; las instituciones de gobierno y los procesos gubernamentales ligados a ellas; la comunicación y la economía de gobierno; la gestión de recursos humanos en el ámbito estatal y las particularidades que asume el sector público en Argentina.', 'Técnico Universitario en Gestión Pública', 'Tecnicatura'),
-(17, 'Enfermería Universitaria', 'Formar profesionales en el campo de la Enfermería Universitaria, con conocimientos científicos, humanísticos, éticos, legales y políticos para proporcionar atención de enfermería a las personas, familias y grupos de la comunidad, con compromiso social y político; reconociendo y defendiendo la Salud, como un derecho humano y social y a la atención primaria, como estrategia de abordaje a la comunidad, con una actitud ética y de responsabilidad legal en el ejercicio profesional.', 'Enfermero Universitario', 'otros'),
+(17, 'Enfermería Universitaria', 'Formar profesionales en el campo de la Enfermería Universitaria, con conocimientos científicos, humanísticos, éticos, legales y políticos para proporcionar atención de enfermería a las personas, familias y grupos de la comunidad, con compromiso social y político; reconociendo y defendiendo la Salud, como un derecho humano y social y a la atención primaria, como estrategia de abordaje a la comunidad, con una actitud ética y de responsabilidad legal en el ejercicio profesional.', 'Enfermero Universitario', 'Tecnicatura'),
 (18, 'Licenciatura en Instrumentación Quirúrgica CCC', '(Carrera de Ciclo de Complementación Curricular)La Licenciatura en Instrumentación Quirúrgica, se propone brindar una formación científica, técnica, humanística y de investigación, en relación a la organización, asistencia, investigación y docencia en el campo de incumbencias, en instituciones públicas o privadas.', 'Licenciado en Instrumentación Quirúrgica', 'Licenciatura'),
 (19, 'Tecnicatura Universitaria en Emergencias Médicas', 'La Tecnicatura Universitaria en Emergencias Médicas tiene como objetivo formar profesionales capaces de organizar sistemas de respuesta ante emergencias, en el marco de la legislación sanitaria vigente y bajo la supervisión del médico hasta el traslado del paciente al centro de mayor complejidad.', 'Técnico Universitario en Emergencias Médicas', 'Tecnicatura'),
 (20, 'Tecnicatura Superior en Alimentos', 'El Técnico en Alimentos garantiza calidad y ética en industrias y producción primaria con las habilidades adquiridas.', 'Técnico Superior en Alimentos', 'Tecnicatura'),
-(21, 'Tecnicatura Superior en Higiene y Seguridad', 'El Técnico en Higiene y Seguridad organiza, gestiona y controla la seguridad en el trabajo, planificando y organizando un plan.', 'Técnico Superior en Higiene y Seguridad', 'Tecnicatura'),
+(21, 'Tecnicatura Superior en Higiene y Seguridad', 'Formación técnica en la gestión de la higiene industrial y seguridad laboral para la prevención de riesgos en el trabajo.', 'Técnico Superior en Higiene y Seguridad', 'Tecnicatura'),
 (22, 'Tecnicatura Superior en Desarrollo de Software', 'El Técnico en Software crea y mantiene software, trabajando en proyectos multidisciplinarios.', 'Técnico Superior en Desarrollo de Software', 'Tecnicatura'),
 (23, 'Profesorado de Educación Secundaria Técnico Profesional', 'El presente plan de estudios tiene por finalidad la formación pedagógico-didáctica para la\npráctica profesional así como la actualización científico tecnológica destinadas a formar\ndocentes con título de base que puedan desarrollar su práctica en las instituciones de la\nmodalidad de Educación Técnico Profesional con nivel secundario técnico. Esto supone\nadmitir que las destinatarias y los destinatarios cuentan con saberes técnicos y científicos\ntecnológicos relativos a un campo ocupacional específico. Tales saberes deben poder ser\nreconocidos, actualizados y, particularmente, articulados y complementados por aquellos\nsaberes relativos a su profesionalidad docente.', 'Profesor de Educación Secundaria Técnico Profesional', 'Profesorado'),
 (24, 'Profesorado en instrumento', 'En está carrera se podrá aprender la pedagogía para poder enseñar a otros el arte de la música.', 'Profesor en Música (orientación Instrumento)', 'Profesorado'),
@@ -89,7 +89,7 @@ INSERT INTO `carrera` (`id_carrera`, `nombre`, `descripcion`, `titulo`, `tipo_ca
 (47, 'Profesorado en Educación Especial(Modalidad Ciegos y Disminuidos Visuales)', 'Página en proceso', 'Profesor en Educación Especial Modalidad con Orientación en Ciegos y Disminuidos Visuales', 'Profesorado'),
 (48, 'Profesorado de Educación Primaria', 'Formación de docentes para nivel primario', 'Profesor de Educación Primaria', 'Profesorado'),
 (49, 'Profesorado para la Educación Secundaria en Biología', 'Formación de docentes en Biología para secundaria', 'Profesor en Biología', 'Profesorado'),
-(50, 'Trayecto de Formación Pedagógica Complementaria para graduados técnicos de nivel superior-secundario', 'Formación pedagógica para técnicos y profesionales', 'Certificación Pedagógica', 'otros'),
+(50, 'Trayecto de Formación Pedagógica Complementaria para graduados técnicos de nivel superior-secundario', 'Formación pedagógica para técnicos y profesionales', 'Certificación Pedagógica', 'Otros'),
 (51, 'Profesorado para la Educación Secundaria en Física', 'Formación de docentes en Física para secundaria', 'Profesor en Física', 'Profesorado'),
 (52, 'Profesor/a de Educación Secundaria en Matemática', 'Formación de docentes en Matemática para secundaria', 'Profesor en Matemática', 'Profesorado'),
 (53, 'Profesorado de Educación Secundaria en Geografía', 'Formación de docentes en Geografía para secundaria', 'Profesor en Geografía', 'Profesorado'),
@@ -111,9 +111,8 @@ INSERT INTO `carrera` (`id_carrera`, `nombre`, `descripcion`, `titulo`, `tipo_ca
 (70, 'Tecnicatura Universitaria en Procesos Industriales', 'Esta Tecnicatura Universitaria surge de la necesidad que tiene la industria en general de reforzar la formación de sus técnicos en algunos temas y en disminuir la brecha de formación entre el ingeniero y el técnico de nivel medio en el momento del ejercicio profesional.', 'Técnico Universitario en Procesos Industriales.', 'Tecnicatura'),
 (71, 'Tecnicatura en Gestión Ambiental y Salud', 'Página en proceso', 'Técnico Universitario en Gestión Ambiental y Salud', 'Tecnicatura'),
 (73, 'Actuario (Administración)', 'Esta carrera forma profesionales capaces de analizar y gestionar riesgos financieros, seguros y pensiones, aplicando matemáticas, estadística y modelos financieros para tomar decisiones estratégicas en empresas y organizaciones.', 'Actuario en Administración.', 'Licenciatura'),
-(74, 'Contador Público', 'El contador público se especializa en la contabilidad, auditoría y control financiero de empresas. Su labor incluye llevar registros contables, preparar estados financieros y asesorar en temas fiscales y de control de gestión.', 'Contador Público.', 'otros'),
+(74, 'Contador Público', 'El contador público se especializa en la contabilidad, auditoría y control financiero de empresas. Su labor incluye llevar registros contables, preparar estados financieros y asesorar en temas fiscales y de control de gestión.', 'Contador Público.', 'Otros'),
 (75, 'Licenciado en Administración', 'Esta carrera se enfoca en la gestión de recursos empresariales, abarcando áreas como marketing, finanzas, recursos humanos y operaciones. Los licenciados en administración tienen la capacidad de liderar proyectos y tomar decisiones estratégicas para mejorar el desempeño organizacional.', 'Licenciado en Administración.', 'Licenciatura'),
-(76, 'Lic. en Economía', 'Los economistas estudian cómo se producen, distribuyen y consumen los bienes y servicios. Esta carrera enseña a analizar mercados, evaluar políticas públicas y predecir tendencias económicas a nivel global y nacional.', 'Licenciado en Economía.', 'Licenciatura'),
 (77, 'Lic. en Sistemas de Información de las Organizaciones', 'Esta licenciatura combina conocimientos en tecnología y gestión empresarial, formando profesionales capaces de diseñar, implementar y gestionar sistemas de información que mejoren la eficiencia y la toma de decisiones en las organizaciones.', 'Licenciado en Sistemas de Información de las Organizaciones.', 'Licenciatura'),
 (78, 'Actuario (Economía)', 'El actuario en economía se especializa en el análisis de riesgos económicos y financieros mediante la aplicación de modelos matemáticos y estadísticos. Se enfoca en la evaluación de mercados, previsión de tendencias económicas y gestión de riesgos en sectores como seguros, inversiones y finanzas. Su trabajo es clave para la toma de decisiones estratégicas en escenarios de incertidumbre.', 'Licenciado en Actuaría con orientación en Economía o Actuario en Economía.', 'Licenciatura'),
 (79, 'Licenciatura en Psicología', 'Proporcionar una aproximación científica a los problemas de la psicología a través de una formación y capacitación en las distintas áreas y campos que favorezcan las opciones del alumno en su práctica futura como graduado.', 'Licenciado en Psicología', 'Licenciatura'),
@@ -125,9 +124,55 @@ INSERT INTO `carrera` (`id_carrera`, `nombre`, `descripcion`, `titulo`, `tipo_ca
 (85, 'Tecnicatura Superior en Logística', 'Página en proceso', 'Técnico Superior en Logística', 'Tecnicatura'),
 (86, 'Tecnicatura Superior en Hotelería', 'Página en proceso', 'Técnico Superior en Hotelería', 'Tecnicatura'),
 (87, 'Tecnicatura Superior en Administración de Recursos Humanos', 'Página en proceso', 'Técnico Superior en Administración de Recursos Humanos', 'Tecnicatura'),
-(88, 'Profesorado de Educación Secundaria Técnico Profesional en Industrias de procesos y de Alimentos', 'Página en proceso', 'Profesor de Educación Secundaria Técnico Profesional en Industrias de procesos y de Alimentos', 'Tecnicatura'),
+(88, 'Profesorado de Educación Secundaria Técnico Profesional en Industrias de procesos y de Alimentos', 'El Profesorado de Educación Secundaria Técnico Profesional en Industrias de Procesos y de Alimentos permitirá a quien egrese articular los saberes propios del campo profesional y pedagógicos de la Educación Técnico Profesional abordando la enseñanza en diálogo con el entorno social, político, cultural y académico', 'Profesor de Educación Secundaria Técnico Profesional en Industrias de procesos y de Alimentos', 'Profesorado'),
 (89, 'Profesorado de Educación Secundaria en Tecnologías (de Equipos e Instalaciones Electromecánicas)', 'Página en proceso', 'Profesor de Educación Secundaria en Tecnologías', 'Profesorado'),
-(90, 'Profesorado en Economía', 'Página en proceso', 'Profesor en Economía', 'Profesorado');
+(90, 'Profesorado en Economía', 'Página en proceso', 'Profesor en Economía', 'Profesorado'),
+(101, 'Gestión de emprendimientos turísticos', 'Formación en la creación y administración de negocios turísticos con un enfoque estratégico y sostenible.', 'Diplomado en Gestión de Emprendimientos Turísticos', 'Diplomatura'),
+(102, 'Manejo de incendios forestales y restauración de ecosistemas', 'Capacitación en la prevención, control y manejo de incendios forestales, así como en la restauración de ecosistemas afectados.', 'Diplomado en Manejo de Incendios Forestales y Restauración de Ecosistemas', 'Diplomatura'),
+(103, 'Estrategias de marketing para empresas turísticas', 'Desarrollo de habilidades en la planificación y ejecución de estrategias de marketing orientadas al sector turístico.', 'Diplomado en Estrategias de Marketing para Empresas Turísticas', 'Diplomatura'),
+(104, 'Gestión del desarrollo territorial sostenible', 'Estudios enfocados en la gestión y planificación del desarrollo territorial desde una perspectiva sostenible y equitativa.', 'Diplomado en Gestión del Desarrollo Territorial Sostenible', 'Diplomatura'),
+(105, 'Desarrollo emprendedor y empresarial', 'Formación integral en emprendimiento, innovación y desarrollo empresarial.', 'Diplomado en Desarrollo Emprendedor y Empresarial', 'Diplomatura'),
+(106, 'Educación en contextos de vulnerabilidad', 'Capacitación en la enseñanza y gestión educativa en contextos de vulnerabilidad social y económica.', 'Diplomado en Educación en Contextos de Vulnerabilidad', 'Diplomatura'),
+(107, 'Seguridad social', 'Estudio de los sistemas de seguridad social y su implementación en diferentes contextos.', 'Diplomado en Seguridad Social', 'Diplomatura'),
+(108, 'Negocios digitales e innovación', 'Formación en la creación y gestión de negocios digitales con un enfoque en la innovación tecnológica.', 'Diplomado en Negocios Digitales e Innovación', 'Diplomatura'),
+(109, 'Redes informáticas y comunicación de datos', 'Estudios sobre el diseño, implementación y gestión de redes informáticas y sistemas de comunicación de datos.', 'Diplomado en Redes Informáticas y Comunicación de Datos', 'Diplomatura'),
+(110, 'Tecnicatura Superior en Energía Eléctrica con orientación en Digitalización', 'Formación técnica superior en sistemas eléctricos con énfasis en la digitalización y automatización.', 'Técnico Superior en Energía Eléctrica con orientación en Digitalización', 'Tecnicatura'),
+(113, 'Tecnicatura Universitaria en Sistemas Informáticos', 'Formación técnica universitaria en el desarrollo, administración y soporte de sistemas informáticos.', 'Técnico Universitario en Sistemas Informáticos', 'Tecnicatura'),
+(114, 'Formación Profesional de Carrera de Enfermería', 'Capacitación profesional para el ejercicio de la enfermería en centros de salud y hospitales.', 'Enfermero Profesional', 'Tecnicatura'),
+(115, 'Tecnicatura Superior en Realización de Cine, TV y Video', 'Formación técnica en la producción y dirección de proyectos audiovisuales en cine, televisión y video.', 'Técnico Superior en Realización de Cine, TV y Video', 'Tecnicatura'),
+(116, 'Tecnicatura Superior en Comunicación Social para el Desarrollo', 'Enseñanza sobre el uso de la comunicación como herramienta para el desarrollo social y comunitario.', 'Técnico Superior en Comunicación Social para el Desarrollo', 'Tecnicatura'),
+(117, 'Tecnicatura Superior en Diseño de Interiores', 'Formación técnica en el diseño de espacios interiores para mejorar la funcionalidad y estética.', 'Técnico Superior en Diseño de Interiores', 'Tecnicatura'),
+(118, 'Licenciatura en Economía y Administración Agrarias', 'Carrera enfocada en la economía y administración de actividades agrarias.', 'Licenciado en Economía y Administración Agrarias', 'Licenciatura'),
+(119, 'Licenciatura en Ciencias Ambientales', 'Estudios centrados en las ciencias ambientales aplicadas a la agronomía.', 'Licenciado en Ciencias Ambientales', 'Licenciatura'),
+(120, 'Profesorado en Enseñanza Secundaria y Superior en Ciencias Ambientales', 'Formación de profesionales para la enseñanza de ciencias ambientales en nivel secundario y superior.', 'Profesor en Enseñanza Secundaria y Superior en Ciencias Ambientales', 'Profesorado'),
+(121, 'Tecnicatura Universitaria en Turismo Rural', 'Programa técnico enfocado en el desarrollo del turismo rural y sus aplicaciones económicas.', 'Técnico Universitario en Turismo Rural', 'Tecnicatura'),
+(122, 'Tecnicatura Universitaria en Producción Florihortícola', 'Carrera técnica orientada a la producción de cultivos florales y hortícolas.', 'Técnico Universitario en Producción Florihortícola', 'Tecnicatura'),
+(123, 'Tecnicatura Universitaria en Jardinería', 'Formación técnica para el diseño y mantenimiento de jardines.', 'Técnico Universitario en Jardinería', 'Tecnicatura'),
+(124, 'Tecnicatura Universitaria en Producción Vegetal Orgánica', 'Carrera técnica especializada en la producción vegetal orgánica.', 'Técnico Universitario en Producción Vegetal Orgánica', 'Tecnicatura'),
+(125, 'Diseño Gráfico', 'Estudios en diseño gráfico aplicado a diferentes campos de comunicación visual.', 'Diseñador Gráfico', 'Licenciatura'),
+(126, 'Diseño Industrial', 'Carrera orientada a la creación de objetos y productos industriales.', 'Diseñador Industrial', 'Licenciatura'),
+(127, 'Diseño de Imagen y Sonido', 'Estudios relacionados con la creación y edición de imágenes y sonido para medios audiovisuales.', 'Diseñador de Imagen y Sonido', 'Licenciatura'),
+(128, 'Licenciatura en Planificación y Diseño del Paisaje', 'Formación en planificación y diseño del paisaje, incluyendo áreas urbanas y naturales.', 'Licenciado en Planificación y Diseño del Paisaje', 'Licenciatura'),
+(129, 'Diseño de Indumentaria', 'Carrera enfocada en el diseño de indumentaria para la industria de la moda.', 'Diseñador de Indumentaria', 'Licenciatura'),
+(130, 'Diseño Textil', 'Estudios en diseño y producción de textiles para la industria de la moda y otras áreas.', 'Diseñador Textil', 'Licenciatura'),
+(131, 'Licenciatura en Ciencias Biológicas', 'Carrera orientada al estudio de organismos vivos y su funcionamiento.', 'Licenciado en Ciencias Biológicas', 'Licenciatura'),
+(132, 'Licenciatura en Ciencias de la Computación', 'Estudios en ciencias de la computación y sus aplicaciones en diversas áreas.', 'Licenciado en Ciencias de la Computación', 'Licenciatura'),
+(133, 'Licenciatura en Ciencias Físicas', 'Formación avanzada en física y sus diferentes ramas de investigación.', 'Licenciado en Ciencias Físicas', 'Licenciatura'),
+(134, 'Profesorado en Enseñanza Media y Superior en Ciencias Geológicas', 'Carrera para la enseñanza de ciencias geológicas en el nivel medio y superior.', 'Profesor en Enseñanza Media y Superior en Ciencias Geológicas', 'Profesorado'),
+(135, 'Licenciatura en Ciencias Matemáticas', 'Estudios en matemáticas y su aplicación en diversos campos científicos.', 'Licenciado en Ciencias Matemáticas', 'Licenciatura'),
+(136, 'Licenciatura en Ciencias de la Atmósfera', 'Carrera enfocada en la atmósfera y el estudio de fenómenos meteorológicos.', 'Licenciado en Ciencias de la Atmósfera', 'Licenciatura'),
+(137, 'Licenciatura en Ciencias Químicas', 'Formación en química y sus aplicaciones en investigación y tecnología.', 'Licenciado en Ciencias Químicas', 'Licenciatura'),
+(138, 'Licenciatura en Ciencias Oceanográficas', 'Carrera especializada en el estudio de los océanos y sus ecosistemas.', 'Licenciado en Ciencias Oceanográficas', 'Licenciatura'),
+(139, 'Licenciatura en Paleontología', 'Estudios en paleontología, centrados en la investigación de fósiles y evolución.', 'Licenciado en Paleontología', 'Licenciatura'),
+(140, 'Profesorado en Enseñanza Media y Superior en Ciencias Biológicas', 'Formación en enseñanza de ciencias biológicas en nivel medio y superior.', 'Profesor en Enseñanza Media y Superior en Ciencias Biológicas', 'Profesorado'),
+(141, 'Profesorado en Enseñanza Media y Superior en Ciencias de la Atmósfera', 'Carrera orientada a la enseñanza de ciencias de la atmósfera en el nivel secundario y superior.', 'Profesor en Enseñanza Media y Superior en Ciencias de la Atmósfera', 'Profesorado'),
+(142, 'Profesorado en Enseñanza Media y Superior en Ciencias de la Computación', 'Formación para la enseñanza de computación en los niveles medio y superior.', 'Profesor en Enseñanza Media y Superior en Ciencias de la Computación', 'Profesorado'),
+(143, 'Profesorado en Enseñanza Media y Superior en Física', 'Carrera para la enseñanza de física en los niveles medio y superior.', 'Profesor en Enseñanza Media y Superior en Física', 'Profesorado'),
+(144, 'Profesorado en Enseñanza Media y Superior en Ciencias Geológicas', 'Carrera orientada a la enseñanza de ciencias geológicas en niveles medio y superior.', 'Profesor en Enseñanza Media y Superior en Ciencias Geológicas', 'Profesorado'),
+(145, 'Profesorado en Enseñanza Media y Superior en Matemática', 'Formación en enseñanza de matemáticas en niveles medio y superior.', 'Profesor en Enseñanza Media y Superior en Matemática', 'Profesorado'),
+(146, 'Profesorado en Enseñanza Media y Superior en Química', 'Carrera orientada a la enseñanza de química en niveles medio y superior.', 'Profesor en Enseñanza Media y Superior en Química', 'Profesorado'),
+(147, 'Licenciatura en Ciencia y Tecnología de Alimentos', 'Carrera especializada en el estudio de alimentos y su tecnología de producción.', 'Licenciado en Ciencia y Tecnología de Alimentos', 'Licenciatura'),
+(148, 'Licenciatura en Ciencias de Datos', 'Estudios avanzados en ciencias de datos y su aplicación en tecnología e investigación.', 'Licenciado en Ciencias de Datos', 'Licenciatura');
 
 -- --------------------------------------------------------
 
@@ -141,7 +186,7 @@ CREATE TABLE `contacto` (
   `tipo` enum('telefono','correo','tiktok','instagram','facebook','youtube','whatsapp','twitter') NOT NULL,
   `contacto` varchar(100) NOT NULL,
   `fk_establecimiento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `contacto`
@@ -200,7 +245,7 @@ INSERT INTO `contacto` (`id_contacto`, `descripcion`, `tipo`, `contacto`, `fk_es
 CREATE TABLE `distrito` (
   `id_distrito` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `distrito`
@@ -229,7 +274,7 @@ CREATE TABLE `establecimiento` (
   `coordenadas` longtext NOT NULL,
   `fk_distrito` int(11) NOT NULL,
   `habilitado` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `establecimiento`
@@ -267,7 +312,7 @@ CREATE TABLE `imagenes` (
   `id_imagen` int(11) NOT NULL,
   `url` varchar(20) NOT NULL,
   `fk_establecimiento` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `imagenes`
@@ -309,7 +354,7 @@ CREATE TABLE `recursos` (
   `fk_carrera` int(11) DEFAULT NULL,
   `fk_establecimiento` int(11) NOT NULL,
   `tipo_recurso` enum('plan de estudio','diseño curricular','','') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `recursos`
@@ -395,7 +440,7 @@ INSERT INTO `recursos` (`id_recurso`, `pdf`, `fk_carrera`, `fk_establecimiento`,
 (98, 'actuarioadmeconómicasuba', 73, 15, 'plan de estudio'),
 (99, 'contadoreconómicasuba', 74, 15, 'plan de estudio'),
 (100, 'administracióneconómicasuba', 75, 15, 'plan de estudio'),
-(101, 'economíaeconómicasuba', 76, 15, 'plan de estudio'),
+(101, 'economíaeconómicasuba', 8, 15, 'plan de estudio'),
 (102, 'sistemaseconómicasuba', 77, 15, 'plan de estudio'),
 (103, 'actuarioecoeconómicasuba', 78, 15, 'plan de estudio'),
 (104, 'licpsicologiauba', 79, 15, 'plan de estudio'),
@@ -444,7 +489,32 @@ INSERT INTO `recursos` (`id_recurso`, `pdf`, `fk_carrera`, `fk_establecimiento`,
 (168, 'ProfesoradoHistoriaGeografía117', 57, 5, 'diseño curricular'),
 (169, 'ProfesoradoHistoriaGeografía39', 53, 4, 'diseño curricular'),
 (170, 'ProfesoradoEducaciónInicialprimaria117', 15, 5, 'diseño curricular'),
-(171, 'ProfesoradoEducaciónInicialprimaria52', 15, 7, 'diseño curricular');
+(171, 'ProfesoradoEducaciónInicialprimaria52', 15, 7, 'diseño curricular'),
+(172, 'diplomaturaeducontextosvulnerabilidaddelta', 106, 14, 'plan de estudio'),
+(173, 'diploestrategiasmarketingempresasturisticasdelta', 103, 14, 'plan de estudio'),
+(174, 'diplomaturadesarrolloemprendedorempresarialdelta', 105, 14, 'plan de estudio'),
+(175, 'diplomaturaincendiosforestalesdelta', 102, 14, 'plan de estudio'),
+(176, 'diplomaturagestiondesarrolloterritorialdelta', 104, 14, 'plan de estudio'),
+(177, 'diplomaturanegociosdigitalesinnovaciondelta', 108, 14, 'plan de estudio'),
+(178, 'diplomaturaseguridadsocialdelta', 107, 14, 'plan de estudio'),
+(179, 'diplomaturaredesinformaticacomunicaciondatosdelta', 109, 14, 'plan de estudio'),
+(180, 'diplomaturagestionemprendimientosturisticosdelta', 101, 14, 'plan de estudio'),
+(187, 'profinglescuv', 41, 8, 'plan de estudio'),
+(188, 'tecunisistemasinformaticoscuv', 113, 8, 'plan de estudio'),
+(189, 'carreraenfermeriauniversitariacuv', 114, 8, 'plan de estudio'),
+(190, 'tecsuperiorcinetvvideocuv', 115, 8, 'plan de estudio'),
+(191, 'tecsuperiorcomunicacionsocialdesarrollocuv', 116, 8, 'plan de estudio'),
+(192, 'tecsuperiordiseñointeriorescuv', 117, 8, 'plan de estudio'),
+(193, 'proftecnico52', 89, 19, 'diseño curricular'),
+(194, 'ProfesoradoEconomía52', 90, 19, 'diseño curricular'),
+(195, 'ProfesoradoEducaciónInicialprimaria52', 48, 19, 'diseño curricular'),
+(196, 'inglés52', 41, 19, 'diseño curricular'),
+(197, 'ProfesoradoEducaciónInicialprimaria52', 15, 19, 'diseño curricular'),
+(198, 'proftecnico52', 89, 20, 'diseño curricular'),
+(199, 'ProfesoradoEconomía52', 90, 20, 'diseño curricular'),
+(200, 'ProfesoradoEducaciónInicialprimaria52', 48, 20, 'diseño curricular'),
+(201, 'inglés52', 41, 20, 'diseño curricular'),
+(202, 'ProfesoradoEducaciónInicialprimaria52', 15, 20, 'diseño curricular');
 
 -- --------------------------------------------------------
 
@@ -458,17 +528,14 @@ CREATE TABLE `usuarios` (
   `apellido` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `contrasena` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `contrasena`) VALUES
-(1, 'Santiago Benjamín', 'hola', 'hola@gmail.com', 'hola123'),
-(2, 'carlos', 'solis', 'carlos@gmail.com', 'hola123'),
-(3, 'hola', 'hola', 'hola18@gmail.com', 'hola123'),
-(4, 'cristobal', 'maier', 'cristobalmaier@gmail.com', 'hola123');
+(5, 'prueba', 'prueba', 'prueba@gmail.com', '$2y$10$3fbVpwduHqdreoL5Zg0KH.oHrPTsUHa2nsM9xqGFfEbVClP1Rpf6q');
 
 --
 -- Índices para tablas volcadas
@@ -530,7 +597,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `carrera`
 --
 ALTER TABLE `carrera`
-  MODIFY `id_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
@@ -560,13 +627,13 @@ ALTER TABLE `imagenes`
 -- AUTO_INCREMENT de la tabla `recursos`
 --
 ALTER TABLE `recursos`
-  MODIFY `id_recurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
+  MODIFY `id_recurso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -582,7 +649,7 @@ ALTER TABLE `contacto`
 -- Filtros para la tabla `establecimiento`
 --
 ALTER TABLE `establecimiento`
-  ADD CONSTRAINT `fk_distrito` FOREIGN KEY (`fk_distrito`) REFERENCES `distrito` (`id_distrito`);
+  ADD CONSTRAINT `fk_distrito` FOREIGN KEY (`fk_distrito`) REFERENCES `distrito` (`id_distrito`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `imagenes`
